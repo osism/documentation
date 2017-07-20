@@ -10,6 +10,7 @@ OpenStack Infrastructure & Service Manager
 =====================  ================================================= ==========================================================
 Name                   Repository                                        Role
 =====================  ================================================= ==========================================================
+osism.bootstrap        https://github.com/osism/ansible-bootstrap
 osism.cobbler          https://github.com/osism/ansible-cobbler
 osism.configuration    https://github.com/osism/ansible-configuration
 osism.docker           https://github.com/osism/ansible-docker
