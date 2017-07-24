@@ -22,11 +22,12 @@ Betacloud
 
 * https://hub.docker.com/u/betacloud/dashboard/
 
-===============  =================================================== ==========================================================
-Name             Repository                                          Image
-===============  =================================================== ==========================================================
-netbox           https://github.com/betacloud/docker-netbox          https://hub.docker.com/r/betacloud/netbox/
-nfs-server       https://github.com/betacloud/docker-nfs-server      https://hub.docker.com/r/betacloud/nfs-server/
-rundeck-ansible  https://github.com/betacloud/docker-rundeck-ansible https://hub.docker.com/r/betacloud/rundeck-ansible/
-serverspec       https://github.com/betacloud/docker-serverspec      https://hub.docker.com/r/betacloud/serverspec/
-===============  =================================================== ==========================================================
+=================== ======================================================= ============================================================================================
+Name                Repository                                              Image
+=================== ======================================================= ============================================================================================
+letsencrypt-haproxy https://github.com/betacloud/docker-letsencrypt-haproxy https://hub.docker.com/r/betacloud/haproxy/, https://hub.docker.com/r/betacloud/letsencrypt/
+netbox              https://github.com/betacloud/docker-netbox              https://hub.docker.com/r/betacloud/netbox/
+nfs-server          https://github.com/betacloud/docker-nfs-server          https://hub.docker.com/r/betacloud/nfs-server/
+rundeck-ansible     https://github.com/betacloud/docker-rundeck-ansible     https://hub.docker.com/r/betacloud/rundeck-ansible/
+serverspec          https://github.com/betacloud/docker-serverspec          https://hub.docker.com/r/betacloud/serverspec/
+=================== ======================================================= ============================================================================================
