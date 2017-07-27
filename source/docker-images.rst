@@ -27,6 +27,7 @@ Betacloud
 =================== ======================================================= ============================================================================================
 Name                Repository                                              Image
 =================== ======================================================= ============================================================================================
+anitya              https://github.com/betacloud/docker-anitya              https://hub.docker.com/r/betacloud/anitya
 letsencrypt-haproxy https://github.com/betacloud/docker-letsencrypt-haproxy https://hub.docker.com/r/betacloud/haproxy/, https://hub.docker.com/r/betacloud/letsencrypt/
 netbox              https://github.com/betacloud/docker-netbox              https://hub.docker.com/r/betacloud/netbox/
 nfs-server          https://github.com/betacloud/docker-nfs-server          https://hub.docker.com/r/betacloud/nfs-server/
