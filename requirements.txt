@@ -1,0 +1,4 @@
+Flask-Sphinx-Themes
+sphinx
+sphinxcontrib-blockdiag
+sphinxcontrib-nwdiag
