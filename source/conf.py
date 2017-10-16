@@ -1,4 +1,4 @@
-extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag']
+extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo']
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'OpenStack Infrastructure & Service Manager'
@@ -9,7 +9,7 @@ release = u'1.0.0'
 language = 'en'
 exclude_patterns = []
 pygments_style = 'sphinx'
-todo_include_todos = False
+todo_include_todos = True
 html_theme = 'flask'
 html_show_sphinx = False
 html_show_sourcelink = False
