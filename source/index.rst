@@ -6,4 +6,5 @@ OpenStack Infrastructure & Service Manager
    :maxdepth: 2
 
    cobbler
+   notes
    tables
