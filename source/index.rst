@@ -9,4 +9,5 @@ OpenStack Infrastructure & Service Manager
    cobbler
    bootstrap
    notes
+   vagrant
    tables
