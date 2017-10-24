@@ -259,44 +259,44 @@ Deploy openstack
 
 .. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
 
-1. Deploy keystone with ``osism-kolla deploy keystone``
+1. Deploy keystone
 
 .. code-block:: shell
 
-   $
+   $ osism-kolla deploy keystone
 
-2. Deploy glance with ``osism-kolla deploy glance``
-
-.. code-block:: shell
-
-   $
-
-3. Deploy heat with ``osism-kolla deploy heat``
+2. Deploy glance
 
 .. code-block:: shell
 
-   $
+   $ osism-kolla deploy glance
 
-4. Deploy horizon with ``osism-kolla deploy horizon``
-
-.. code-block:: shell
-
-   $
-
-5. Deploy cinder with ``osism-kolla deploy cinder``
+3. Deploy heat
 
 .. code-block:: shell
 
-   $
+   $ osism-kolla deploy heat
 
-6. Deploy nova with ``osism-kolla deploy nova``
-
-.. code-block:: shell
-
-   $
-
-7. Deploy neutron with ``osism-kolla deploy neutron``
+4. Deploy horizon
 
 .. code-block:: shell
 
-   $
+   $ osism-kolla deploy horizon
+
+5. Deploy cinder
+
+.. code-block:: shell
+
+   $ osism-kolla deploy cinder
+
+6. Deploy nova
+
+.. code-block:: shell
+
+   $ osism-kolla deploy nova
+
+7. Deploy neutron
+
+.. code-block:: shell
+
+   $ osism-kolla deploy neutron
