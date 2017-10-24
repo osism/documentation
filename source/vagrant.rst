@@ -246,6 +246,12 @@ Deploy infrastructure services
 
    $ osism-kolla deploy rabbitmq
 
+9. Deploy telegraf
+
+.. code-block:: shell
+
+   $ osism-kolla deploy telegraf
+
 .. note:: Deploy multiple services with ``osism-kolla deploy mariadb,rabbitmq,...``.
 
 Deploy openstack
