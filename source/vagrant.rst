@@ -252,6 +252,12 @@ Deploy infrastructure services
 
    $ osism-kolla deploy telegraf
 
+10. Deploy prometheus
+
+.. code-block:: shell
+
+   $ osism-infrastructure prometheus
+
 .. note:: Deploy multiple services with ``osism-kolla deploy mariadb,rabbitmq,...``.
 
 Deploy openstack
