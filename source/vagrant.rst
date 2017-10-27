@@ -107,7 +107,7 @@ Prepare manager node
 Prepare remaining nodes
 -----------------------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 1. Create the operator user on the nodes
 
@@ -130,7 +130,7 @@ Prepare remaining nodes
 Deploy ceph
 -----------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 1. Gather facts
 
@@ -159,7 +159,7 @@ Deploy ceph
 Deploy helper
 ------------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 1. Deploy helper services like phpMyAdmin or ceph client
 
@@ -170,7 +170,7 @@ Deploy helper
 Check ceph
 ----------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 .. console-block:: shell
 
@@ -196,7 +196,7 @@ Check ceph
 Deploy infrastructure services
 ------------------------------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 1. Gather facts
 
@@ -263,7 +263,7 @@ Deploy infrastructure services
 Deploy openstack
 ----------------
 
-.. note:: Log in on the manager node by running ``./ssh.sh`` and run the following commands on the manager node.
+.. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
 1. Deploy keystone
 
