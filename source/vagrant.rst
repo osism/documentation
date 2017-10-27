@@ -252,7 +252,13 @@ Deploy infrastructure services
 
    $ osism-kolla deploy telegraf
 
-10. Deploy prometheus
+10. Deploy grafana
+
+.. code-block:: shell
+
+   $ osism-kolla deploy grafana
+
+11. Deploy prometheus
 
 .. code-block:: shell
 
