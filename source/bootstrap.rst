@@ -12,7 +12,7 @@ Prepare the manager system
 
 .. note:: Run the commands on the seed node.
 
-.. code-block: shell
+.. code-block:: shell
 
    $ cd environments/manager
    $ ANSIBLE_USER=ubuntu ./run.sh operator
@@ -28,9 +28,27 @@ Prepare the manager system
    as well as the ``id_rsa.operator`` file when you finished the preparations of
    the manager system.
 
+Prepare infrastructure services
+===============================
 
-Add a new system
-================
+.. note:: Run the commands on the manager node.
+
+Cobbler
+-------
+
+.. code-block:: shell
+
+   $ osism-infrastructure cobbler
+
+Mirror
+------
+
+.. code-block:: shell
+
+   $ osism-infrastructure mirror
+
+Add a new barae-metal system
+============================
 
 Add the host to the ``cobbler_systems`` parameter in ``infrastructure/configuration.yml``.
 
