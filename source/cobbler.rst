@@ -45,3 +45,13 @@ Enable provisioning
 
    $ cobbler system edit --name 20-12 --netboot-enabled=true
    $ cobbler sync
+
+Power control
+=============
+
+* http://cobbler.github.io/manuals/2.8.0/4/5_-_Power_Management.html
+
+.. code-block:: shell
+
+   $ cobbler system poweroff --name 20-12
+   $ cobbler system poweron --name 20-12
