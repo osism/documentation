@@ -11,4 +11,5 @@ OpenStack Infrastructure & Service Manager
    notes
    troubleshooting
    vagrant
+   rally
    tables
