@@ -2,12 +2,45 @@
 Notes
 =====
 
+Pull all infrastructure & OpenStack images
+==========================================
+
+.. code-block:: console
+
+   $ osism-kolla pull common,elasticsearch,haproxy,memcached,mariadb,rabbitmq,kibana,grafana
+   [...]
+   TASK [common : Pulling kolla-toolbox image] ************************************
+   ok: [20-10.betacloud.xyz]
+   ok: [50-11.betacloud.xyz]
+   ok: [50-10.betacloud.xyz]
+   ok: [50-12.betacloud.xyz]
+   ok: [20-11.betacloud.xyz]
+   ok: [20-12.betacloud.xyz]
+   ok: [30-10.betacloud.xyz]
+   ok: [30-11.betacloud.xyz]
+   ok: [10-11.betacloud.xyz]
+   [...]
+
+   $ osism-kolla pull keystone,glance,heat,horizon,cinder,neutron,nova
+   [...]
+   TASK [common : Pulling keystone image] *****************************************
+   ok: [20-10.betacloud.xyz]
+   ok: [50-11.betacloud.xyz]
+   ok: [50-10.betacloud.xyz]
+   ok: [50-12.betacloud.xyz]
+   ok: [20-11.betacloud.xyz]
+   ok: [20-12.betacloud.xyz]
+   ok: [30-10.betacloud.xyz]
+   ok: [30-11.betacloud.xyz]
+   ok: [10-11.betacloud.xyz]
+   [...]
+
 Reboot a system
 ===============
 
 .. note:: Run this command on the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic reboot --limit 20-12.betacloud.xyz
 
@@ -24,7 +57,7 @@ Update facts
 
 .. note:: Run this command on the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic facts
 
@@ -66,13 +99,13 @@ There are two possibilities to update the configuration repository on the manage
 
 On the seed node change into the manager environment and use the following command. This will update the configuration repository on the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ ./run.sh configuration
 
 On the manager node use the following command to update the configuration repository.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic configuration
 
@@ -83,7 +116,7 @@ Generate self-signed certificates
 
 .. note:: ``10-11.betacloud.xyz`` is the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-kolla _ certificates --limit 10-11.betacloud.xyz
    PLAY [Apply role certificates] *************************************************
@@ -124,7 +157,7 @@ Login to the mariadb databaserver (run ``docker exec -it mariadb mysqlu -u root 
 database nodes or use phpMyAdmin running on the manager node on port ``8110``) and run the following
 query.
 
-.. code-block:: shell
+.. code-block:: console
 
    MariaDB [(none)]> SHOW GLOBAL STATUS LIKE 'wsrep_%';
    +------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
