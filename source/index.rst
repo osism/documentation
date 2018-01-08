@@ -5,11 +5,12 @@ OpenStack Infrastructure & Service Manager
 .. toctree::
    :maxdepth: 2
 
-   architecture
-   cobbler
-   bootstrap
+   overview
+   provisioning
+   deployment
+   verify
+   benchmark
    notes
    troubleshooting
-   vagrant
-   rally
+   testbed
    tables
