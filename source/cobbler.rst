@@ -49,7 +49,7 @@ Enable provisioning
 Power control
 =============
 
-* http://cobbler.github.io/manuals/2.8.0/4/5_-_Power_Management.html
+* `<http://cobbler.github.io/manuals/2.8.0/4/5_-_Power_Management.html>`_
 
 .. code-block:: shell
 

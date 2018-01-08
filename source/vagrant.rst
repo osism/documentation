@@ -157,7 +157,7 @@ Deploy ceph
       $ osism-ceph osds
 
 Deploy helper
-------------
+-------------
 
 .. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
@@ -172,7 +172,7 @@ Check ceph
 
 .. note:: Log in on the manager node by running ``./scripts/ssh.sh`` and run the following commands on the manager node.
 
-.. console-block:: shell
+.. code-block:: shell
 
    dragon@osism-manager:~$ ceph status
      cluster:
