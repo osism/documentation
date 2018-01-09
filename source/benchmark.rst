@@ -5,4 +5,7 @@ Benchmark
 .. toctree::
    :maxdepth: 2
 
-   rally
+   benchmark/ceph
+   benchmark/elasticsearch
+   benchmark/mariadb
+   benchmark/openstack

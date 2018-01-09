@@ -2,6 +2,10 @@
 Rally
 =====
 
+Rally is a Benchmark-as-a-Service project for OpenStack.
+
+* https://github.com/openstack/rally
+
 Configuration
 =============
 
@@ -11,12 +15,35 @@ Set ``configure_rally: yes`` in ``environments/infrastructure/configuration.yml`
 Initialisation
 ==============
 
-At the moment it is required to manually initialise the Rally database. On the manager node run the
-``rally db create`` command to bootstrap the database. After an upgrade run ``rally db upgrade``.
+.. note::
+
+   The following commands are to be executed on the manager node.
+
+Database
+--------
+
+It is required to manually initialise the Rally database.
+
+Run the ``rally db create`` command to create and bootstrap the database.
 
 .. code-block:: console
 
    $ rally db create
+   Creating database: mysql+pymysql://rally:password@database/rally
+   Database created successfully
+
+After an upgrade run ``rally db upgrade``.
+
+.. code-block:: console
+
+   $ rally db upgrade
+
+.. note::
+
+   The used database password can be set via the paramter ``rally_database_password``.
+
+Deployment
+----------
 
 Create the ``/opt/rally/tests/rally.json`` file with the required cloud details.
 
@@ -24,8 +51,8 @@ Create the ``/opt/rally/tests/rally.json`` file with the required cloud details.
 
    {
        "openstack": {
-           "auth_url": "http://192.168.90.200:5000/v3",
-           "region_name": "osism",
+           "auth_url": "https://api-1.betacloud.io:5000/v3",
+           "region_name": "betacloud-1",
            "endpoint_type": "public",
            "admin": {
                "username": "admin",
@@ -38,7 +65,11 @@ Create the ``/opt/rally/tests/rally.json`` file with the required cloud details.
        }
    }
 
-Create a Rally deployment with ``rally deployment create``.
+.. note::
+
+   Use the public endpoint.
+
+Create a deployment with ``rally deployment create``.
 
 .. code-block:: console
 
@@ -73,38 +104,44 @@ Run ``rally deployment check`` to check the deployment.
    | Service     | Service Type   | Status    |
    +-------------+----------------+-----------+
    | __unknown__ | compute_legacy | Available |
+   | __unknown__ | event          | Available |
    | __unknown__ | placement      | Available |
+   | __unknown__ | search         | Available |
    | __unknown__ | volumev2       | Available |
    | __unknown__ | volumev3       | Available |
+   | ceilometer  | metering       | Available |
    | cinder      | volume         | Available |
    | cloud       | cloudformation | Available |
    | glance      | image          | Available |
+   | gnocchi     | metric         | Available |
    | heat        | orchestration  | Available |
    | keystone    | identity       | Available |
    | neutron     | network        | Available |
    | nova        | compute        | Available |
    +-------------+----------------+-----------+
 
-Run a test
-==========
+Run a custom test
+=================
 
-A lot of sample tests can be found in the Rally repository: https://github.com/openstack/rally/tree/master/samples/tasks.
+.. note::
 
-Create the ``/opt/rally/tests/create-user.yaml`` file with the following content.
+   Prefabricated tests can be found at the Rally repository: https://github.com/openstack/rally/tree/master/samples/tasks.
+
+Create a test file (``/opt/rally/tests/create-user.yaml``) with the following content.
 
 .. code-block:: yaml
 
    ---
-     KeystoneBasic.create_user:
-       -
-         args: {}
-         runner:
-           type: "constant"
-           times: 100
-           concurrency: 10
-         sla:
-           failure_rate:
-             max: 0
+   KeystoneBasic.create_user:
+     -
+       args: {}
+       runner:
+         type: "constant"
+         times: 100
+         concurrency: 10
+       sla:
+         failure_rate:
+           max: 0
 
 Run the test with ``rally task start /tests/create-user.yaml``.
 
@@ -149,6 +186,13 @@ Render the results file with ``rally task report e5916fb4-04d6-4ffc-8a63-edab745
    2017-11-08 16:24:52.855 27 INFO rally.api [-] Building 'html' report for the following task(s): 'e5916fb4-04d6-4ffc-8a63-edab74514976'.
    2017-11-08 16:24:52.927 27 INFO rally.api [-] The report has been successfully built.
 
-A Nginx server serving the ``results`` directory is running on the manager node on port ``8090``.
+A Nginx server serving the ``results`` directory is running on the manager node on port ``8090``. The address can be configured with the parameter ``rally_nginx_host``.
 
 .. image:: /images/rally-result-html.png
+
+Run "OpenStack Certification Task"
+==================================
+
+The "OpenStack Certification Task" is a collection of configurable tests for the main components
+(Cinder, Glance, Keystone, Neutron, Nova) of OpenStack. The necessary files are located in the
+Rally Repository (https://github.com/openstack/rally/tree/master/tasks/openstack).
