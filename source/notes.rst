@@ -11,3 +11,4 @@ Notes
    notes/update-facts
    notes/update-configuration
    notes/generate-self-signed-certificates
+   notes/sosreport.rst
