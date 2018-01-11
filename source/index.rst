@@ -10,6 +10,8 @@ OpenStack Infrastructure & Service Manager
    deployment
    verify
    benchmark
+   monitoring
+   backup
    notes
    troubleshooting
    testbed
