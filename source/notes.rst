@@ -12,3 +12,4 @@ Notes
    notes/update-configuration
    notes/generate-self-signed-certificates
    notes/sosreport.rst
+   notes/generate-kolla-secrets-file.rst
