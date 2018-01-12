@@ -6,6 +6,7 @@ OpenStack Infrastructure & Service Manager
    :maxdepth: 2
 
    overview
+   configuration
    provisioning
    deployment
    verify
