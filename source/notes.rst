@@ -13,3 +13,4 @@ Notes
    notes/generate-self-signed-certificates
    notes/sosreport.rst
    notes/generate-kolla-secrets-file.rst
+   notes/performance-tweaks-via-image-extra-properties.rst
