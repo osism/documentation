@@ -70,7 +70,7 @@ Add the host to the ``cobbler_systems`` parameter in ``infrastructure/configurat
          kernel_options:
            "netcfg/choose_interface": enp5s0f0
 
-Add the host to the ``generic/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP address.
+Add the host to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP address.
 
 .. code-block:: ini
 
@@ -86,7 +86,7 @@ Add the host to the ``hosts`` inventory file. As ``ansible_host`` use the manage
    [...]
    20-12.betacloud.xyz ansible_host=172.17.20.12
 
-Add the network configuration to the host vars file ``generic/host_vars/20-12.betacloud.xyz.yml``.
+Add the network configuration to the host vars file ``inventory/host_vars/20-12.betacloud.xyz.yml``.
 
 .. todo::
 
