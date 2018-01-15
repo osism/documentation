@@ -51,6 +51,14 @@ Mirror
 
    $ osism-infrastructure mirror
 
+After the bootstrap of the mirror services they have to be synchronized. Depending on the bandwidth, this process will take several hours.
+
+.. code-block:: shell
+
+   $ osism-mirror files
+   $ osism-mirror images
+   $ osism-mirror packages
+
 Add a new node
 ==============
 
