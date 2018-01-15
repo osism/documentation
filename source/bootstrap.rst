@@ -47,10 +47,13 @@ Mirror
 
    $ osism-infrastructure mirror
 
-Add a new barae-metal system
-============================
+Add a new node
+==============
 
-Add the host to the ``cobbler_systems`` parameter in ``infrastructure/configuration.yml``.
+Provisioning of the node with cobbler
+-------------------------------------
+
+Add the node definition to the ``cobbler_systems`` list parameter in ``infrastructure/configuration.yml``.
 
 .. code-block:: yaml
 
@@ -70,7 +73,18 @@ Add the host to the ``cobbler_systems`` parameter in ``infrastructure/configurat
          kernel_options:
            "netcfg/choose_interface": enp5s0f0
 
-Add the host to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP address.
+You have to update the cobbler configuration.
+
+.. code-block:: shell
+
+   $ osism-infrastructure cobbler
+
+Then the new node can be started. The provisioning then starts automatically via PXE.
+
+Add node to the inventory
+=========================
+
+Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP address.
 
 .. code-block:: ini
 
@@ -78,7 +92,7 @@ Add the host to the ``inventory/hosts.installation`` inventory file. As ``ansibl
    [...]
    20-12.betacloud.xyz ansible_host=172.16.21.12
 
-Add the host to the ``hosts`` inventory file. As ``ansible_host`` use the management IP address.
+Add the node to the ``hosts`` inventory file. As ``ansible_host`` use the management IP address.
 
 .. code-block:: ini
 
@@ -86,19 +100,36 @@ Add the host to the ``hosts`` inventory file. As ``ansible_host`` use the manage
    [...]
    20-12.betacloud.xyz ansible_host=172.17.20.12
 
-Add the network configuration to the host vars file ``inventory/host_vars/20-12.betacloud.xyz.yml``.
+Add the network configuration to the node vars file ``inventory/host_vars/20-12.betacloud.xyz.yml``.
 
 .. todo::
 
    Add a sample network configuration here.
 
-Prepare the host for the bootstrap. This will add a operator user, will prepare the network configuration, and will reboot the system to change the network configuration.
+Preparation of a node for the bootstrap
+=======================================
+
+Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration, and will reboot the system to change the network configuration.
+
+.. note::
+
+   Depending on the environment you may need to install Python first.
+
+   .. code-block:: shell
+
+      $ osism-generic python --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
+
+
+   ``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
 
 .. code-block:: shell
 
-   $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i hosts.installation
-   $ osism-generic network --limit 20-12.betacloud.xyz -i hosts.installation
-   $ osism-generic reboot --limit 20-12.betacloud.xyz -i hosts.installation
+   $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
+   $ osism-generic network --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
+   $ osism-generic reboot --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
+
+Bootstrap of a node
+===================
 
 Refresh facts.
 
@@ -106,8 +137,17 @@ Refresh facts.
 
    $ osism-generic facts
 
-Bootstrap the host.
+Bootstrap the node.
 
 .. code-block:: shell
 
    $ osism-generic bootstrap --limit 20-12.betacloud.xyz
+
+Update hosts file
+=================
+
+After adding a new node, the ``/etc/hosts`` file on all nodes must be updated.
+
+.. code-block:: shell
+
+   $ osism-generic hosts
