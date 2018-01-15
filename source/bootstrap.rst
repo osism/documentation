@@ -28,6 +28,10 @@ Prepare the manager system
    as well as the ``id_rsa.operator`` file when you finished the preparations of
    the manager system.
 
+.. note::
+
+   Always carry out an update of the manager in this way.
+
 Prepare infrastructure services
 ===============================
 
