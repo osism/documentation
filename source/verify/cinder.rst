@@ -2,7 +2,7 @@
 Cinder
 ======
 
-.. code-block: shell
+.. code-block:: shell
 
    $ openstack --os-cloud testbed volume create --size 10 testing
    +---------------------+--------------------------------------+
