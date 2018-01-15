@@ -10,6 +10,19 @@ Working
 
 .. code-block:: shell
 
+   $ systemctl status chrony
+   ● chrony.service - LSB: Controls chronyd NTP time daemon
+      Loaded: loaded (/etc/init.d/chrony; bad; vendor preset: enabled)
+      Active: active (running) since Fri 2017-11-17 14:48:08 UTC; 1 months 28 days ago
+        Docs: man:systemd-sysv-generator(8)
+       Tasks: 1
+      Memory: 1.9M
+         CPU: 6.874s
+      CGroup: /system.slice/chrony.service
+              └─3039 /usr/sbin/chronyd
+
+.. code-block:: shell
+
    $ chronyc tracking
    Reference ID    : 131.188.3.221 (ntp1.rrze.uni-erlangen.de)
    Stratum         : 3
