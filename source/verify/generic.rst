@@ -59,3 +59,16 @@ Not working
    ===============================================================================
    ^? xx.xx.xx.xx                   0  10     0   10y     +0ns[   +0ns] +/-    0ns
    ^? xx.xx.xx.xx                   0  10     0   10y     +0ns[   +0ns] +/-    0ns
+
+Common containers
+=================
+
+The three following containers should run on each node.
+
+* ``cron`` with ``registry-1.osism.io/osism/cron:ocata-20171120-0``
+* ``fluentd`` with ``registry-1.osism.io/osism/fluentd:ocata-20171120-0``
+* ``kolla-toolbox`` with ``registry-1.osism.io/osism/kolla-toolbox:ocata-20171120-0``
+
+.. note::
+
+   Docker registry (``registry-1.osism.io``) as well as the tag (``ocata-20171120-0``) of the image differs from environment to environment.
