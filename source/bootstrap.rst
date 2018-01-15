@@ -96,7 +96,7 @@ Prepare the host for the bootstrap. This will add a operator user, will prepare 
 
 .. code-block:: shell
 
-   $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /opt/ansible/secrets/id_rsa.cobbler -i hosts.installation
+   $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i hosts.installation
    $ osism-generic network --limit 20-12.betacloud.xyz -i hosts.installation
    $ osism-generic reboot --limit 20-12.betacloud.xyz -i hosts.installation
 
