@@ -14,3 +14,4 @@ Notes
    notes/sosreport.rst
    notes/generate-kolla-secrets-file.rst
    notes/performance-tweaks-via-image-extra-properties.rst
+   notes/dict-object-has-no-attribute.rst
