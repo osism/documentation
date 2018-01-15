@@ -5,6 +5,7 @@ Verify operation
 .. toctree::
    :maxdepth: 2
 
+   verify/generic
    verify/elasticsearch
    verify/grafana
    verify/haproxy
