@@ -2,6 +2,17 @@
 Generic
 =======
 
+Docker
+======
+
+.. code-block:: shell
+
+   $ systemctl is-active docker
+   active
+
+   $ docker -v
+   Docker version 17.09.0-ce, build afdb6d4
+
 Chrony / NTP
 ============
 
@@ -9,6 +20,9 @@ Working
 -------
 
 .. code-block:: shell
+
+   $ systemctl is-active chrony
+   active
 
    $ systemctl status chrony
    ● chrony.service - LSB: Controls chronyd NTP time daemon
@@ -76,7 +90,7 @@ Not working
 Common containers
 =================
 
-The three following containers should run on each node.
+The three following containers should run on each node. The ``docker ps`` command can be used for displaying containers.
 
 * ``cron`` with ``registry-1.osism.io/osism/cron:ocata-20171120-0``
 * ``fluentd`` with ``registry-1.osism.io/osism/fluentd:ocata-20171120-0``
