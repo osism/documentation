@@ -11,7 +11,8 @@ Notes
    notes/update-facts
    notes/update-configuration
    notes/generate-self-signed-certificates
-   notes/sosreport.rst
-   notes/generate-kolla-secrets-file.rst
-   notes/performance-tweaks-via-image-extra-properties.rst
-   notes/dict-object-has-no-attribute.rst
+   notes/sosreport
+   notes/generate-kolla-secrets-file
+   notes/performance-tweaks-via-image-extra-properties
+   notes/dict-object-has-no-attribute
+   notes/docker
