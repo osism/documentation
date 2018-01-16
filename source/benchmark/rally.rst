@@ -213,3 +213,102 @@ Run "OpenStack Certification Task"
 The "OpenStack Certification Task" is a collection of configurable tests for the main components
 (Cinder, Glance, Keystone, Neutron, Nova) of OpenStack. The necessary files are located in the
 Rally Repository (https://github.com/openstack/rally/tree/master/tasks/openstack).
+
+We offer a collection of tests based on it, Available in the repository https://github.com/osism/test/tree/master/openstack/rally.
+These tests are used below.
+
+.. note::
+
+   Yes, that is not yet automated and will be improved in the future.
+
+.. code-block:: shell
+
+   $ wget https://github.com/osism/test/archive/master.zip
+   $ unzip master.zip 'test-master/openstack/rally/*'
+   $ rsync -avz test-master/openstack/rally/macro /opt/rally/tests
+   $ rsync -avz test-master/openstack/rally/scenario /opt/rally/tests
+   $ rsync -avz test-master/openstack/rally/task.yml /opt/rally/tests
+
+.. code-block:: shell
+
+   $ [[ ! -e /opt/rally/tests/task/task-arguments.yml ]] && cp test-master/openstack/rally/task-arguments.yml /opt/rally/tests
+
+.. code-block:: shell
+
+   $ rm -rf master.zip test-master
+
+File ``task-arguments.yml`` contains all task options:
+
++------------------------+----------------------------------------------------+
+| Name                   | Description                                        |
++========================+====================================================+
+| service_list           | List of services which should be tested            |
++------------------------+----------------------------------------------------+
+| smoke                  | Dry run without load from 1 user                   |
++------------------------+----------------------------------------------------+
+| use_existing_users     | In case of testing cloud with r/o Keystone e.g. AD |
++------------------------+----------------------------------------------------+
+| image_name             | Images name that exist in cloud                    |
++------------------------+----------------------------------------------------+
+| flavor_name            | Flavor name that exist in cloud                    |
++------------------------+----------------------------------------------------+
+| glance_image_location  | URL of image that is used to test Glance upload    |
++------------------------+----------------------------------------------------+
+| users_amount           | Expected amount of users                           |
++------------------------+----------------------------------------------------+
+| tenants_amount         | Expected amount of tenants                         |
++------------------------+----------------------------------------------------+
+| controllers_amount     | Amount of OpenStack API nodes (controllers)        |
++------------------------+----------------------------------------------------+
+
+All options have default values, hoverer user should change them to reflect
+configuration and size of tested environment.
+
+.. code-block:: yaml
+
+   ---
+   service_list:
+     - authentication
+     - quota
+     - nova
+     - neutron
+     - keystone
+     - cinder
+     - glance
+   use_existing_users: false
+   image_name: ""^(Cirros|cirros).*$""
+   flavor_name: "1C-1GB-10GB"
+   glance_image_location: "http://share.osism.io/images/cirros/cirros-0.4.0-x86_64-disk.img"
+   smoke: true
+   users_amount: 1
+   tenants_amount: 1
+   controllers_amount: 1
+   compute_amount: 1
+   storage_amount: 1
+   network_amount: 1
+
+.. code-block:: shell
+
+   $ rally task validate /tests/task.yml --task-args-file /tests/task-arguments.yml
+   [...]
+   Task syntax is correct :)
+   Starting:  Task validation.
+   Starting:  Task validation of syntax.
+   Completed: Task validation of syntax.
+   Starting:  Task validation of required platforms.
+   Completed: Task validation of required platforms.
+   Starting:  Task validation of semantic.
+   Context users@openstack setup()  finished in 0.52 sec
+   Context users@openstack cleanup() started
+   Context users@openstack cleanup() finished in 0.98 sec
+   Completed: Task validation of semantic.
+   Completed: Task validation.
+   Input Task is valid :)
+
+.. note::
+
+   Removed from the output: ``2018-01-16 20:55:24.621 544 INFO rally.task.engine [-] Task da7b502d-a8ed-4d59-91fd-83043ddd6aaf | ``
+
+.. code-block:: shell
+
+   $ rally task start /tests/task.yml --task-args-file /tests/task-arguments.yml
