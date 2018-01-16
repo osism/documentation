@@ -42,7 +42,8 @@ After an upgrade run ``rally db upgrade``.
 
 .. note::
 
-   The used database password can be set via the paramter ``rally_database_password``.
+   The used database password can be set via the paramter ``rally_database_password`` in the
+   ``environments/secrets.yml`` or ``environments/infrastructure/secrets.yml`` file.
 
 Deployment
 ----------
