@@ -123,6 +123,20 @@ Run ``rally deployment check`` to check the deployment.
    | nova        | compute        | Available |
    +-------------+----------------+-----------+
 
+.. note::
+
+   The ``__unknown__`` services are not an error. More details on this on https://bugs.launchpad.net/rally/+bug/1618121,
+   in the output of the command ``rally plugin show api_versions``, as well as in the source code.
+
+   .. code::
+
+      __unknown__ service name means that Keystone service
+      catalog doesn't return name for this service and Rally can
+      not identify service by its type. BUT you still can use
+      such services with api_versions context, specifying type of
+      service (execute `rally plugin show api_versions` for more
+      details)
+
 Run a custom test
 =================
 
