@@ -37,6 +37,8 @@ After an upgrade run ``rally db upgrade``.
 .. code-block:: console
 
    $ rally db upgrade
+   Upgrading database: mysql+pymysql://rally:password@database/rally
+   Database is already up to date
 
 .. note::
 
