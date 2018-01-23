@@ -134,6 +134,8 @@ Prepare the node for the bootstrap. This will add a operator user, will prepare 
 
    ``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
 
+   It is recommended to install Python on the systems during the provisioning process.
+
 .. code-block:: shell
 
    $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
