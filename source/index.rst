@@ -7,7 +7,7 @@ OpenStack Infrastructure & Service Manager
 
    overview
    configuration
-   provisioning
+   infrastructure
    deployment
    verify
    benchmark

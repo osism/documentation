@@ -1,14 +1,11 @@
-==================
-Bare-metal systems
-==================
-
+=======
 Cobbler
 =======
 
 Cobbler can be used for the provisioning of bare-metal systems. It is integrated into OSISM.
 
 List systems
-------------
+============
 
 .. code-block:: shell
 
@@ -23,7 +20,7 @@ List systems
       50-12
 
 Show system details
--------------------
+===================
 
 .. code-block:: shell
 
@@ -42,7 +39,7 @@ Show system details
    [...]
 
 Enable provisioning
--------------------
+===================
 
 .. code-block:: shell
 
@@ -50,7 +47,7 @@ Enable provisioning
    $ cobbler sync
 
 Power control
--------------
+=============
 
 * `<http://cobbler.github.io/manuals/2.8.0/4/5_-_Power_Management.html>`_
 
@@ -60,6 +57,6 @@ Power control
    $ cobbler system poweron --name 20-12
 
 References
-----------
+==========
 
 * http://cobbler.github.io/manuals/2.8.0/
