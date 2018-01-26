@@ -17,3 +17,4 @@ Notes
    notes/dict-object-has-no-attribute
    notes/docker
    notes/move-var-lib-docker-to-block-device
+   notes/hold-packages
