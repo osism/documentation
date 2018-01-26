@@ -60,3 +60,14 @@ References
 ==========
 
 * http://cobbler.github.io/manuals/2.8.0/
+
+Test TFTP
+=========
+
+.. code-block:: shell
+
+   $ sudo apt-get install tftp
+   $ tftp 172.17.10.11
+   tftp> mode binary
+   tftp> get pxelinux.0
+   Received 26828 bytes in 0.0 seconds
