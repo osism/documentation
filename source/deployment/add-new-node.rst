@@ -1,69 +1,9 @@
-=========
-Bootstrap
-=========
-
-Prepare the seed system
-=======================
-
-.. note:: Run the commands on the seed node.
-
-Prepare the manager system
-==========================
-
-.. note:: Run the commands on the seed node.
-
-.. code-block:: shell
-
-   $ cd environments/manager
-   $ ANSIBLE_USER=ubuntu ./run.sh operator
-   $ ./run.sh network
-   $ ./run.sh bootstrap
-   $ ./run.sh configuration
-   $ ./run.sh manager
-
-.. note::
-
-   To cleanup created directories/files after a run set the environment variable
-   ``CLEANUP=true`` or manually delete the ``roles`` and ``.venv`` directories
-   as well as the ``id_rsa.operator`` file when you finished the preparations of
-   the manager system.
-
-.. note::
-
-   Always carry out an update of the manager in this way.
-
-Prepare infrastructure services
-===============================
-
-.. note:: Run the commands on the manager node.
-
-Cobbler
--------
-
-.. code-block:: shell
-
-   $ osism-infrastructure cobbler
-
-Mirror
-------
-
-.. code-block:: shell
-
-   $ osism-infrastructure mirror
-
-After the bootstrap of the mirror services they have to be synchronized. Depending on the bandwidth, this process will take several hours.
-
-.. code-block:: shell
-
-   $ osism-mirror files
-   $ osism-mirror images
-   $ osism-mirror packages
-
+==============
 Add a new node
 ==============
 
-Provisioning of the node with cobbler
--------------------------------------
+Provisioning of the node with Cobbler
+=====================================
 
 Add the node definition to the ``cobbler_systems`` list parameter in ``infrastructure/configuration.yml``.
 
@@ -96,7 +36,8 @@ Then the new node can be started. The provisioning then starts automatically via
 Add node to the inventory
 =========================
 
-Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP address.
+Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP addres
+s.
 
 .. code-block:: ini
 
@@ -121,7 +62,8 @@ Add the network configuration to the node vars file ``inventory/host_vars/20-12.
 Preparation of a node for the bootstrap
 =======================================
 
-Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration, and will reboot the system to change the network configuration.
+Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration, and will reb
+oot the system to change the network configuration.
 
 .. note::
 
@@ -141,6 +83,10 @@ Prepare the node for the bootstrap. This will add a operator user, will prepare 
    $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
    $ osism-generic network --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
    $ osism-generic reboot --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
+
+.. note::
+
+   The use of the hosts.installation file is optional and is not available depending on the environment.
 
 Bootstrap of a node
 ===================
