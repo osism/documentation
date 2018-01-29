@@ -10,6 +10,7 @@ Configuration
    configuration/ansible
    configuration/manager
    configuration/generic
+   configuration/infrastructure
    configuration/ceph
    configuration/openstack
    configuration/monitoring
