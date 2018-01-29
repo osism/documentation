@@ -7,4 +7,6 @@ Operations
 
    operations/aptly
    operations/cobbler
+   operations/generic
    operations/backup
+   operations/reports

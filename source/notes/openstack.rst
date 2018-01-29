@@ -1,4 +1,15 @@
-=============================================
+=========
+OpenStack
+=========
+
+Support of QCOW2 images
+=======================
+
+Do not use QCOW2 images. Only use RAW images.
+
+* https://support.metacloud.com/hc/en-us/articles/234955888-Converting-QCOW2-Images-to-RAW-with-Ceph-Root-Disk
+* http://docs.metacloud.com/latest/user-guide/converting-images/
+
 Performance tweaks via image extra properties
 =============================================
 
@@ -12,15 +23,13 @@ Set ``hw_scsi_model=virtio-scsi`` and ``hw_disk_bus=scsi``.
 
 .. code-block:: shell
 
-   $ openstack image set 
-     --property hw_scsi_model=virtio-scsi 
-     --property hw_disk_bus=scsi 
+   $ openstack image set
+     --property hw_scsi_model=virtio-scsi
+     --property hw_disk_bus=scsi
      <name or ID of your image>
 
 Virtio Multiqueuing
 ===================
-
-FIXME
 
 OS/distribution type
 ====================
@@ -34,8 +43,8 @@ Alternatively, the program ``osinfo-query`` contained in the package ``libosinfo
 .. code-block:: shell
 
    $ osinfo-query os
-    Short ID             | Name                                               | Version  | ID
-   ----------------------+----------------------------------------------------+----------+-----------------------------------------
-    altlinux1.0          | Mandrake RE Spring 2001                            | 1.0      | http://altlinux.org/altlinux/1.0
-    altlinux2.0          | ALT Linux 2.0                                      | 2.0      | http://altlinux.org/altlinux/2.0
+    Short ID    | Name                    | Version | ID
+   -------------+-------------------------+---------+---------------------------------
+    altlinux1.0 | Mandrake RE Spring 2001 | 1.0     | http://altlinux.org/altlinux/1.0
+    altlinux2.0 | ALT Linux 2.0           | 2.0     | http://altlinux.org/altlinux/2.0
    [...]

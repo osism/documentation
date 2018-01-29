@@ -1,9 +1,12 @@
-=============
+======
+Ubuntu
+======
+
 Hold packages
 =============
 
 Manually
-========
+--------
 
 To prevent the update of a package, although a newer version is available, the package must be set to hold.
 
@@ -42,7 +45,7 @@ With ``unhold`` the lock can be removed again.
    Canceled hold on linux-generic.
 
 Automatically
-=============
+-------------
 
 Create a playbook with the name ``playbook-hold.yml`` in the environment ``generic``. Packages can be defined via the parameter ``packages_hold``.
 
