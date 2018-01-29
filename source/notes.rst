@@ -18,3 +18,4 @@ Notes
    notes/docker
    notes/move-var-lib-docker-to-block-device
    notes/hold-packages
+   notes/ceph
