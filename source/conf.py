@@ -1,11 +1,11 @@
 extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo']
 source_suffix = '.rst'
 master_doc = 'index'
-project = u'OpenStack Infrastructure & Service Manager'
+project = u'OSISM'
 copyright = u'2017-2018, Betacloud Solutions GmbH'
 author = u'Betacloud Solutions GmbH'
-version = u'1.0.0'
-release = u'1.0.0'
+version = u'master'
+release = u'master'
 language = 'en'
 exclude_patterns = []
 pygments_style = 'sphinx'

@@ -1,3 +1,3 @@
 =======
-MariaDB
+Icinga2
 =======

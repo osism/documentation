@@ -1,6 +1,9 @@
-========================
-Horizon dashboard broken                             
-========================
+=======
+Horizon
+=======
+
+Dashboard broken                             
+================
 
 .. image:: /images/horizon-broken.png                      
 

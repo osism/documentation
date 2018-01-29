@@ -5,6 +5,7 @@ Deployment
 .. toctree::
    :maxdepth: 2
 
+   deployment/overview
    deployment/seed
    deployment/manager
    deployment/infrastructure

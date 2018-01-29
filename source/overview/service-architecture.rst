@@ -4,8 +4,8 @@ Service architecture
 
 The following sections describe the services that the framework deploys.
 
-Provisioning & Deployment
-=========================
+Deployment
+==========
 
 * Aptly -- repository management tool
 * Cobbler -- linux installation server

@@ -1,6 +1,9 @@
-================
-MariaDB recovery
-================
+=======
+MariaDB
+=======
+
+Recovery
+========
 
 On the controller nodes stop the ``mariadb`` containers.
 
