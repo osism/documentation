@@ -7,12 +7,11 @@ OpenStack Infrastructure & Service Manager
 
    overview
    configuration
-   infrastructure
    deployment
    verify
    benchmark
    monitoring
-   backup
+   operations
    notes
    troubleshooting
    testbed
