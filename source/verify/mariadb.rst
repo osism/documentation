@@ -4,7 +4,7 @@ MariaDB
 
 * http://galeracluster.com/documentation-webpages/monitoringthecluster.html
 
-Login to the mariadb databaserver (run ``docker exec -it mariadb mysqlu -u root -p`` on one of the
+Login to the mariadb databaserver (run ``docker exec -it mariadb mysql -u root -p`` on one of the
 database nodes or use phpMyAdmin running on the manager node on port ``8110``) and run the following
 query.
 
