@@ -48,3 +48,21 @@ Alternatively, the program ``osinfo-query`` contained in the package ``libosinfo
     altlinux1.0 | Mandrake RE Spring 2001 | 1.0     | http://altlinux.org/altlinux/1.0
     altlinux2.0 | ALT Linux 2.0           | 2.0     | http://altlinux.org/altlinux/2.0
    [...]
+
+Remove services
+===============
+
+Cinder
+------
+
+* https://docs.openstack.org/cinder/latest/man/cinder-manage.html
+
+.. code-block:: shell
+
+   $ docker exec -it cinder_api cinder-manage service list
+   Binary         Host   Zone  Status    State Updated At           RPC Version  Object Version  Cluster
+   [...]
+   cinder-backup  50-10  nova  disabled  XXX   2017-10-03 18:14:59  2.0          1.11
+   [...]
+   $ docker exec -it cinder_api cinder-manage service remove cinder-backup 50-10
+   Service cinder-backup on host 50-10 removed.
