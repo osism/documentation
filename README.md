@@ -1,1 +1,1 @@
-Published at https://docs.osism.io.
+Published at http://docs.osism.io.
