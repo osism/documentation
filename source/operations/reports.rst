@@ -16,8 +16,8 @@ To collect reports from all systems, execute the following command on the manage
 
    $ osism-generic sosreport
 
-The collected reports can be found on the manager node under ``/opt/archive/sosrepor``. Per system and day
-there is atarball with the corresponding MD5 checksum.
+The collected reports can be found on the manager node under ``/opt/archive/sosreport``. Per system and day
+there is a tarball with the corresponding MD5 checksum.
 
 .. note::
 
