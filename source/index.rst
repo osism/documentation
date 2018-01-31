@@ -17,4 +17,4 @@ The OpenStack Infrastructure & Service Manager (OSISM) is a deployment framework
    notes
    troubleshooting
    testbed
-   tables
+   appendix
