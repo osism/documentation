@@ -6,8 +6,6 @@ The OpenStack Infrastructure & Service Manager (OSISM) is a Ansible & Docker bas
 
 Further details about OSISM can be found on https://osism.io. Do not hesitate to write an e-mail to info@osism.io if you have questions or doubts.
 
-The documentation is maintained on Github: https://github.com/osism/documentation. There you can open issues for found errors and so on.
-
 * **OpenStack** is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface. [#s1]_
 
 * **Ceph** uniquely delivers object, block, and file storage in one unified system. [#s2]_
@@ -30,6 +28,8 @@ The documentation is maintained on Github: https://github.com/osism/documentatio
    troubleshooting
    testbed
    appendix
+
+The documentation is maintained on Github: https://github.com/osism/documentation. There you can open issues for found errors and so on.
 
 .. [#s1] source: https://docs.openstack.org
 .. [#s2] source: http://docs.ceph.com
