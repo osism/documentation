@@ -8,5 +8,6 @@ Operations
    operations/aptly
    operations/cobbler
    operations/generic
+   operations/openstack
    operations/backup
    operations/reports
