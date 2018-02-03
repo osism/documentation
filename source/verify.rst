@@ -7,4 +7,5 @@ Verify operation
 
    verify/generic
    verify/logging
+   verify/infrastructure
    verify/openstack

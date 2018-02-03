@@ -9,5 +9,6 @@ Operations
    operations/cobbler
    operations/generic
    operations/openstack
+   operations/ceph
    operations/backup
    operations/reports
