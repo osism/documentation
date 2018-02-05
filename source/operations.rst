@@ -8,6 +8,7 @@ Operations
    operations/aptly
    operations/cobbler
    operations/generic
+   operations/rabbitmq
    operations/openstack
    operations/ceph
    operations/backup
