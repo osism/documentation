@@ -7,3 +7,4 @@ Appendix
 
    appendix/tables
    appendix/trademark-information
+   appendix/license
