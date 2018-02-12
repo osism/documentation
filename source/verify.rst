@@ -9,3 +9,4 @@ Verify operation
    verify/logging
    verify/infrastructure
    verify/openstack
+   verify/refstack
