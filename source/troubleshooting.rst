@@ -7,3 +7,4 @@ Troubleshooting
 
    troubleshooting/mariadb
    troubleshooting/horizon
+   troubleshooting/mistral
