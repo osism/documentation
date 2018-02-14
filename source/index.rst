@@ -27,6 +27,7 @@ Further details about OSISM can be found on https://osism.io. Do not hesitate to
    notes
    troubleshooting
    testbed
+   development
    appendix
 
 The documentation is maintained on Github: https://github.com/osism/documentation. There you can open issues for found errors and so on.
