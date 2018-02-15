@@ -18,6 +18,7 @@ Further details about OSISM can be found on https://osism.io. Do not hesitate to
    :maxdepth: 2
 
    overview
+   requirements
    configuration
    deployment
    verify
