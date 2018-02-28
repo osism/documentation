@@ -13,3 +13,4 @@ Operations
    operations/ceph
    operations/backup
    operations/reports
+   operations/elasticsearch
