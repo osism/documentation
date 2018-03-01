@@ -1,0 +1,29 @@
+---
+sudo: false
+
+language: python
+
+addons:
+  apt:
+    packages:
+    - lftp
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - .tox
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - scripts/build.sh
+
+after_success:
+  - scripts/push.sh
+
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.org#osism"
+    use_notice: true
