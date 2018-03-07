@@ -10,3 +10,4 @@ Deployment
    deployment/manager
    deployment/infrastructure
    deployment/add-new-node
+   deployment/notes
