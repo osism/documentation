@@ -57,7 +57,7 @@ Place this file in ``/usr/share/elasticsearch/delete-indices-older-than-30-days.
    actions:
      1:
        action: delete_indices
-       description: Delete indices with %Y.%m.%d in the name where that date is older than 14 days
+       description: Delete indices with %Y.%m.%d in the name where that date is older than 30 days
        options:
          ignore_empty_list: True
        filters:
@@ -65,12 +65,12 @@ Place this file in ``/usr/share/elasticsearch/delete-indices-older-than-30-days.
            source: name
            timestring: '%Y.%m.%d'
            unit: days
-           unit_count: 14
+           unit_count: 30
            direction: older
 
 .. code-block:: shell
 
-   (elasticsearch)[elasticsearch@20-10 /]$ curator delete-indices-older-than-14-days.yml
+   (elasticsearch)[elasticsearch@20-10 /]$ curator delete-indices-older-than-30-days.yml
    2018-02-28 14:13:42,992 INFO      Preparing Action ID: 1, "delete_indices"
    2018-02-28 14:13:43,004 INFO      Trying Action ID: 1, "delete_indices": Delete indices with %Y.%m.%d in the name where that date is older than 30 days
    2018-02-28 14:13:43,036 INFO      Deleting selected indices: ['flog-2018.02.09', 'flog-2018.02.11', 'flog-2018.02.10', 'flog-2018.02.14', 'flog-2018.02.12', 'flog-2018.02.13']
