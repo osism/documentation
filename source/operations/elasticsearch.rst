@@ -5,6 +5,31 @@ Elasticsearch
 Delete old indices
 ==================
 
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/_list_all_indices.html
+
+.. code-block:: none
+
+   $ curl -s http://10.49.0.100:9200/_cat/indices?v | sort
+   green  open   flog-2018.02.14 tqkXs5DSQQa7SUGALPCqYA   5   1      15694            0     22.4mb         11.3mb
+   green  open   flog-2018.02.15 mFR46PEJQjW3bebsDJuHSg   5   1    8283538            0      7.3gb          3.6gb
+   [...]
+   green  open   flog-2018.03.12 e0Nb5Y46QeqKSz80vThVkg   5   1    4420167            0      4.4gb          2.2gb
+   green  open   flog-2018.03.13 3MggZdM3QgWYhwzdI4q5AA   5   1    4401687            0      4.4gb          2.2gb
+   green  open   .kibana         OVJoP2jSQ6W8KuHiHcyYQQ   1   1          4            0     45.4kb         22.7kb
+   health status index           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html
+
+.. code-block:: none
+
+   $ curl -s -X DELETE http://10.49.0.100:9200/flog-2018.02.14
+   {"acknowledged":true}
+
+With curator
+------------
+
+* https://github.com/elastic/curator
+
 Place this file in ``/usr/share/elasticsearch/.curator/curator.yml``.
 
 .. code-block:: yaml
