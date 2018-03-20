@@ -15,3 +15,4 @@ Configuration
    configuration/ceph
    configuration/openstack
    configuration/monitoring
+   configuration/custom
