@@ -1,4 +1,4 @@
-Flask-Sphinx-Themes
 sphinx
 sphinxcontrib-blockdiag
 sphinxcontrib-nwdiag
+sphinx_rtd_theme
