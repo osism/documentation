@@ -62,5 +62,25 @@ Login
    info: check if stack exist
    info: get external manager address
    info: get internal manager address
-   Last login: Mon Mar 26 08:43:34 2018 from 185.136.140.18
+   Last login: Mon Mar 26 08:43:34 2018 from 1.2.3.4
    dragon@testbed-manager:~$
+
+.. code-block:: console
+
+   $ ./scripts/801-info.sh
+   info: prepare virtual environment
+   info: install required ansible roles
+   info: check if stack exist
+   info: get external manager address
+   info: get internal manager address
+
+   external manager address: 1.2.3.4
+
+   path to private ssh key: environments/manager/files/id_rsa.testbed-full
+
+   ssh username: dragon
+
+   rally: http://1.2.3.4:8090
+   phpmyadmin: http://1.2.3.4:8110
+   ara dashboard: http://1.2.3.4:8120
+   prometheus: http://1.2.3.4:9090
