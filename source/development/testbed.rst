@@ -37,6 +37,20 @@ Nodes
 * Bootstrap nodes
   ``./scripts/025-bootstrap-nodes.sh``
 
+Deployment
+==========
+
+.. code-block:: console
+
+   $ ./scripts/030-deploy.sh
+
+Specific service
+----------------
+
+.. code-block:: console
+
+   $ ./scripts/030-deploy.sh monitoring
+
 Login
 =====
 
