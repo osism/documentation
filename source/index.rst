@@ -27,7 +27,6 @@ Further details about OSISM can be found on https://osism.io. Do not hesitate to
    operations
    notes
    troubleshooting
-   testbed
    development
    appendix
 
