@@ -13,9 +13,9 @@ Prepartions
 * Prepare a virtual environment in the root directory of the role
   * ``virtualenv .venv; source venv/bin/activate``
 * Install the necessary dependencies
-  * ``pip install -r test-requirements.txt
+  * ``pip install -r test-requirements.txt``
 * Install the Ansible version to be tested
-  * ``pip install 'ansible>=2.4,<2.5'
+  * ``pip install 'ansible>=2.4,<2.5'``
 
 Execution
 ---------
