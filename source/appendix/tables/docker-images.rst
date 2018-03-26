@@ -2,16 +2,18 @@
 Docker images
 =============
 
-* https://hub.docker.com/u/osism/dashboard/
+* https://github.com/osism?q=docker
 
-================ ================================================= ==========================================================
-Name             Repository                                        Image
-================ ================================================= ==========================================================
-ansible-helper   https://github.com/osism/docker-ansible-helper    https://hub.docker.com/r/osism/ansible-helper/
-aptly            https://github.com/osism/docker-aptly             https://hub.docker.com/r/osism/aptly/
-ara-server       https://github.com/osism/docker-ara-server        https://hub.docker.com/r/osism/ara-server/
-cobbler          https://github.com/osism/docker-cobbler           https://hub.docker.com/r/osism/cobbler/
-devpi            https://github.com/osism/docker-devpi             https://hub.docker.com/r/osism/devpi/
-flask-dashboard  https://github.com/osism/docker-flask-dashboard   https://hub.docker.com/r/osism/flask-dashboard
-rsync-ssh        https://github.com/osism/docker-rsync-ssh         https://hub.docker.com/r/osism/rsync-ssh/
-================ ================================================= ==========================================================
+======================================== ============================================================ ===============================
+Name                                     Repository                                                   Image
+======================================== ============================================================ ===============================
+osism/docker-aptly                       https://github.com/osism/docker-aptly                        osism/aptly
+osism/docker-ara-server                  https://github.com/osism/docker-ara-server                   osism/ara-server
+osism/docker-ceph-ansible                https://github.com/osism/docker-ceph-ansible                 osism/ceph-ansible
+osism/docker-cephclient                  https://github.com/osism/docker-cephclient                   osism/cephclient
+osism/docker-cobbler                     https://github.com/osism/docker-cobbler                      osism/cobbler
+osism/docker-esrally                     https://github.com/osism/docker-esrally                      osism/esrally
+osism/docker-kolla-ansible               https://github.com/osism/docker-kolla-ansible                osism/kolla-ansible
+osism/docker-openstackclient             https://github.com/osism/docker-openstackclient              osism/openstackclient
+osism/docker-osism-ansible               https://github.com/osism/docker-osism-ansible                osism/osism-ansible
+======================================== ============================================================ ===============================
