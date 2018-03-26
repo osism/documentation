@@ -11,8 +11,7 @@ Generic
 -------
 
 * Create ``clouds.yml`` file
-* Set type: ``export TYPE=ceph``
-  * Possible types: ceph, controller, full, kolla, manager
+* Set type: ``export TYPE=ceph`` (possible types: ceph, controller, full, kolla, manager)
 
 Stack
 -----
