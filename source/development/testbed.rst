@@ -31,11 +31,8 @@ Manager
 
 Nodes
 -----
-
-* Prepare nodes
-  ``./scripts/020-prepare-nodes.sh``
 * Bootstrap nodes
-  ``./scripts/025-bootstrap-nodes.sh``
+  ``./scripts/020-bootstrap-nodes.sh``
 
 Deployment
 ==========
