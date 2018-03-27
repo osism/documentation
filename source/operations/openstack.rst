@@ -6,3 +6,4 @@ OpenStack
    :maxdepth: 2
 
    openstack/cinder
+   openstack/heat
