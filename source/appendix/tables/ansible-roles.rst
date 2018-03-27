@@ -24,5 +24,4 @@ osism/ansible-prometheus-exporter        https://github.com/osism/ansible-promet
 osism/ansible-proxy                      https://github.com/osism/ansible-proxy                       osism.proxy
 osism/ansible-repository                 https://github.com/osism/ansible-repository                  osism.repository
 osism/ansible-resolvconf                 https://github.com/osism/ansible-resolvconf                  osism.resolvconf
-osism/ansible-template                   https://github.com/osism/ansible-template                    osism.template
 ======================================== ============================================================ ==========================================================
