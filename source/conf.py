@@ -1,4 +1,4 @@
-extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo']
+extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome']
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'OSISM'
