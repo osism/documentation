@@ -5,7 +5,7 @@ Generic
 Docker
 ======
 
-.. code-block:: shell
+.. code-block:: console
 
    $ systemctl is-active docker
    active
@@ -19,7 +19,7 @@ Chrony / NTP
 Working
 -------
 
-.. code-block:: shell
+.. code-block:: console
 
    $ systemctl is-active chrony
    active
@@ -35,7 +35,7 @@ Working
       CGroup: /system.slice/chrony.service
               └─3039 /usr/sbin/chronyd
 
-.. code-block:: shell
+.. code-block:: console
 
    $ chronyc tracking
    Reference ID    : 131.188.3.221 (ntp1.rrze.uni-erlangen.de)
@@ -63,7 +63,7 @@ Working
 Not working
 -----------
 
-.. code-block:: shell
+.. code-block:: console
 
    $ chronyc tracking
    Reference ID    : 127.127.1.1 ()

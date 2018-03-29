@@ -11,7 +11,7 @@ Configuration
    configuration/manager
    configuration/generic
    configuration/infrastructure
-   configuraiton/compute
+   configuration/compute
    configuration/ceph
    configuration/openstack
    configuration/monitoring

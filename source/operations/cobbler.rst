@@ -7,7 +7,7 @@ Cobbler can be used for the provisioning of bare-metal systems. It is integrated
 List systems
 ============
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cobbler system list
       20-10
@@ -22,7 +22,7 @@ List systems
 Show system details
 ===================
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cobbler system report --name 20-12
    Name                           : 20-12
@@ -41,7 +41,7 @@ Show system details
 Enable provisioning
 ===================
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cobbler system edit --name 20-12 --netboot-enabled=true
    $ cobbler sync
@@ -51,7 +51,7 @@ Power control
 
 * `<http://cobbler.github.io/manuals/2.8.0/4/5_-_Power_Management.html>`_
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cobbler system poweroff --name 20-12
    $ cobbler system poweron --name 20-12
@@ -64,7 +64,7 @@ References
 Test TFTP
 =========
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo apt-get install tftp
    $ tftp 172.17.10.11
