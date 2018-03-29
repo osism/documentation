@@ -7,4 +7,3 @@ Overview
 
    overview/service-architecture
    overview/deployment-models
-   overview/releases
