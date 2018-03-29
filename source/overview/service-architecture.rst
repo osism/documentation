@@ -51,7 +51,7 @@ Shared services
 
    Clustered services can also be run as a single instance.
 
-OpenStack
+Controller
 =========
 
 * Aodh, Ceilometer, Gnocchi, Panko -- telemetry framework
@@ -67,6 +67,9 @@ OpenStack
 .. note::
 
    It is possible to integrate other OpenStack services. The support of an other OpenStack service on request (info@osism.io).
+
+Resources
+=========
 
 Compute
 -------
