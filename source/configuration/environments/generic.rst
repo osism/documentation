@@ -2,6 +2,8 @@
 Generic
 =======
 
+* base directory: ``environments/generic``
+
 Add SSH public key to the operator account
 ==========================================
 

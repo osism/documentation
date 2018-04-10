@@ -6,13 +6,5 @@ Configuration
    :maxdepth: 2
 
    configuration/overview
-   configuration/inventory
    configuration/ansible
-   configuration/manager
-   configuration/generic
-   configuration/infrastructure
-   configuration/compute
-   configuration/ceph
-   configuration/openstack
-   configuration/monitoring
-   configuration/custom
+   configuration/environments

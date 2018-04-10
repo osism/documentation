@@ -2,9 +2,14 @@
 Custom
 ======
 
+* base directory: ``environments/custom``
+
 The custom environment is used to store any additional playbooks and services.
 
-Where possible, playbooks are integrated into ``osism-ansible``. Additional services are implemented in a separate role as needed.
+.. note::
+
+   Where possible, playbooks are integrated into ``osism-ansible``.
+   Additional services are implemented in a separate role as needed.
 
 Playbooks
 =========

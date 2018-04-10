@@ -1,6 +1,8 @@
-=========
-OpenStack
-=========
+=====
+Kolla
+=====
+
+* base directory: ``environments/kolla``
 
 Generate secrets.yml file
 =========================

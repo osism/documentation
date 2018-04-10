@@ -2,8 +2,8 @@
 Overview
 ========
 
-Repository
-==========
+Files
+=====
 
 * ``configuration.yml``
 
@@ -17,5 +17,25 @@ Repository
 
   Environment specific secrets can be deposited in this file.
 
-Environments
-============
+* ``ansible.cfg``
+
+  Ansible configuration file.
+
+* ``playbook-*.yml``
+
+  Playbook files for Ansible.
+
+Directories
+===========
+
+* ``inventory``
+
+  Ansible inventory directory. All host-specific details are managed here.
+
+* ``environments``
+
+  Directory for managing the individual environments. Each environment has its own subdirectory.
+
+* ``docs``
+
+  Optional directory to manage documents about an environment.
