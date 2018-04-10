@@ -2,15 +2,58 @@
 Prepare the manager node
 ========================
 
-.. note:: Run the commands on the seed node.
+.. note::
 
-.. code-block:: shell
+   Run the commands on the seed node. Execute the commands within the
+   manager environment (``cd environments/manager``).
 
-   $ cd environments/manager
+.. note::
+
+   Various Ansible configurations can be adjusted via environment variables.
+
+   For example, to query the password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``.
+
+   If secrets.yml files are encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
+
+   http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables
+
+* Creation of the necessary operator user
+
+.. code-block:: console
+
    $ ANSIBLE_USER=ubuntu ./run.sh operator
+
+.. note::
+
+   If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
+   the manager node.
+
+   .. code-block:: console
+
+      ANSIBLE_USER=ubuntu ./run.sh python
+
+* Configuration of the network
+
+.. code-block:: console
+
    $ ./run.sh network
+
+* Bootstrap of the node
+
+.. code-block:: console
+
    $ ./run.sh bootstrap
+
+* Transfer configuration repository
+
+.. code-block:: console
+
    $ ./run.sh configuration
+
+* Deployment of necessary services
+
+.. code-block:: console
+
    $ ./run.sh manager
 
 .. note::
