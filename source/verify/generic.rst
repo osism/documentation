@@ -11,7 +11,70 @@ Docker
    active
 
    $ docker -v
-   Docker version 17.09.0-ce, build afdb6d4
+   Docker version 17.12.0-ce, build c97c6d6
+
+   $ docker info
+   Containers: 0
+    Running: 0
+    Paused: 0
+    Stopped: 0
+   Images: 0
+   Server Version: 17.12.0-ce
+   Storage Driver: overlay2
+    Backing Filesystem: extfs
+    Supports d_type: true
+    Native Overlay Diff: true
+   Logging Driver: json-file
+   Cgroup Driver: cgroupfs
+   Plugins:
+    Volume: local
+    Network: bridge host macvlan null overlay
+    Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+   Swarm: inactive
+   Runtimes: runc
+   Default Runtime: runc
+   Init Binary: docker-init
+   containerd version: 89623f28b87a6004d4b785663257362d1658a729
+   runc version: b2567b37d7b75eb4cf325b77297b140ea686ce8f
+   init version: 949e6fa
+   Security Options:
+    apparmor
+    seccomp
+     Profile: default
+   Kernel Version: 4.4.0-119-generic
+   Operating System: Ubuntu 16.04.4 LTS
+   OSType: linux
+   Architecture: x86_64
+   CPUs: 16
+   Total Memory: 62.8GiB
+   Name: host-1
+   ID: SCDI:46XK:OMTT:3CYK:AKRM:5TUQ:VENX:NWX5:T4LW:KYSX:RHPY:R2NJ
+   Docker Root Dir: /var/lib/docker
+   Debug Mode (client): false
+   Debug Mode (server): false
+   Registry: https://index.docker.io/v1/
+   Labels:
+   Experimental: false
+   Insecure Registries:
+    registry-1.osism.io
+    127.0.0.0/8
+   Live Restore Enabled: false
+
+   WARNING: No swap limit support
+
+   $ docker pull ubuntu:16.04
+   16.04: Pulling from library/ubuntu
+   22dc81ace0ea: Pull complete
+   1a8b3c87dba3: Pull complete
+   91390a1c435a: Pull complete
+   07844b14977e: Pull complete
+   b78396653dae: Pull complete
+   Digest: sha256:e348fbbea0e0a0e73ab0370de151e7800684445c509d46195aef73e090a49bd6
+   Status: Downloaded newer image for ubuntu:16.04
+
+   $ docker run --rm ubuntu:16.04 uptime
+    09:38:55 up 1 day,  2:40,  0 users,  load average: 0.20, 0.11, 0.15
+
 
 Chrony / NTP
 ============
