@@ -11,7 +11,8 @@ Generic
 -------
 
 * Create ``clouds.yml`` file
-* Set type: ``export TYPE=ceph`` (possible types: ceph, controller, full, kolla, manager)
+* Set type: ``export TYPE=manager`` (possible types: ``ceph``, ``controller``, ``full``, ``kolla``, ``manager``, default is ``manager``)
+* If necessary, adapt the environment files in the directory ``etc`` (e.g. to set the flavor type or the public network)
 
 Stack
 -----
@@ -31,8 +32,13 @@ Manager
 
 Nodes
 -----
+
 * Bootstrap nodes
   ``./scripts/020-bootstrap-nodes.sh``
+
+.. note::
+
+   When deploying the AIO environment (``TYPE=manager``), this step can be omitted.
 
 Deployment
 ==========
@@ -47,6 +53,19 @@ Specific service
 .. code-block:: console
 
    $ ./scripts/030-deploy.sh monitoring
+
+All-in-one
+----------
+
+If the type ``manager`` is used, an all-in-one deployment can be performed after the deployment of the manager.
+
+.. code-block:: console
+
+   $ ./scripts/030-deploy.sh single
+
+.. note::
+
+   Currently the all-in-one environment does not include Ceph.
 
 Login
 =====
@@ -73,11 +92,12 @@ Login
 
    external manager address: 1.2.3.4
 
-   path to private ssh key: environments/manager/files/id_rsa.testbed-full
+   path to private ssh key: environments/manager/files/id_rsa.testbed-manager
 
    ssh username: dragon
 
    rally: http://1.2.3.4:8090
    phpmyadmin: http://1.2.3.4:8110
    ara dashboard: http://1.2.3.4:8120
+   cockpit: https://1.2.3.4:8130
    prometheus: http://1.2.3.4:9090
