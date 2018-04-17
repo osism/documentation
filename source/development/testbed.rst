@@ -101,3 +101,10 @@ Login
    ara dashboard: http://1.2.3.4:8120
    cockpit: https://1.2.3.4:8130
    prometheus: http://1.2.3.4:9090
+
+Destroy
+=======
+
+.. code-block:: console
+
+   $ ./scripts/999-destroy.sh
