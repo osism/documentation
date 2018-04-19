@@ -96,6 +96,7 @@ Login
 
    ssh username: dragon
 
+   horizon: http://1.2.3.4:8080
    rally: http://1.2.3.4:8090
    phpmyadmin: http://1.2.3.4:8110
    ara dashboard: http://1.2.3.4:8120
