@@ -1,6 +1,6 @@
-===============================
-Prepare infrastructure services
-===============================
+=======================
+Infrastructure services
+=======================
 
 .. note:: Run the commands on the manager node.
 

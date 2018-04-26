@@ -6,8 +6,6 @@ Deployment
    :maxdepth: 2
 
    deployment/overview
-   deployment/seed
-   deployment/manager
-   deployment/infrastructure
+   deployment/preparations
    deployment/add-new-node
    deployment/notes
