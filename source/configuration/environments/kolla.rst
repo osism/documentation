@@ -25,7 +25,7 @@ Generate secrets.yml file
 
 The ``secrets.yml`` file should be encrypted with Ansibe Vault.
 
-* https://docs.ansible.com/ansible/2.4/vault.html
+* https://docs.ansible.com/ansible/2.5/user_guide/vault.html
 
 Generate self-signed certificates
 =================================
