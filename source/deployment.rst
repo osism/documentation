@@ -7,5 +7,5 @@ Deployment
 
    deployment/overview
    deployment/preparations
-   deployment/add-new-node
+   deployment/new-node
    deployment/notes
