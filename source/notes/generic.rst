@@ -13,6 +13,8 @@ The tools listed below can be used to test hardware.
 
    A burn in is already done on the manufacturer side and usually is not necessary either.
 
+* https://github.com/stressapptest/stressapptest
+
 Storage device: badblocks
 --------------------------
 
