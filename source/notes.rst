@@ -11,3 +11,4 @@ Notes
    notes/docker
    notes/ubuntu
    notes/openstack
+   notes/cleanup
