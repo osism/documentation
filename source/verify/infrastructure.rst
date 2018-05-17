@@ -2,6 +2,26 @@
 Infrastructure
 ==============
 
+Network
+=======
+
+Jumbo frames
+------------
+
+* https://blah.cloud/hardware/test-jumbo-frames-working/
+
+.. code-block:: console
+
+   $ ping -M do -s 8972 -c 3 10.30.50.11
+   PING 10.30.50.11 (10.30.50.11) 8972(9000) bytes of data.
+   8980 bytes from 10.30.50.11: icmp_seq=1 ttl=64 time=0.255 ms
+   8980 bytes from 10.30.50.11: icmp_seq=2 ttl=64 time=0.206 ms
+   8980 bytes from 10.30.50.11: icmp_seq=3 ttl=64 time=0.191 ms
+
+   --- 10.30.50.11 ping statistics ---
+   3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+   rtt min/avg/max/mdev = 0.191/0.217/0.255/0.029 ms
+
 RabbitMQ
 ========
 
