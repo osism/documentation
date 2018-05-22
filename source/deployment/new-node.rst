@@ -55,9 +55,108 @@ Add the node to the ``hosts`` inventory file. As ``ansible_host`` use the manage
 
 Add the network configuration to the node vars file ``inventory/host_vars/20-12.betacloud.xyz.yml``.
 
-.. todo::
+.. code-block:: yaml
 
-   Add a sample network configuration here.
+   ##########################################################
+   # network-interfaces
+
+   network_allow_service_restart: no
+   network_restart_method: nothing
+
+   network_interfaces:
+     - device: enp19s0f0
+       auto: true
+       family: inet
+       method: manual
+       bond:
+         master: bond0
+
+     - device: enp19s0f1
+       auto: true
+       family: inet
+       method: manual
+       bond:
+         master: bond0
+
+     - device: eno1
+       auto: true
+       family: inet
+       method: manual
+       bond:
+         master: bond1
+
+     - device: eno2
+       auto: true
+       family: inet
+       method: manual
+       bond:
+         master: bond1
+
+     - device: bond0
+       auto: true
+       family: inet
+       method: manual
+       bond:
+         mode: 802.3ad
+         lacp-rate: fast
+         miimon: 100
+         slaves: enp19s0f0 enp19s0f1
+
+     - device: bond1
+       auto: true
+       family: inet
+       method: manual
+       mtu: 9000
+       bond:
+         mode: 802.3ad
+         lacp-rate: fast
+         miimon: 100
+         slaves: eno1 eno2
+
+     - device: vlan101
+       method: static
+       address: 172.17.52.10
+       gateway: 172.17.40.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond0
+       up:
+       - route add default gw 172.17.40.10
+
+     - device: vlan299
+       method: static
+       address: 10.49.52.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond0
+
+     - device: vlan297
+       method: static
+       address: 10.47.52.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond1
+
+     - device: vlan298
+       method: static
+       address: 10.48.52.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond1
+
+     - device: vlan398
+       method: static
+       address: 10.30.52.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond1
+
+     - device: vlan399
+       method: static
+       address: 10.31.52.10
+       netmask: 255.255.0.0
+       vlan:
+         raw-device: bond1
 
 Bootstrap
 =========
