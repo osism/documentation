@@ -44,3 +44,17 @@ unknown item 'FAIL_DELAY'
    configuration error - unknown item 'FAIL_DELAY' (notify administrator)
 
 Remove the uncommented ``FAIL_DELAY`` line from ``/etc/login.defs``.
+
+OPENSTACK-ANSIBLE-SECURITY block in /etc/ssh/sshd_config
+========================================================
+
+Remove everything from ``# BEGIN MANAGED BY OPENSTACK-ANSIBLE-SECURITY`` to ``# END MANAGED BY OPENSTACK-ANSIBLE-SECURITY``. Restart the ``ssh`` service with ``systemctl restart ssh``.
+
+.. code-block:: none
+
+   # BEGIN MANAGED BY OPENSTACK-ANSIBLE-SECURITY
+   [...]
+   # END MANAGED BY OPENSTACK-ANSIBLE-SECURITY
+   # BEGIN MANAGED BY ANSIBLE-HARDENING
+   [...]
+   # END MANAGED BY ANSIBLE-HARDENING
