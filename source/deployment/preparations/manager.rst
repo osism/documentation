@@ -34,6 +34,14 @@ Manager node
 
 * Configuration of the network
 
+.. note::
+
+   The network configuration already present on a system should be saved before this step.
+
+.. note::
+
+   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
+
 .. code-block:: console
 
    $ ./run.sh network
