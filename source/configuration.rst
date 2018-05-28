@@ -8,3 +8,4 @@ Configuration
    configuration/overview
    configuration/ansible
    configuration/environments
+   configuration/cookiecutter
