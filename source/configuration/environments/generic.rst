@@ -7,4 +7,5 @@ Generic
 .. toctree::
    :maxdepth: 2
 
+   generic/configuration
    generic/operator
