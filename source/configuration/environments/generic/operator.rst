@@ -2,6 +2,8 @@
 Operator
 ========
 
+* role: ``osism.operator`` (https://github.com/osism/ansible-operator)
+
 Add SSH public key
 ==================
 
