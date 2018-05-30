@@ -1,6 +1,6 @@
-=============
-Configuration
-=============
+========================
+Configuration repository
+========================
 
 * role: ``osism.configuration`` (https://github.com/osism/ansible-configuration)
 
