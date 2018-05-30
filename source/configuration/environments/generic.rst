@@ -10,6 +10,7 @@ Generic
    generic/common
    generic/cockpit
    generic/configuration
+   generic/docker
    generic/grub
    generic/operator
    generic/timezone
