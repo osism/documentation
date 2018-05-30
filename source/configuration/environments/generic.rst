@@ -8,6 +8,7 @@ Generic
    :maxdepth: 2
 
    generic/common
+   generic/cockpit
    generic/configuration
    generic/operator
    generic/timezone
