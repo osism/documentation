@@ -7,6 +7,7 @@ Generic
 .. toctree::
    :maxdepth: 2
 
+   generic/common
    generic/configuration
    generic/operator
    generic/timezone
