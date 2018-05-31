@@ -1,6 +1,6 @@
-===============
-Mirror services
-===============
+======
+Mirror
+======
 
 .. list-table::
    :widths: 10 90
