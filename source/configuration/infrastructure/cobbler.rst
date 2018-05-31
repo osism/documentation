@@ -2,6 +2,17 @@
 Cobbler
 =======
 
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.cobbler``
+   * - **Repository**
+     - https://github.com/osism/ansible-cobler
+   * - **Documentation**
+     - ---
+
 * http://cobbler.github.io
 
 Network
