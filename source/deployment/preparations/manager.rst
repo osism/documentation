@@ -13,11 +13,15 @@ Manager node
 
    For example, to query the password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``.
 
-   If secrets.yml files are encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
+   If ``secrets.yml`` files are encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
 
    http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables
 
 * Creation of the necessary operator user
+
+.. note::
+
+   If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
 
 .. code-block:: console
 
