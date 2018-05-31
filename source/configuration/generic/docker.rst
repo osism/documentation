@@ -2,7 +2,16 @@
 Docker
 ======
 
-* role: ``osism.docker`` (https://github.com/osism/ansible-docker)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.docker``
+   * - **Repository**
+     - https://github.com/osism/ansible-docker
+   * - **Documentation**
+     - ---
 
 Version
 =======

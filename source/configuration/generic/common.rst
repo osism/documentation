@@ -2,7 +2,16 @@
 Common
 ======
 
-* role: ``osism.common`` (https://github.com/osism/ansible-common)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.common``
+   * - **Repository**
+     - https://github.com/osism/ansible-common
+   * - **Documentation**
+     - ---
 
 Microcode installation
 ======================

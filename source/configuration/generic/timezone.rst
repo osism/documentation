@@ -2,7 +2,16 @@
 Timezone
 ========
 
-* role: ``ANXS.timezone`` (https://github.com/ANXS/timezone)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``ANXS.timezone``
+   * - **Repository**
+     - https://github.com/ANXS/timezone
+   * - **Documentation**
+     - ---
 
 * ``environments/configuration.yml``
 

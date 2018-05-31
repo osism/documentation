@@ -1,8 +1,17 @@
-========================
-Configuration repository
-========================
+=============
+Configuration
+=============
 
-* role: ``osism.configuration`` (https://github.com/osism/ansible-configuration)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.configuration``
+   * - **Repository**
+     - https://github.com/osism/ansible-configuration
+   * - **Documentation**
+     - ---
 
 Git
 ===

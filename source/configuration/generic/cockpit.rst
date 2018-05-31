@@ -5,7 +5,16 @@ Cockpit
 Client
 ======
 
-* role: ``osism.common`` (https://github.com/osism/ansible-common)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.common``
+   * - **Repository**
+     - https://github.com/osism/ansible-common
+   * - **Documentation**
+     - ---
 
 Necessary packages are installed by default.
 
@@ -23,7 +32,16 @@ To not install these packages set ``required_packages_cockpit: []`` in ``environ
 Server
 ======
 
-* role: ``osism.manager`` (https://github.com/osism/ansible-manager)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.manager``
+   * - **Repository**
+     - https://github.com/osism/ansible-manager
+   * - **Documentation**
+     - ---
 
 * ``environments/manager/configuration.yml``
 

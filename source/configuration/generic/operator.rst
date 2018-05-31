@@ -2,7 +2,16 @@
 Operator
 ========
 
-* role: ``osism.operator`` (https://github.com/osism/ansible-operator)
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.operator``
+   * - **Repository**
+     - https://github.com/osism/ansible-operator
+   * - **Documentation**
+     - ---
 
 Add SSH public key
 ==================

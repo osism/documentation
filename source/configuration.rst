@@ -6,6 +6,10 @@ Configuration
    :maxdepth: 2
 
    configuration/overview
-   configuration/ansible
-   configuration/environments
-   configuration/cookiecutter
+   configuration/manager
+   configuration/generic
+   configuration/infrastructure
+   configuration/kolla
+   configuration/ceph
+   configuration/monitoring
+   configuration/custom

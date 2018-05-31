@@ -4,6 +4,10 @@ Kolla
 
 * base directory: ``environments/kolla``
 
+.. note ::
+
+   The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
+
 Generate secrets.yml file
 =========================
 
