@@ -27,3 +27,6 @@ Elasticsearch
        "timed_out": false,
        "unassigned_shards": 0
    }
+
+* ``number_of_data_nodes`` should be the number of available Elasticsearch nodes
+* ``status`` should be ``green``
