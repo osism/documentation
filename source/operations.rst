@@ -9,7 +9,6 @@ Operations
    operations/backup
    operations/ceph
    operations/cobbler
-   operations/cronjobs
    operations/elasticsearch
    operations/generic
    operations/openstack
