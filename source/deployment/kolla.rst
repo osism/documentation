@@ -2,6 +2,12 @@
 Kolla
 =====
 
+.. note:: Run this command on the manager node.
+
+.. code-block:: console
+
+   $ osism-kolla deploy ROLE
+
 Basic
 =====
 
