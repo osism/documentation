@@ -13,4 +13,3 @@ Operations
    operations/generic
    operations/openstack
    operations/rabbitmq
-   operations/reports
