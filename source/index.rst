@@ -20,6 +20,7 @@ Further details about OSISM can be found on https://osism.io. Do not hesitate to
    overview
    configuration
    deployment
+   upgrade
    verify
    benchmark
    monitoring
