@@ -6,11 +6,12 @@ Operations
    :maxdepth: 2
 
    operations/aptly
-   operations/cobbler
-   operations/generic
-   operations/rabbitmq
-   operations/openstack
-   operations/ceph
    operations/backup
-   operations/reports
+   operations/ceph
+   operations/cobbler
+   operations/cronjobs
    operations/elasticsearch
+   operations/generic
+   operations/openstack
+   operations/rabbitmq
+   operations/reports
