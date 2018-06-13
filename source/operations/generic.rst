@@ -2,6 +2,31 @@
 Generic
 =======
 
+Check if reboot required
+========================
+
+.. note:: Run this command on the manager node.
+
+.. code-block:: console
+
+   $ osism-generic check-reboot
+
+   PLAY [Check if system reboot is required] **************************************
+
+   TASK [Check if /var/run/reboot-required exist] *********************************
+   ok: [10-11.betacloud.xyz]
+   [...]
+
+   TASK [Print message if /var/run/reboot-required exist] *************************
+   ok: [10-11.betacloud.xyz] => {
+       "msg": "Reboot of 10-11.betacloud.xyz required"
+   }
+   [...]
+
+   PLAY RECAP *********************************************************************
+   10-11.betacloud.xyz        : ok=2    changed=0    unreachable=0    failed=0
+   [...]
+
 Reboot a system
 ===============
 
