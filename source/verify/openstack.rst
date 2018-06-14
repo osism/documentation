@@ -39,7 +39,7 @@ A project ``testbed`` and a user ``testbed`` are to be created accordingly.
 Keystone
 ========
 
-.. code-block:: shell
+.. code-block:: console
 
    $ openstack --os-cloud testbed token issue
    +------------+-------------------------------+
@@ -61,9 +61,15 @@ Other tests are the following commands.
 Glance
 ======
 
-.. code-block:: shell
+.. code-block:: console
 
    $ dd if=/dev/urandom of=/opt/configuration/environments/openstack/random.img bs=1M count=100
+   100+0 records in
+   100+0 records out
+   104857600 bytes (105 MB, 100 MiB) copied, 9.0766 s, 11.6 MB/s
+
+.. code-block:: console
+
    $ openstack --os-cloud testbed image create --file /configuration/random.img random
    +------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
    | Field            | Value                                                                                                                                   |
@@ -89,7 +95,7 @@ Glance
    | visibility       | shared                                                                                                                                  |
    +------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 
-.. code-block:: shell
+.. code-block:: console
 
    $ openstack --os-cloud admin image list
    +--------------------------------------+--------+--------+
@@ -98,12 +104,12 @@ Glance
    | c65f20fb-e693-444f-926c-6c5b7861639c | random | active |
    +--------------------------------------+--------+--------+
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rbd list images
    c65f20fb-e693-444f-926c-6c5b7861639c
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rbd info c65f20fb-e693-444f-926c-6c5b7861639c -p images
    rbd info c65f20fb-e693-444f-926c-6c5b7861639c -p images
@@ -113,13 +119,13 @@ Glance
            block_name_prefix: rbd_data.3ba4238e1f29
            format: 2
            features: layering, exclusive-lock, object-map, fast-diff, deep-flatten
-           flags:
+           flags
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rm /opt/configuration/environments/openstack/random.img
 
-.. code-block:: shell
+.. code-block:: console
 
    $ openstack --os-cloud testbed image delete random
 
@@ -130,7 +136,10 @@ Glance
 Cinder
 ======
 
-.. code-block:: shell
+Empty volume
+------------
+
+.. code-block:: console
 
    $ openstack --os-cloud testbed volume create --size 10 testing
    +---------------------+--------------------------------------+
@@ -158,6 +167,8 @@ Cinder
    | user_id             | ddac12227a2540ea97fa4e1db5a651da     |
    +---------------------+--------------------------------------+
 
+.. code-block:: console
+
    $ openstack --os-cloud testbed volume list
    +--------------------------------------+--------------+-----------+------+-------------+
    | ID                                   | Display Name | Status    | Size | Attached to |
@@ -165,10 +176,31 @@ Cinder
    | cc49acac-300c-4861-856e-417ea67787f2 | testing      | available |   10 |             |
    +--------------------------------------+--------------+-----------+------+-------------+
 
+.. code-block:: console
+
+   $ rbd list volumes
+   volume-cc49acac-300c-4861-856e-417ea67787f2
+
+.. code-block:: console
+
+   $ rbd info volume-cc49acac-300c-4861-856e-417ea67787f2 -p volumes
+   rbd image 'volume-cc49acac-300c-4861-856e-417ea67787f2':
+         size 10240 MB in 2560 objects
+         order 22 (4096 kB objects)
+         block_name_prefix: rbd_data.11237a6d8d3c
+         format: 2
+         features: layering, exclusive-lock, object-map, fast-diff, deep-flatten
+         flags:
+         create_timestamp: Thu Jun 14 11:59:33 2018
+
+.. code-block:: console
+
    $ openstack --os-cloud testbed volume delete testing
 
+Volume from image
+-----------------
 
-.. code-block:: shell
+.. code-block:: console
 
    $ openstack --os-cloud admin image list
    +--------------------------------------+--------+--------+
@@ -177,12 +209,37 @@ Cinder
    | c65f20fb-e693-444f-926c-6c5b7861639c | random | active |
    +--------------------------------------+--------+--------+
 
+.. code-block:: console
+
    $ openstack --os-cloud testbed volume create --image random --size 10 testing-glance
    [...]
+
+.. code-block:: console
 
    $ openstack --os-cloud testbed volume show testing-glance
    [...]
    | volume_image_metadata          | {u'container_format': u'bare', u'min_ram': u'0', u'disk_format': u'raw', u'image_name': u'random', u'image_id': u'c65f20fb-e693-444f-926c-6c5b7861639c', u'checksum': u'f936234a5e7662792086365e1483a0b1', u'min_disk': u'0', u'size': u'104857600'} |
    [...]
+
+.. code-block:: console
+
+   $ rbd list volumes
+   volume-e3b844cc-87c2-4975-b4c4-a904a7369b58
+
+.. code-block:: console
+
+   $ rbd info volume-e3b844cc-87c2-4975-b4c4-a904a7369b58 -p volumes
+   rbd image 'volume-e3b844cc-87c2-4975-b4c4-a904a7369b58':
+         size 10240 MB in 2560 objects
+         order 22 (4096 kB objects)
+         block_name_prefix: rbd_data.116a9daf632
+         format: 2
+         features: layering, exclusive-lock, object-map, fast-diff, deep-flatten
+         flags: 
+         create_timestamp: Thu Jun 14 12:02:20 2018
+         parent: images/c65f20fb-e693-444f-926c-6c5b7861639c@snap
+         overlap: 102400 kB
+
+.. code-block:: console
 
    $ openstack --os-cloud testbed volume delete testing-glance
