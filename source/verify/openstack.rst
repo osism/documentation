@@ -2,8 +2,8 @@
 OpenStack
 =========
 
-Prepare OpenStack environment
-=============================
+Preparations
+============
 
 For the verification of the OpenStack services it is necessary to prepare the OpenStack enviornment in the configuration repository.
 The ``clouds.yml`` file should be adapted accordingly.
