@@ -243,3 +243,58 @@ Volume from image
 .. code-block:: console
 
    $ openstack --os-cloud testbed volume delete testing-glance
+
+Neutron
+=======
+
+Open vSwtich agent
+------------------
+
+On network nodes and compute nodes with provider networks, after the initial start of
+the ``neutron-openvswitch-agent`` service.
+
+.. code-block:: console
+
+   $ docker exec -it openvswitch_vswitchd ovs-vsctl show
+   a2f9dbad-519e-4873-aea4-0719abcd9e2a
+       Manager "ptcp:6640:127.0.0.1"
+           is_connected: true
+       Bridge br-int
+           Controller "tcp:127.0.0.1:6633"
+               is_connected: true
+           fail_mode: secure
+           Port br-int
+               Interface br-int
+                   type: internal
+           Port patch-tun
+               Interface patch-tun
+                   type: patch
+                   options: {peer=patch-int}
+           Port int-br-ex
+               Interface int-br-ex
+                   type: patch
+                   options: {peer=phy-br-ex}
+       Bridge br-tun
+           Controller "tcp:127.0.0.1:6633"
+               is_connected: true
+           fail_mode: secure
+           Port br-tun
+               Interface br-tun
+                   type: internal
+           Port patch-int
+               Interface patch-int
+                   type: patch
+                   options: {peer=patch-tun}
+       Bridge br-ex
+           Controller "tcp:127.0.0.1:6633"
+               is_connected: true
+           fail_mode: secure
+           Port phy-br-ex
+               Interface phy-br-ex
+                   type: patch
+                   options: {peer=int-br-ex}
+           Port br-ex
+               Interface br-ex
+                   type: internal
+           Port "enp24s0f1"
+               Interface "enp24s0f1"
