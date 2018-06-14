@@ -22,6 +22,29 @@ Jumbo frames
    3 packets transmitted, 3 received, 0% packet loss, time 2003ms
    rtt min/avg/max/mdev = 0.191/0.217/0.255/0.029 ms
 
+Open vSwitch
+============
+
+.. code-block:: console
+
+   $ docker exec -it openvswitch_vswitchd ovs-vsctl -V
+   ovs-vsctl (Open vSwitch) 2.8.1
+   DB Schema 7.15.0
+
+On network nodes and compute nodes with provider networks, after the initial start of
+the service, a ``br-ex`` exists with the external interfaces.
+
+.. code-block:: console
+
+   $ docker exec -it openvswitch_vswitchd ovs-vsctl show
+   a2f9dbad-519e-4873-aea4-0719abcd9e2a
+       Bridge br-ex
+           Port br-ex
+               Interface br-ex
+                   type: internal
+           Port "enp24s0f1"
+               Interface "enp24s0f1"
+
 RabbitMQ
 ========
 
