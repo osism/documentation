@@ -22,6 +22,48 @@ Jumbo frames
    3 packets transmitted, 3 received, 0% packet loss, time 2003ms
    rtt min/avg/max/mdev = 0.191/0.217/0.255/0.029 ms
 
+Libvirtd
+========
+
+.. code-block:: console
+
+   $ docker exec -it nova_libvirt virsh nodeinfo
+   CPU model:           x86_64
+   CPU(s):              32
+   CPU frequency:       800 MHz
+   CPU socket(s):       1
+   Core(s) per socket:  8
+   Thread(s) per core:  2
+   NUMA cell(s):        2
+   Memory size:         263784260 KiB
+
+.. code-block:: console
+
+   $ docker exec -it nova_libvirt virsh sysinfo
+   <sysinfo type='smbios'>
+     <bios>
+       <entry name='vendor'>American Megatrends Inc.</entry>
+       <entry name='version'>2.0b</entry>
+       <entry name='date'>02/28/2018</entry>
+       <entry name='release'>5.12</entry>
+     </bios>
+     <system>
+       <entry name='manufacturer'>Supermicro</entry>
+   [...]
+
+.. code-block:: console
+
+   $ docker exec -it nova_libvirt virsh capabilities
+   <capabilities>
+
+     <host>
+       <uuid>00000000-0000-0000-0000-ac1f6b09a1de</uuid>
+       <cpu>
+         <arch>x86_64</arch>
+         <model>Skylake-Client-IBRS</model>
+         <vendor>Intel</vendor>
+   [...]
+
 Memcached
 =========
 
