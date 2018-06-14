@@ -32,3 +32,14 @@ Elasticsearch
 
 * ``number_of_data_nodes`` should be the number of available Elasticsearch nodes
 * ``status`` should be ``green``
+
+Fluentd
+=======
+
+.. code-block:: console
+
+   $ docker logs fluentd
+   [...]
+   2018-06-14 08:15:52 +0000 [info]: #0 listening syslog socket on 10.49.10.11:5140 with udp
+   [...]
+   2018-06-14 08:27:05 +0000 [info]: #0 Connection opened to Elasticsearch cluster => {:host=>"10.49.0.100", :port=>9200, :scheme=>"http"}
