@@ -7,9 +7,11 @@ Elasticsearch
 
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
 
+.. note:: Run this command on the manager node.
+
 .. code-block:: console
 
-   dragon@10-11:~$ curl -s http://10.49.0.100:9200/_cluster/health |  python -m json.tool
+   $ curl -s http://10.49.0.100:9200/_cluster/health | python -m json.tool
    {
        "active_primary_shards": 321,
        "active_shards": 642,
