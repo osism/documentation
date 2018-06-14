@@ -22,6 +22,26 @@ Jumbo frames
    3 packets transmitted, 3 received, 0% packet loss, time 2003ms
    rtt min/avg/max/mdev = 0.191/0.217/0.255/0.029 ms
 
+Memcached
+=========
+
+.. code-block:: console
+
+   $ echo stats | nc 10.49.20.10 11211
+   STAT pid 7
+   STAT uptime 2524
+   STAT time 1528967802
+   STAT version 1.4.25 Ubuntu
+   STAT libevent 2.0.21-stable
+   STAT pointer_size 64
+   STAT rusage_user 0.044000
+   STAT rusage_system 0.088000
+   STAT curr_connections 1
+   STAT total_connections 2
+   STAT connection_structures 2
+   STAT reserved_fds 20
+   [...]
+
 Open vSwitch
 ============
 
