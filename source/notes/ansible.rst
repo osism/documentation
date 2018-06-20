@@ -2,6 +2,18 @@
 Ansible
 =======
 
+Read facts from cache
+=====================
+
+.. code-block:: console
+
+   $ docker exec -it manager_cache_1 redis-cli --scan
+   ansible_facts10-11.betacloud.xyz
+   [...]
+
+   $ docker exec -it manager_cache_1 redis-cli get ansible_facts10-11.betacloud.xyz
+   "{ "ansible_processor_count ": 2,  "module_setup ": true, [...]
+
 dict object has no attribute
 ============================
 
@@ -9,7 +21,7 @@ If the error ``dict object' has no attribute u'ansible_ens18'`` occurs while run
 
 To update the facts, re-collect them on the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic facts
 
