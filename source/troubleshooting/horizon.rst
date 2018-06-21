@@ -9,6 +9,6 @@ Dashboard broken
 
 You have to cleanup and restart all horizon containers.    
 
-.. code-block:: shell                                      
+.. code-block:: console
 
-   $ docker exec -it horizon rm /tmp/.local_settings.md5sum.txt && docker restart horizon                             
+   $ docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon
