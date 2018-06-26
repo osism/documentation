@@ -34,7 +34,7 @@ Manager node
 
    .. code-block:: console
 
-      ANSIBLE_USER=ubuntu ./run.sh python
+      $ ANSIBLE_USER=ubuntu ./run.sh python
 
 * Configuration of the network
 
