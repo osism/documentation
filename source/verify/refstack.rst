@@ -85,8 +85,6 @@ Execution
 
 .. code-block:: shell
 
-.. code-block:: shell
-
    $ wget "https://refstack.openstack.org/api/v1/guidelines/2017.09/tests?target=compute&type=required&alias=true&flag=true" -O 2017.09-test-list.txt
 
 .. code-block:: shell
