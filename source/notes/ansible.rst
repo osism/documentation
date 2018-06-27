@@ -14,6 +14,19 @@ Read facts from cache
    $ docker exec -it manager_cache_1 redis-cli get ansible_facts10-11.betacloud.xyz
    "{ "ansible_processor_count ": 2,  "module_setup ": true, [...]
 
+Found variable using reserved name
+==================================
+
+This error occurs until the release of Pike and is not critical.
+
+.. code-block:: console
+
+   $ osism-kolla deploy X
+
+    [WARNING]: Found variable using reserved name: action
+
+    [WARNING]: Found variable using reserved name: serial
+
 dict object has no attribute
 ============================
 
