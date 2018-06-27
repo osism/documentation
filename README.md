@@ -1,5 +1,7 @@
 # OSISM documentation
 
+[![Build Status](https://travis-ci.org/osism/documentation.svg?branch=master)](https://travis-ci.org/osism/documentation)
+
 Published at http://docs.osism.io.
 
 ## License
