@@ -13,5 +13,6 @@ Generic
    generic/docker
    generic/grub
    generic/hardening
+   generic/networking
    generic/operator
    generic/timezone
