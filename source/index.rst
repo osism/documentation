@@ -27,6 +27,7 @@ packaged with all its dependencies and libraries. [#s4]_
    overview
    configuration
    deployment
+   update
    upgrade
    verify
    benchmark
