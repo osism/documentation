@@ -10,3 +10,6 @@ Services
    services/cobbler
    services/elasticsearch
    services/rabbitmq
+   services/ceph
+   services/openstack/cinder
+   services/openstack/heat

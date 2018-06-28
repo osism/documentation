@@ -27,8 +27,6 @@ packaged with all its dependencies and libraries. [#s4]_
    overview
    configuration
    lifecycle
-   benchmark
-   monitoring
    operations
    notes
    troubleshooting
