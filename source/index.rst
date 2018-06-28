@@ -19,7 +19,7 @@ to write an e-mail to info@osism.io if you have questions or doubts.
 * **Ansible** is a simple, agentless and powerful open source IT automation. [#s3]_
 
 * **Docker** provides a way to run applications securely isolated in a container,
-packaged with all its dependencies and libraries. [#s4]_
+  packaged with all its dependencies and libraries. [#s4]_
 
 .. toctree::
    :maxdepth: 2
