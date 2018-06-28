@@ -26,10 +26,7 @@ packaged with all its dependencies and libraries. [#s4]_
 
    overview
    configuration
-   deploy
-   upgrade
-   update
-   verify
+   lifecycle
    benchmark
    monitoring
    operations
