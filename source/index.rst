@@ -10,9 +10,9 @@ Further details about OSISM can be found on https://osism.io. Do not hesitate
 to write an e-mail to info@osism.io if you have questions or doubts.
 
 * **OpenStack** is a cloud operating system that controls large pools of
-compute, storage, and networking resources throughout a datacenter, all managed
-through a dashboard that gives administrators control while empowering their users
-to provision resources through a web interface. [#s1]_
+  compute, storage, and networking resources throughout a datacenter, all managed
+  through a dashboard that gives administrators control while empowering their users
+  to provision resources through a web interface. [#s1]_
 
 * **Ceph** uniquely delivers object, block, and file storage in one unified system. [#s2]_
 
