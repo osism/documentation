@@ -221,7 +221,7 @@ These tests are used below.
 
    Yes, that is not yet automated and will be improved in the future.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ wget https://github.com/osism/test/archive/master.zip
    $ unzip master.zip 'test-master/openstack/rally/*'
@@ -229,11 +229,11 @@ These tests are used below.
    $ rsync -avz test-master/openstack/rally/scenario /opt/rally/tests
    $ rsync -avz test-master/openstack/rally/task.yml /opt/rally/tests
 
-.. code-block:: shell
+.. code-block:: console
 
    $ [[ ! -e /opt/rally/tests/task/task-arguments.yml ]] && cp test-master/openstack/rally/task-arguments.yml /opt/rally/tests
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rm -rf master.zip test-master
 
@@ -287,7 +287,7 @@ configuration and size of tested environment.
    storage_amount: 1
    network_amount: 1
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rally task validate /tests/task.yml --task-args-file /tests/task-arguments.yml
    [...]
@@ -309,6 +309,6 @@ configuration and size of tested environment.
 
    Removed from the output: ``2018-01-16 20:55:24.621 544 INFO rally.task.engine [-] Task da7b502d-a8ed-4d59-91fd-83043ddd6aaf | ``
 
-.. code-block:: shell
+.. code-block:: console
 
    $ rally task start /tests/task.yml --task-args-file /tests/task-arguments.yml

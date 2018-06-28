@@ -11,11 +11,11 @@ Nested virtualisation
 AMD
 ---
 
-.. code-block:: shell
+.. code-block:: console
 
    $ echo "options kvm-amd nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cat /sys/module/kvm_amd/parameters/nested
    Y
@@ -24,11 +24,11 @@ Intel
 -----
 
 
-.. code-block:: shell
+.. code-block:: console
 
    $ echo "options kvm-intel nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
 
-.. code-block:: shell
+.. code-block:: console
 
    $ cat /sys/module/kvm_intel/parameters/nested
    Y
@@ -57,7 +57,7 @@ Virtio SCSI
 
 Set ``hw_scsi_model=virtio-scsi`` and ``hw_disk_bus=scsi``.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ openstack image set
      --property hw_scsi_model=virtio-scsi
@@ -76,7 +76,7 @@ Possible values for ``os_distro`` can be found under https://docs.openstack.org/
 
 Alternatively, the program ``osinfo-query`` contained in the package ``libosinfo-bin`` can be used.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osinfo-query os
     Short ID    | Name                    | Version | ID
@@ -93,7 +93,7 @@ Cinder
 
 * https://docs.openstack.org/cinder/latest/man/cinder-manage.html
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker exec -it cinder_api cinder-manage service list
    Binary         Host   Zone  Status    State Updated At           RPC Version  Object Version  Cluster

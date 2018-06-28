@@ -10,7 +10,7 @@ Manually
 
 To prevent the update of a package, although a newer version is available, the package must be set to hold.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo apt-mark hold linux-firmware linux-generic
    linux-firmware set on hold.
@@ -22,7 +22,7 @@ To prevent the update of a package, although a newer version is available, the p
 
 Packages on hold will not be updated anymore.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo apt-get dist-upgrade
    [...]
@@ -32,13 +32,13 @@ Packages on hold will not be updated anymore.
 
 To check the changelog of packages on hold, the following call can be used (source: https://wiki.debianforum.de/Pakete_auf_hold_setzen).
 
-.. code-block:: shell
+.. code-block:: console
 
    $ dpkg -l | awk '$1=="hi" {printf "%s %s %s\n", $2, $3, $4}' | while read pkg ver arch; do apt-get -qq changelog $pkg | sed "/$pkg ($ver)/q" | pager; done
 
 With ``unhold`` the lock can be removed again.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ apt-mark unhold linux-firmware linux-generic
    Canceled hold on linux-firmware.
@@ -71,7 +71,7 @@ Create a playbook with the name ``playbook-hold.yml`` in the environment ``gener
 
 The playbook can now be executed with ``osism-run``.
 
-.. code-block:: shell
+.. code-block:: console
 
     $ osism-run generic hold -l 10-11.betacloud.xyz
     PLAY [Hold packages] *********************************************

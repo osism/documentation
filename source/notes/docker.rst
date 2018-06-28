@@ -8,11 +8,11 @@ Stop / start all containers
 When using the live restore (https://docs.docker.com/engine/admin/live-restore/) feature, not all
 containers will be stopped when the docker service is stopped.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker stop $(docker ps -q)
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker start $(docker ps -a -q)
 
@@ -33,25 +33,25 @@ Move /var/lib/docker to a block device
    docker_storage_block_device: /dev/vdb
    docker_storage_filesystem: ext4
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo mkfs.ext4 /dev/vdb
    $ echo "/dev/vdb /var/lib/docker ext4 defaults 0 0" | sudo tee -a /etc/fstab
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker ps -q > running.YYYYMMDD
    $ docker stop $(cat running.YYYYMMDD)
    $ sudo systemctl stop docker
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo mv /var/lib/docker /var/lib/docker.YYYYMMDD
    $ sudo mkdir /var/lib/docker
    $ sudo mount /var/lib/docker
    $ sudo rsync -avz /var/lib/docker.YYYYMMDD/ /var/lib/docker/
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo systemctl start docker
    $ docker start $(cat running.YYYYMMDD)

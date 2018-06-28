@@ -9,7 +9,7 @@ RefStack is a source of tools for OpenStack interoperability testing.
 Installation
 ============
 
-.. code-block:: shell
+.. code-block:: console
 
    $ git clone https://github.com/openstack/refstack-client
    $ cd refstack-client
@@ -76,12 +76,12 @@ Execution
 
 * https://refstack.openstack.org/#/guidelines
 
-.. code-block:: shell
+.. code-block:: console
 
    $ source .venv/bin/activate
    $ refstack-client test -c tempest.conf -v -- --regex tempest.api.identity.v3.test_tokens.TokensV3Test.test_create_token
 
-.. code-block:: shell
+.. code-block:: console
 
 
    $ wget "https://refstack.openstack.org/api/v1/guidelines/2017.09/tests?target=compute&type=required&alias=true&flag=true" -O 2017.09-test-list.txt

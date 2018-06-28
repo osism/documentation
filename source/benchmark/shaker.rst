@@ -13,7 +13,7 @@ Shaker needs a base image. The creation of the base image is documented under ht
 
 We offer an unsupported base image under http://share.osism.io/images/shaker/. The import can be executed via the manager node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ curl -s -o /opt/configuration/environments/openstack/shaker.raw http://share.osism.io/images/shaker/shaker-20180109.raw
    $ openstack --os-cloud service image create --min-disk 3 --min-ram 512 --file /configuration/shaker.raw Shaker
