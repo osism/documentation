@@ -1,6 +1,6 @@
-================
-Verify operation
-================
+======
+Verify
+======
 
 .. toctree::
    :maxdepth: 2

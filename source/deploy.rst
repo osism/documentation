@@ -1,6 +1,6 @@
-==========
-Deployment
-==========
+======
+Deploy
+======
 
 .. toctree::
    :maxdepth: 2
