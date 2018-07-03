@@ -8,6 +8,27 @@ Kolla
 
    The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
 
+Use a specific image version
+============================
+
+* ``environments/kolla/images.yml``
+
+.. code-block:: yaml
+
+   ---
+   [...]
+   ##########################
+   # project: magnum
+
+   magnum_api_image: "{{ docker_registry }}/osism/magnum-api"
+   magnum_api_tag: "pike-latest"
+
+   magnum_conductor_image: "{{ docker_registry }}/osism/magnum-conductor"
+   magnum_conductor_tag: "pike-latest"
+
+* possible images for ``ocata``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-ocata.yml
+* possible images for ``pike``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-pike.yml
+
 Generate secrets.yml file
 =========================
 
