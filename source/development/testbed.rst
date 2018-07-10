@@ -18,7 +18,7 @@ Stack
 -----
 
 * Create stack
-  ``./scripts/000-manage-stack.sh``
+  ``./scripts/000-create-stack.sh``
 
 Manager
 -------
@@ -108,4 +108,4 @@ Destroy
 
 .. code-block:: console
 
-   $ ./scripts/999-destroy.sh
+   $ ./scripts/999-destroy-stack.sh
