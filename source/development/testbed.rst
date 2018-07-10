@@ -45,14 +45,14 @@ Deployment
 
 .. code-block:: console
 
-   $ ./scripts/030-deploy.sh
+   $ ./scripts/030-deploy-nodes.sh
 
 Specific service
 ----------------
 
 .. code-block:: console
 
-   $ ./scripts/030-deploy.sh monitoring
+   $ ./scripts/030-deploy-nodes.sh monitoring
 
 All-in-one
 ----------
@@ -61,7 +61,7 @@ If the type ``manager`` is used, an all-in-one deployment can be performed after
 
 .. code-block:: console
 
-   $ ./scripts/030-deploy.sh single
+   $ ./scripts/030-deploy-nodes.sh single
 
 .. note::
 
