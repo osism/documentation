@@ -16,13 +16,14 @@ Client
    * - **Documentation**
      - ---
 
-Necessary packages are installed by default.
-
-To not install these packages set ``required_packages_cockpit: []`` in ``environments/configuration.yml``.
-
 * ``environments/configuration.yml``
 
   .. code-block:: yaml
+
+     ##########################
+     # common
+
+     configure_cockpit: yes
 
      ##########################
      # hardening
