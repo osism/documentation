@@ -20,7 +20,7 @@ script:
   - scripts/build.sh
 
 after_success:
-  - 'if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then bash scripts/push.sh; fi'
+  - 'if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then bash scripts/push.sh; fi'
 
 notifications:
   irc:
