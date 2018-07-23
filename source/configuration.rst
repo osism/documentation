@@ -6,6 +6,7 @@ Configuration
    :maxdepth: 2
 
    configuration/overview
+   configuration/preparations
    configuration/manager
    configuration/generic
    configuration/infrastructure
