@@ -6,4 +6,5 @@ Upgrade
    :maxdepth: 2
 
    upgrade/ceph
+   upgrade/docker
    upgrade/kolla
