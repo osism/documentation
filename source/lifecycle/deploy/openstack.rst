@@ -1,6 +1,6 @@
-=====
-Kolla
-=====
+=========
+OpenStack
+=========
 
 .. note:: Run this command on the manager node.
 
@@ -8,21 +8,17 @@ Kolla
 
    $ osism-kolla deploy ROLE
 
-Basic
-=====
+Shared services
+===============
 
-* common
-
-Infrastructure
-==============
-
-* elasticsearch
-* haproxy
-* kibana
 * memcached
 * mariadb
 * rabbitmq
 * redis (>= ``pike``)
+
+Networking
+==========
+
 * openvswitch (>= ``pike``)
 
 OpenStack

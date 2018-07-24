@@ -8,7 +8,8 @@ Deploy
    deploy/overview
    deploy/preparations
    deploy/bootstrap
+   deploy/infrastructure
    deploy/ceph
-   deploy/kolla
+   deploy/openstack
    deploy/new-node
    deploy/notes
