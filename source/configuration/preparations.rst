@@ -42,8 +42,8 @@ not to forget ``.gitignore``.
 .. warning::
 
    In a productive environment use Ansible Vault to encrypt the newly created ``secrets.yml`` files,
-before committing it to the Git repository. Never commit any plaintext passwords or secrets to the
-configuration repository.
+   before committing it to the Git repository. Never commit any plaintext passwords or secrets to the
+   configuration repository.
 
 .. fixme::
 
