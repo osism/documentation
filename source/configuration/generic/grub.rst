@@ -15,6 +15,8 @@ Grub
 
 * ``environments/configuration.yml``
 
+Blacklist a module:
+
   .. code-block:: yaml
 
      ##########################
@@ -22,3 +24,14 @@ Grub
 
      grub_kernel_options:
        - modprobe.blacklist=qla2xxx
+
+Disable predictable network interface names:
+
+  .. code-block:: yaml
+
+     ##########################
+     # grub
+
+     grub_kernel_options:
+       - net.ifnames=0
+       - biosdevname=0
