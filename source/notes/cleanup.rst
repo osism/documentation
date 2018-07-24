@@ -2,6 +2,14 @@
 Cleanup
 =======
 
+warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+==============================================================
+
+.. code-block:: console
+
+   $ sudo locale-gen en_US.UTF-8
+   $ sudo update-locale LANG=en_US.UTF-8
+
 TMOUT: readonly variable
 ========================
 
