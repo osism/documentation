@@ -9,16 +9,16 @@ Logging
 
 .. code-block:: console
 
-   $ osism-generic haproxy
-   $ osism-generic elasticsearch
-   $ osism-generic kibana
+   $ osism-kolla deploy haproxy
+   $ osism-kolla deploy elasticsearch
+   $ osism-kolla deploy kibana
 
 Common
 ======
 
 .. code-block:: console
 
-   $ osism-generic common
+   $ osism-kolla deploy common
 
 Monitoring
 ==========
