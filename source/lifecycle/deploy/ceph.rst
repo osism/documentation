@@ -10,7 +10,7 @@ Ceph
 
 * mons
 * mgrs
-* mdss
+* mdss (only when using cephfs)
 * osds
 
 Dashboard
