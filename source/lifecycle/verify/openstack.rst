@@ -125,13 +125,13 @@ Glance
 
    $ rm /opt/configuration/environments/openstack/random.img
 
-.. code-block:: console
-
-   $ openstack --os-cloud testbed image delete random
-
 .. note::
 
    This image is also used in the test by Cinder. Therefore, remove this image only after successful test of Cinder.
+
+.. code-block:: console
+
+   $ openstack --os-cloud testbed image delete random
 
 Cinder
 ======
