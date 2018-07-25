@@ -9,6 +9,12 @@ Manager node
 
 .. note::
 
+   You can use a different folder location for the virtual environment that will be created by setting
+   the environment variable ``VENV_PATH``. This is required for example if your current folder path
+   contains blank characters.
+
+.. note::
+
    Various Ansible configurations can be adjusted via environment variables.
 
    For example, to query the password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``.
@@ -23,6 +29,11 @@ Manager node
 
    If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
 
+.. note::
+
+   If at the beginning the login with an SSH key is required, the key has to be added on the manager node to ``authorized_keys`` of
+   the user specified in ``ANSIBLE_USER``.
+
 .. code-block:: console
 
    $ ANSIBLE_USER=ubuntu ./run.sh operator
@@ -36,6 +47,15 @@ Manager node
 
       $ ANSIBLE_USER=ubuntu ./run.sh python
 
+.. note::
+
+   To verify the creation of the operator user, use the private key file ``id_rsa.operator``.
+
+   .. code-block:: console
+
+      $ ssh -i id_rsa.operator dragon@10.49.20.10
+
+
 * Configuration of the network
 
 .. note::
@@ -44,17 +64,35 @@ Manager node
 
 .. note::
 
-   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
+   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure. Since network services are not restarted automatically, later changes to the network configuration are not effective without a manual restart of the network service or reboot of the nodes.
 
 .. code-block:: console
 
    $ ./run.sh network
+   $ ./run.sh reboot
 
 * Bootstrap of the node
 
 .. code-block:: console
 
    $ ./run.sh bootstrap
+
+.. note::
+
+   If the manager node cannot access a hardware clock, you can deactivate hardware clock synchronisation.
+
+   * ``environments/manager/host_vars/<hostname>.yml``
+
+   .. code-block:: yaml
+
+      ##########################
+      # other
+      systohc_common: false
+
+.. note::
+
+   After the bootstrap check if a reboot is required by checking if the file
+   ``/var/run/reboot-required`` exists.
 
 * Transfer configuration repository
 
