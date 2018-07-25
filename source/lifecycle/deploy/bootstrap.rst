@@ -8,6 +8,11 @@ Bootstrap
 
 * Creation of the necessary operator user
 
+.. note::
+
+   The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
+   specified with ``-u``.
+
 .. code-block:: console
 
    $ osism-generic operator -l 'all:!manager' -u ubuntu
