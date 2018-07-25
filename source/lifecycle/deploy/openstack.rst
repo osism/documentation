@@ -14,7 +14,7 @@ Shared services
 * memcached
 * mariadb
 * rabbitmq
-* redis (>= ``pike``)
+* redis (>= ``pike``, required by Mistral)
 
 Networking
 ==========
