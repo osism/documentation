@@ -27,7 +27,7 @@ Add the node definition to the ``cobbler_systems`` list parameter in ``infrastru
 
 You have to update the cobbler configuration.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-infrastructure cobbler
 
@@ -168,7 +168,7 @@ oot the system to change the network configuration.
 
    Depending on the environment you may need to install Python first.
 
-   .. code-block:: shell
+   .. code-block:: console
 
       $ osism-generic python --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
 
@@ -177,7 +177,7 @@ oot the system to change the network configuration.
 
    It is recommended to install Python on the systems during the provisioning process.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
    $ osism-generic network --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
@@ -189,21 +189,27 @@ oot the system to change the network configuration.
 
 Refresh facts.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic facts
 
 Bootstrap the node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic bootstrap --limit 20-12.betacloud.xyz
+
+Deploy common services.
+
+.. code-block:: console
+
+   $ osism-koll deploy common --limit 20-12.betacloud.xyz
 
 Update hosts files
 ==================
 
 After adding a new node, the ``/etc/hosts`` file on all nodes must be updated.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-generic hosts
