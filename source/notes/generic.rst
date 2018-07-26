@@ -2,6 +2,37 @@
 Generic
 =======
 
+Does a system support IPMI
+==========================
+
+IPMI support available:
+
+.. code-block:: console
+
+   $ sudo dmidecode --type 38
+   # dmidecode 3.0
+   Getting SMBIOS data from sysfs.
+   SMBIOS 3.0 present.
+
+   Invalid entry length (16). Fixed up to 11.
+   Handle 0x0058, DMI type 38, 18 bytes
+   IPMI Device Information
+       Interface Type: KCS (Keyboard Control Style)
+       Specification Version: 2.0
+       I2C Slave Address: 0x10
+       NV Storage Device: Not Present
+       Base Address: 0x0000000000000CA2 (I/O)
+       Register Spacing: Successive Byte Boundaries
+
+IPMI support not available:
+
+.. code-block:: console
+
+   $ sudo dmidecode --type 38
+   # dmidecode 3.0
+   Scanning /dev/mem for entry point.
+   # No SMBIOS nor DMI entry point found, sorry.
+
 Test of new hardware
 ====================
 
