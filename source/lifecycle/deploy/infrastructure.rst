@@ -19,6 +19,7 @@ Common
 .. code-block:: console
 
    $ osism-kolla deploy common
+   $ osism-run custom cronjobs
 
 Monitoring
 ==========
