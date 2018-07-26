@@ -8,6 +8,28 @@ Kolla
 
    The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
 
+Inventory
+=========
+
+Add host-specific Kolla variables for network interfaces to the inventory.
+
+* ``inventory/host_vars/<hostname>.yml``
+
+.. code-block:: yaml
+
+   ---
+   [...]
+   ##########################
+   # kolla
+
+   network_interface: eth0
+   storage_interface: eth1
+   tunnel_interface: eth2
+   api_interface: eth3
+
+   neutron_external_interface: eth4
+   kolla_external_vip_interface: eth5
+
 Use a specific image version
 ============================
 
@@ -28,6 +50,11 @@ Use a specific image version
 
 * possible images for ``ocata``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-ocata.yml
 * possible images for ``pike``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-pike.yml
+
+HAProxy
+=======
+
+Set the ``kolla_internal_fqdn`` in ``environments/kolla/configuration.yml``.
 
 Generate secrets.yml file
 =========================

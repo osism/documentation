@@ -75,3 +75,21 @@ Now, inside your Git repository, run ``gilt overlay`` twice. The first time to p
 .. fixme::
 
    Set default passwords. Hash operator password.
+
+Inventory
+=========
+
+Set some common variables in the inventory.
+
+* ``inventory/host_vars/<hostname>.yml``
+
+.. code-block:: yaml
+
+   ---
+   management_interface: eth0
+   console_interface: eth1
+   internal_address: 10.11.12.13
+   fluentd_host: 10.11.12.13
+
+``managment_interface`` is the interface in the internal network. ``console_interface`` is the interface
+in the admin network.
