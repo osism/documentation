@@ -19,6 +19,12 @@ Generic
      # generic
 
      containerized_deployment: true
+     generate_fsid: false
+     fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+
+     ##########################
+     # osd
+
      osd_objectstore: bluestore
      osd_scenario: collocated
 
@@ -29,8 +35,38 @@ Devices
 
    It is recommended to place the configuration of the devices in the inventory.
 
+.. code-block:: yaml
+
+   ##########################################################
+   # ceph
+
+   devices:
+     - /dev/sdd
+     - /dev/sde
+
 Network
 =======
+
+* ``environments/ceph/configuration.yml``
+
+  .. code-block:: yaml
+
+     ##########################
+     # network
+
+     public_network: 10.200.250.0/24
+     cluster_network: 10.200.251.0/24
+
+.. note::
+
+   It is recommended to place the configuration of the network interfaces in the inventory.
+
+.. code-block:: yaml
+
+   ##########################################################
+   # ceph
+
+   monitor_interface: eth0
 
 Pools & Keys
 ============
@@ -115,11 +151,13 @@ Custom
 
 * https://github.com/ceph/ceph-ansible#configuring-ceph
 
-.. code-block:: yaml
+* ``environments/ceph/configuration.yml``
 
-   ##########################
-   # custom
+  .. code-block:: yaml
 
-   ceph_conf_overrides:
-     mon:
-       mon allow pool delete: true
+     ##########################
+     # custom
+
+     ceph_conf_overrides:
+       mon:
+         mon allow pool delete: true
