@@ -213,3 +213,22 @@ After adding a new node, the ``/etc/hosts`` file on all nodes must be updated.
 .. code-block:: console
 
    $ osism-generic hosts
+
+Deploy services
+===============
+
+Storage node
+------------
+
+.. code-block:: console
+
+   $ osism-ceph osds --limit 20-12.betacloud.xyz
+
+Compute node
+------------
+
+.. code-block:: console
+
+   $ osism-kolla deploy nova --limit 20-12.betacloud.xyz
+   $ osism-kolla deploy openvswitch --limit 20-12.betacloud.xyz
+   $ osism-kolla deploy neutron --limit 20-12.betacloud.xyz
