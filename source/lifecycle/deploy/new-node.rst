@@ -203,7 +203,7 @@ Deploy common services.
 
 .. code-block:: console
 
-   $ osism-koll deploy common --limit 20-12.betacloud.xyz
+   $ osism-kolla deploy common --limit 20-12.betacloud.xyz
 
 Update hosts files
 ==================
