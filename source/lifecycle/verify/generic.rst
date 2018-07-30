@@ -162,3 +162,30 @@ The three following containers should run on each node. The ``docker ps`` comman
 .. note::
 
    Docker registry (``registry-1.osism.io``) as well as the tag (``ocata-20171120-0``) of the image differs from environment to environment.
+
+Helpers
+=======
+
+* phpMyAdmin
+
+.. code-block:: console
+
+   $ curl 10.49.20.10:8110
+
+* Rally
+
+.. code-block:: console
+
+   $ curl 10.49.20.10:8090
+
+* Cephclient
+
+.. code-block:: console
+
+   $ ceph -s
+
+* OpenStackClient
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin service list
