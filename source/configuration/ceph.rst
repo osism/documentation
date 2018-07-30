@@ -57,6 +57,15 @@ Network
      public_network: 10.200.250.0/24
      cluster_network: 10.200.251.0/24
 
+* ``environments/kolla/configuration.yml``
+
+  .. code-block:: yaml
+
+     ##########################################################
+     # external ceph
+
+     ceph_public_network: 10.200.250.0/24
+
 .. note::
 
    It is recommended to place the configuration of the network interfaces in the inventory.
@@ -145,6 +154,13 @@ Pools & Keys
        osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool=images, allow rwx pool=vms, allow rwx pool=volumes, allow rwx pool=backups"
        mode: "0600"
        acls: []
+
+.. note::
+
+   After deploying Ceph, copy the keyring files from ``/etc/ceph`` on a Ceph monitor node to the correct
+   location in the Kolla environment at ``environments/kolla/files/overlays``, in the infrastructure
+   environment at ``environments/infrastructure/files/ceph`` and in the monitoring environment at
+   ``environments/monitoring/files/ceph``.
 
 Custom
 ======
