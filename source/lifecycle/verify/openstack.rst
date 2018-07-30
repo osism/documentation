@@ -136,6 +136,13 @@ Glance
 Cinder
 ======
 
+Check Ceph connection
+---------------------
+
+.. code-block:: console
+
+   $ docker exec -ti cinder_volume ceph -k /etc/ceph/ceph.client.cinder.keyring -n client.cinder -s
+
 Empty volume
 ------------
 
@@ -298,3 +305,13 @@ the ``neutron-openvswitch-agent`` service.
                    type: internal
            Port "enp24s0f1"
                Interface "enp24s0f1"
+
+Nova
+====
+
+Check Ceph connection
+---------------------
+
+.. code-block:: console
+
+   $ docker exec -ti nova_compute ceph -k /etc/ceph/ceph.client.nova.keyring -n client.nova -s
