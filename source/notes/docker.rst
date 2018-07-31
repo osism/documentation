@@ -57,3 +57,26 @@ Move /var/lib/docker to a block device
    $ docker start $(cat running.YYYYMMDD)
    $ rm running.YYYYMMDD
    $ sudo rm -rf /var/lib/docker.YYYYMMDD
+
+unable to find user X: no matching entries in passwd file
+=========================================================
+
+* https://stackoverflow.com/questions/41636759/unable-to-find-user-root-no-matching-entries-in-passwd-file/41963861
+
+.. code-block:: console
+
+   $ docker exec -it kolla_toolbox bash
+   unable to find user ansible: no matching entries in passwd file
+   $ docker exec -it -u 0 kolla_toolbox bash
+   (kolla-toolbox)[root@hostname /]#
+
+.. code-block:: console
+
+   $ docker stop CONTAINER
+   $ docker start CONTAINER
+   $ docker exec -it kolla_toolbox bash
+   (kolla-toolbox)[root@hostname /]#
+
+.. note::
+
+   Do not use ``restart``. ``restart`` will not solve the issue.
