@@ -11,5 +11,5 @@ Services
    services/elasticsearch
    services/rabbitmq
    services/ceph
-   services/openstack/cinder
-   services/openstack/heat
+   services/cinder
+   services/heat
