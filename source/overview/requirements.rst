@@ -10,6 +10,7 @@ All nodes:
 * access to DNS and NTP servers
 * access to Dockerhub
 * access to official Ubuntu mirrors
+* access to PyPI
 
 .. note::
 
@@ -17,8 +18,7 @@ All nodes:
 
 Manager node:
 
-* access to Github
-* access to Git repository server
+* access to GitHub or an internal Git repository server (e.g. Gitlab)
 
 Network
 =======
