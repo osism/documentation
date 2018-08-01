@@ -5,6 +5,12 @@ Cleanup
 warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 ==============================================================
 
+Description
+-----------
+
+Solution
+--------
+
 .. code-block:: console
 
    $ sudo locale-gen en_US.UTF-8
@@ -12,6 +18,9 @@ warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 
 TMOUT: readonly variable
 ========================
+
+Description
+-----------
 
 .. code-block:: console
 
@@ -24,6 +33,9 @@ TMOUT: readonly variable
    ------------------------------------------------------------------------------
    Last login: Wed May 16 06:15:07 2018 from xxx
    -bash: TMOUT: readonly variable
+
+Solution
+--------
 
 Check the ``/etc/profile`` file for a double block. Remove everything from ``# BEGIN MANAGED BY OPENSTACK-ANSIBLE-SECURITY`` to ``# END MANAGED BY OPENSTACK-ANSIBLE-SECURITY``.
 
@@ -46,15 +58,29 @@ Check the ``/etc/profile`` file for a double block. Remove everything from ``# B
 unknown item 'FAIL_DELAY'
 =========================
 
+Description
+-----------
+
 .. code-block:: console
 
    $ sudo su -
    configuration error - unknown item 'FAIL_DELAY' (notify administrator)
 
+Solution
+--------
+
 Remove the uncommented ``FAIL_DELAY`` line from ``/etc/login.defs``.
 
 OPENSTACK-ANSIBLE-SECURITY block in /etc/ssh/sshd_config
 ========================================================
+
+Description
+-----------
+
+The renaming of the Ansible hardening role results on older environments in a double configuration block in the ``/etc/ssh/sshd_config`` configuration file.
+
+Solution
+--------
 
 Remove everything from ``# BEGIN MANAGED BY OPENSTACK-ANSIBLE-SECURITY`` to ``# END MANAGED BY OPENSTACK-ANSIBLE-SECURITY``. Restart the ``ssh`` service with ``systemctl restart ssh``.
 
