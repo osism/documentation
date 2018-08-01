@@ -5,6 +5,7 @@ Travis
 This chapter uses the Travis CLI. It is assumed that this is installed and a login has taken place.
 
 * https://github.com/travis-ci/travis.rb#readme
+* https://docs.travis-ci.com/user/apps/
 
 Encrypted files
 ===============
@@ -35,8 +36,3 @@ Encrypted files
 
      before_install:
        - openssl aes-256-cbc -K $encrypted_bdf29e24ac6e_key -iv $encrypted_bdf29e24ac6e_iv -in clouds.yml.enc -out clouds.yml -d
-
-References
-==========
-
-* https://docs.travis-ci.com/user/apps/
