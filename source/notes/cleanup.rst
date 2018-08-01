@@ -8,6 +8,10 @@ warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 Description
 -----------
 
+.. code-block:: console
+
+   -bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+
 Solution
 --------
 
