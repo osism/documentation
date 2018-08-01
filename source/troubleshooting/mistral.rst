@@ -5,7 +5,10 @@ Mistral
 Empty action list
 =================
 
-You have to poplate the database.
+Solution
+--------
+
+You have to populate the database.
 
 .. code-block:: console
 

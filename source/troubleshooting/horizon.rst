@@ -5,7 +5,13 @@ Horizon
 Dashboard broken                             
 ================
 
+Description
+-----------
+
 .. image:: /images/horizon-broken.png                      
+
+Solution
+--------
 
 You have to cleanup and restart all horizon containers.    
 
