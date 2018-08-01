@@ -6,9 +6,10 @@ Notes
    :maxdepth: 2
 
    notes/generic
+   notes/cleanup
    notes/ansible
    notes/ceph
    notes/docker
-   notes/ubuntu
+   notes/mariadb
    notes/openstack
-   notes/cleanup
+   notes/ubuntu

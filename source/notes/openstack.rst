@@ -102,3 +102,32 @@ Cinder
    [...]
    $ docker exec -it cinder_api cinder-manage service remove cinder-backup 50-10
    Service cinder-backup on host 50-10 removed.
+
+Horizon webinterface broken
+===========================
+
+Description
+-----------
+
+.. image:: /images/horizon-broken.png
+
+Solution
+--------
+
+You have to cleanup and restart all horizon containers.
+
+.. code-block:: console
+
+   $ docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon
+
+Empty action list in Mistral
+============================
+
+Solution
+--------
+
+You have to populate the database.
+
+.. code-block:: console
+
+   $ docker exec -it mistral_api mistral-db-manage --config-file /etc/mistral/mistral.conf populate

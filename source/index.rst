@@ -29,7 +29,6 @@ to write an e-mail to info@osism.io if you have questions or doubts.
    lifecycle
    operations
    notes
-   troubleshooting
    development
    appendix
 
