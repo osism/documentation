@@ -42,12 +42,12 @@ Bootstrap
 
 * Bootstrap of the nodes
 
-.. code-block::
+.. code-block:: console
 
    $ osism-generic bootstrap
 
 * Refresh ``/etc/hosts`` on the manager node
 
-.. code-block::
+.. code-block:: console
 
    $ osism-generic hosts -l manager
