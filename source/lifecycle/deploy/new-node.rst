@@ -205,6 +205,19 @@ Deploy common services.
 
    $ osism-kolla deploy common --limit 20-12.betacloud.xyz
 
+Deploy prometheus exporter.
+
+.. code-block:: console
+
+   $ osism-monitoring prometheus-exporter --limit 20-12.betacloud.xyz
+
+Update prometheus
+=================
+
+.. code-block:: console
+
+   $ osism-monitoring prometheus
+
 Update hosts files
 ==================
 
