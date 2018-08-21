@@ -36,7 +36,7 @@ Bootstrap
 
    Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
 
-.. code-block::
+.. code-block:: console
 
    $ osism-generic network -l 'all:!manager'
 
