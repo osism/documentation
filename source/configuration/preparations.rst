@@ -28,7 +28,7 @@ later.
 
 .. code-block:: console
 
-   $ sudo apt install cookiecutter
+   $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml
 
 When you run cookiecutter, you are asked for the information you collected before.
 
