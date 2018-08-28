@@ -11,5 +11,7 @@ Deploy
    deploy/infrastructure
    deploy/ceph
    deploy/openstack
+   deploy/monitoring
+   deploy/other
    deploy/new-node
    deploy/notes

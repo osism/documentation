@@ -4,6 +4,13 @@ Infrastructure
 
 .. note:: Run this command on the manager node.
 
+Common
+======
+
+.. code-block:: console
+
+   $ osism-kolla deploy common
+
 Logging
 =======
 
@@ -12,14 +19,6 @@ Logging
    $ osism-kolla deploy haproxy
    $ osism-kolla deploy elasticsearch
    $ osism-kolla deploy kibana
-
-Common
-======
-
-.. code-block:: console
-
-   $ osism-kolla deploy common
-   $ osism-run custom cronjobs
 
 Monitoring
 ==========
@@ -30,3 +29,10 @@ Monitoring
    $ osism-monitoring prometheus-exporter
    $ osism-monitoring prometheus
    $ osism-monitoring monitoring
+
+Custom
+======
+
+.. code-block:: console
+
+   $ osism-run custom cronjobs
