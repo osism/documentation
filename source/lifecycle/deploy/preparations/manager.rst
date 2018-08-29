@@ -83,7 +83,7 @@ Manager node
 
 .. code-block:: console
 
-   $ ./run.sh bootstrap
+   $ ANSIBLE_ASK_VAULT_PASS=true ./run.sh bootstrap
 
 .. note::
 
@@ -106,13 +106,13 @@ Manager node
 
 .. code-block:: console
 
-   $ ./run.sh configuration
+   $ ANSIBLE_ASK_VAULT_PASS=true ./run.sh configuration
 
 * Deployment of necessary services
 
 .. code-block:: console
 
-   $ ./run.sh manager
+   $ ANSIBLE_ASK_VAULT_PASS=true ./run.sh manager
 
 .. note::
 
@@ -135,7 +135,7 @@ On the seed node change into the manager environment and use the following comma
 
 .. code-block:: console
 
-   $ ./run.sh configuration
+   $ ANSIBLE_ASK_VAULT_PASS=true ./run.sh configuration
 
 On the manager node use the following command to update the configuration repository.
 
