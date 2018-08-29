@@ -53,7 +53,7 @@ Server
 
      configure_cockpit: yes
      cockpit_groupname: all
-     cockpit_host: "{{ hostvars[inventory_hostname]['ansible_' + management_interface]['ipv4']['address'] }}"
+     cockpit_host: "{{ hostvars[inventory_hostname]['ansible_' + console_interface]['ipv4']['address'] }}"
      cockpit_port: 8130
      cockpit_ssh_port: 22
 
