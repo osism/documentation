@@ -18,6 +18,10 @@ Add SSH public key
 
 Role ``osism.operator`` supports the configuration of arbitrary SSH public keys for the operator account.
 
+.. note::
+
+   For logging into the systems, the use of personalized accounts is recommended.
+
 Set the ``operator_authorized_keys`` list parameter in the ``environments/configuration.yml`` file.
 
 .. code-block:: yaml
