@@ -2,9 +2,10 @@
 Rally
 =====
 
-Rally is a Benchmark-as-a-Service project for OpenStack.
+Rally is a tool for performance analysis and benchmarking of individual OpenStack components.
 
 * https://github.com/openstack/rally
+* https://github.com/openstack/rally-openstack
 
 Configuration
 =============
@@ -212,7 +213,7 @@ Run "OpenStack Certification Task"
 
 The "OpenStack Certification Task" is a collection of configurable tests for the main components
 (Cinder, Glance, Keystone, Neutron, Nova) of OpenStack. The necessary files are located in the
-Rally Repository (https://github.com/openstack/rally/tree/master/tasks/openstack).
+Rally Repository (https://github.com/openstack/rally-openstack/tree/master/tasks/openstack).
 
 We offer a collection of tests based on it, Available in the repository https://github.com/osism/test/tree/master/openstack/rally.
 These tests are used below.
@@ -228,13 +229,7 @@ These tests are used below.
    $ rsync -avz test-master/openstack/rally/macro /opt/rally/tests
    $ rsync -avz test-master/openstack/rally/scenario /opt/rally/tests
    $ rsync -avz test-master/openstack/rally/task.yml /opt/rally/tests
-
-.. code-block:: console
-
-   $ [[ ! -e /opt/rally/tests/task/task-arguments.yml ]] && cp test-master/openstack/rally/task-arguments.yml /opt/rally/tests
-
-.. code-block:: console
-
+   $ [[ ! -e /opt/rally/tests/task/task-arguments.yml ]] && cp test-master/openstack/rally/task-arguments.yml.sample /opt/rally/tests/task-arguments.yml
    $ rm -rf master.zip test-master
 
 File ``task-arguments.yml`` contains all task options:
