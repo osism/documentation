@@ -8,6 +8,18 @@ Kolla
 
    The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
 
+Generate secrets
+================
+
+* ``environments/kolla/secets.yml``
+
+.. code-block:: console
+
+   $ wget https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/scripts/generate-secrets.py
+   $ wget https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/secrets.yml.pike
+   $ python generate-secrets.py -p secrets.yml.pike
+   $ mv secrets.yml.pike secrets.yml
+
 Inventory
 =========
 
