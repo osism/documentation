@@ -36,3 +36,20 @@ file via the ``operator_private_key`` parameter. The associated SSH public key m
 ``operator_authorized_keys`` list parameter.
 
 Newly added SSH public keys could be transferred to the systems via ``osism-generic operator``.
+
+Set password
+============
+
+.. code-block:: console
+
+   $ mkpasswd --method=sha-512 -- password
+   $6$Ar5mq/3125X$AIVfpZeKI8v7SiXQYH4v3nVTnyb8eT6oQ3aYAZfFm7Fx9Dmqmb9SEzCwiIuCGowgqdNGORcZq3dH9ILDFiF7U0
+
+* ``environments/secrets.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # passwords
+
+   operator_password: "$6$Ar5mq/3125X$AIVfpZeKI8v7SiXQYH4v3nVTnyb8eT6oQ3aYAZfFm7Fx9Dmqmb9SEzCwiIuCGowgqdNGORcZq3dH9ILDFiF7U0"
