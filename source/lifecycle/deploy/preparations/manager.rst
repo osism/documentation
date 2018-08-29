@@ -40,6 +40,14 @@ Manager node
 
 .. note::
 
+   A typical call to create the operator user looks like this.
+
+   .. code-block:: console
+
+      $ ANSIBLE_BECOME_ASK_PASS=True ANSIBLE_ASK_VAULT_PASS=True ANSIBLE_ASK_PASS=True ANSIBLE_USER=ubuntu ./run.sh operator
+
+.. note::
+
    If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
    the manager node.
 
