@@ -2,6 +2,8 @@
 Cockpit
 =======
 
+* https://cockpit-project.org
+
 Client
 ======
 
