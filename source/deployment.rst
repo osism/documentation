@@ -6,6 +6,7 @@ Deployment
    :maxdepth: 2
 
    deployment/preparations
+   deployment/configuration
    deployment/bootstrap
    deployment/infrastructure
    deployment/ceph
