@@ -16,6 +16,20 @@ Interfaces
    * - **Documentation**
      - ---
 
+Proxy
+=====
+
+.. list-table::
+   :widths: 10 90
+   :align: left
+
+   * - **Name**
+     - ``osism.proxy``
+   * - **Repository**
+     - https://github.com/osism/ansible-proxy
+   * - **Documentation**
+     - ---
+
 Resolvconf
 ==========
 
