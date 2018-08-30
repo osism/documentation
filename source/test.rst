@@ -11,3 +11,4 @@ Test
    test/ceph
    test/openstack
    test/refstack
+   test/benchmark

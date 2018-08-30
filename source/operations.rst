@@ -7,5 +7,4 @@ Operations
 
    operations/generic
    operations/services
-   operations/benchmark
    operations/monitoring
