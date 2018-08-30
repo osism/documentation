@@ -13,8 +13,8 @@ Operator
    * - **Documentation**
      - ---
 
-Add SSH public key
-==================
+Authorized keys
+===============
 
 Role ``osism.operator`` supports the configuration of arbitrary SSH public keys for the operator account.
 
@@ -37,8 +37,8 @@ file via the ``operator_private_key`` parameter. The associated SSH public key m
 
 Newly added SSH public keys could be transferred to the systems via ``osism-generic operator``.
 
-Set password
-============
+Password
+========
 
 .. code-block:: console
 
