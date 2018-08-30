@@ -22,3 +22,10 @@ Deleting all partitions
 .. code-block:: console
 
    $ sudo dd if=/dev/zero of=/dev/sdc bs=512 count=1 conv=notrunc
+
+Cronjobs
+========
+
+.. code-block:: console
+
+   $ osism-run custom cronjobs
