@@ -26,7 +26,8 @@ to write an e-mail to info@osism.io if you have questions or doubts.
 
    overview
    configuration
-   lifecycle
+   deployment
+   test
    operations
    notes
    development
