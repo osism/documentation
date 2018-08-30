@@ -42,15 +42,13 @@ Bootstrap
 
 * Bootstrap of the nodes
 
+.. note::
+
+   Run the bootstrap process again on the manager during initial setup.
+
 .. code-block:: console
 
    $ osism-generic bootstrap
-
-* Refresh ``/etc/hosts`` on the manager node
-
-.. code-block:: console
-
-   $ osism-generic hosts -l manager
 
 New node
 ========
