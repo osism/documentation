@@ -19,6 +19,7 @@ Generate secrets
    $ wget https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/secrets.yml.pike
    $ python generate-secrets.py -p secrets.yml.pike
    $ mv secrets.yml.pike secrets.yml
+   $ rm generate-secrets.py
 
 Inventory
 =========
