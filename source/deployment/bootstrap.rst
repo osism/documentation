@@ -13,6 +13,8 @@ Bootstrap
    The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
    specified with ``-u``.
 
+   Alternatively, you can work with the parameters ``--ask-pass`` and ``--ask-become-pass``.
+
 .. code-block:: console
 
    $ osism-generic operator -l 'all:!manager' -u ubuntu
