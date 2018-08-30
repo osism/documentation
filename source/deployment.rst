@@ -11,6 +11,5 @@ Deployment
    deployment/infrastructure
    deployment/ceph
    deployment/openstack
-   deployment/monitoring
    deployment/notes
    deployment/upgrade
