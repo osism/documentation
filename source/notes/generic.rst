@@ -2,6 +2,15 @@
 Generic
 =======
 
+Tunnel internal networks via SSH with sshuttle
+==============================================
+
+* https://github.com/sshuttle/sshuttle
+
+.. code-block:: bash
+
+   $ sshuttle -r dragon@172.17.10.10 10.50.0.0/16 10.49.0.0/16
+
 Does a system support IPMI
 ==========================
 
