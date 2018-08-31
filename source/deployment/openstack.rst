@@ -21,6 +21,12 @@ Networking
 
 * openvswitch (>= ``pike``)
 
+Storage
+=======
+
+* iscsid (optional)
+* multipathd (optional)
+
 OpenStack
 =========
 

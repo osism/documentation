@@ -127,9 +127,30 @@ Generate self-signed certificates
 
 On the manager node the self-signed certificate is located in ``/etc/kolla/certificates/haproxy.pem``.
 
-If the ``pem`` file is not created correctly that is not a problem. hen just use the output of
+If the ``pem`` file is not created correctly that is not a problem. Then just use the output of
 ``cat /etc/kolla/certificates/private/haproxy.*``.
 
 Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.yml`` and add the
 content of the self-signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
 ``environments/kolla/secrets.yml`` file.
+
+iSCSI support
+=============
+
+* ``environments/kolla/configuration.yml``
+
+.. code-block:: yaml
+
+   enable_cinder_backend_iscsi: yes
+
+* ``inventory/hosts``
+
+.. code-block:: ini
+
+   [iscsid:children]
+   compute
+   storage
+
+   [multipathd:children]
+   compute
+   storage
