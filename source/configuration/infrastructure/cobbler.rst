@@ -9,7 +9,7 @@ Cobbler
    * - **Name**
      - ``osism.cobbler``
    * - **Repository**
-     - https://github.com/osism/ansible-cobler
+     - https://github.com/osism/ansible-cobbler
    * - **Documentation**
      - ---
 
