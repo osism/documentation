@@ -19,10 +19,3 @@ Logging
    $ osism-kolla deploy haproxy
    $ osism-kolla deploy elasticsearch
    $ osism-kolla deploy kibana
-
-Custom
-======
-
-.. code-block:: console
-
-   $ osism-run custom cronjobs

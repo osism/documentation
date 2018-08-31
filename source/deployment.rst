@@ -12,5 +12,6 @@ Deployment
    deployment/ceph
    deployment/kolla
    deployment/monitoring
+   deployment/custom
    deployment/notes
    deployment/upgrade
