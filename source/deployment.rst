@@ -10,6 +10,6 @@ Deployment
    deployment/bootstrap
    deployment/infrastructure
    deployment/ceph
-   deployment/openstack
+   deployment/kolla
    deployment/notes
    deployment/upgrade

@@ -142,6 +142,7 @@ iSCSI support
 .. code-block:: yaml
 
    enable_cinder_backend_iscsi: yes
+   enable_cinder_backend_lvm: no
 
 * ``inventory/hosts``
 
@@ -150,7 +151,11 @@ iSCSI support
    [iscsid:children]
    compute
    storage
+   ironic-conductor
 
    [multipathd:children]
    compute
+   storage
+
+   [tgtd:children]
    storage

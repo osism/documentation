@@ -1,6 +1,6 @@
-=========
-OpenStack
-=========
+=====
+Kolla
+=====
 
 .. note:: Run this command on the manager node.
 
@@ -8,8 +8,8 @@ OpenStack
 
    $ osism-kolla deploy ROLE
 
-Shared services
-===============
+Infrastructure
+==============
 
 * memcached
 * mariadb
@@ -24,8 +24,8 @@ Networking
 Storage
 =======
 
-* iscsid (optional)
-* multipathd (optional)
+* iscsi (optional)
+* multipath (optional)
 
 OpenStack
 =========
