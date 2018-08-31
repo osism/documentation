@@ -134,6 +134,11 @@ Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.y
 content of the self-signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
 ``environments/kolla/secrets.yml`` file.
 
+You should also add the self-signed certificate to the list of trusted certifcates on every computer
+that uses the external API. The workflow is different for different Linux distributions.
+Many programs, such as ``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as
+a temporary solution.
+
 iSCSI support
 =============
 
