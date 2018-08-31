@@ -30,6 +30,17 @@ Monitoring
    $ osism-monitoring prometheus
    $ osism-monitoring monitoring
 
+Helper
+======
+
+.. code-block:: console
+
+   $ osism-infrastructure helper --tags openstackclient
+   $ osism-infrastructure helper --tags cephclient
+   $ osism-infrastructure helper --tags phpmyadmin
+   $ osism-infrastructure helper --tags rally
+   $ osism-infrastructure helper --tags phpmyadmin
+
 Custom
 ======
 
