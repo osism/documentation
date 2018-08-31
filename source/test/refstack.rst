@@ -70,6 +70,16 @@ Configuration
 
    For the test of Cinder, Glance, Heat, Neutron & Swift no further parameters are necessary,
    these can simply be additionally activated.
+   To run all tests, you need some additional parameters:
+
+.. code-block:: ini
+
+   [compute]
+   image_ref = 6dd3ee6b-261a-450a-9620-702812ab4259
+   image_ref_alt = dd516d0e-8c56-42c9-b801-9169b959fdea
+   flavor_ref = 2fe23ff9-c60d-4265-8bad-f7d7ac302db6
+   flavor_ref_alt = a5a35226-75c5-41ee-a5c2-19710401c9f7
+   fixed_network_name = refstack-internal-net
 
 Execution
 =========
@@ -84,8 +94,8 @@ Execution
 .. code-block:: console
 
 
-   $ wget "https://refstack.openstack.org/api/v1/guidelines/2017.09/tests?target=compute&type=required&alias=true&flag=true" -O 2017.09-test-list.txt
-   $ refstack-client test -c tempest.conf -v --test-list 2017.09-test-list.txt
+   $ wget "https://refstack.openstack.org/api/v1/guidelines/2018.02/tests?target=platform&type=required&alias=true&flag=false" -O 2018.02-test-list.txt
+   $ refstack-client test -c tempest.conf -v --test-list 2018.02-test-list.txt
 
 Troubleshooting
 ===============
