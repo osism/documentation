@@ -14,6 +14,10 @@ Ceph
 Monitors
 ========
 
+.. note::
+
+   Output after deployment of mon services.
+
 .. code-block:: console
 
    $ ceph -s
@@ -35,6 +39,10 @@ Monitors
 
 Managers
 ========
+
+.. note::
+
+   Output after deployment of mon and mgr services.
 
 .. code-block:: console
 
@@ -58,6 +66,10 @@ Managers
 
 OSDs
 ====
+
+.. note::
+
+   Output after deployment of mon, mgr and OSD services.
 
 .. code-block:: console
 
