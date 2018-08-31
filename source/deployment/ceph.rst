@@ -13,6 +13,13 @@ Ceph
 * mdss (only when using cephfs)
 * osds
 
+Client
+======
+
+.. code-block:: console
+
+   $ osism-infrastructure helper --tags cephclient
+
 Dashboard
 =========
 

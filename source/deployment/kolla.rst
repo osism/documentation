@@ -37,3 +37,11 @@ OpenStack
 * nova
 * neutron
 * heat
+
+Clients
+=======
+
+.. code-block:: console
+
+   $ osism-infrastructure helper --tags openstackclient
+   $ osism-infrastructure helper --tags phpmyadmin

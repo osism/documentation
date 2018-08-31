@@ -20,27 +20,6 @@ Logging
    $ osism-kolla deploy elasticsearch
    $ osism-kolla deploy kibana
 
-Monitoring
-==========
-
-.. code-block:: console
-
-   $ osism-kolla deploy grafana
-   $ osism-monitoring prometheus-exporter
-   $ osism-monitoring prometheus
-   $ osism-monitoring monitoring
-
-Helper
-======
-
-.. code-block:: console
-
-   $ osism-infrastructure helper --tags openstackclient
-   $ osism-infrastructure helper --tags cephclient
-   $ osism-infrastructure helper --tags phpmyadmin
-   $ osism-infrastructure helper --tags rally
-   $ osism-infrastructure helper --tags phpmyadmin
-
 Custom
 ======
 
