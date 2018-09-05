@@ -47,7 +47,7 @@ Carry out the following steps on all nodes (one by one) and note the order of th
 
    $ docker start mariadb
 
-3. Start the rest of the nodes
+3. Start the rest of the nodes (one by one)
 
 .. code-block:: console
 

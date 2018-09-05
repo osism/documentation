@@ -11,11 +11,7 @@ Cluster start and stop
 
 .. warning::
 
-   Ensure that any services/clients using Ceph are stopped.
-
-.. warning::
-
-   Make sure the cluster is in a healthy state.
+   Ensure that any services/clients using Ceph are stopped and that the cluster is in a healthy state.
 
 1. Set OSD flags
 
@@ -30,19 +26,19 @@ Cluster start and stop
 
 2. Stop the manager services (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl stop ceph-mgr@HOSTNAME.service
 
 3. Stop the osd servies (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl stop ceph-osd@DEVICE.service
 
 4. Stop the monitor service (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl stop ceph-mon@HOSTNAME.service
 
@@ -50,19 +46,19 @@ Cluster start and stop
 
 1. Start the monitor services (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl start ceph-mon@HOSTNAME.service
 
 2. Start the osd services (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl start ceph-osd@DEVICE.service
 
 3. Start the manager service (one by one)
 
-.. code-block::
+.. code-block:: console
 
    $ systemctl start ceph-mgr@HOSTNAME.service
 
@@ -79,6 +75,6 @@ Cluster start and stop
 
 **Check**
 
-.. code-block::
+.. code-block:: console
 
    $ ceph -s
