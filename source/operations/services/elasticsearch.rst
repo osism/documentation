@@ -2,6 +2,65 @@
 Elasticsearch
 =============
 
+Cluster start and stop
+======================
+
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/restart-upgrade.html
+
+**Stop**
+
+1. Disable shard allocation
+
+.. code-block:: console
+
+   $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+   {
+     "persistent": {
+       "cluster.routing.allocation.enable": "none"
+     }
+   }
+   '
+
+2. Stop indexing and perform a synced flush
+
+.. code-block:: console
+
+   $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
+
+3. Stop the elasticsearch containers on all nodes
+
+   $ docker stop elasticsearch
+
+**Start**
+
+1. Start the elasticsearch containers on all nodes
+
+.. code-block:: console
+
+   $ docker start elasticsearch
+
+2. Wait for all nodes to join the cluster and report a status of yellow
+
+3. Reenable allocation
+
+.. code-block:: console
+
+   $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+   {
+     "persistent": {
+       "cluster.routing.allocation.enable": null
+     }
+   }
+   '
+
+**Check**
+
+.. code-block:: console
+
+   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/health"
+   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/recovery"
+   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/nodes"
+
 Delete old indices
 ==================
 
@@ -9,7 +68,7 @@ Delete old indices
 
 .. code-block:: none
 
-   $ curl -s http://10.49.0.100:9200/_cat/indices?v | sort
+   $ curl -s http://INTERNAL_VIP_ADDRESS:9200/_cat/indices?v | sort
    green  open   flog-2018.02.14 tqkXs5DSQQa7SUGALPCqYA   5   1      15694            0     22.4mb         11.3mb
    green  open   flog-2018.02.15 mFR46PEJQjW3bebsDJuHSg   5   1    8283538            0      7.3gb          3.6gb
    [...]
@@ -22,7 +81,7 @@ Delete old indices
 
 .. code-block:: none
 
-   $ curl -s -X DELETE http://10.49.0.100:9200/flog-2018.02.14
+   $ curl -s -X DELETE http://INTERNAL_VIP_ADDRESS:9200/flog-2018.02.14
    {"acknowledged":true}
 
 With curator
@@ -64,7 +123,7 @@ Place this file in ``/usr/share/elasticsearch/.curator/curator.yml``.
    $ docker exec -it elasticsearch bash
    (elasticsearch)[elasticsearch@20-10 /]$ export LC_ALL=C.UTF-8
    (elasticsearch)[elasticsearch@20-10 /]$ export LANG=C.UTF-8
-   (elasticsearch)[elasticsearch@20-10 /]$ curator_cli --host 10.49.20.10 show_indices
+   (elasticsearch)[elasticsearch@20-10 /]$ curator_cli --host INTERNAL_VIP_ADDRESS show_indices
    flog-2018.02.09
    flog-2018.02.10
    flog-2018.02.11
