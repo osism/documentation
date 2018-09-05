@@ -7,9 +7,10 @@ Services
 
    services/aptly
    services/backup
-   services/cobbler
-   services/elasticsearch
-   services/rabbitmq
    services/ceph
    services/cinder
+   services/cobbler
+   services/elasticsearch
    services/heat
+   services/mariadb
+   services/rabbitmq

@@ -2,6 +2,37 @@
 RabbitMQ
 ========
 
+Cluster start and stop
+======================
+
+**Stop**
+
+* Stop the rabbitmq container on all nodes (one by one) and note the order of the nodes
+
+.. code-block:: console
+
+   $ docker stop rabbitmq
+
+**Start**
+
+* Successively start the rabbitmq container on all nodes (one by one) in the reverse order
+
+.. code-block:: console
+
+   $ docker start rabbitmq
+
+**Check**
+
+.. code-block:: console
+
+   $ docker exec -it rabbitmq rabbitmqctl cluster_status
+   Cluster status of node 'rabbit@20-10'
+   [{nodes,[{disc,['rabbit@20-10','rabbit@20-11','rabbit@20-12']}]},
+    {running_nodes,['rabbit@20-12','rabbit@20-11','rabbit@20-10']},
+    {cluster_name,<<"rabbit@20-10.betacloud.xyz">>},
+    {partitions,[]},
+    {alarms,[{'rabbit@20-12',[]},{'rabbit@20-11',[]},{'rabbit@20-10',[]}]}]
+
 Emptying the notification queues
 ================================
 

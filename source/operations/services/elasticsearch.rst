@@ -27,13 +27,15 @@ Cluster start and stop
 
    $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
 
-3. Stop the elasticsearch containers on all nodes
+3. Stop the elasticsearch containers on all nodes (one by one)
+
+.. code-block:: console
 
    $ docker stop elasticsearch
 
 **Start**
 
-1. Start the elasticsearch containers on all nodes
+1. Start the elasticsearch containers on all nodes (one by one)
 
 .. code-block:: console
 
@@ -66,7 +68,7 @@ Delete old indices
 
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/_list_all_indices.html
 
-.. code-block:: none
+.. code-block:: console
 
    $ curl -s http://INTERNAL_VIP_ADDRESS:9200/_cat/indices?v | sort
    green  open   flog-2018.02.14 tqkXs5DSQQa7SUGALPCqYA   5   1      15694            0     22.4mb         11.3mb
@@ -79,7 +81,7 @@ Delete old indices
 
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html
 
-.. code-block:: none
+.. code-block:: console
 
    $ curl -s -X DELETE http://INTERNAL_VIP_ADDRESS:9200/flog-2018.02.14
    {"acknowledged":true}
