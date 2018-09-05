@@ -27,7 +27,7 @@ Carry out the following steps on all nodes (one by one) and note the order of th
    | wsrep_local_state_comment | Synced |
    +---------------------------+--------+
 
-2. Stop the mariadb container
+2. Stop the ``mariadb`` container
 
 .. code-block:: console
 
