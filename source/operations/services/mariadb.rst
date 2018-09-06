@@ -40,6 +40,11 @@ Carry out the following steps on all nodes (one by one) and note the order of th
 .. code-block:: console
 
    $ docker cp mariadb:/var/lib/mysql/grastate.dat -
+   grastate.dat0100660012270201227020000000016613344147433011614 0ustar0000000000000000# GALERA saved state
+   version: 2.1
+   uuid:    47e5ccc6-ad14-11e8-b507-0a3272d2fb23
+   seqno:   1701270
+   safe_to_bootstrap: 0
 
 2. Start the most advanced node as the first node of the cluster
 
