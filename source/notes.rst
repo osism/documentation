@@ -5,11 +5,12 @@ Notes
 .. toctree::
    :maxdepth: 2
 
-   notes/generic
-   notes/cleanup
    notes/ansible
    notes/ceph
+   notes/cleanup
    notes/docker
+   notes/generic
    notes/mariadb
+   notes/networking
    notes/openstack
    notes/ubuntu
