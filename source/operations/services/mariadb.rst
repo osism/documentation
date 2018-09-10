@@ -13,7 +13,7 @@ Cluster start and stop
 
    Ensure that any services using MariaDB are stopped.
 
-Carry out the following steps on all nodes (one by one) and note the order of the nodes.
+Carry out the following steps on all controller nodes (one by one) and note the order of the nodes.
 
 1. Ensure that ``wsrep_local_state_comment`` is ``synced``
 
@@ -35,28 +35,11 @@ Carry out the following steps on all nodes (one by one) and note the order of th
 
 **Start**
 
-1. Identify the node with the most advanced ``seqno`` (this should be the last stopped node)
+On the manager node run the recovery process.
 
 .. code-block:: console
 
-   $ docker cp mariadb:/var/lib/mysql/grastate.dat -
-   grastate.dat0100660012270201227020000000016613344147433011614 0ustar0000000000000000# GALERA saved state
-   version: 2.1
-   uuid:    47e5ccc6-ad14-11e8-b507-0a3272d2fb23
-   seqno:   1701270
-   safe_to_bootstrap: 0
-
-2. Start the most advanced node as the first node of the cluster
-
-.. code-block:: console
-
-   $ docker start mariadb
-
-3. Start the rest of the nodes (one by one)
-
-.. code-block:: console
-
-   $ docker start mariadb
+   $ osism-kolla deploy mariadb_recovery
 
 **Check**
 
