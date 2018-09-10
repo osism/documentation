@@ -5,6 +5,7 @@ Ceph
 Cluster start and stop
 ======================
 
+* http://docs.ceph.com/docs/mimic/rados/operations/operating/#running-ceph-with-systemd
 * https://www.openattic.org/posts/how-to-do-a-ceph-cluster-maintenanceshutdown/
 
 **Stop**
@@ -24,26 +25,36 @@ Cluster start and stop
    $ ceph osd set nodown
    $ ceph osd set pause
 
-2. Stop the manager services (one by one)
+.. code-block:: console
+
+   $ ceph -s
+     cluster:
+     [...]
+       health: HEALTH_WARN
+               pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover flag(s) set
+ 
+     services:
+     [...]
+       osd: x osds: y up, z in
+            flags pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover
+
+2. Stop the services (manager, mds, ..) (one by one)
 
 .. code-block:: console
 
-   $ systemctl stop ceph-mgr@HOSTNAME.service
-   $ systemctl disable ceph-mgr@HOSTNAME.service
+   $ sudo systemctl stop ceph-mgr\*.service
 
 3. Stop the osd servies (one by one)
 
 .. code-block:: console
 
-   $ systemctl stop ceph-osd@DEVICE.service
-   $ systemctl disable ceph-osd@DEVICE.service
+   $ sudo systemctl stop ceph-osd\*.service
 
 4. Stop the monitor service (one by one)
 
 .. code-block:: console
 
-   $ systemctl stop ceph-mon@HOSTNAME.service
-   $ systemctl disable ceph-mon@HOSTNAME.service
+   $ sudo systemctl stop ceph-mon\*.service
 
 **Start**
 
@@ -51,22 +62,19 @@ Cluster start and stop
 
 .. code-block:: console
 
-   $ systemctl start ceph-mon@HOSTNAME.service
-   $ systemctl enable ceph-mon@HOSTNAME.service
+   $ sudo systemctl start ceph-mon\*.service
 
 2. Start the osd services (one by one)
 
 .. code-block:: console
 
-   $ systemctl start ceph-osd@DEVICE.service
-   $ systemctl enable ceph-osd@DEVICE.service
+   $ systemctl start ceph-osd@DEVICE.service              
 
-3. Start the manager service (one by one)
+3. Start the services (manager, mds, ..) (one by one)
 
 .. code-block:: console
 
-   $ systemctl start ceph-mgr@HOSTNAME.service
-   $ systemctl enable ceph-mgr@HOSTNAME.service
+   $ sudo systemctl start ceph-mgr\*.service
 
 4. Unset OSD flags
 
@@ -83,7 +91,23 @@ Cluster start and stop
 
 .. code-block:: console
 
+   $ sudo systemctl status ceph\*.service
    $ ceph -s
+     cluster:
+       id:     x
+       health: HEALTH_OK
+ 
+     services:
+       mon: 3 daemons, quorum A,B,C
+       mgr: A(active), standbys: B, C
+       mds: cephfs-0/0/1 up 
+       osd: x osds: y up, z in
+ 
+     data:
+       pools:   7 pools, 176 pgs
+       objects: 2816 objects, 18856 MB
+       usage:   69132 MB used, 44643 GB / 44711 GB avail
+       pgs:     176 active+clean
 
 Deep scrub distribution
 =======================
