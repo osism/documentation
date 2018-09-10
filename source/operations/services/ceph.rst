@@ -29,18 +29,21 @@ Cluster start and stop
 .. code-block:: console
 
    $ systemctl stop ceph-mgr@HOSTNAME.service
+   $ systemctl disable ceph-mgr@HOSTNAME.service
 
 3. Stop the osd servies (one by one)
 
 .. code-block:: console
 
    $ systemctl stop ceph-osd@DEVICE.service
+   $ systemctl disable ceph-osd@DEVICE.service
 
 4. Stop the monitor service (one by one)
 
 .. code-block:: console
 
    $ systemctl stop ceph-mon@HOSTNAME.service
+   $ systemctl disable ceph-mon@HOSTNAME.service
 
 **Start**
 
@@ -49,18 +52,21 @@ Cluster start and stop
 .. code-block:: console
 
    $ systemctl start ceph-mon@HOSTNAME.service
+   $ systemctl enable ceph-mon@HOSTNAME.service
 
 2. Start the osd services (one by one)
 
 .. code-block:: console
 
    $ systemctl start ceph-osd@DEVICE.service
+   $ systemctl enable ceph-osd@DEVICE.service
 
 3. Start the manager service (one by one)
 
 .. code-block:: console
 
    $ systemctl start ceph-mgr@HOSTNAME.service
+   $ systemctl enable ceph-mgr@HOSTNAME.service
 
 4. Unset OSD flags
 
