@@ -12,5 +12,6 @@ Services
    services/elasticsearch
    services/heat
    services/mariadb
+   services/openstack
    services/openvswitch
    services/rabbitmq
