@@ -6,7 +6,6 @@ Notes
    :maxdepth: 2
 
    notes/ansible
-   notes/ceph
    notes/cleanup
    notes/docker
    notes/generic
