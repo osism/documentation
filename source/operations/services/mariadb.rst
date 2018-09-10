@@ -13,7 +13,7 @@ Cluster start and stop
 
    Ensure that any services using MariaDB are stopped.
 
-Carry out the following steps on all controller nodes (one by one) and note the order of the nodes.
+Carry out the following steps on all controller nodes (one by one).
 
 1. Ensure that ``wsrep_local_state_comment`` is ``synced``
 

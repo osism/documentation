@@ -27,7 +27,7 @@ Cluster start and stop
 
    $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
 
-3. Stop the ``elasticsearch`` containers on all nodes (one by one)
+3. Stop the ``elasticsearch`` containers on all controller nodes (one by one)
 
 .. code-block:: console
 
@@ -35,7 +35,7 @@ Cluster start and stop
 
 **Start**
 
-1. Start the ``elasticsearch`` containers on all nodes (one by one)
+1. Start the ``elasticsearch`` containers on all controller nodes (one by one)
 
 .. code-block:: console
 

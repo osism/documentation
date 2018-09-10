@@ -11,7 +11,7 @@ Cluster start and stop
 
    Ensure that any services using RabbitMQ are stopped.
 
-Stop the ``rabbitmq`` container on all nodes (one by one) and note the order of the nodes.
+Stop the ``rabbitmq`` container on all controller nodes (one by one) and note the order of the nodes.
 
 .. code-block:: console
 
@@ -19,7 +19,7 @@ Stop the ``rabbitmq`` container on all nodes (one by one) and note the order of 
 
 **Start**
 
-Successively start the ``rabbitmq`` container on all nodes (one by one) in the reverse order.
+Successively start the ``rabbitmq`` container on all controller nodes (one by one) in the reverse order.
 
 .. code-block:: console
 
