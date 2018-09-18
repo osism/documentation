@@ -125,3 +125,13 @@ Distribution per hours:
 .. code-block:: console
 
    $ for date in $(ceph pg dump | grep active | awk '{ print $21 }'); do date +%H -d $date; done | sort | uniq -c
+
+Set the number of placement groups
+==================================
+
+* http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#set-the-number-of-placement-groups
+
+.. code-block:: console
+
+   $ ceph osd pool set {pool-name} pg_num {pg_num}
+   $ ceph osd pool set {pool-name} pgp_num {pgp_num}
