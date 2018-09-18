@@ -134,7 +134,9 @@ Set the number of placement groups
 .. code-block:: console
 
    $ ceph osd pool set {pool-name} pg_num {pg_num}
+   set pool x pg_num to {pg_num}
    $ ceph osd pool set {pool-name} pgp_num {pgp_num}
+   set pool x pgp_num to {pgp_num}
 
 .. note::
 
