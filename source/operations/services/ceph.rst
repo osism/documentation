@@ -135,3 +135,7 @@ Set the number of placement groups
 
    $ ceph osd pool set {pool-name} pg_num {pg_num}
    $ ceph osd pool set {pool-name} pgp_num {pgp_num}
+
+.. note::
+
+   The new number of PGs should also be updated in ``environments/ceph/configuration.yml``.

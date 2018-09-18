@@ -80,6 +80,8 @@ Network
 Pools & Keys
 ============
 
+* ``environments/ceph/configuration.yml``
+
 .. note::
 
    Remove unneeded pools & keys accordingly.
