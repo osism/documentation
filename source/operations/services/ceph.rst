@@ -141,3 +141,32 @@ Set the number of placement groups
 .. note::
 
    The new number of PGs should also be updated in ``environments/ceph/configuration.yml``.
+
+1 pools have many more objects per pg than average
+==================================================
+
+* https://www.spinics.net/lists/ceph-devel/msg41403.html
+* https://www.suse.com/de-de/support/kb/doc/?id=7018414
+
+* set ``mon pg warn max object skew = 0``
+
+.. code-block:: console
+
+   $ ceph tell mon.* injectargs '--mon_pg_warn_max_object_skew 0'
+
+* restart the active manager service (http://lists.ceph.com/pipermail/ceph-users-ceph.com/2018-July/027856.html)
+
+.. code-block:: console
+
+   $ sudo systemctl restart ceph-mgr\*.service
+
+* ``environments/ceph/configuration.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # custom
+
+   ceph_conf_overrides:
+     global:
+       mon pg warn max object skew: 0
