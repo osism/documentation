@@ -86,6 +86,10 @@ Pools & Keys
 
 .. note::
 
+   It is mandatory to choose the value of ``pg_num`` because it cannot be calculated automatically.
+
+   More details in http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#a-preselection-of-pg-num.
+
    http://ceph.com/pgcalc can be used to calculate the number of PGs.
 
 .. code-block:: yaml
