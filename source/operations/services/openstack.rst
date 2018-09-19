@@ -19,14 +19,14 @@ Start/Stop all containers of a service
 
    case $ACTION in
      start)
-       for container in $(docker ps -a | grep osism/$service | grep $OPENSTACK_RELEASE | grep Exited | awk '{ print $1 }'); do
+       for container in $(docker ps -a | grep osism/$SERVICE | grep $OPENSTACK_RELEASE | grep Exited | awk '{ print $1 }'); do
          docker start $container
          sleep 1
        done
      ;;
 
      stop)
-       for container in $(docker ps -a | grep osism/$service | grep $OPENSTACK_RELEASE | grep -v Exited | awk '{ print $1 }'); do
+       for container in $(docker ps -a | grep osism/$SERVICE | grep $OPENSTACK_RELEASE | grep -v Exited | awk '{ print $1 }'); do
          docker stop $container
          sleep 1
        done
