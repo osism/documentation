@@ -58,7 +58,10 @@ Services
 * Define required image parameters in the ``images.yml`` file.
 * Define required secret parameters in the ``secrets.yml`` file.
 
-Here is an example service ``netbox`` that starts a Netbox service for IPA & inventory management on the manager node.
+Netbox
+------
+
+Service ``netbox`` that starts a Netbox service for IPA & inventory management on the manager node.
 
 It is executed with ``osism-run custom service-netbox``.
 
@@ -114,6 +117,7 @@ It is executed with ``osism-run custom service-netbox``.
        changed_when: ('Creating' in result.stdout or 'Recreating' in result.stdout)
 
 * Create ``templates/netbox`` directory
+
 * ``templates/netbox/docker-compose.yml.j2``
 
 .. code-block:: yaml
@@ -212,3 +216,122 @@ It is executed with ``osism-run custom service-netbox``.
 
    custom_netbox_configuration_directory: /opt/custom-netbox/configuration
    custom_netbox_docker_compose_directory: /opt/custom-netbox
+
+Grafana
+-------
+
+Service ``grafana`` that starts a Grafana service on the manager node.
+
+It is executed with ``osism-run custom service-grafana``.
+
+* Create ``templates/grafana`` directory
+
+.. note::
+
+   The use of a configuration file is optional.
+
+   If necessary, the file ``templates/grafana/grafana.ini.j2`` is created with the contents of
+   https://github.com/grafana/grafana/blob/master/conf/sample.ini.
+
+   Subsequent commented blocks are then commented out accordingly.
+
+* ``templates/grafana/docker-compose.yml.j2``
+
+.. code-block:: yaml
+
+   ---
+   version: '2'
+   services:
+     grafana:
+       image: "{{ custom_grafana_image }}"
+       ports:
+         - "{{ custom_grafana_host }}:{{ custom_grafana_port }}:3000"
+       volumes:
+         - data:/var/lib/grafana
+         # - "./configuration/grafana.ini:/etc/grafana/grafana.ini:ro"
+   volumes:
+     data:
+       driver: local
+
+* ``playbook-service-grafana.yml``
+
+.. code-block:: yaml
+
+   ---
+   - name: Custom service grafana
+     hosts: manager
+     gather_facts: no
+
+     tasks:
+     - name: Create required directories
+       file:
+         path: "{{ item }}"
+         state: directory
+         owner: "{{ operator_user }}"
+         group: "{{ operator_group }}"
+         mode: 0755
+       become: true
+       with_items:
+         - "{{ custom_grafana_docker_compose_directory }}"
+         - "{{ custom_grafana_configuration_directory }}"
+
+     # - name: Copy configuration files
+     #   template:
+     #     src: "{{ item.src }}"
+     #     dest: "{{ item.dest }}"
+     #     mode: 0644
+     #     owner: "{{ operator_user }}"
+     #     group: "{{ operator_group }}"
+     #   with_items:
+     #     - src: grafana/grafana.ini.j2
+     #       dest: "{{ custom_grafana_configuration_directory }}/grafana.ini"
+
+     - name: Copy docker-compose.yml file
+       template:
+         src: grafana/docker-compose.yml.j2
+         dest: "{{ custom_grafana_docker_compose_directory }}/docker-compose.yml"
+         owner: "{{ operator_user }}"
+         group: "{{ operator_group }}"
+         mode: 0640
+
+     - name: Pull images
+       command: "docker-compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml pull"
+       register: result
+       changed_when: ('Downloaded' in result.stdout)
+
+     - name: Run service
+       command: "docker-compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml up -d --remove-orphans --no-build"
+       register: result
+       changed_when: ('Creating' in result.stdout or 'Recreating' in result.stdout)
+
+* Add to ``images.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # grafana
+
+   custom_grafana_tag: 5.2.4
+   custom_grafana_image: "{{ docker_registry }}/grafana/grafana:{{ custom_grafana_tag }}"
+
+* Add to ``secrets.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # grafana
+
+   custom_grafana_admin_password: password
+
+* Add to ``configuration.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # grafana
+
+   custom_grafana_host: "{{ hostvars[inventory_hostname]['ansible_' + network_interface]['ipv4']['address'] }}"
+   custom_grafana_port: 3000
+
+   custom_grafana_docker_compose_directory: /opt/custom-grafana
+   custom_grafana_configuration_directory: /opt/custom-grafana/configuration
