@@ -7,7 +7,6 @@ Notes
 
    notes/ansible
    notes/cleanup
-   notes/docker
    notes/generic
    notes/networking
    notes/openstack
