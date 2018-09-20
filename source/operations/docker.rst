@@ -80,3 +80,25 @@ unable to find user X: no matching entries in passwd file
 .. note::
 
    Do not use ``restart``. ``restart`` will not solve the issue.
+
+Cleanup
+=======
+
+* Images (manual)
+
+.. code-block:: console
+
+   $ docker image prune --all
+   WARNING! This will remove all images without at least one container associated to them.
+   Are you sure you want to continue? [y/N] y
+   Deleted Images:
+   untagged: osism/openvswitch-vswitchd:pike-20180807-0
+   untagged: osism/keepalived:pike-latest
+   untagged: osism/keepalived@sha256:59b611a3a84060f38b97dbbd68ab51a52c503a81309ed86c46a92fd0227b09e1
+
+   [...]
+   Total reclaimed space: 9.681GB
+
+* Images (ansible)
+
+   $ osism-generic cleanup-docker --tags images
