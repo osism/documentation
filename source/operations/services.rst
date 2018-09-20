@@ -10,6 +10,7 @@ Services
    services/cinder
    services/cobbler
    services/elasticsearch
+   services/haproxy
    services/heat
    services/mariadb
    services/openstack
