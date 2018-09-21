@@ -164,3 +164,49 @@ iSCSI support
 
    [tgtd:children]
    storage
+
+Multiple provider networks
+==========================
+
+* ``inventory/host_vars/<hostname>.yml``
+
+.. code-block:: yaml
+
+   network_interfaces:
+   [...]
+    - device: vlan100
+      auto: true
+      family: inet
+      method: manual
+      vlan:
+        raw-device: bond1
+      mtu: 1500
+
+    - device: vlan200
+      auto: true
+      family: inet
+      method: manual
+      vlan:
+        raw-device: bond1
+      mtu: 1500
+
+    - device: vlan300
+      auto: true
+      family: inet
+      method: manual
+      vlan:
+        raw-device: bond1
+      mtu: 1500
+
+* ``environments/kolla/configuration.yml`` or ``inventory/host_vars/<hostname>.yml``
+
+.. code-block:: yaml
+
+   enable_neutron_provider_networks: "yes"
+
+* ``environments/kolla/configuration.yml`` or ``inventory/host_vars/<hostname>.yml``
+
+.. code-block:: yaml
+
+   neutron_bridge_name: br-vlan100,br-vlan200,br-vlan300
+   neutron_external_interface: vlan100,vlan200,vlan300
