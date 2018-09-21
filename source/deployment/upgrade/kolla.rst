@@ -5,6 +5,25 @@ Kolla
 Ocata -> Pike
 =============
 
+Docker
+------
+
+.. note::
+
+   This task is only necessary on Ubuntu 16.04 because there the ``python-docker`` package is too old.
+
+.. note::
+
+   It's a good idea to do a Docker upgrade as part of an OpenStack upgrade.
+
+.. code-block:: none
+
+   fatal: [20-10.betacloud.xyz]: FAILED! => {"changed": true, "failed": true, "msg": "'Traceback (most recent call last):\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 804, in main\\n    dw = DockerWorker(module)\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 218, in __init__\\n    self.dc = get_docker_client()(**options)\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 201, in get_docker_client\\n    return docker.APIClient\\nAttributeError: \\'module\\' object has no attribute \\'APIClient\\'\\n'"}
+
+.. code-block:: console
+
+   $ osism-generic docker
+
 Inventory
 ---------
 
