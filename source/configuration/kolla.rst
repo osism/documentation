@@ -21,6 +21,20 @@ Generate secrets
    $ mv secrets.yml.pike secrets.yml
    $ rm generate-secrets.py
 
+.. note::
+
+   Depending on the environment, additional parameters must be added manually in this file.
+   These parameters are not yet included in the upstream of ``kolla-ansible``.
+
+   Currently the following additional parameters are available:
+
+   * ``prometheus_database_password``
+   * ``kolla_external_fqdn_cert``
+
+The ``secrets.yml`` file should be encrypted with Ansibe Vault.
+
+* https://docs.ansible.com/ansible/2.5/user_guide/vault.html
+
 Inventory
 =========
 
@@ -69,31 +83,8 @@ HAProxy
 
 Set the ``kolla_internal_fqdn`` in ``environments/kolla/configuration.yml``.
 
-Generate secrets.yml file
-=========================
-
-.. code-block:: shell
-
-   $ curl -o generate_passwords.py https://raw.githubusercontent.com/openstack/kolla-ansible/master/kolla_ansible/cmd/genpwd.py
-   $ curl -o secrets.yml https://raw.githubusercontent.com/openstack/kolla-ansible/master/etc/kolla/passwords.yml
-   $ python generate_passwords.py -p secrets.yml
-
-.. note::
-
-   Depending on the environment, additional parameters must be added manually in this file.
-   These parameters are not yet included in the upstream of ``kolla-ansible``.
-
-   Currently the following additional parameters are available:
-
-   * ``prometheus_database_password``
-   * ``kolla_external_fqdn_cert``
-
-The ``secrets.yml`` file should be encrypted with Ansibe Vault.
-
-* https://docs.ansible.com/ansible/2.5/user_guide/vault.html
-
 Generate self-signed certificates
-=================================
+---------------------------------
 
 .. note:: Run this command on the manager node.
 
@@ -139,8 +130,11 @@ that uses the external API. The workflow is different for different Linux distri
 Many programs, such as ``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as
 a temporary solution.
 
+Cinder
+======
+
 iSCSI support
-=============
+-------------
 
 * ``environments/kolla/configuration.yml``
 
@@ -165,8 +159,11 @@ iSCSI support
    [tgtd:children]
    storage
 
+Neutron
+=======
+
 Multiple provider networks
-==========================
+--------------------------
 
 * ``inventory/host_vars/<hostname>.yml``
 
