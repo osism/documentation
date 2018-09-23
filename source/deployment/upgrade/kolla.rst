@@ -61,7 +61,9 @@ Inventory
 Configuration
 -------------
 
-* when using a HAproxy overlay configuration file sync it with the Pike version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.pike
+* HAProxy: when using an overlay configuration file sync it with the Pike version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.pike
+
+* Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with``enable_redis: "yes"``, add ``redis_master_password``)
 
 Pike -> Queens
 ==============
