@@ -2,6 +2,18 @@
 Generic
 =======
 
+Force NTP sync
+==============
+
+.. code-block:: console
+
+   $ sudo chronyc -a 'burst 4/4'
+   200 OK
+   200 OK
+   $ chronyc -a makestep
+   200 OK
+   200 OK
+
 Check if reboot required
 ========================
 
