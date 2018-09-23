@@ -69,6 +69,11 @@ Configuration
 
 * Horizon: After the upgrade cleanup and regenerate the cached files with ``docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon``.
 
+Notes
+-----
+
+* Nova: Upgrade the controller (``osism-kolla upgrade nova -l controller``) followed by the compute notes (``osism-kolla upgrade nova -l compute``)
+
 Pike -> Queens
 ==============
 
