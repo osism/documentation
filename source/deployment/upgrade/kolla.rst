@@ -58,6 +58,11 @@ Inventory
    [redis:children]
    control
 
+Configuration
+-------------
+
+* when using a HAproxy overlay configuration file sync it with the Pike version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.pike
+
 Pike -> Queens
 ==============
 
