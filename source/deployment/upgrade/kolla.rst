@@ -65,6 +65,8 @@ Configuration
 
 * Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with``enable_redis: "yes"``, add ``redis_master_password``)
 
+* Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone.
+
 Pike -> Queens
 ==============
 
