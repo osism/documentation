@@ -65,7 +65,9 @@ Configuration
 
 * Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with``enable_redis: "yes"``, add ``redis_master_password``)
 
-* Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone.
+* Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone
+
+* Horizon: After the upgrade cleanup and regenerate the cached files with ``docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon``.
 
 Pike -> Queens
 ==============
