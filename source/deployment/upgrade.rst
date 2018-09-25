@@ -8,3 +8,4 @@ Upgrade
    upgrade/ceph
    upgrade/docker
    upgrade/kolla
+   upgrade/ubuntu
