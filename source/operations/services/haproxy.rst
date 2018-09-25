@@ -15,3 +15,8 @@ Manual Failover
 .. code-block:: console
 
    $ docker restart keepalived
+
+* Another possibility is the use of a additional dummy interface. However, it is necessary to maintain
+  keepalived configuration as an overlay file.
+
+  https://www.virtualtothecore.com/en/manual-failover-of-keepalived/
