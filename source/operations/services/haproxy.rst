@@ -1,8 +1,8 @@
-=============
+=======
 HAProxy
-=============
+=======
 
-Manual Failover
+Manual failover
 ===============
 
 * Although HAProxy runs on multiple nodes, the virtual IP addresses can only be assigned to one node.
