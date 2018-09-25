@@ -66,6 +66,9 @@ Cluster start and stop
 Delete old indices
 ==================
 
+Manual
+------
+
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/_list_all_indices.html
 
 .. code-block:: console
