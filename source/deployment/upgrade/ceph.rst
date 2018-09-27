@@ -199,7 +199,7 @@ Replace old OSDs by new ones
 ----------------------------
 
 * Replace each old OSD in the tree by the corresponding new one. That is, pick a new OSD of correct size and type.
-  You can find information about the new OSDs with the `ceph osd metadata osd.26` command
+  You can find information about the new OSDs with the `ceph osd metadata` command.
   Also add the corresponding device class if necessary and set values for weight and reweight.
   Be sure to not to purge the old OSD too early or you won't know where to place which new OSD or which device class to set.
 
