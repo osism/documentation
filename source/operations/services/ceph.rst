@@ -170,3 +170,18 @@ Set the number of placement groups
    ceph_conf_overrides:
      global:
        mon pg warn max object skew: 0
+
+Logging
+=======
+
+* Ceph daemons are configured to log to the console instead of log files. OSDs are configured to log to MONs.
+
+.. code-block:: console
+
+   $ docker logs ceph-mon-ceph01
+
+* Logs can become very big. ``docker logs`` provides some useful parameters to only show newest logs and to see new log messages when they appear.
+
+.. code-block:: console
+
+   $ docker logs --tail 100 --follow ceph-mon-ceph01
