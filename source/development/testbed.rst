@@ -4,21 +4,20 @@ Testbed
 
 * https://github.com/osism/testbed
 
-Create
-======
+Prepare
+=======
 
 * Create ``clouds.yml`` file
 * If necessary, adapt the environment files in the directory ``etc`` (e.g. to set the flavor type or the public network)
-* Create stack: ``$ tox -e full-xenial-ansible25 create``
-* Deploy manager: ``$ tox -e full-xenial-ansible25 manager``
-* Deploy mirror: ``$ tox -e full-xenial-ansible25 mirror`` (optional)
+* Create stack: ``$ tox -qe full-xenial-ansible25 create``
 
-Destroy
-=======
+Deploy
+======
 
-.. code-block:: console
-
-   $ tox -e full-xenial-ansible25 destroy
+* Bootstrap & deploy manager: ``$ tox -qe full-xenial-ansible25 manager``
+* Deploy mirror: ``$ tox -qe full-xenial-ansible25 mirror`` (optional)
+* Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
+* Deploy nodes: ``$ tox -qe full-xenial-ansible25 deploy-nodes``
 
 Usage
 =====
@@ -28,10 +27,7 @@ Information
 
 .. code-block:: console
 
-   $ tox -e full-xenial-ansible25 info
-   full-xenial-ansible25 runtests: PYTHONHASHSEED='1202754648'
-   full-xenial-ansible25 runtests: commands[0] | bash scripts/tox.sh info
-
+   $ tox -qe full-xenial-ansible25 info
    external manager address: 185.136.140.19
 
    path to private ssh key: environments/manager/files/id_rsa.testbed-full
@@ -57,4 +53,13 @@ Login
 
 .. code-block:: console
 
-   $ tox -e full-xenial-ansible25 login
+   $ tox -qe full-xenial-ansible25 login
+   Last login: Thu Sep 27 14:18:09 2018 from a.b.c.d
+   dragon@TESTBED-FULL-manager:~$
+
+Destroy
+=======
+
+.. code-block:: console
+
+   $ tox -qe full-xenial-ansible25 destroy
