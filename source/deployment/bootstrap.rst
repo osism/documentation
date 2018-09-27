@@ -86,6 +86,16 @@ You have to update the cobbler configuration.
 
 Then the new node can be started. The provisioning then starts automatically via PXE.
 
+.. note::
+
+   If the PXE boot does not start, this may be because of an error in the MAC address. You might find some useful logs from dhcpd in the cobbler container.
+
+   .. code-block:: console
+
+      $ docker exec -it cobbler bash
+        # service rsyslog start
+        # tail -f /var/log/syslog 
+
 Inventory
 ---------
 
