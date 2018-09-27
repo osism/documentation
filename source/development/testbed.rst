@@ -57,6 +57,14 @@ Login
    Last login: Thu Sep 27 14:18:09 2018 from a.b.c.d
    dragon@TESTBED-FULL-manager:~$
 
+Configuration repository update
+-------------------------------
+
+.. code-block:: console
+
+   $ tox -qe full-xenial-ansible25 prepare-manager
+   $ tox -qe full-xenial-ansible25 ceph-fetch-keys
+
 Destroy
 =======
 
