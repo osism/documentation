@@ -185,3 +185,55 @@ Logging
 .. code-block:: console
 
    $ docker logs --tail 100 --follow ceph-mon-ceph01
+
+Replace defect OSD
+==================
+
+* Locate defect OSD
+
+.. code-block:: console
+
+   $ ceph osd metadata osd.22
+     "bluefs_slow_dev_node": "sdk",
+     "hostname": "ceph04",
+
+   $ ssh ceph04
+   $ dmesg -T | grep sdk | grep -i error
+     ...
+     blk_update_request: I/O error, dev sdk, sector 7501476358
+     Buffer I/O error on dev sdk1, logical block 7470017030, async page read
+     blk_update_request: I/O error, dev sdk, sector 7501476359
+     Buffer I/O error on dev sdk1, logical block 7470017031, async page read
+
+* Find and replace actual hardware
+
+.. code-block:: console
+
+   $ sudo udevadm info --query=all --name=/dev/sdk
+   $ sudo hdparm -I /dev/sdk
+
+* Prepare new OSD
+
+.. code-block:: console
+
+   $ docker start -ai ceph-osd-prepare-ceph04-sdk
+
+* Add OSD to tree
+
+.. code-block:: console
+
+   $ ceph osd df tree
+      CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
+               7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
+       hdd     3.7       0      0      0      0     0    0        osd.22
+       hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
+       ...
+       hdd     0.0       0      0      0      0     0    0 osd.27
+
+   $ ceph osd crush create-or-move osd.27 3.7 hdd=ceph04-hdd
+   $ ceph osd purge osd.22
+   $ ceph osd df tree
+      CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
+               7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
+       hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
+       hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
