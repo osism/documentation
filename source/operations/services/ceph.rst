@@ -237,3 +237,16 @@ Replace defect OSD
                7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
        hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
        hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
+
+Export image
+============
+
+.. code-block:: console
+
+   $ rbd export --pool=volumes volume-035f3636-ad68-4562-88f5-11d7e295d03e /home/dragon/035f3636-ad68-4562-88f5-11d7e295d03e.img
+   $ docker cp cephclient_cephclient_1:/home/dragon/035f3636-ad68-4562-88f5-11d7e295d03e.img /tmp
+
+.. code-block:: console
+
+   $ docker exec -it cephclient_cephclient_1 rm -f /home/dragon/035f3636-ad68-4562-88f5-11d7e295d03e.img
+   $ rm -f /tmp/035f3636-ad68-4562-88f5-11d7e295d03e.img
