@@ -4,8 +4,8 @@ Cinder
 
 * https://docs.openstack.org/cinder/latest/man/cinder-manage.html
 
-Remove a volume service
-=======================
+Remove service
+==============
 
 .. note::
 
