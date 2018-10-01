@@ -85,23 +85,6 @@ Alternatively, the program ``osinfo-query`` contained in the package ``libosinfo
     altlinux2.0 | ALT Linux 2.0           | 2.0     | http://altlinux.org/altlinux/2.0
    [...]
 
-Horizon webinterface broken
-===========================
-
-Description
------------
-
-.. image:: /images/horizon-broken.png
-
-Solution
---------
-
-You have to cleanup and restart all horizon containers.
-
-.. code-block:: console
-
-   $ docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon
-
 Empty action list in Mistral
 ============================
 

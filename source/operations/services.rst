@@ -12,6 +12,7 @@ Services
    services/elasticsearch
    services/haproxy
    services/heat
+   services/horizon
    services/mariadb
    services/nova
    services/openstack
