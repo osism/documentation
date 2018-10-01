@@ -7,6 +7,7 @@ Services
 
    services/aptly
    services/ceph
+   services/nova
    services/cinder
    services/cobbler
    services/elasticsearch
