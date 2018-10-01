@@ -300,10 +300,6 @@ configuration and size of tested environment.
    Completed: Task validation.
    Input Task is valid :)
 
-.. note::
-
-   Removed from the output: ``2018-01-16 20:55:24.621 544 INFO rally.task.engine [-] Task da7b502d-a8ed-4d59-91fd-83043ddd6aaf | ``
-
 .. code-block:: console
 
    $ rally task start /tests/task.yml --task-args-file /tests/task-arguments.yml
