@@ -57,6 +57,8 @@ individual notification queues.
 rabbitmqadmin
 =============
 
+* https://www.rabbitmq.com/management-cli.html
+
 .. blockqoute:
 
    The management plugin ships with a command line tool rabbitmqadmin which can perform
@@ -64,7 +66,3 @@ rabbitmqadmin
    automation tasks. Note that rabbitmqadmin is just a specialised HTTP client; if you
    are contemplating invoking rabbitmqadmin from your own program you may want to consider
    using an HTTP API client library instead. [#s1]_
-
-* https://www.rabbitmq.com/management-cli.html
-
-.. [#s1] https://www.rabbitmq.com/management-cli.html
