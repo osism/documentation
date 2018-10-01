@@ -233,7 +233,7 @@ The external network connects virtual machines to the outside.
 
    neutron_external_interface: eth4
 
-.. fixme::
+.. todo::
 
    Add provider network from network overview or delete this fixme if not needed.
 
