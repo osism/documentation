@@ -7,13 +7,13 @@ Services
 
    services/aptly
    services/ceph
-   services/nova
    services/cinder
    services/cobbler
    services/elasticsearch
    services/haproxy
    services/heat
    services/mariadb
+   services/nova
    services/openstack
    services/openvswitch
    services/rabbitmq
