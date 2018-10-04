@@ -84,7 +84,10 @@ unable to find user X: no matching entries in passwd file
 Cleanup
 =======
 
-* Images (manual)
+Images
+======
+
+* Manual
 
 .. code-block:: console
 
@@ -99,6 +102,8 @@ Cleanup
    [...]
    Total reclaimed space: 9.681GB
 
-* Images (ansible)
+* Ansible
+
+.. code-block:: console
 
    $ osism-generic cleanup-docker --tags images
