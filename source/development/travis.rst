@@ -7,6 +7,21 @@ This chapter uses the Travis CLI. It is assumed that this is installed and a log
 * https://github.com/travis-ci/travis.rb#readme
 * https://docs.travis-ci.com/user/apps/
 
+Custom builds
+=============
+
+* https://blog.travis-ci.com/2017-08-24-trigger-custom-build
+
+.. code-block:: yaml
+
+   env:
+     global:
+       - OSISM_VERSION=latest
+     matrix:
+       - OPENSTACK_VERSION=pike KOLLA_IMAGES=rabbitmq PUSH=false BASEPUSH=false
+
+.. image:: /images/travis-custom-build.png
+
 Encrypted files
 ===============
 
