@@ -10,7 +10,7 @@ Force NTP sync
    $ sudo chronyc -a 'burst 4/4'
    200 OK
    200 OK
-   $ chronyc -a makestep
+   $ sudo chronyc -a makestep
    200 OK
    200 OK
 
