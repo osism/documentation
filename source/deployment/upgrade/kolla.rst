@@ -5,6 +5,9 @@ Kolla
 Ocata -> Pike
 =============
 
+* https://docs.openstack.org/releasenotes/kolla/pike.html
+* https://docs.openstack.org/releasenotes/kolla-ansible/pike.html
+
 Docker
 ------
 
@@ -79,5 +82,11 @@ Notes
 Pike -> Queens
 ==============
 
+* https://docs.openstack.org/releasenotes/kolla/queens.html
+* https://docs.openstack.org/releasenotes/kolla-ansible/queens.html
+
 Queens -> Rocky
 ===============
+
+* https://docs.openstack.org/releasenotes/kolla/rocky.html
+* https://docs.openstack.org/releasenotes/kolla-ansible/rocky.html
