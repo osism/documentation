@@ -2,11 +2,19 @@
 Kolla
 =====
 
+Preparations
+============
+
 * HAProxy: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.RELEASE
+
+* Horizon: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/local_settings.j2.RELEASE
+
+Notes
+=====
 
 * Horizon: after the upgrade cleanup and regenerate the cached files with ``docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon``
 
-* Horizon: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/local_settings.j2.RELEASE
+* Nova: Upgrade the controller (``osism-kolla upgrade nova -l controller``) followed by the compute notes (``osism-kolla upgrade nova -l compute``)
 
 Ocata -> Pike
 =============
@@ -78,8 +86,6 @@ Notes
 -----
 
 * Ceilometer: After the upgrade remove the ``ceilometer_api`` container & image from all controller nodes and remove the configuration directory ``/etc/koll/ceilometer-api``
-
-* Nova: Upgrade the controller (``osism-kolla upgrade nova -l controller``) followed by the compute notes (``osism-kolla upgrade nova -l compute``)
 
 Pike -> Queens
 ==============
