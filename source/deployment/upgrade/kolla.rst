@@ -85,6 +85,11 @@ Pike -> Queens
 * https://docs.openstack.org/releasenotes/kolla/queens.html
 * https://docs.openstack.org/releasenotes/kolla-ansible/queens.html
 
+Configuration
+-------------
+
+* RabbitMQ: add new parameter ``rabbitmq_monitoring_password`` to ``secrets.yml``
+
 Queens -> Rocky
 ===============
 
