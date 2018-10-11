@@ -103,3 +103,8 @@ Queens -> Rocky
 
 * https://docs.openstack.org/releasenotes/kolla/rocky.html
 * https://docs.openstack.org/releasenotes/kolla-ansible/rocky.html
+
+Configuration
+-------------
+
+* in ``environments/kolla/configuration.yml`` change ``serial`` to ``kolla_serial``
