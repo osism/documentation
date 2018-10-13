@@ -14,6 +14,7 @@ Services
    services/heat
    services/horizon
    services/mariadb
+   services/neutron
    services/nova
    services/openstack
    services/openvswitch
