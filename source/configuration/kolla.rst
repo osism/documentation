@@ -305,3 +305,33 @@ VLAN interfaces as flat provider networks
 
       $ docker exec -it openvswitch_vswitchd ovs-vsctl get Bridge br-vlan200 datapath-id
       "0000a046f5209e3f"
+
+Nova
+====
+
+PCI passthrough
+---------------
+
+* https://docs.openstack.org/nova/latest/admin/pci-passthrough.html
+
+Gnocchi
+=======
+
+Grafana integration
+-------------------
+
+* https://gnocchi.xyz/grafana.html
+
+* ``environments/kolla/files/overlays/gnocchi.conf``
+
+.. code-block:: ini
+
+   [cors]
+   allowed_origin = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ grafana_server_port }}
+
+* ``environments/kolla/files/overlays/keystone.conf``
+
+.. code-block:: ini
+
+   [cors]
+   allowed_origin = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ grafana_server_port }}
