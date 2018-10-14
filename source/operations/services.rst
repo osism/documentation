@@ -10,7 +10,7 @@ Services
    services/cinder
    services/cobbler
    services/elasticsearch
-   services/gnocchi
+   services/grafana
    services/haproxy
    services/heat
    services/horizon
