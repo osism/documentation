@@ -327,11 +327,11 @@ Grafana integration
 .. code-block:: ini
 
    [cors]
-   allowed_origin = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ grafana_server_port }}
+   allowed_origin = {{ public_protocol }}://{{ kolla_external_fqdn }}:{{ grafana_server_port }}
 
 * ``environments/kolla/files/overlays/keystone.conf``
 
 .. code-block:: ini
 
    [cors]
-   allowed_origin = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ grafana_server_port }}
+   allowed_origin = {{ public_protocol }}://{{ kolla_external_fqdn }}:{{ grafana_server_port }}
