@@ -14,6 +14,7 @@ Services
    services/haproxy
    services/heat
    services/horizon
+   services/kibana
    services/mariadb
    services/neutron
    services/nova
