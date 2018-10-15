@@ -11,6 +11,7 @@ Kolla
 .. toctree::
    :maxdepth: 2
 
+   kolla/cinder
    kolla/freezer
 
 Generate secrets
@@ -141,35 +142,6 @@ You should also add the self-signed certificate to the list of trusted certifcat
 that uses the external API. The workflow is different for different Linux distributions.
 Many programs, such as ``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as
 a temporary solution.
-
-Cinder
-======
-
-iSCSI support
--------------
-
-* ``environments/kolla/configuration.yml``
-
-.. code-block:: yaml
-
-   enable_cinder_backend_iscsi: yes
-   enable_cinder_backend_lvm: no
-
-* ``inventory/hosts``
-
-.. code-block:: ini
-
-   [iscsid:children]
-   compute
-   storage
-   ironic-conductor
-
-   [multipathd:children]
-   compute
-   storage
-
-   [tgtd:children]
-   storage
 
 Keystone
 ========
