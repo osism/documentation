@@ -313,6 +313,48 @@ PCI passthrough
 ---------------
 
 * https://docs.openstack.org/nova/latest/admin/pci-passthrough.html
+* https://docs.openstack.org/nova/latest/configuration/config.html#pci
+
+* enable IOMMU support (further details at https://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM)
+
+* enable the ``PciPassthroughFilter`` scheduler in ``environments/kolla/files/overlays/nova/nova-scheduler.conf``
+
+  .. code-block:: ini
+
+     [filter_scheduler]
+     enabled_filters = ..., PciPassthroughFilter
+
+* get vendor and products IDs
+
+  .. code-block:: console
+
+     $ lspci -nn
+
+* specify PCI aliases for the devices in ``environments/kolla/files/overlays/nova/nova-api.conf``
+  and ``environments/kolla/files/overlays/nova/nova-compute.conf``
+
+  .. code-block:: ini
+
+     [pci]
+     alias={"vendor_id": "8086", "product_id":"10fb", "device_type":"type-PCI", "name":"testing"}
+
+* whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
+
+  .. code-block:: ini
+
+     [pci]
+     passthrough_whitelist = { "address": "0000:41:00.0" }
+
+  .. code-block:: ini
+
+     [pci]
+     passthrough_whitelist = { "vendor_id": "8086", "product_id": "10fb" }
+
+* set the ``pci_passthrough:alias"`` property on a flavor
+
+  .. code-block:: console
+
+     $ openstack --os-cloud service flavor set 1C-1GB-10GB --property "pci_passthrough:alias"="testing:1"
 
 Gnocchi
 =======
