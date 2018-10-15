@@ -8,6 +8,11 @@ Kolla
 
    The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
 
+.. toctree::
+   :maxdepth: 2
+
+   kolla/freezer
+
 Generate secrets
 ================
 
