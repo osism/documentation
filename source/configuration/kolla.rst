@@ -78,6 +78,13 @@ Use a specific image version
 * possible images for ``ocata``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-ocata.yml
 * possible images for ``pike``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-pike.yml
 
+Enable service
+==============
+
+* make sure the necessary inventory groups are available in ``inventory/hosts``
+* make sure the desired service is supported
+* enable the service in ``environments/kolla/configuration.yml`` (e.g. ``enable_freezer: "yes"`` to activate the service Freezer)
+
 HAProxy
 =======
 
