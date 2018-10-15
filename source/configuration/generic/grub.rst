@@ -17,21 +17,42 @@ Grub
 
 Blacklist a module:
 
-  .. code-block:: yaml
+.. code-block:: yaml
 
-     ##########################
-     # grub
+   ##########################
+   # grub
 
-     grub_kernel_options:
-       - modprobe.blacklist=qla2xxx
+   grub_kernel_options:
+     - modprobe.blacklist=qla2xxx
 
 Disable predictable network interface names:
 
-  .. code-block:: yaml
+.. code-block:: yaml
 
-     ##########################
-     # grub
+   ##########################
+   # grub
 
-     grub_kernel_options:
-       - net.ifnames=0
-       - biosdevname=0
+   grub_kernel_options:
+     - net.ifnames=0
+     - biosdevname=0
+
+Enable IOMMU (Intel):
+
+.. code-block:: yaml
+
+   ##########################
+   # grub
+
+   grub_kernel_options:
+     - intel_iommu=on
+
+Enable IOMMU (AMD):
+
+.. code-block:: yaml
+
+   ##########################
+   # grub
+
+   grub_kernel_options:
+     - iommu=pt
+     - iommu=1
