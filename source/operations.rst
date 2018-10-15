@@ -9,4 +9,3 @@ Operations
    operations/docker
    operations/generic
    operations/services
-   operations/monitoring
