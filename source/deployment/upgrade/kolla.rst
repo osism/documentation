@@ -9,6 +9,8 @@ Preparations
 
 * Horizon: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/local_settings.j2.RELEASE
 
+* gather facts with ``osism-generic facts`` before the upgrade
+
 Notes
 =====
 
