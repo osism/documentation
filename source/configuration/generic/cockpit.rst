@@ -12,9 +12,9 @@ Client
    :align: left
 
    * - **Name**
-     - ``osism.common``
+     - ``osism.cockpit``
    * - **Repository**
-     - https://github.com/osism/ansible-common
+     - https://github.com/osism/ansible-cockpit
    * - **Documentation**
      - ---
 
@@ -23,9 +23,12 @@ Client
   .. code-block:: yaml
 
      ##########################
-     # common
+     # cockpit
 
      configure_cockpit: yes
+
+     cockpit_groupname: all
+     cockpit_ssh_interface: "{{ console_interface }}"
 
      ##########################
      # hardening
@@ -40,9 +43,9 @@ Server
    :align: left
 
    * - **Name**
-     - ``osism.manager``
+     - ``osism.cockpit``
    * - **Repository**
-     - https://github.com/osism/ansible-manager
+     - https://github.com/osism/ansible-cockpit
    * - **Documentation**
      - ---
 
@@ -53,21 +56,6 @@ Server
      ##########################
      # cockpit
 
-     configure_cockpit: yes
-     cockpit_groupname: all
+     configure_cockpit_server: yes
+
      cockpit_host: "{{ hostvars[inventory_hostname]['ansible_' + console_interface]['ipv4']['address'] }}"
-     cockpit_port: 8130
-     cockpit_ssh_port: 22
-
-
-     ##########################
-     # cockpit
-
-* ``environments/configuration.yml``
-
-  .. code-block:: yaml
-
-     ##########################
-     # cockpit
-
-     cockpit_ssh_interface: "{{ console_interface }}"
