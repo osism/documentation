@@ -2,6 +2,12 @@
 Nova
 ====
 
+Virtual GPUs
+============
+
+* https://docs.openstack.org/nova/latest/admin/virtual-gpu.html
+* https://docs.nvidia.com/grid/gpus-supported-by-vgpu.html
+
 PCI passthrough
 ===============
 
