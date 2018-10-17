@@ -15,6 +15,7 @@ Kolla
    kolla/freezer
    kolla/gnocchi
    kolla/keystone
+   kolla/mistral
 
 Generate secrets
 ================

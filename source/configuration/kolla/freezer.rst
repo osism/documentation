@@ -20,6 +20,8 @@ Inventory groups
    [freezer:children]
    control
 
+   # freezer
+
    [freezer-api:children]
    freezer
 
