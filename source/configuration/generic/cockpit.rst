@@ -26,8 +26,6 @@ Client
      # cockpit
 
      configure_cockpit: yes
-
-     cockpit_groupname: all
      cockpit_ssh_interface: "{{ console_interface }}"
 
      ##########################
@@ -49,7 +47,7 @@ Server
    * - **Documentation**
      - ---
 
-* ``environments/manager/configuration.yml``
+* ``inventory/host_vars/MANAGER.yml``
 
   .. code-block:: yaml
 
@@ -57,5 +55,4 @@ Server
      # cockpit
 
      configure_cockpit_server: yes
-
      cockpit_host: "{{ hostvars[inventory_hostname]['ansible_' + console_interface]['ipv4']['address'] }}"
