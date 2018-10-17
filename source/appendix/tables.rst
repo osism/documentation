@@ -5,8 +5,9 @@ Tables
 .. toctree::
    :maxdepth: 2
 
-   tables/services
-   tables/node-types
-   tables/networks
    tables/ansible-roles
    tables/docker-images
+   tables/networks
+   tables/node-types
+   tables/services
+   tables/webinterfaces
