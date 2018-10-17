@@ -14,6 +14,7 @@ Kolla
    kolla/cinder
    kolla/freezer
    kolla/gnocchi
+   kolla/heat
    kolla/keystone
    kolla/mistral
 
