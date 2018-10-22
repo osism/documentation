@@ -29,7 +29,6 @@ Deploy
       fatal: [testbed-controller-manager.osism.xyz]: FAILED! => {"changed": true,
       [...]
 
-* Deploy mirror: ``$ tox -qe full-xenial-ansible25 mirror`` (optional)
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
 
 All services
