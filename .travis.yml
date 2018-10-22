@@ -8,11 +8,6 @@ addons:
     packages:
     - lftp
 
-cache:
-  directories:
-    - $HOME/.cache/pip
-    - .tox
-
 install:
   - pip install -r requirements.txt
 
