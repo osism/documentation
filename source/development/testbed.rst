@@ -82,7 +82,7 @@ Login
 
    $ tox -qe full-xenial-ansible25 login
    Last login: Thu Sep 27 14:18:09 2018 from a.b.c.d
-   dragon@TESTBED-FULL-manager:~$
+   dragon@testbed-full-manager:~$
 
 Configuration repository update
 -------------------------------
