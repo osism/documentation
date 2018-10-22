@@ -23,10 +23,11 @@ Deploy
 
    .. code-block:: none
 
-   PLAY [Check cloud init] *******************************************************
+      PLAY [Check cloud init] *******************************************************
 
-   TASK [Check /var/lib/cloud/instance/boot-finished] ****************************
-   fatal: [testbed-controller-manager.osism.xyz]: FAILED! => {"changed": true, ...
+      TASK [Check /var/lib/cloud/instance/boot-finished] ****************************
+      fatal: [testbed-controller-manager.osism.xyz]: FAILED! => {"changed": true,
+      [...]
 
 * Deploy mirror: ``$ tox -qe full-xenial-ansible25 mirror`` (optional)
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
