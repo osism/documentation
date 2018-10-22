@@ -9,6 +9,7 @@ Services
    services/ceph
    services/cinder
    services/cobbler
+   services/cockpit
    services/elasticsearch
    services/grafana
    services/haproxy
