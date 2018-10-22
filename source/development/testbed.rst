@@ -31,7 +31,20 @@ Deploy
 
 * Deploy mirror: ``$ tox -qe full-xenial-ansible25 mirror`` (optional)
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
-* Deploy nodes: ``$ tox -qe full-xenial-ansible25 deploy-nodes``
+
+All services
+------------
+
+.. code-block:: console
+
+   $ tox -qe full-xenial-ansible25 deploy-nodes
+
+Single service
+--------------
+
+.. code-block:: console
+
+   $ tox -qe full-xenial-ansible25 deploy-rabbitmq
 
 Usage
 =====
