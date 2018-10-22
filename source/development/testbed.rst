@@ -15,6 +15,19 @@ Deploy
 ======
 
 * Bootstrap & deploy manager: ``$ tox -qe full-xenial-ansible25 manager``
+
+.. note::
+
+   If the cloud init check fails, restart the manager deployment a few minutes later.
+   The initial bootstrap of the manager node is not completed yet.
+
+   .. code-block:: none
+
+   PLAY [Check cloud init] *******************************************************
+
+   TASK [Check /var/lib/cloud/instance/boot-finished] ****************************
+   fatal: [testbed-controller-manager.osism.xyz]: FAILED! => {"changed": true, ...
+
 * Deploy mirror: ``$ tox -qe full-xenial-ansible25 mirror`` (optional)
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
 * Deploy nodes: ``$ tox -qe full-xenial-ansible25 deploy-nodes``
