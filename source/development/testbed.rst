@@ -61,12 +61,14 @@ Information
 
    ssh username: dragon
 
-   horizon: http://185.136.140.19:8080
-   rally: http://185.136.140.19:8090
-   phpmyadmin: http://185.136.140.19:8110
-   ara dashboard: http://185.136.140.19:8120
-   cockpit: https://185.136.140.19:8130
-   prometheus: http://185.136.140.19:9090
+   ara dashboard: http://185.136.140.17:8120
+   cockpit: https://185.136.140.17:8130
+   grafana: http://185.136.140.17:3000
+   horizon: http://185.136.140.17
+   kibana: http://185.136.140.17:5601
+   phpmyadmin: http://185.136.140.17:8110
+   rabbitmq: http://185.136.140.17:15672
+   rally: http://185.136.140.17:8090
    ________________mmary _____________________
      full-xenial-ansible25: commands succeeded
      congratulations :)
@@ -90,7 +92,7 @@ Configuration repository update
 .. code-block:: console
 
    $ tox -qe full-xenial-ansible25 prepare-manager
-   $ tox -qe full-xenial-ansible25 ceph-fetch-keys
+   $ tox -qe full-xenial-ansible25 ceph-fetch-keys  # optional
 
 Destroy
 =======
