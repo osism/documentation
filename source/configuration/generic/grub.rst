@@ -13,9 +13,8 @@ Grub
    * - **Documentation**
      - https://docs.debops.org/en/master/ansible/roles/debops.grub/index.html
 
-* ``environments/configuration.yml``
-
-Blacklist a module:
+Blacklist a module
+==================
 
 .. code-block:: yaml
 
@@ -25,7 +24,8 @@ Blacklist a module:
    grub_kernel_options:
      - modprobe.blacklist=qla2xxx
 
-Disable predictable network interface names:
+Disable predictable network interface names
+===========================================
 
 .. code-block:: yaml
 
@@ -36,7 +36,11 @@ Disable predictable network interface names:
      - net.ifnames=0
      - biosdevname=0
 
-Enable IOMMU (Intel):
+Enable IOMMU
+============
+
+Intel
+-----
 
 .. code-block:: yaml
 
@@ -46,7 +50,8 @@ Enable IOMMU (Intel):
    grub_kernel_options:
      - intel_iommu=on
 
-Enable IOMMU (AMD):
+AMD
+---
 
 .. code-block:: yaml
 
@@ -56,3 +61,26 @@ Enable IOMMU (AMD):
    grub_kernel_options:
      - iommu=pt
      - iommu=1
+
+Support of Docker capabilities
+==============================
+
+.. note::
+
+   Memory and swap accounting incur an overhead of about 1% of the total available memory
+   and a 10% overall performance degradation, even if Docker is not running.
+
+.. code-block:: console
+
+   $ docker info
+   [...]
+   WARNING: No swap limit support
+
+.. code-block:: yaml
+
+   ##########################
+   # grub
+
+   grub_kernel_options:
+     - cgroup_enable=memory
+     - swapaccount=1
