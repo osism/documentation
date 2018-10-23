@@ -32,6 +32,7 @@ Deploy
       [...]
 
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
+* Reboot nodes: ``$ tox -qe full-xenial-ansible25 reboot-nodes``
 
 All services
 ------------
