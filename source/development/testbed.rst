@@ -4,6 +4,8 @@ Testbed
 
 * https://github.com/osism/testbed
 
+.. image:: /images/testbed-heat-dashboard.png
+
 Prepare
 =======
 
