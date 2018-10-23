@@ -13,6 +13,10 @@ Prepare
 * If necessary, adapt the environment files in the directory ``etc`` (e.g. to set the flavor type or the public network)
 * Create stack: ``$ tox -qe full-xenial-ansible25 create``
 
+.. note::
+
+   Depending on the environment used, the creation of the stack takes a few minutes.
+
 Deploy
 ======
 
@@ -31,7 +35,16 @@ Deploy
       fatal: [testbed-controller-manager.osism.xyz]: FAILED! => {"changed": true,
       [...]
 
+.. note::
+
+   Depending on the environment used, the boostrap of the manager takes some time.
+
 * Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
+
+.. note::
+
+   Depending on the environment used, the boostrap of the nodes takes some time.
+
 * Reboot nodes: ``$ tox -qe full-xenial-ansible25 reboot-nodes``
 
 All services
