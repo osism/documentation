@@ -45,3 +45,24 @@ Cleanup neutron-ns-metadata-proxy logfiles
    $ docker exec -it kolla_toolbox bash
    (kolla-toolbox)[ansible@30-10 /] $ ls -1 /var/log/kolla/neutron/neutron-ns-metadata-proxy-* | wc -l
    29
+
+Neutron agent delete
+====================
+
+* check dead network agent
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin network agent list | grep XXX
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+   | ID                                   | Agent Type         | Host              | Availability Zone | Alive | State | Binary                    |
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+   | 63066190-277f-4165-aff4-980597fea11b | Open vSwitch agent | neutron-agent     | None              | XXX   | UP    | neutron-openvswitch-agent |
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+
+* delete network agent
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin network agent delete 63066190-277f-4165-aff4-980597fea11b
+   $openstack --os-cloud admin network agent list | grep XXX
