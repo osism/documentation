@@ -46,6 +46,19 @@ On the manager node run the recovery process.
 .. code-block:: console
 
    $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_%'"
+   +------------------------------+----------------------------------------------------+
+   | Variable_name                | Value                                              |
+   +------------------------------+----------------------------------------------------+
+   [...]
+   | wsrep_local_state_comment    | Synced                                             |
+   | wsrep_incoming_addresses     | 10.49.20.10:3306,10.49.20.11:3306,10.49.20.12:3306 |
+   | wsrep_evs_state              | OPERATIONAL                                        |
+   | wsrep_cluster_size           | 3                                                  |
+   | wsrep_cluster_status         | Primary                                            |
+   | wsrep_connected              | ON                                                 |
+   | wsrep_ready                  | ON                                                 |
+   [...]
+   +------------------------------+----------------------------------------------------+
 
 Cluster recovery
 ================
