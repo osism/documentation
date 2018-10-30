@@ -11,7 +11,7 @@ Purge db entries
 
    This command is executed on a controller node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker exec -it heat_api heat-manage purge_deleted -g days 14
 
@@ -22,7 +22,7 @@ Clean dead engine records
 
    This command is executed on a controller node.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker exec -it heat_api heat-manage service clean
    Dead engines are removed.
