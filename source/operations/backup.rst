@@ -19,7 +19,7 @@ Create / extend the file ``environments/kolla/files/overlays/galera.cnf`` with t
 
 To create a backup, the command ``innobackupex`` is now executed on one of the database nodes.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker exec -it mariadb innobackupex /tmp
    [...]
@@ -36,7 +36,7 @@ To create a backup, the command ``innobackupex`` is now executed on one of the d
 
 The backup is stored on the data volume of the ``mariadb`` container. It can be picked up from there with the following call.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ sudo mkdir -p /opt/xtrabackup && sudo chown dragon: /opt/xtrabackup
    $ docker cp mariadb:/tmp/2018-01-11_09-44-20 /opt/xtrabackup
@@ -45,15 +45,21 @@ The backup is stored on the data volume of the ``mariadb`` container. It can be 
 
    The directory ``/tmp/2018-01-11_09-44-20`` to be copied is output at the end of the execution of ``innobackupex``.
 
-   .. code-block:: shell
+   .. code-block:: none
 
       180111 09:45:40 Backup created in directory '/tmp/2018-01-11_09-44-20/'
 
 Then the backup can be removed from the container.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ docker exec -it mariadb rm -rf /tmp/2018-01-11_09-44-20
+
+You can also use the integrated Ansible playbook.
+
+.. code-block:: console
+
+   $ osism-generic backup-mariadb -l 20-10.betacloud.xyz
 
 Elasticsearch
 =============
