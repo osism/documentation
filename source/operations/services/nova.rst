@@ -40,13 +40,15 @@ Compute service delete
 
 .. code-block:: console
 
-  $ openstack --os-cloud admin compute service list | grep disabled
+  $ openstack --os-cloud admin compute service list
   +-----+------------------+-------------------+----------+----------+-------+----------------------------+
   |  ID | Binary           | Host              | Zone     | Status   | State | Updated At                 |
   +-----+------------------+-------------------+----------+----------+-------+----------------------------+
+  [...]
   | 100 | nova-compute     | nova-compute01    | nova     | disabled | down  | 2018-05-17T12:17:24.000000 |
   +-----+------------------+-------------------+----------+----------+-------+----------------------------+
-  $ openstack --os-cloud admin hypervisor list | grep down
+  $ openstack --os-cloud admin hypervisor list
+  [...]
   |  4 | nova-compute01.openstack.org    | QEMU            | 192.168.1.50  | down  |
 
 * delete compute service
@@ -54,5 +56,13 @@ Compute service delete
 .. code-block:: console
 
   $ openstack --os-cloud admin compute service delete 100
-  $ openstack --os-cloud admin compute service list | grep disabled
-  $ openstack --os-cloud admin hypervisor list | grep down
+  $ openstack --os-cloud admin compute service list
+  +-----+------------------+-------------------+----------+----------+-------+----------------------------+
+  |  ID | Binary           | Host              | Zone     | Status   | State | Updated At                 |
+  +-----+------------------+-------------------+----------+----------+-------+----------------------------+
+  [...]
+  | 100 | nova-compute     | nova-compute01    | nova     | disabled | up    | 2018-05-17T12:17:24.000000 |
+  +-----+------------------+-------------------+----------+----------+-------+----------------------------+
+  $ openstack --os-cloud admin hypervisor list
+  [...]
+  |  4 | nova-compute01.openstack.org    | QEMU            | 192.168.1.50  | up    |
