@@ -53,10 +53,11 @@ Neutron agent delete
 
 .. code-block:: console
 
-   $ openstack --os-cloud admin network agent list | grep XXX
+   $ openstack --os-cloud admin network agent list
    +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
    | ID                                   | Agent Type         | Host              | Availability Zone | Alive | State | Binary                    |
    +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+   [...]
    | 63066190-277f-4165-aff4-980597fea11b | Open vSwitch agent | neutron-agent     | None              | XXX   | UP    | neutron-openvswitch-agent |
    +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
 
@@ -65,4 +66,10 @@ Neutron agent delete
 .. code-block:: console
 
    $ openstack --os-cloud admin network agent delete 63066190-277f-4165-aff4-980597fea11b
-   $openstack --os-cloud admin network agent list | grep XXX
+   $ openstack --os-cloud admin network agent list
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+   | ID                                   | Agent Type         | Host              | Availability Zone | Alive | State | Binary                    |
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
+   [...]
+   | 63066190-277f-4165-aff4-980597fea11b | Open vSwitch agent | neutron-agent     | None              |  :-)  | UP    | neutron-openvswitch-agent |
+   +--------------------------------------+--------------------+-------------------+-------------------+-------+-------+---------------------------+
