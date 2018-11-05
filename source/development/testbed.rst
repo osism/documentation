@@ -60,6 +60,7 @@ Deploy
    Depending on the environment used, the boostrap of the nodes takes some time.
 
 * Reboot nodes: ``$ tox -qe full reboot-nodes``
+* Wait for nodes: ``$ tox -qe full wait-for-nodes``
 
 All services
 ------------
