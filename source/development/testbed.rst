@@ -70,20 +70,26 @@ Information
 .. code-block:: console
 
    $ tox -qe full-xenial-ansible25 info
-   external manager address: 185.136.140.19
+
+   environment name: testbed
+
+   Ceph version: luminous
+   Docker version: 18.06.1
+   OSISM version: latest
+   OpenStack version: queens
 
    path to private ssh key: environments/manager/files/id_rsa.testbed-full
-
    ssh username: dragon
+   external manager address: 185.136.140.36
 
-   ara dashboard: http://185.136.140.17:8120
-   cockpit: https://185.136.140.17:8130
-   grafana: http://185.136.140.17:3000
-   horizon: http://185.136.140.17
-   kibana: http://185.136.140.17:5601
-   phpmyadmin: http://185.136.140.17:8110
-   rabbitmq: http://185.136.140.17:15672
-   rally: http://185.136.140.17:8090
+   ara dashboard: http://185.136.140.36:8120
+   cockpit: https://185.136.140.36:8130
+   grafana: http://185.136.140.36:3000
+   horizon: http://185.136.140.36
+   kibana: http://185.136.140.36:5601
+   phpmyadmin: http://185.136.140.36:8110
+   rabbitmq: http://185.136.140.36:15672
+   rally: http://185.136.140.36:8090
    ________________mmary _____________________
      full-xenial-ansible25: commands succeeded
      congratulations :)
