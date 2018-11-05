@@ -20,6 +20,18 @@ Prepare
 Deploy
 ======
 
+.. note::
+
+   The versions to be used can be defined by environment variables when deploying the manager.
+   The default values are in the ``tox.ini`` file.
+
+   .. code-block:: shell
+
+      export CEPH_VERSION=luminous
+      export DOCKER_VERSION=18.06.1
+      export OPENSTACK_VERSION=queens
+      export OSISM_VERSION=latest
+
 * Bootstrap & deploy manager: ``$ tox -qe full-xenial-ansible25 manager``
 
 .. note::
