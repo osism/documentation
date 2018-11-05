@@ -11,7 +11,7 @@ Prepare
 
 * Create ``clouds.yml`` file
 * If necessary, adapt the environment files in the directory ``etc`` (e.g. to set the flavor type or the public network)
-* Create stack: ``$ tox -qe full-xenial-ansible25 create``
+* Create stack: ``$ tox -qe full create``
 
 .. note::
 
@@ -27,12 +27,14 @@ Deploy
 
    .. code-block:: shell
 
+      export ANSIBLE_VERSION=2.6.0
       export CEPH_VERSION=luminous
       export DOCKER_VERSION=18.06.1
       export OPENSTACK_VERSION=queens
       export OSISM_VERSION=latest
+      export UBUNTU_VERSION=16.04
 
-* Bootstrap & deploy manager: ``$ tox -qe full-xenial-ansible25 manager``
+* Bootstrap & deploy manager: ``$ tox -qe full manager``
 
 .. note::
 
@@ -51,27 +53,27 @@ Deploy
 
    Depending on the environment used, the boostrap of the manager takes some time.
 
-* Bootstrap nodes: ``$ tox -qe full-xenial-ansible25 bootstrap-nodes``
+* Bootstrap nodes: ``$ tox -qe full bootstrap-nodes``
 
 .. note::
 
    Depending on the environment used, the boostrap of the nodes takes some time.
 
-* Reboot nodes: ``$ tox -qe full-xenial-ansible25 reboot-nodes``
+* Reboot nodes: ``$ tox -qe full reboot-nodes``
 
 All services
 ------------
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 deploy-nodes
+   $ tox -qe full deploy-nodes
 
 Single service
 --------------
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 deploy-rabbitmq
+   $ tox -qe full deploy-rabbitmq
 
 Usage
 =====
@@ -81,7 +83,7 @@ Information
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 info
+   $ tox -qe full info
 
    environment name: testbed
 
@@ -102,8 +104,8 @@ Information
    phpmyadmin: http://185.136.140.36:8110
    rabbitmq: http://185.136.140.36:15672
    rally: http://185.136.140.36:8090
-   ________________mmary _____________________
-     full-xenial-ansible25: commands succeeded
+   ________________summary _____________________
+     full: commands succeeded
      congratulations :)
 
 Login
@@ -115,7 +117,7 @@ Login
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 login
+   $ tox -qe full login
    Last login: Thu Sep 27 14:18:09 2018 from a.b.c.d
    dragon@testbed-full-manager:~$
 
@@ -124,12 +126,12 @@ Configuration repository update
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 prepare-manager
-   $ tox -qe full-xenial-ansible25 ceph-fetch-keys  # optional
+   $ tox -qe full prepare-manager
+   $ tox -qe full ceph-fetch-keys  # optional
 
 Destroy
 =======
 
 .. code-block:: console
 
-   $ tox -qe full-xenial-ansible25 destroy
+   $ tox -qe full destroy
