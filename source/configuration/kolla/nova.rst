@@ -6,7 +6,35 @@ Virtual GPUs
 ============
 
 * https://docs.openstack.org/nova/latest/admin/virtual-gpu.html
-* https://docs.nvidia.com/grid/gpus-supported-by-vgpu.html
+
+NVIDIA
+------
+
+* https://docs.nvidia.com/grid/latest/grid-vgpu-release-notes-generic-linux-kvm/index.html
+
+* identify the availalbe GPUs
+
+.. code-block:: console
+
+   $ lspci | grep NVIDI
+   02:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
+   82:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
+   85:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
+   86:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
+
+   $ lshw -numeric -C display
+   WARNING: you should run this program as super-user.
+     *-display
+          description: 3D controller
+          product: NVIDIA Corporation [10DE:1B38]
+          vendor: NVIDIA Corporation [10DE]
+   [...]
+
+* resolv the PCI device ID e.g. with https://devicehunt.com
+
+.. image:: /images/devicehunt-nvidia-p40.png
+
+* check https://docs.nvidia.com/grid/gpus-supported-by-vgpu.html
 
 PCI passthrough
 ===============
