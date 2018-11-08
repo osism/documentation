@@ -46,7 +46,7 @@ PCI passthrough
 
   .. code-block:: console
 
-     dragon@cpu1:~$ dmesg | grep IOMMU
+     $ dmesg | grep IOMMU
      [    0.207515] DMAR-IR: IOAPIC id 12 under DRHD base  0xc5ffc000 IOMMU 6
      [    0.207516] DMAR-IR: IOAPIC id 11 under DRHD base  0xb87fc000 IOMMU 5
      [    0.207518] DMAR-IR: IOAPIC id 10 under DRHD base  0xaaffc000 IOMMU 4
@@ -56,6 +56,45 @@ PCI passthrough
      [    0.207523] DMAR-IR: IOAPIC id 15 under DRHD base  0xd37fc000 IOMMU 0
      [    0.207525] DMAR-IR: IOAPIC id 8 under DRHD base  0x9d7fc000 IOMMU 7
      [    0.207526] DMAR-IR: IOAPIC id 9 under DRHD base  0x9d7fc000 IOMMU 7
+     $ docker exec -it nova_libvirt virt-host-validate
+     [...]
+     QEMU: Checking if IOMMU is enabled by kernel                               : PASS
+     [...]
+
+* check if the nouveau kernel module is loaded
+
+  .. code-block:: console
+
+     $ lsmod | grep nouveau
+     nouveau              1503232  0
+     mxm_wmi                16384  1 nouveau
+     video                  40960  1 nouveau
+     ttm                    98304  2 ast,nouveau
+     drm_kms_helper        155648  2 ast,nouveau
+     drm                   364544  6 ast,ttm,drm_kms_helper,nouveau
+     i2c_algo_bit           16384  3 ast,igb,nouveau
+     wmi                    20480  2 mxm_wmi,nouveau
+
+* disable nouveau in ``/etc/modprobe.d/blacklist-nvidia-nouveau.conf``
+
+  .. code-block:: console
+    
+     blacklist nouveau
+     options nouveau modeset=0
+
+* rebuild the initramfs and rebbot
+
+  .. code-block:: console
+
+     $ sudo update-initramfs -u
+     $ sudo reboot
+
+* enable PCI passthrough module in ``/etc/modprobe.d/vfio.conf``
+
+  .. code-block:: console
+ 
+     options vfio-pci ids=10de:1b38
+     options vfio-pci disable_vga=1
 
 * enable the ``PciPassthroughFilter`` scheduler in ``environments/kolla/files/overlays/nova/nova-scheduler.conf``
 
@@ -70,8 +109,7 @@ PCI passthrough
 
      $ lspci -nn
 
-* specify PCI aliases for the devices in ``environments/kolla/files/overlays/nova/nova-api.conf``
-  and ``environments/kolla/files/overlays/nova/nova-compute.conf``
+* specify PCI aliases for the devices in ``environments/kolla/files/overlays/nova/nova-api.conf`` and ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
   .. code-block:: ini
 
