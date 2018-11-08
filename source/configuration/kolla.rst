@@ -19,6 +19,7 @@ Kolla
    kolla/mistral
    kolla/neutron
    kolla/nova
+   kolla/skydive
 
 Generate secrets
 ================
