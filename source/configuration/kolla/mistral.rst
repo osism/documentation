@@ -2,6 +2,10 @@
 Mistral
 =======
 
+.. note::
+
+  Service Mistral is a technical preview.
+
 * https://docs.openstack.org/mistral/latest/
 
 Configuration parameters
@@ -9,7 +13,7 @@ Configuration parameters
 
 .. code-block:: yaml
 
-   enable_mistral: "no"
+   enable_mistral: "yes"
    enable_horizon_mistral: "{{ enable_mistral | bool }}"
 
 Inventory groups

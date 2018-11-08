@@ -9,7 +9,7 @@ Configuration parameters
 
 .. code-block:: yaml
 
-   enable_heat: "no"
+   enable_heat: "yes"
    enable_horizon_heat: "{{ enable_heat | bool }}"
 
 Inventory groups

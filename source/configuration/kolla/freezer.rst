@@ -2,6 +2,10 @@
 Freezer
 =======
 
+.. note::
+
+  Service Freezer is a technical preview.
+
 * https://docs.openstack.org/freezer/latest/
 
 Configuration parameters
@@ -9,7 +13,7 @@ Configuration parameters
 
 .. code-block:: yaml
 
-   enable_freezer: "no"
+   enable_freezer: "yes"
    enable_horizon_freezer: "{{ enable_freezer | bool }}"
 
 Inventory groups
