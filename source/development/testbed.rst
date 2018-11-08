@@ -10,8 +10,50 @@ Prepare
 =======
 
 * Create ``clouds.yml`` file
+
+  .. code-block:: yaml
+
+     ---
+     clouds:
+       testbed:
+         auth:
+           username: USERNAME
+           password: PASSWORD
+           project_name: PROJECT
+           auth_url: https://api-1.betacloud.io:5000/v3
+           project_domain_name: DOMAIN
+           user_domain_name: DOMAIN
+         interface: public
+         identity_api_version: 3
+         verify: false
+     ansible:
+       use_hostnames: True
+       expand_hostvars: True
+       fail_on_errors: True
+
 * If necessary, adapt the environment files in the directory ``etc`` (e.g. to set the flavor type or the public network)
-* Create stack: ``$ tox -qe full create``
+* Create stack
+
+  .. code-block:: console
+
+     $ tox -qe full create
+     info: check if stack exist
+     Stack not found: testbed-full
+     info: create stack
+     2018-11-08 18:56:56Z [testbed-full]: CREATE_IN_PROGRESS  Stack CREATE started
+     2018-11-08 18:57:18Z [testbed-full.storage_2_volume_2]: CREATE_IN_PROGRESS  state changed
+     [...]
+     +---------------------+--------------------------------------+
+     | Field               | Value                                |
+     +---------------------+--------------------------------------+
+     | id                  | c06e2193-b5a2-4bef-9817-66570b731211 |
+     | stack_name          | testbed-full                         |
+     | description         | No description                       |
+     | creation_time       | 2018-11-08T18:56:55Z                 |
+     | updated_time        | None                                 |
+     | stack_status        | CREATE_COMPLETE                      |
+     | stack_status_reason | Stack CREATE completed successfully  |
+     +---------------------+--------------------------------------+
 
 .. note::
 
@@ -136,3 +178,11 @@ Destroy
 .. code-block:: console
 
    $ tox -qe full destroy
+   2018-11-08 18:50:09Z [testbed-full]: DELETE_IN_PROGRESS  Stack DELETE started
+   2018-11-08 18:50:18Z [testbed-full.controller_2_volume_docker_attachment]: DELETE_IN_PROGRESS  state changed
+   2018-11-08 18:50:18Z [testbed-full.storage_3_volume_docker_attachment]: DELETE_IN_PROGRESS  state changed
+   [...]
+   2018-11-08 18:54:30Z [testbed-full.net_external]: DELETE_COMPLETE  state changed
+   2018-11-08 18:54:30Z [testbed-full.net_storage_backend]: DELETE_COMPLETE  state changed
+   2018-11-08 18:54:31Z [testbed-full.net_provider]: DELETE_COMPLETE  state changed
+   2018-11-08 18:54:31Z [testbed-full]: DELETE_COMPLETE  Stack DELETE completed successfully
