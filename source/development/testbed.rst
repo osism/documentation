@@ -116,7 +116,7 @@ Single service
 
 .. code-block:: console
 
-   $ tox -qe full deploy-rabbitmq
+   $ tox -qe full fabric-rabbitmq
 
 Usage
 =====
