@@ -46,7 +46,7 @@ Luminous -> Luminous
 
 .. code-block:: console
 
-   $ osism-ceph rolling_update
+   $ osism-ceph rolling_update -e @/ansible/group_vars/all/defaults.yml
    Are you sure you want to upgrade the cluster? [no]: yes
    [...]
 
