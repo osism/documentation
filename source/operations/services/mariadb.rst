@@ -214,3 +214,78 @@ Attach a shell to the mariadb container and login to the MariaDB server to check
    | wsrep_evs_state | OPERATIONAL |
    +-----------------+-------------+
    1 row in set (0.01 sec)
+
+Change binary logs days
+=======================
+
+* https://www.percona.com/blog/2018/03/28/safely-purging-binary-logs-from-master/
+
+* ``environments/kolla/files/overlays/galera.cnf``
+
+.. code-block:: console
+
+   [mysqld]
+   expire_logs_days = 14
+
+with restart of galera cluster
+------------------------------
+
+.. code-block:: console
+
+   $ osism-kolla reconfigure mariadb
+
+without restart of galera cluster
+---------------------------------
+
+* set in ``/etc/kolla/mariadb/galera.cnf`` on each galera cluster node
+
+.. code-block:: console
+
+   [mysqld]
+   expire_logs_days = 14
+
+* set in DB on each galera cluster node
+
+.. code-block:: console
+
+   mysql> show global variables like 'expire%';
+   +------------------+-------+
+   | Variable_name    | Value |
+   +------------------+-------+
+   | expire_logs_days | 0     |
+   +------------------+-------+
+   1 row in set (0.00 sec)
+   mysql> set global expire_logs_days_logs_days=14
+   Query OK, 0 rows affected (0.00 sec)
+   mysql> show global variables like 'expire%';
+   +------------------+-------+
+   | Variable_name    | Value |
+   +------------------+-------+
+   | expire_logs_days | 14    |
+   +------------------+-------+
+   1 row in set (0.00 sec)
+
+* purge binary logs
+
+.. code-block:: console
+
+   mysql> show binary logs;
+   +------------------+------------+
+   | Log_name         | File_size  |
+   +------------------+------------+
+   | mysql-bin.000161 |        365 |
+   ...
+   | mysql-bin.000249 |  358436195 |
+   +------------------+------------+
+   89 rows in set (0.00 sec)
+   mysql> purge binary logs before '2018-10-16 00:00:00';
+   Query OK, 0 rows affected (0.00 sec)
+   mysql> show binary logs;
+   +------------------+------------+
+   | Log_name         | File_size  |
+   +------------------+------------+
+   | mysql-bin.000232 | 1073741921 |
+   ...
+   | mysql-bin.000249 |  359370671 |
+   +------------------+------------+
+   18 rows in set (0.00 sec)
