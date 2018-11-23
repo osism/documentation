@@ -12,11 +12,11 @@ NVIDIA
 
 * https://docs.nvidia.com/grid/latest/grid-vgpu-release-notes-generic-linux-kvm/index.html
 
-* identify the availalbe GPUs
+* identify the available GPUs
 
 .. code-block:: console
 
-   $ lspci | grep NVIDI
+   $ lspci | grep NVIDIA
    02:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
    82:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
    85:00.0 3D controller: NVIDIA Corporation Device 1b38 (rev a1)
@@ -30,7 +30,7 @@ NVIDIA
           vendor: NVIDIA Corporation [10DE]
    [...]
 
-* resolv the PCI device ID e.g. with https://devicehunt.com
+* resolve the PCI device ID e.g. with https://devicehunt.com
 
 .. image:: /images/devicehunt-nvidia-p40.png
 
@@ -82,7 +82,7 @@ PCI passthrough
      blacklist nouveau
      options nouveau modeset=0
 
-* rebuild the initramfs and rebbot
+* rebuild the initramfs and reboot
 
   .. code-block:: console
 
@@ -103,7 +103,7 @@ PCI passthrough
      [filter_scheduler]
      enabled_filters = ..., PciPassthroughFilter
 
-* get vendor and products IDs
+* get vendor and product IDs
 
   .. code-block:: console
 
