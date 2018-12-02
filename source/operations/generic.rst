@@ -2,6 +2,19 @@
 Generic
 =======
 
+Run commands
+============
+
+.. code-block:: console
+
+   $ osism-ansible generic -m shell -a date all
+   20-10.betacloud.xyz | SUCCESS | rc=0 >>
+   Sun Dec  2 10:28:42 UTC 2018
+
+   10-11.betacloud.xyz | SUCCESS | rc=0 >>
+   Sun Dec  2 10:28:42 UTC 2018
+   [...]
+
 Force NTP sync
 ==============
 
