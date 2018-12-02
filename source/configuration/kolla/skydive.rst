@@ -8,6 +8,13 @@ Skydive
 
 * http://skydive.network/documentation/
 
+Dependencies
+============
+
+* elasticsearch
+* etcd (optional)
+* openvswitch (optional)
+
 Configuration parameters
 ========================
 
