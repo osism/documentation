@@ -27,4 +27,4 @@ vxlan: non-ECT from ADDRESS with TOS=0x2
 
 .. code-block:: console
 
-   $ echo "options vxlan log_ecn_error=N" sudo tee /etc/modprobe.d/osism-vxlan.conf
+   $ echo "options vxlan log_ecn_error=N" | sudo tee /etc/modprobe.d/osism-vxlan.conf
