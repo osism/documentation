@@ -2,6 +2,32 @@
 Ceph
 ====
 
+Node reboot
+===========
+
+.. code-block:: console
+
+   $ ceph osd set noout
+   noout is set
+   $ ceph osd set norebalance
+   norebalance is set
+   $ ceph -s
+     cluster:
+       id:     xxx
+       health: HEALTH_WARN
+               noout,norebalance flag(s) set
+   [...]
+   $ sudo reboot
+   $ ceph osd unset noout
+   noout is unset
+   $ ceph osd unset norebalance
+   norebalance is unset
+   $ ceph -s
+     cluster:
+       id:     xxx
+       health: HEALTH_OK
+   [...]
+
 Cluster start and stop
 ======================
 
