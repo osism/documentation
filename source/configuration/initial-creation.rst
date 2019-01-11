@@ -26,11 +26,15 @@ later.
    $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml python-gilt
 
 When you run cookiecutter, you are asked for the information you collected before.
-A list with all queries can be found here: https://github.com/osism/cfg-cookiecutter/blob/master/cookiecutter.json
+A list with all queries can be found in the ``cookiecotter.json`` configuration file.
+
+.. note::
+
+   To gain access to the cookiecutter repository, please send a request to info@osism.io .
 
 .. code-block:: console
 
-   $ cookiecutter https://github.com/osism/cfg-cookiecutter.git
+   $ cookiecutter ssh://git@config-1.osism.io:10022/generic/cookiecutter.git
 
 Copy the content of the newly created ``cfg-customer`` directory into your Git repository. Be careful
 not to forget the ``.gitignore`` file.
