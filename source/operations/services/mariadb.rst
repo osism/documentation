@@ -255,7 +255,7 @@ without restart of galera cluster
    | expire_logs_days | 0     |
    +------------------+-------+
    1 row in set (0.00 sec)
-   mysql> set global expire_logs_days_logs_days=14
+   mysql> set global expire_logs_days=14
    Query OK, 0 rows affected (0.00 sec)
    mysql> show global variables like 'expire%';
    +------------------+-------+
