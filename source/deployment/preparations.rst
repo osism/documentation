@@ -19,7 +19,7 @@ Seed node
 
   .. code-block:: console
 
-     $ git clone git@github.com:organisation/cfg-xyz.git
+     $ git clone ssh://git@config-1.osism.io:10022/customers/xxx/cfg-yyy.git
 
 .. note::
 
@@ -28,14 +28,14 @@ Seed node
    For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is stored in
     ``~/.ssh/id_rsa.configuration``.
 
-   ``github.com`` will be replaced by the corresponding server
+   ``config-1.osism.io`` will be replaced by the corresponding server
 
    .. code-block:: none
 
-      Host github.com
-        HostName github.com
+      Host config-1.osism.io
+        HostName config-1.osism.io
         User git
-        Port 22
+        Port 10022
         IdentityFile ~/.ssh/id_rsa.configuration
 
 Manager node
