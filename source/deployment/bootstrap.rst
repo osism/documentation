@@ -56,6 +56,14 @@ Bootstrap
 
    Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
 
+.. note::
+
+   When using Ubuntu 18.04 the following call is necessary.
+
+   .. code-block:: console
+
+      $ osism-generic grub -l 'all:!manager'
+
 .. code-block:: console
 
    $ osism-generic network -l 'all:!manager'

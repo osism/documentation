@@ -134,6 +134,14 @@ Manager node
 
    Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure. Since network services are not restarted automatically, later changes to the network configuration are not effective without a manual restart of the network service or reboot of the nodes.
 
+.. note::
+
+   When using Ubuntu 18.04 the following call is necessary.
+
+   .. code-block:: console
+
+      $ ./run.sh grub
+
 .. code-block:: console
 
    $ ./run.sh network

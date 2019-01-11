@@ -16,6 +16,17 @@ Interfaces
    * - **Documentation**
      - ---
 
+.. note::
+
+   At the moment netplan support is not yet integrated in OSISM. Therefore, when using Ubuntu 18.04,
+   Netplan must be disabled.
+
+   .. code-block:: yaml
+
+      # NOTE: At the moment netplan is not yet supported in OSISM.
+      grub_kernel_options:
+        - netcfg/do_not_use_netplan=true
+
 Proxy
 =====
 
