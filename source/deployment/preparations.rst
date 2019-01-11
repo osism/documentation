@@ -70,8 +70,26 @@ Manager node
 
 .. note::
 
-   If at the beginning the login with an SSH key is required, the key has to be added on the manager node to ``authorized_keys`` of
-   the user specified in ``ANSIBLE_USER``.
+   If at the beginning the login with an SSH key is required, the key has to be added on the manager
+   node to ``authorized_keys`` of the user specified in ``ANSIBLE_USER``.
+
+.. warning::
+
+   If the operator user was already created when the operating system was provisioned, this
+   role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
+
+   The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
+
+   .. code-block:: console
+
+      # usermod -u 45000 dragon
+      # groupmod -g 45000 dragon
+
+      # chgrp dragon /home/dragon/
+      # chown dragon /home/dragon/
+
+      # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
+      # find /home/dragon -user 1000 -exec chown -h dragon {} \; 
 
 .. code-block:: console
 
