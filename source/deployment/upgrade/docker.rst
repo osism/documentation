@@ -11,13 +11,13 @@ Docker
 
 .. code-block:: yaml
 
-   docker_version: 18.03.1
+   docker_version: 18.06.1
 
 * ``environments/generic/configuration.yml``
 
 .. code-block:: yaml
 
-   docker_version: 18.03.1
+   docker_version: 18.06.1
 
 .. note::
 

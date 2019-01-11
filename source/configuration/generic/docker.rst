@@ -23,7 +23,7 @@ Version
      ##########################
      # versions
 
-     docker_version: 17.12.0
+     docker_version: 18.06.1
 
 Storage driver
 ==============
