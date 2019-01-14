@@ -7,4 +7,3 @@ Development
 
    development/molecule
    development/travis
-   development/testbed
