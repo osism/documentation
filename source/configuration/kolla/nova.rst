@@ -144,7 +144,7 @@ PCI passthrough
   .. code-block:: ini
 
      [pci]
-     alias={ "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
+     alias = { "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
 
 * whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
@@ -153,9 +153,22 @@ PCI passthrough
      [pci]
      passthrough_whitelist = { "address": "0000:41:00.0" }
 
+  or
+
   .. code-block:: ini
 
      [pci]
+     passthrough_whitelist = { "vendor_id": "10de", "product_id": "1b38" }
+
+.. note::
+
+   In most environments not all compute nodes are equipped with a GPU. Store the compute node specific configurations in host specific overall files, e.g.
+   in ``environments/kolla/files/overlays/nova/52-10.betacloud.xyz/nova.conf``.
+
+   .. code-block:: ini
+
+     [pci]
+     alias = { "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
      passthrough_whitelist = { "vendor_id": "10de", "product_id": "1b38" }
 
 * set the ``pci_passthrough:alias"`` property on a flavor
