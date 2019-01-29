@@ -144,7 +144,7 @@ PCI passthrough
   .. code-block:: ini
 
      [pci]
-     alias={"vendor_id": "8086", "product_id":"10fb", "device_type":"type-PCI", "name":"testing"}
+     alias={"vendor_id": "8086", "product_id":"10fb", "device_type":"type-PCI", "name":"nvidiap40"}
 
 * whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
@@ -162,4 +162,4 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ openstack --os-cloud service flavor set 1C-1GB-10GB --property "pci_passthrough:alias"="testing:1"
+     $ openstack --os-cloud service flavor set 1C-1GB-10GB --property "pci_passthrough:alias"="nvidiap40:1"
