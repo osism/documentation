@@ -175,4 +175,4 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ openstack --os-cloud service flavor set 1C-1GB-10GB --property "pci_passthrough:alias"="nvidiap40:1"
+     $ openstack --os-cloud service flavor set 1C-1G-1GB-10GB --property "pci_passthrough:alias"="nvidiap40:1"
