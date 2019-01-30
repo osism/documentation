@@ -79,6 +79,19 @@ Docker
 Chrony / NTP
 ============
 
+.. note::
+
+   The availability of an NTP server can be tested with ``ntpdate``.
+
+   .. code-block:: console
+
+      $ ntpdate -q 1.de.pool.ntp.org
+      server 188.68.36.203, stratum 2, offset -0.000631, delay 0.04407
+      server 159.69.150.81, stratum 2, offset -0.001407, delay 0.04521
+      server 217.144.138.234, stratum 2, offset -0.002570, delay 0.04294
+      server 185.242.112.3, stratum 2, offset 0.000577, delay 0.04129
+      30 Jan 10:54:07 ntpdate[27123]: adjust time server 185.242.112.3 offset 0.000577 sec
+
 Working
 -------
 
