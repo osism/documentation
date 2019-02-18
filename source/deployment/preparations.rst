@@ -200,6 +200,5 @@ After the bootstrap of the mirror services they have to be synchronized. Dependi
 
 .. code-block:: shell
 
-   $ osism-mirror files
    $ osism-mirror images
    $ osism-mirror packages
