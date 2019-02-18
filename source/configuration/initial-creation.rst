@@ -44,13 +44,3 @@ not to forget the ``.gitignore`` file.
    In a productive environment use Ansible Vault to encrypt the newly created ``secrets.yml`` files,
    before committing it to the Git repository. Never commit any plaintext passwords or secrets to the
    configuration repository.
-
-Use the Git layering tool Gilt to pull some basic configuration files.
-
-Now, inside your Git repository, run ``gilt overlay`` twice. The first time to pull the complete
-``gilt.yml`` and the second time to pull the actual configuration files.
-
-.. code-block:: console
-
-   $ gilt overlay
-   $ gilt overlay
