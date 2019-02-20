@@ -1,6 +1,5 @@
 PyGitHub
 sphinx
 sphinx_fontawesome
-sphinx_rtd_theme
 sphinxcontrib-blockdiag
 sphinxcontrib-nwdiag
