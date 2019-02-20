@@ -21,6 +21,11 @@ later.
 
    It is recommended to always use a virtual environment when you install packages from PyPI.
 
+   .. code-block:: console
+
+      $ virtualenv -p python3 .venv
+      $ source .venv/bin/activate
+
 .. code-block:: console
 
    $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml python-gilt paramiko
