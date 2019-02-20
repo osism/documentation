@@ -1,7 +1,7 @@
 extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome']
 source_suffix = '.rst'
 master_doc = 'index'
-project = u'Open Source Infrastructure & Service Manager'
+project = u'OSISM'
 copyright = u'2017-2019, Betacloud Solutions GmbH'
 author = u'Betacloud Solutions GmbH'
 version = u''
