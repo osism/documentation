@@ -9,13 +9,10 @@ addons:
       - lftp
 
 install:
-  - pip install -r requirements.txt
+  - pip install -r test-requirements.txt
 
 script:
-  - scripts/build.sh
-
-after_success:
-  - 'if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then bash scripts/push.sh; fi'
+  - tox -e build
 
 notifications:
   irc:
