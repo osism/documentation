@@ -12,7 +12,7 @@ Infrastructure
 * Cobbler -- linux installation server
 * Dokuwiki -- simple to use wiki software
 * Netbox -- IP address management (IPAM) and data center infrastructure management (DCIM) tool
-* OSISM -- OpenStack Infrastructure & Service Manager
+* OSISM -- Open Source Infrastructure & Service Manager
 * Registry - docker registry server
 * phpMyAdmin -- administration tool for MySQL and MariaDB
 
