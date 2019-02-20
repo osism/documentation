@@ -46,6 +46,7 @@ Shared services
 * MariaDB Galera Cluster
 * Memcached
 * RabbitMQ Cluster
+* Redis
 
 .. note::
 
@@ -55,14 +56,21 @@ Controller
 ==========
 
 * Aodh, Ceilometer, Gnocchi, Panko -- telemetry framework
+* Barbican -- key management service
 * Cinder -- block storage service
+* Cloudkitty -- billing service
 * Glance -- image service
 * Heat -- orchestration service
 * Horizon -- dashboard
 * Keystone -- identity service
 * Magnum -- container infrastructure management service
+* Manila -- shared filesystems service
 * Mistral -- workflow service
 * Nova -- compute service
+* Octavia -- loadbalancer service
+* Rally -- benchmark service
+* Searchlight -- indexing and search service
+* Watcher -- optimization service
 
 .. note::
 
@@ -86,8 +94,9 @@ Compute
 Network
 -------
 
-* Open vSwitch
 * Linux Bridge
+* Open Virtual Network
+* Open vSwitch
 
 .. note::
 
@@ -99,6 +108,7 @@ Storage
 -------
 
 * Ceph
+* GlusterFS
 
 .. note::
 
