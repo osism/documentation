@@ -18,7 +18,7 @@ Infrastructure
 
 .. note::
 
-   It is possible to integrate other services. The support of an other service on request (info@osism.io).
+   It is possible to integrate other services. The support of an other service on request (info@betacloud-solutions.de).
 
 Logging & Monitoring
 ====================
@@ -66,7 +66,7 @@ Controller
 
 .. note::
 
-   It is possible to integrate other OpenStack services. The support of an other OpenStack service on request (info@osism.io).
+   It is possible to integrate other OpenStack services. The support of an other OpenStack service on request (info@betacloud-solutions.de).
 
 Resources
 =========
@@ -79,7 +79,7 @@ Compute
 
 .. note::
 
-   It is possible to integrate other hypervisors. The support of an other hypervisor on request (info@osism.io).
+   It is possible to integrate other hypervisors. The support of an other hypervisor on request (info@betacloud-solutions.de).
 
    A list of possible hypervisors can be found on https://docs.openstack.org/nova/queens/admin/configuration/hypervisors.html.
 
@@ -91,7 +91,7 @@ Network
 
 .. note::
 
-   It is possible to integrate other network backends. The support of an other network backend on request (info@osism.io).
+   It is possible to integrate other network backends. The support of an other network backend on request (info@betacloud-solutions.de).
 
    A list of possible network drivers can be found on https://github.com/openstack?q=networking.
 
@@ -102,6 +102,6 @@ Storage
 
 .. note::
 
-   It is possible to integrate other storage backends. The support of an other storage backend on request (info@osism.io).
+   It is possible to integrate other storage backends. The support of an other storage backend on request (info@betacloud-solutions.de).
 
    A list of possible storage drivers can be found on https://docs.openstack.org/cinder/queens/configuration/block-storage/volume-drivers.html.

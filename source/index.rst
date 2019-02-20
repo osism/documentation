@@ -7,7 +7,7 @@ Docker based deployment framework for managing OpenStack, Ceph, and necessary
 services.
 
 Further details about OSISM can be found on https://osism.io. Do not hesitate
-to write an e-mail to info@osism.io if you have questions or doubts.
+to write an e-mail to info@betacloud-solutions.de if you have questions or doubts.
 
 * **OpenStack** is a cloud operating system that controls large pools of
   compute, storage, and networking resources throughout a datacenter, all managed
