@@ -23,7 +23,7 @@ later.
 
 .. code-block:: console
 
-   $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml python-gilt
+   $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml python-gilt paramiko
 
 When you run cookiecutter, you are asked for the information you collected before.
 A list with all queries can be found in the ``cookiecotter.json`` configuration file.
