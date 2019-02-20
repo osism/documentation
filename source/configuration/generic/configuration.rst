@@ -26,7 +26,7 @@ Git
    configuration_directory: /opt/configuration
    configuration_type: git
 
-   configuration_git_host: config-1.osism.io
+   configuration_git_host: git.betacloud-solutions.de
    configuration_git_port: 10022
 
    configuration_git_private_key_file: ~/.ssh/id_rsa.configuration

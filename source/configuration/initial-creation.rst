@@ -30,11 +30,11 @@ A list with all queries can be found in the ``cookiecotter.json`` configuration 
 
 .. note::
 
-   To gain access to the cookiecutter repository, please send a request to info@osism.io .
+   To gain access to the cookiecutter repository, please send a request to info@betacloud-solutions.de.
 
 .. code-block:: console
 
-   $ cookiecutter ssh://git@config-1.osism.io:10022/generic/cookiecutter.git
+   $ cookiecutter ssh://git@git.betacloud-solutions.de:10022/generic/cookiecutter.git
 
 Copy the content of the newly created ``cfg-customer`` directory into your Git repository. Be careful
 not to forget the ``.gitignore`` file.
