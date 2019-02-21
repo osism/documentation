@@ -56,9 +56,12 @@ Installation
 
   .. note::
 
-     * The use of LVM2 and RAID1 is recommended
-     * Do not assign the entire storage to the LV for ``/``
-     * Booting from a ``/boot`` logical volume on a software raid is possible
+     * The use of LVM2 and RAID1 is recommended.
+     * Do not assign the entire storage to the LV for ``/``.
+     * Booting from a ``/boot`` logical volume on a software raid is possible.
+     * At this point, only configure devices that are required for the system
+       installation. Devices which are dedicated for e.g. Docker or Ceph are
+       not configured here.
 
 * Choose ``No automatic updates``
 * Choose ``OpenSSH server`` as software to install
