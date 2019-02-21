@@ -28,7 +28,7 @@ Installation
 ------------
 
 * Choose ``English`` as language
-* Choose ``Install Ubuntu Server```
+* Choose ``Install Ubuntu Server``
 * Choose ``English`` as language (again)
 * Choose your location (e.g. ``Germany``)
 * Choose ``en_US.UTF-8`` as locale
