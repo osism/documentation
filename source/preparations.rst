@@ -71,7 +71,8 @@ Post-processing
 ---------------
 
 After the first boot depending on the environment it is necessary to create the network
-configuration manually, because for example bonding or VLANs should be used.
+configuration for the management interface manually, because for example bonding or VLANs
+should be used.
 
 * https://baturin.org/docs/iproute2/
 * https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-vlan_on_bond_and_bridge_using_ip_commands
@@ -101,6 +102,11 @@ configuration manually, because for example bonding or VLANs should be used.
 .. note::
 
    You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
+
+.. note::
+
+   At the beginning it is sufficient to be able to reach the system via SSH. The network configuration is
+   rolled out during the bootstrap. Therefore a manual configuration is sufficient.
 
 Seed node
 =========
