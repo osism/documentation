@@ -156,6 +156,15 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
     the manager node with ``ANSIBLE_USER=ubuntu ./run.sh python``.
   * To verify the creation of the operator user, use the private key file ``id_rsa.operator``:
     ``ssh -i id_rsa.operator dragon@10.49.20.10``.
+  * A typical call to create the operator user looks like this.
+
+    .. code-block:: console
+
+       $ ANSIBLE_BECOME_ASK_PASS=True \
+         ANSIBLE_ASK_VAULT_PASS=True \
+         ANSIBLE_ASK_PASS=True \
+         ANSIBLE_USER=ubuntu \
+         ./run.sh operator
 
   .. warning::
 
@@ -174,18 +183,6 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
 
         # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
         # find /home/dragon -user 1000 -exec chown -h dragon {} \;
-
-  .. note::
-
-     A typical call to create the operator user looks like this.
-
-     .. code-block:: console
-
-        $ ANSIBLE_BECOME_ASK_PASS=True \
-          ANSIBLE_ASK_VAULT_PASS=True \
-          ANSIBLE_ASK_PASS=True \
-          ANSIBLE_USER=ubuntu \
-          ./run.sh operator
 
 * If Ansible Vault is used, the ``ANSIBLE_ASK_VAULT_PASS`` variable will be used accordingly
 
