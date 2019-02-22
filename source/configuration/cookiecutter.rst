@@ -42,7 +42,12 @@ A description of the individual parameters can be found in the README file of th
    $ cookiecutter ssh://git@git.betacloud-solutions.de:10022/generic/cookiecutter.git
 
 Push the contents of the newly created ``cfg-customer`` directory to your Git repository. Be careful
-not to forget dotfiles like ``.gitignore``.
+not to forget dotfiles like ``.gitignore``. The directory itself is not stored in the repository.
+
+.. figure:: /images/gitlab-initial-commit.png
+
+   Directory structure after the initial commit in the Git repository. The ``secrets`` directory
+   is only stored in the repository for test environments.
 
 .. warning::
 
