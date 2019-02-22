@@ -7,15 +7,8 @@ and is summarized here.
 
 The following networks are used:
 
-* Management / Console
-* Internal
-* Monitoring
-* Tunnel
-* Migration
-* External
-* External API
-* Storage Frontend
-* Storage Backend
+.. contents::
+   :local:
 
 Managment / Console
 ===================
