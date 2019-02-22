@@ -58,6 +58,8 @@ PCI passthrough
      [    0.207525] DMAR-IR: IOAPIC id 8 under DRHD base  0x9d7fc000 IOMMU 7
      [    0.207526] DMAR-IR: IOAPIC id 9 under DRHD base  0x9d7fc000 IOMMU 7
 
+* IOMMU PASS
+
   .. code-block:: console
 
      $ docker exec -it nova_libvirt virt-host-validate
@@ -65,6 +67,8 @@ PCI passthrough
      QEMU: Checking for device assignment IOMMU support                         : PASS
      QEMU: Checking if IOMMU is enabled by kernel                               : PASS
      [...]
+
+* IOMMU WARN
 
   .. code-block:: console
 
