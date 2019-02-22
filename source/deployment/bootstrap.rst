@@ -5,6 +5,9 @@ Bootstrap
 .. contents::
    :local:
 
+All nodes
+=========
+
 Execute the following commands on the manager node.
 
 * Creation of the necessary operator user
@@ -57,8 +60,8 @@ Execute the following commands on the manager node.
 
      $ osism-generic bootstrap
 
-New node
-========
+Single node
+===========
 
 Provisioning
 ------------
