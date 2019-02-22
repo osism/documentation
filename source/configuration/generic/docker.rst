@@ -16,27 +16,45 @@ Docker
 Version
 =======
 
-* ``environments/generic/configuration.yml`` & ``environments/manager/configuration.yml``
+Configuration file: ``environments/configuration.yml``
 
-  .. code-block:: yaml
+.. code-block:: yaml
 
-     ##########################
-     # versions
+   ##########################
+   # versions
 
-     docker_version: 18.06.1
+   docker_version: '5:18.09.2'
+
+.. note::
+
+   This ``5:`` must be prepended starting with version ``18.09``.
+
+   Check available version under Ubuntu with ``apt-cache madison docker-ce``.
+
+   .. code-block:: console
+
+      # apt-cache madison docker-ce
+       docker-ce | 5:18.09.2~3-0~ubuntu-xenial | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+       docker-ce | 5:18.09.1~3-0~ubuntu-xenial | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+       docker-ce | 5:18.09.0~3-0~ubuntu-xenial | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+       docker-ce | 18.06.3~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+       docker-ce | 18.06.2~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+       docker-ce | 18.06.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+      [...]
+
 
 Storage driver
 ==============
 
-* ``environments/configuration.yml``
+Configuration file: ``environments/configuration.yml``
 
-  .. code-block:: yaml
+.. code-block:: yaml
 
-     ##########################
-     # docker
+   ##########################
+   # docker
 
-     docker_configure_storage_driver: yes
-     docker_storage_driver: overlay2
+   docker_configure_storage_driver: yes
+   docker_storage_driver: overlay2
 
 .. note::
 
