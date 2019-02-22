@@ -2,6 +2,10 @@
 Cookiecutter
 ============
 
+.. note::
+
+   To gain access to the cookiecutter repository, please send a request to info@betacloud-solutions.de.
+
 You need a Git repository to store the configuration of the environment. It has to be accessible
 from the manager node. A SSH deploy key for read-only access is sufficient.
 
@@ -18,14 +22,12 @@ To prepare the configuration repository, you need cookiecutter. Usually you prep
 repository on your workstation. It is pushed to a central server and pulled from the manager node
 later.
 
-.. note::
+It is recommended to always use a virtual environment when you install packages from PyPI.
 
-   It is recommended to always use a virtual environment when you install packages from PyPI.
+.. code-block:: console
 
-   .. code-block:: console
-
-      $ virtualenv -p python3 .venv
-      $ source .venv/bin/activate
+   $ virtualenv -p python3 .venv
+   $ source .venv/bin/activate
 
 .. code-block:: console
 
@@ -33,10 +35,7 @@ later.
 
 When you run cookiecutter, you are asked for the information you collected before.
 A list with all queries can be found in the ``cookiecutter.json`` configuration file.
-
-.. note::
-
-   To gain access to the cookiecutter repository, please send a request to info@betacloud-solutions.de.
+A description of the individual parameters can be found in the README file of the repository.
 
 .. code-block:: console
 
