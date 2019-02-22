@@ -1,87 +1,36 @@
 ========
-Overview
+Networks
 ========
 
-Files
-=====
+The configuration of the individual networks is distributed across all environments and the inventory
+and is summarized here.
 
-* ``configuration.yml``
+The following networks are used:
 
-  Default configuration parameters can be overwritten by this file.
+.. contents::
+   :local:
 
-* ``images.yml``
+Managment / Console
+===================
 
-  This file can be used to overwrite default images.
-
-* ``secrets.yml``
-
-  Environment specific secrets can be deposited in this file.
-
-* ``ansible.cfg``
-
-  Ansible configuration file.
-
-* ``playbook-*.yml``
-
-  Playbook files for Ansible.
-
-Directories
-===========
-
-* ``inventory``
-
-  Ansible inventory directory. All host-specific details are managed here.
-
-* ``environments``
-
-  Directory for managing the individual environments. Each environment has its own subdirectory.
-
-* ``docs``
-
-  Optional directory to manage documents about an environment.
-
-Ansible
-=======
-
-Configuration
--------------
-
-* ``environments/ansible.cfg``
-* ``environments/*/ansible.cfg``
-
-Inventory
----------
-
-* ``inventory``
-* ``inventory/hosts``
-* ``inventoyr/host_vars/*.yml``
-
-Network Configuration Overview
-==============================
-
-Managment
----------
-
-The managment network is there to access all nodes via SSH as well as some infrastructure and helper
+The managment or console network is there to access all nodes via SSH as well as some infrastructure and helper
 services. It is configured with the ``console_interface`` variable in the host inventory:
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
    console_interface: eth0
 
 Internal
---------
+========
 
 The internal network is used for internal communication between different hosts. It is also used for
 traffic that has no dedicated network.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -94,9 +43,8 @@ traffic that has no dedicated network.
 
    network_interface: eth1
 
-* ``environments/kolla/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
 
    ---
    [...]
@@ -105,9 +53,8 @@ traffic that has no dedicated network.
 
    kolla_internal_fqdn: internal-api.betacloud.xyz
 
-* ``environments/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/configuration.yml
 
    ---
    [...]
@@ -124,14 +71,13 @@ traffic that has no dedicated network.
    kolla_internal_vip_address: 10.0.1.10
 
 Monitoring
-----------
+==========
 
 The monitoring network normally falls together with the internal network. Those can be further separated
 at ``environments/monitorning/configuration.yml``.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -143,27 +89,15 @@ at ``environments/monitorning/configuration.yml``.
 
    prometheus_scaper_interface: eth1
 
-* ``environments/monitoring/configuration.yml``
-
-.. code-block:: yaml
-
-   ---
-   [...]
-   ##########################
-   # prometheus
-
-   prometheus_scraper_ceph_target_host: 10.0.1.3
-
 Tunnel
-------
+======
 
 Traffic between guest virtual machines on different compute nodes or between layer 3 networking
 components such as virtual routers are usually tunneled through VXLAN or GRE tunnels over the tunnel
 network.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -173,13 +107,12 @@ network.
    tunnel_interface: eth2
 
 External API
-------------
+============
 
 External API endpoints are in this network.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -188,9 +121,8 @@ External API endpoints are in this network.
 
    kolla_external_vip_interface: eth3
 
-* ``environments/kolla/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
 
    ---
    [...]
@@ -199,9 +131,8 @@ External API endpoints are in this network.
 
    kolla_external_fqdn: external-api.betacloud.xyz
 
-* ``environments/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/configuration.yml
 
    ---
    [...]
@@ -218,13 +149,12 @@ External API endpoints are in this network.
    kolla_external_vip_address: 10.0.3.10
 
 External
---------
+========
 
 The external network connects virtual machines to the outside.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -233,18 +163,13 @@ The external network connects virtual machines to the outside.
 
    neutron_external_interface: eth4
 
-.. todo::
-
-   Add provider network from network overview or delete this fixme if not needed.
-
 Storage Frontend
-----------------
+================
 
 The storage frontend network is the connection between ceph nodes and all other nodes.
 
-* ``inventory/host_vars/<hostname>.yml``
-
 .. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
 
    ---
    [...]
@@ -259,9 +184,8 @@ The storage frontend network is the connection between ceph nodes and all other 
 
    monitor_interface: eth5
 
-* ``environments/kolla/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
 
    ---
    [...]
@@ -270,9 +194,8 @@ The storage frontend network is the connection between ceph nodes and all other 
 
    ceph_public_network: 10.0.5.0/24
 
-* ``environments/ceph/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/ceph/configuration.yml
 
    ---
    [...]
@@ -281,9 +204,8 @@ The storage frontend network is the connection between ceph nodes and all other 
 
    public_network: 10.0.5.0/24
 
-* ``environments/monitoring/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/monitoring/configuration.yml
 
    ---
    [...]
@@ -293,13 +215,12 @@ The storage frontend network is the connection between ceph nodes and all other 
    prometheus_exporter_ceph_public_network: 10.0.5.0/24
 
 Storage Backend
-----------------
+===============
 
 The storage backend network is the internal connection between ceph nodes.
 
-* ``environments/ceph/configuration.yml``
-
 .. code-block:: yaml
+   :caption: environments/ceph/configuration.yml
 
    ---
    [...]

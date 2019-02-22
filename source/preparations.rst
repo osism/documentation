@@ -2,23 +2,22 @@
 Preparations
 ============
 
-Manual Ubuntu installation on bare-metal servers
-================================================
+.. contents::
+   :local:
 
-.. note::
+Manual installation
+===================
 
-   The manual installation is completely possible without network connectivity.
+The manual installation is completely possible without network connectivity.
 
 Preparations
 ------------
 
 * Download the latest ISO image for Ubuntu 18.04 from http://cdimage.ubuntu.com/releases/18.04/release/
 
-  .. note::
-
-     * Use the ``ubuntu-18.04.2-server-amd64.iso`` image
-     * Do not use the ``ubuntu-18.04.2-live-server-amd64.iso`` image
-     * The version number may be different
+  * Use the ``ubuntu-18.04.2-server-amd64.iso`` image
+  * Do not use the ``ubuntu-18.04.2-live-server-amd64.iso`` image
+  * The version number may be different
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
@@ -35,33 +34,27 @@ Installation
 * Choose the keyboard layout from a list, use ``English (US)``
 * Choose and configure the primary network interface
 
-  .. note::
-
-     Depending on the environment, the network may not work at this point.
-     Then select any interface and then select ``Do not configure the network at this time``
-     in the next step.
+  * Depending on the environment, the network may not work at this point.
+    Then select any interface and then select ``Do not configure the network at this time``
+    in the next step.
 
 * Set the hostname (the hostname is ``60-10`` and not ``60-10.betacloud.xyz``)
 * Set ``ubuntu`` as full name for the new user
 * Set ``ubuntu`` as the username for the account
 * Set a password for the account
 
-  .. note::
-
-     The account is only needed initially and can be deleted
-     after completion of the bootstrap.
+  * The account is only needed initially and can be deleted
+    after completion of the bootstrap.
 
 * Choose ``Manual`` as partitioning method and execute the partitioning according to
   company specifications
 
-  .. note::
-
-     * The use of LVM2 and RAID1 is recommended.
-     * Do not assign the entire storage to the LV for ``/``.
-     * Booting from a ``/boot`` logical volume on a software raid is possible.
-     * At this point, only configure devices that are required for the system
-       installation. Devices which are dedicated for e.g. Docker or Ceph are
-       not configured here.
+  * The use of LVM2 and RAID1 is recommended.
+  * Do not assign the entire storage to the LV for ``/``.
+  * Booting from a ``/boot`` logical volume on a software raid is possible.
+  * At this point, only configure devices that are required for the system
+    installation. Devices which are dedicated for e.g. Docker or Ceph are
+    not configured here.
 
 * Choose ``No automatic updates``
 * Choose ``OpenSSH server`` as software to install
@@ -99,21 +92,15 @@ should be used.
    $ ip address add 172.17.60.10/16 dev vlan101
    # ip route add default via 172.17.40.10
 
-.. note::
+* You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
 
-   You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
-
-.. note::
-
-   At the beginning it is sufficient to be able to reach the system via SSH. The network configuration is
-   rolled out during the bootstrap. Therefore a manual configuration is sufficient.
+* At the beginning it is sufficient to be able to reach the system via SSH. The network configuration is
+  rolled out during the bootstrap. Therefore a manual configuration is sufficient.
 
 Seed node
 =========
 
-.. note::
-
-   Run the commands on the seed node.
+Execute the following commands on the seed node.
 
 * Install required packages
 
@@ -127,184 +114,169 @@ Seed node
 
      $ git clone ssh://git@git.betacloud-solutions.de:10022/customers/xxx/cfg-yyy.git
 
-.. note::
+If necessary, the deployment key can be used for the initial transfer of the repository.
 
-   If necessary, the deployment key can be used for the initial transfer of the repository.
+For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is
+stored in ``~/.ssh/id_rsa.configuration``.
 
-   For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is stored in
-    ``~/.ssh/id_rsa.configuration``.
+.. code-block:: none
 
-   ``git.betacloud-solutions.de`` will be replaced by the corresponding server
-
-   .. code-block:: none
-
-      Host git.betacloud-solutions.de
-        HostName git.betacloud-solutions.de
-        User git
-        Port 10022
-        IdentityFile ~/.ssh/id_rsa.configuration
+   Host git.betacloud-solutions.de
+     HostName git.betacloud-solutions.de
+     User git
+     Port 10022
+     IdentityFile ~/.ssh/id_rsa.configuration
 
 Manager node
 ============
 
-.. note::
+Execute the following commands on the seed node. Execute the commands within the
+manager environment (``cd environments/manager``).
 
-   Run the commands on the seed node. Execute the commands within the
-   manager environment (``cd environments/manager``).
+You can use a different folder location for the virtual environment that will be created by setting
+the environment variable ``VENV_PATH``. This is required for example if your current folder path
+contains blank characters.
 
-.. note::
+Various Ansible configurations can be adjusted via environment variables. For example, to query the
+password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``. If ``secrets.yml`` files are
+encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
 
-   You can use a different folder location for the virtual environment that will be created by setting
-   the environment variable ``VENV_PATH``. This is required for example if your current folder path
-   contains blank characters.
-
-.. note::
-
-   Various Ansible configurations can be adjusted via environment variables.
-
-   For example, to query the password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``.
-
-   If ``secrets.yml`` files are encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
-
-   http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables
+An overview with all parameters can be found at: http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables
 
 * Creation of the necessary operator user
 
-.. note::
+  .. code-block:: console
 
-   If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
+     $ ANSIBLE_USER=ubuntu ./run.sh operator
 
-.. note::
+  * If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
+  * If at the beginning the login with an SSH key is required, the key has to be added on the manager
+    node to ``authorized_keys`` of the user specified in ``ANSIBLE_USER``.
+  * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
+    the manager node with ``ANSIBLE_USER=ubuntu ./run.sh python``.
+  * To verify the creation of the operator user, use the private key file ``id_rsa.operator``:
+    ``ssh -i id_rsa.operator dragon@10.49.20.10``.
+  * A typical call to create the operator user looks like this.
 
-   If at the beginning the login with an SSH key is required, the key has to be added on the manager
-   node to ``authorized_keys`` of the user specified in ``ANSIBLE_USER``.
+    .. code-block:: console
 
-.. warning::
+       $ ANSIBLE_BECOME_ASK_PASS=True \
+         ANSIBLE_ASK_VAULT_PASS=True \
+         ANSIBLE_ASK_PASS=True \
+         ANSIBLE_USER=ubuntu \
+         ./run.sh operator
 
-   If the operator user was already created when the operating system was provisioned, this
-   role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
+  .. warning::
 
-   The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
+     If the operator user was already created when the operating system was provisioned, this
+     role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
 
-   .. code-block:: console
+     The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
 
-      # usermod -u 45000 dragon
-      # groupmod -g 45000 dragon
+     .. code-block:: console
 
-      # chgrp dragon /home/dragon/
-      # chown dragon /home/dragon/
+        # usermod -u 45000 dragon
+        # groupmod -g 45000 dragon
 
-      # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
-      # find /home/dragon -user 1000 -exec chown -h dragon {} \; 
+        # chgrp dragon /home/dragon/
+        # chown dragon /home/dragon/
 
-.. code-block:: console
+        # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
+        # find /home/dragon -user 1000 -exec chown -h dragon {} \;
 
-   $ ANSIBLE_USER=ubuntu ./run.sh operator
+* If Ansible Vault is used, the ``ANSIBLE_ASK_VAULT_PASS`` variable will be used accordingly
 
-.. note::
+  .. code-block:: console
 
-   A typical call to create the operator user looks like this.
-
-   .. code-block:: console
-
-      $ ANSIBLE_BECOME_ASK_PASS=True ANSIBLE_ASK_VAULT_PASS=True ANSIBLE_ASK_PASS=True ANSIBLE_USER=ubuntu ./run.sh operator
-
-.. note::
-
-   If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
-   the manager node.
-
-   .. code-block:: console
-
-      $ ANSIBLE_USER=ubuntu ./run.sh python
-
-.. note::
-
-   To verify the creation of the operator user, use the private key file ``id_rsa.operator``.
-
-   .. code-block:: console
-
-      $ ssh -i id_rsa.operator dragon@10.49.20.10
-
-.. code-block:: console
-
-   $ export ANSIBLE_ASK_VAULT_PASS=True
+     $ export ANSIBLE_ASK_VAULT_PASS=True
 
 * Configuration of the network
 
-.. note::
+  .. code-block:: console
 
-   The network configuration already present on a system should be saved before this step.
+     $ ./run.sh network
 
-.. note::
+  * The network configuration already present on a system should be saved before this step.
+  * Upon completion of this step, a system reboot should be performed to ensure that the
+    configuration is functional and reboot secure. Since network services are not
+    restarted automatically, later changes to the network configuration are not effective
+    without a manual restart of the network service or reboot of the nodes.
+  * When using Ubuntu 18.04 the following call is necessary.
 
-   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure. Since network services are not restarted automatically, later changes to the network configuration are not effective without a manual restart of the network service or reboot of the nodes.
+    .. code-block:: console
 
-.. note::
+       $ ./run.sh grub
 
-   When using Ubuntu 18.04 the following call is necessary.
+  * A reboot is performed to activate and test the network configuration.
+    The reboot must be performed before the bootstrap is performed.
 
-   .. code-block:: console
+    .. code-block:: console
 
-      $ ./run.sh grub
+       $ ./run.sh reboot
 
-.. code-block:: console
+* Bootstrap of the manager node
 
-   $ ./run.sh network
-   $ ./run.sh reboot
+  .. code-block:: console
 
-* Bootstrap of the node
+     $ ./run.sh bootstrap
 
-.. code-block:: console
 
-   $ ./run.sh bootstrap
-
-.. note::
-
-   After the bootstrap check if a reboot is required by checking if the file
-   ``/var/run/reboot-required`` exists.
+  * After the bootstrap check if a reboot is required by checking if the file
+    ``/var/run/reboot-required`` exists.  Regardless of whether a reboot is
+    necessary or not, a reboot should be performed.
 
 * Transfer configuration repository
+
+  .. code-block:: console
+
+     $ ./run.sh configuration
+
+* Deployment of necessary manager services
+
+  .. code-block:: console
+
+     $ ./run.sh manager
+
+Configuration
+=============
+
+There are two possibilities to update the configuration repository on the manager node.
+
+On the seed node change into the manager environment and use the following command. This will update the configuration repository on the manager node.
 
 .. code-block:: console
 
    $ ./run.sh configuration
 
-* Deployment of necessary services
+On the manager node use the following command to update the configuration repository.
 
 .. code-block:: console
 
-   $ ./run.sh manager
-
-.. note::
-
-   To cleanup created directories/files after a run set the environment variable
-   ``CLEANUP=true`` or manually delete the ``roles`` and ``.venv`` directories
-   as well as the ``id_rsa.operator`` file when you finished the preparations of
-   the manager system.
+   $ osism-generic configuration
 
 Infrastructure services
 =======================
 
-.. note:: Run the commands on the manager node.
+Execute the following commands on the manager node.
 
 Cobbler
 -------
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-infrastructure cobbler
 
 Mirror
 ------
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-infrastructure mirror
 
-After the bootstrap of the mirror services they have to be synchronized. Depending on the bandwidth, this process will take several hours.
+After the bootstrap of the mirror services they have to be synchronized. Depending on
+the bandwidth, this process will take several hours.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ osism-mirror images
    $ osism-mirror packages

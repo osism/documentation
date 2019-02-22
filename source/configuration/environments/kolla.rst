@@ -2,7 +2,7 @@
 Kolla
 =====
 
-* base directory: ``environments/kolla``
+Base directory: ``environments/kolla``
 
 .. note ::
 

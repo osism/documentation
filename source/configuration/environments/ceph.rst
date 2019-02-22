@@ -2,7 +2,7 @@
 Ceph
 ====
 
-* base directory: ``environments/ceph``
+Base directory: ``environments/ceph``
 
 .. note ::
 

@@ -5,7 +5,6 @@ Deployment
 .. toctree::
    :maxdepth: 2
 
-   deployment/configuration
    deployment/bootstrap
    deployment/infrastructure
    deployment/ceph

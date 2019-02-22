@@ -2,7 +2,7 @@
 Custom
 ======
 
-* base directory: ``environments/custom``
+Base directory: ``environments/custom``
 
 The custom environment is used to store any additional playbooks and services.
 

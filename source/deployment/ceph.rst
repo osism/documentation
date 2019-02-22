@@ -2,7 +2,7 @@
 Ceph
 ====
 
-.. note:: Run this command on the manager node.
+Execute the following commands on the manager node.
 
 .. code-block:: console
 
@@ -12,6 +12,22 @@ Ceph
 * mgrs
 * mdss (only when using cephfs)
 * osds
+
+After deploying Ceph, the individual keys must be stored in the configuration repository.
+
+.. code-block:: console
+
+   $ find . -name 'ceph.client.*.keyring'
+   ./environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
+   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
+   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
+   ./environments/kolla/files/overlays/gnocchi-statsd/ceph.client.gnocchi.keyring
+   ./environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
+   ./environments/kolla/files/overlays/nova/ceph.client.nova.keyring
+   ./environments/kolla/files/overlays/gnocchi-metricd/ceph.client.gnocchi.keyring
+   ./environments/kolla/files/overlays/gnocchi-api/ceph.client.gnocchi.keyring
+   ./environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
+   ./environments/infrastructure/files/ceph/ceph.client.admin.keyring
 
 Client
 ======
