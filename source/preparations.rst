@@ -2,8 +2,10 @@
 Preparations
 ============
 
-Manual Ubuntu installation on bare-metal servers
-================================================
+.. contents::
+
+Manual installation
+===================
 
 .. note::
 
@@ -131,10 +133,8 @@ Seed node
 
    If necessary, the deployment key can be used for the initial transfer of the repository.
 
-   For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is stored in
-    ``~/.ssh/id_rsa.configuration``.
-
-   ``git.betacloud-solutions.de`` will be replaced by the corresponding server
+   For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is
+   stored in ``~/.ssh/id_rsa.configuration``.
 
    .. code-block:: none
 
@@ -207,7 +207,11 @@ Manager node
 
    .. code-block:: console
 
-      $ ANSIBLE_BECOME_ASK_PASS=True ANSIBLE_ASK_VAULT_PASS=True ANSIBLE_ASK_PASS=True ANSIBLE_USER=ubuntu ./run.sh operator
+      $ ANSIBLE_BECOME_ASK_PASS=True \
+        ANSIBLE_ASK_VAULT_PASS=True \
+        ANSIBLE_ASK_PASS=True \
+        ANSIBLE_USER=ubuntu \
+        ./run.sh operator
 
 .. note::
 
@@ -238,7 +242,10 @@ Manager node
 
 .. note::
 
-   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure. Since network services are not restarted automatically, later changes to the network configuration are not effective without a manual restart of the network service or reboot of the nodes.
+   Upon completion of this step, a system reboot should be performed to ensure that the
+   configuration is functional and reboot secure. Since network services are not
+   restarted automatically, later changes to the network configuration are not effective
+   without a manual restart of the network service or reboot of the nodes.
 
 .. note::
 
@@ -253,7 +260,7 @@ Manager node
    $ ./run.sh network
    $ ./run.sh reboot
 
-* Bootstrap of the node
+* Bootstrap of the manager node
 
 .. code-block:: console
 
@@ -264,13 +271,16 @@ Manager node
    After the bootstrap check if a reboot is required by checking if the file
    ``/var/run/reboot-required`` exists.
 
+   Regardless of whether a reboot is necessary or not, a reboot should be
+   performed.
+
 * Transfer configuration repository
 
 .. code-block:: console
 
    $ ./run.sh configuration
 
-* Deployment of necessary services
+* Deployment of necessary manager services
 
 .. code-block:: console
 
@@ -286,7 +296,9 @@ Manager node
 Infrastructure services
 =======================
 
-.. note:: Run the commands on the manager node.
+.. note::
+
+   Run the commands on the manager node.
 
 Cobbler
 -------
@@ -302,7 +314,8 @@ Mirror
 
    $ osism-infrastructure mirror
 
-After the bootstrap of the mirror services they have to be synchronized. Depending on the bandwidth, this process will take several hours.
+After the bootstrap of the mirror services they have to be synchronized. Depending on
+the bandwidth, this process will take several hours.
 
 .. code-block:: shell
 
