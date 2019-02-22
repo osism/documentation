@@ -54,7 +54,8 @@ Inventory
 
 * ``inventory``
 * ``inventory/hosts``
-* ``inventoyr/host_vars/*.yml``
+* ``inventory/host_vars/*.yml``
+* ``inventory/group_vars/*.yml``
 
 Network Configuration Overview
 ==============================
