@@ -1,17 +1,18 @@
-================
-Initial creation
-================
+============
+Cookiecutter
+============
 
-You need a Git repository to store the configuration of the environment. It has to be accessible from
-the manager node. A SSH deploy key for read-only access is sufficient.
+You need a Git repository to store the configuration of the environment. It has to be accessible
+from the manager node. A SSH deploy key for read-only access is sufficient.
 
 Before you create the configuration, you need some basic information:
 
-* NTP Server
-* DNS Server
+* NTP servers
+* DNS servers
 * FQDNs and IP addresses for the API endpoints
 * SSL certificate, if one is used
 * desired versions of OSISM, OpenStack, Ceph and Docker
+* CIDRs of networks for Ceph
 
 To prepare the configuration repository, you need cookiecutter. Usually you prepare and edit the
 repository on your workstation. It is pushed to a central server and pulled from the manager node
@@ -41,8 +42,8 @@ A list with all queries can be found in the ``cookiecutter.json`` configuration 
 
    $ cookiecutter ssh://git@git.betacloud-solutions.de:10022/generic/cookiecutter.git
 
-Copy the content of the newly created ``cfg-customer`` directory into your Git repository. Be careful
-not to forget the ``.gitignore`` file.
+Push the contents of the newly created ``cfg-customer`` directory to your Git repository. Be careful
+not to forget dotfiles like ``.gitignore``.
 
 .. warning::
 

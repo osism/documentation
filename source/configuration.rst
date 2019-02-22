@@ -6,7 +6,7 @@ Configuration
    :maxdepth: 2
 
    configuration/overview
-   configuration/initial-creation
+   configuration/cookiecutter
    configuration/manager
    configuration/generic
    configuration/infrastructure
