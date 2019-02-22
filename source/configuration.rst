@@ -7,6 +7,7 @@ Configuration
 
    configuration/overview
    configuration/cookiecutter
+   configuration/networks
    configuration/manager
    configuration/generic
    configuration/infrastructure
