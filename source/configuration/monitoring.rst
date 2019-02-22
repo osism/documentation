@@ -2,7 +2,7 @@
 Monitoring
 ==========
 
-* base directory: ``environments/monitoring``
+Base directory: ``environments/monitoring``
 
 Ceph
 ====

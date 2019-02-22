@@ -2,7 +2,7 @@
 Infrastructure
 ==============
 
-* base directory: ``environments/infrastructure``
+Base directory: ``environments/infrastructure``
 
 .. toctree::
    :maxdepth: 2

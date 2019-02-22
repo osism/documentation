@@ -2,7 +2,7 @@
 Generic
 =======
 
-* base directory: ``environments/generic``
+Base directory: ``environments/generic``
 
 .. toctree::
    :maxdepth: 2
