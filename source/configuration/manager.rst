@@ -2,24 +2,23 @@
 Manager
 =======
 
-* base directory: ``environments/manager``
+Base directory: ``environments/manager``
 
 Ansible configuration
 =====================
 
-The Ansible configuration file stored in this environment must not be changed.
+.. note::
 
-.. warning::
-
-   Do not customize this file. The file will be updated from time to time.
+   Do not customize the ``ansible.cfg`` configuration file. The file will be updated
+   from time to time.
 
 Playbooks
 =========
 
-In this environment some playbooks are included. These are needed to perform the initial
+In the manager environment some playbooks are included. These are needed to perform the initial
 bootstrap of the manager independently of Docker.
 
-.. warning::
+.. note::
 
    These playbooks are updated from time to time. Therefore do not make any changes to them.
    Custom playbooks can be placed in the custom environment.
@@ -27,15 +26,15 @@ bootstrap of the manager independently of Docker.
 Inventory
 =========
 
-This environment has its own inventory file as the only environment. Only one host group
+The manager environment has its own inventory file as the only environment. Only one host group
 ``manager`` is stored in this inventory. All other environments use the global inventory.
 
 Script
 ======
 
-This environment includes a ``run.sh`` script. This script is used for the execution of the
+The manager environment includes a ``run.sh`` script. This script is used for the execution of the
 included playbooks.
 
-.. warning::
+.. note::
 
-   Do not customize this script. The file will be updated from time to time.
+   Do not customize the ``run.sh`` script. The file will be updated from time to time.
