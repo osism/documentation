@@ -2,8 +2,31 @@
 Overview
 ========
 
+Environments
+============
+
+The configuration repository is divided into so-called environments.
+
+With the exception of a special environment for the manager, all environments
+have the same structure.
+
+All environments, except the manager's, share a common inventory.
+
+There are the following environments:
+
+* ceph
+* custom
+* generic
+* infrastructure
+* kolla
+* manager
+* monitoring
+
+In the further subchapters, the configuration options within the individual
+environments are described.
+
 Files
-=====
+-----
 
 * ``configuration.yml``
 
@@ -26,7 +49,7 @@ Files
   Playbook files for Ansible.
 
 Directories
-===========
+-----------
 
 * ``inventory``
 
@@ -41,10 +64,7 @@ Directories
   Optional directory to manage documents about an environment.
 
 Ansible
-=======
-
-Configuration
--------------
+-------
 
 * ``environments/ansible.cfg``
 * ``environments/*/ansible.cfg``
