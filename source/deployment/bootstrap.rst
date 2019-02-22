@@ -2,81 +2,60 @@
 Bootstrap
 =========
 
-.. note::
+.. contents::
+   :local:
 
-   Run the commands on the manager node.
+Execute the following commands on the manager node.
 
 * Creation of the necessary operator user
 
-.. note::
+  .. code-block:: console
 
-   The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
-   specified with ``-u``.
+     $ osism-generic operator -l 'all:!manager' -u ubuntu
 
-   Alternatively, you can work with the parameters ``--ask-pass`` and ``--ask-become-pass``.
+  * The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
+    specified with ``-u``.
+  * Alternatively, you can work with the parameters ``--ask-pass`` and ``--ask-become-pass``.
+  * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
+    the manager node with ``osism-generic python -l 'all:!manager' -u ubuntu``.
 
-.. warning::
+  .. warning::
 
-   If the operator user was already created when the operating system was provisioned, this
-   role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
+     If the operator user was already created when the operating system was provisioned, this
+     role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
 
-   The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
+     The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
 
-   .. code-block:: console
+     .. code-block:: console
 
-      # usermod -u 45000 dragon
-      # groupmod -g 45000 dragon
+        # usermod -u 45000 dragon
+        # groupmod -g 45000 dragon
 
-      # chgrp dragon /home/dragon/
-      # chown dragon /home/dragon/
+        # chgrp dragon /home/dragon/
+        # chown dragon /home/dragon/
 
-      # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
-      # find /home/dragon -user 1000 -exec chown -h dragon {} \;
-
-.. code-block:: console
-
-   $ osism-generic operator -l 'all:!manager' -u ubuntu
-
-.. note::
-
-   If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
-   the nodes.
-
-   .. code-block:: console
-
-      $ osism-generic python -l 'all:!manager' -u ubuntu
+        # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
+        # find /home/dragon -user 1000 -exec chown -h dragon {} \;
 
 * Configuration of the network
 
-.. note::
+  .. code-block:: console
 
-   The network configuration already present on a system should be saved before this step.
+     $ osism-generic network -l 'all:!manager'
 
-.. note::
+  * The network configuration already present on a system should be saved before this step.
+  * Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
+  * When using Ubuntu 18.04 the following call is necessary.
 
-   Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
+    .. code-block:: console
 
-.. note::
-
-   When using Ubuntu 18.04 the following call is necessary.
-
-   .. code-block:: console
-
-      $ osism-generic grub -l 'all:!manager'
-
-.. code-block:: console
-
-   $ osism-generic network -l 'all:!manager'
+       $ osism-generic grub -l 'all:!manager'
 
 * Bootstrap of the nodes
 
-.. note::
+  .. code-block:: console
 
-   Run the bootstrap process again on the manager during initial setup.
-
-.. code-block:: console
-
-   $ osism-generic bootstrap
+     $ osism-generic bootstrap
 
 New node
 ========
@@ -112,21 +91,20 @@ You have to update the cobbler configuration.
 
 Then the new node can be started. The provisioning then starts automatically via PXE.
 
-.. note::
+If the PXE boot does not start, this may be because of an error in the MAC address.
+You might find some useful logs from dhcpd in the Cobbler container.
 
-   If the PXE boot does not start, this may be because of an error in the MAC address. You might find some useful logs from dhcpd in the cobbler container.
+.. code-block:: console
 
-   .. code-block:: console
-
-      $ docker exec -it cobbler bash
-        # service rsyslog start
-        # tail -f /var/log/syslog 
+   $ docker exec -it cobbler bash
+   # service rsyslog start
+   # tail -f /var/log/syslog 
 
 Inventory
 ---------
 
-Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use the installation IP addres
-s.
+Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use
+the installation IP address.
 
 .. code-block:: ini
 
@@ -253,59 +231,74 @@ Bootstrap
 Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration, and will reb
 oot the system to change the network configuration.
 
-.. note::
-
-   Depending on the environment you may need to install Python first.
-
-   .. code-block:: console
-
-      $ osism-generic python --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
-
-
-   ``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
-
-   It is recommended to install Python on the systems during the provisioning process.
+Depending on the environment you may need to install Python first.
 
 .. code-block:: console
 
-   $ osism-generic operator --limit 20-12.betacloud.xyz -u root --key-file /ansible/secrets/id_rsa.cobbler -i /opt/configuration/inventory/hosts.installation
-   $ osism-generic network --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
-   $ osism-generic reboot --limit 20-12.betacloud.xyz -i /opt/configuration/inventory/hosts.installation
+   $ osism-generic python \
+       --limit 20-12.betacloud.xyz \
+       -u root \
+       --key-file /ansible/secrets/id_rsa.cobbler \
+       -i /opt/configuration/inventory/hosts.installation
 
-.. note::
+``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
 
-   The use of the hosts.installation file is optional and is not available depending on the environment.
+It is recommended to install Python on the systems during the provisioning process.
 
-Refresh facts.
+* Creation of the necessary operator user
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-generic facts
+     $ osism-generic operator \
+         --limit 20-12.betacloud.xyz \
+         -u root \
+         --key-file /ansible/secrets/id_rsa.cobbler \
+         -i /opt/configuration/inventory/hosts.installation
 
-Bootstrap the node.
+* Configuration of the network
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-generic bootstrap --limit 20-12.betacloud.xyz
+     $ osism-generic network \
+         --limit 20-12.betacloud.xyz \
+         -i /opt/configuration/inventory/hosts.installation
 
-Deploy common services.
+  * When using Ubuntu 18.04 the following call is necessary.
 
-.. code-block:: console
+    .. code-block:: console
 
-   $ osism-kolla deploy common --limit 20-12.betacloud.xyz
+     $ osism-generic grub \
+         --limit 20-12.betacloud.xyz \
+         -i /opt/configuration/inventory/hosts.installation
 
-Deploy prometheus exporter.
+* A reboot is performed to activate and test the network configuration.
+  The reboot must be performed before the bootstrap is performed.
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-monitoring prometheus-exporter --limit 20-12.betacloud.xyz
+     $ osism-generic reboot \
+         --limit 20-12.betacloud.xyz \
+         -i /opt/configuration/inventory/hosts.installation
 
-Update prometheus
------------------
+The use of the ``hosts.installation`` file is optional and is not available depending on the environment.
 
-.. code-block:: console
+* Refresh facts.
 
-   $ osism-monitoring prometheus
+  .. code-block:: console
+
+     $ osism-generic facts
+
+* Bootstrap the node.
+
+  .. code-block:: console
+
+     $ osism-generic bootstrap --limit 20-12.betacloud.xyz
+
+* Deploy common services.
+
+  .. code-block:: console
+
+     $ osism-kolla deploy common --limit 20-12.betacloud.xyz
 
 Update hosts files
 ------------------
@@ -321,14 +314,21 @@ Deploy services
 
 * Storage node
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-ceph osds --limit 20-12.betacloud.xyz
+     $ osism-ceph osds --limit 20-12.betacloud.xyz
 
 * Compute node
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-kolla deploy nova --limit 20-12.betacloud.xyz
-   $ osism-kolla deploy openvswitch --limit 20-12.betacloud.xyz
-   $ osism-kolla deploy neutron --limit 20-12.betacloud.xyz
+     $ osism-kolla deploy nova --limit 20-12.betacloud.xyz
+     $ osism-kolla deploy openvswitch --limit 20-12.betacloud.xyz
+     $ osism-kolla deploy neutron --limit 20-12.betacloud.xyz
+
+* Monitoring
+
+  .. code-block:: console
+
+     $ osism-monitoring prometheus-exporter --limit 20-12.betacloud.xyz
+     $ osism-monitoring prometheus
