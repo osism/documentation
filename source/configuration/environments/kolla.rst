@@ -102,6 +102,20 @@ HAProxy
 
 Set the ``kolla_internal_fqdn`` in ``environments/kolla/configuration.yml``.
 
+Existing certificates
+---------------------
+
+Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.yml`` and add the
+content of the existing signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
+``environments/kolla/secrets.yml`` file.
+
+The order is important. If this is not followed, an error occurs when starting HAProxy:
+``inconsistencies between private key and certificate loaded from PEM file '/etc/haproxy/haproxy.pem'``.
+
+* server certificate
+* server private key (without any password)
+* intermediate certificates
+
 Generate self-signed certificates
 ---------------------------------
 
@@ -135,7 +149,12 @@ Generate self-signed certificates
    PLAY RECAP *********************************************************************
    10-11.betacloud.xyz        : ok=6    changed=0    unreachable=0    failed=0
 
-On the manager node the self-signed certificate is located in ``/etc/kolla/certificates/haproxy.pem``.
+On the manager node the self-signed certificate is located in ``/etc/kolla/certificates/haproxy.pem``
+inside the ``manager_kolla-ansible_1`` container.
+
+.. code-block:: console
+
+   $ docker exec -it manager_kolla-ansible_1 bash
 
 If the ``pem`` file is not created correctly that is not a problem. Then just use the output of
 ``cat /etc/kolla/certificates/private/haproxy.*``.
