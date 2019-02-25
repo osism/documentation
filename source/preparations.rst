@@ -60,6 +60,10 @@ Installation
 * Choose ``OpenSSH server`` as software to install
 * After completion, restart the system
 
+.. note::
+
+   ``python-minimal`` must be installed on the systems.
+
 Post-processing
 ---------------
 
