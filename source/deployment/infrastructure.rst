@@ -2,7 +2,7 @@
 Infrastructure
 ==============
 
-.. note:: Run this command on the manager node.
+Execute the following commands on the manager node.
 
 Common
 ======
