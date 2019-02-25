@@ -60,6 +60,10 @@ Execute the following commands on the manager node.
 
      $ osism-generic bootstrap
 
+  .. note::
+
+     The reexecution of the bootstrap on the manager is intended.
+
 Single node
 ===========
 
