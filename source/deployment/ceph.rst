@@ -29,6 +29,20 @@ After deploying Ceph, the individual keys must be stored in the configuration re
    ./environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
    ./environments/infrastructure/files/ceph/ceph.client.admin.keyring
 
+The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor nodes.
+
+.. code-block:: console
+
+   $ ls -1 /etc/ceph/
+   ceph.client.admin.keyring
+   ceph.client.cinder-backup.keyring
+   ceph.client.cinder.keyring
+   ceph.client.glance.keyring
+   ceph.client.gnocchi.keyring
+   ceph.client.nova.keyring
+   ceph.conf
+   ceph.mon.keyring
+
 Client
 ======
 

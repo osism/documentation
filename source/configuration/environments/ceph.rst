@@ -105,22 +105,28 @@ Pools & Keys
      name: images
      pg_num: 32
      rule_name: ""
+     application: "rbd"
    openstack_cinder_pool:
      name: volumes
      pg_num: 32
      rule_name: ""
+     application: "rbd"
    openstack_nova_pool:
      name: vms
      pg_num: 32
      rule_name: ""
+     application: "rbd"
    openstack_cinder_backup_pool:
      name: backups
      pg_num: 32
      rule_name: ""
+     application: "rbd"
    openstack_gnocchi_pool:
      name: metrics
      pg_num: 32
      rule_name: ""
+     application: "rbd"
+
 
    openstack_pools:
      - "{{ openstack_glance_pool }}"
@@ -131,42 +137,30 @@ Pools & Keys
 
    openstack_keys:
      - name: client.glance
-       key: "$(ceph-authtool --gen-print-key)"
-       mon_cap: "allow r"
-       osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}"
+       caps:
+         mon: "allow r"
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}"
        mode: "0600"
-       acls: []
      - name: client.cinder
-       key: "$(ceph-authtool --gen-print-key)"
-       mon_cap: "allow r"
-       osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"
+       caps:
+         mon: "allow r"
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"  # yamllint disable-line rule:line-length
        mode: "0600"
-       acls: []
      - name: client.cinder-backup
-       key: "$(ceph-authtool --gen-print-key)"
-       mon_cap: "allow r"
-       osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
+       caps:
+         mon: "allow r"
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
        mode: "0600"
-       acls: []
      - name: client.gnocchi
-       key: "$(ceph-authtool --gen-print-key)"
-       mon_cap: "allow r"
-       osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_gnocchi_pool.name }}"
+       caps:
+         mon: "allow r"
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_gnocchi_pool.name }}"
        mode: "0600"
-       acls: []
      - name: client.nova
-       key: "$(ceph-authtool --gen-print-key)"
-       mon_cap: "allow r"
-       osd_cap: "allow class-read object_prefix rbd_children, allow rwx pool=images, allow rwx pool=vms, allow rwx pool=volumes, allow rwx pool=backups"
+       caps:
+         mon: "allow r"
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_cinder_backup_pool.name }}"  # yamllint disable-line rule:line-length
        mode: "0600"
-       acls: []
-
-.. note::
-
-   After deploying Ceph, copy the keyring files from ``/etc/ceph`` on a Ceph monitor node to the correct
-   location in the Kolla environment at ``environments/kolla/files/overlays``, in the infrastructure
-   environment at ``environments/infrastructure/files/ceph`` and in the monitoring environment at
-   ``environments/monitoring/files/ceph``.
 
 Custom
 ======
