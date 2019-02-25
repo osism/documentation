@@ -4,9 +4,7 @@ Kolla
 
 Base directory: ``environments/kolla``
 
-.. note ::
-
-   The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
+The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
 
 .. toctree::
    :maxdepth: 2
@@ -24,6 +22,8 @@ Base directory: ``environments/kolla``
 Generate secrets
 ================
 
+This step is not necessary when using the cookiecutter template.
+
 * ``environments/kolla/secets.yml``
 
 .. code-block:: console
@@ -34,15 +34,13 @@ Generate secrets
    $ mv secrets.yml.pike secrets.yml
    $ rm generate-secrets.py
 
-.. note::
+Depending on the environment, additional parameters must be added manually in this file.
+These parameters are not yet included in the upstream of ``kolla-ansible``.
 
-   Depending on the environment, additional parameters must be added manually in this file.
-   These parameters are not yet included in the upstream of ``kolla-ansible``.
+Currently the following additional parameters are available:
 
-   Currently the following additional parameters are available:
-
-   * ``prometheus_database_password``
-   * ``kolla_external_fqdn_cert``
+* ``prometheus_database_password``
+* ``kolla_external_fqdn_cert``
 
 The ``secrets.yml`` file should be encrypted with Ansibe Vault.
 
