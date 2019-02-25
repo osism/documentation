@@ -106,7 +106,7 @@ Execute the following commands on the seed node.
 
   .. code-block:: console
 
-     $ sudo apt install git python-pip python-virtualenv
+     $ sudo apt install git python-pip python-virtualenv sshpass
 
 * Clone the configuration repository
 
