@@ -2,6 +2,15 @@
 Requirements
 ============
 
+Deployment
+==========
+
+If the deployment is carried out or supervised by us, direct SSH access to the system
+acting as manager is required.
+
+Optimally, a VPN is provided via which all relevant nodes including the remote consoles
+can be accessed.
+
 Services & Access
 =================
 
