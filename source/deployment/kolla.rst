@@ -16,6 +16,10 @@ Infrastructure
 * rabbitmq
 * redis (>= ``pike``, required by Mistral)
 
+.. code-block:: console
+
+   $ osism-infrastructure helper --tags phpmyadmin
+
 Networking
 ==========
 
@@ -38,10 +42,9 @@ OpenStack
 * neutron
 * heat
 
-Clients
-=======
+Client
+======
 
 .. code-block:: console
 
    $ osism-infrastructure helper --tags openstackclient
-   $ osism-infrastructure helper --tags phpmyadmin
