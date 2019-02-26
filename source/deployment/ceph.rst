@@ -2,18 +2,47 @@
 Ceph
 ====
 
+.. contents::
+   :local:
+
 Execute the following commands on the manager node.
+
+Before deployment make sure that NTP works.
+
+Management services
+===================
 
 .. code-block:: console
 
-   $ osism-ceph ROLE
+   $ osism-ceph mons
+   $ osism-ceph mgrs
 
-* mons
-* mgrs
-* mdss (only when using cephfs)
-* osds
+Client service
+==============
 
-After deploying Ceph, the individual keys must be stored in the configuration repository.
+* Set the ``ceph.client.admin.keyring`` in the ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file
+
+  * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor node
+  * Update the configuration repository on the manager node
+
+* Deploy the cephclient service on the monitor nodes
+
+.. code-block:: console
+
+   $ osism-infrastructure helper --tags cephclient
+
+Storage services
+================
+
+.. code-block:: console
+
+   $ osism-ceph mdss  # only when using cephfs
+   $ osism-ceph osds
+
+Post-processing
+===============
+
+After deploying Ceph, the remaining individual keys must be stored in the configuration repository.
 
 .. code-block:: console
 
@@ -43,31 +72,4 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
    ceph.conf
    ceph.mon.keyring
 
-Client
-======
-
-.. code-block:: console
-
-   $ osism-infrastructure helper --tags cephclient
-
-Dashboard
-=========
-
-* http://docs.ceph.com/docs/luminous/mgr/dashboard/
-
-* manual activation
-
-.. code-block:: console
-
-   $ ceph mgr module enable dashboard
-
-* ``environments/ceph/configuration.yml``
-
-.. code-block:: yaml
-
-   ##########################
-   # custom
-
-   ceph_conf_overrides:
-     mon:
-       mgr initial modules: dashboard
+Don't forget to update the configuration repository on the manager afterwards.

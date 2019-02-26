@@ -177,3 +177,25 @@ Custom
      ceph_conf_overrides:
        mon:
          mon allow pool delete: true
+
+Dashboard
+=========
+
+* http://docs.ceph.com/docs/luminous/mgr/dashboard/
+
+* manual activation
+
+.. code-block:: console
+
+   $ ceph mgr module enable dashboard
+
+* ``environments/ceph/configuration.yml``
+
+.. code-block:: yaml
+
+   ##########################
+   # custom
+
+   ceph_conf_overrides:
+     mon:
+       mgr initial modules: dashboard
