@@ -13,6 +13,7 @@ The documentation for ``kolla-ansible`` can be found on https://docs.openstack.o
    kolla/freezer
    kolla/gnocchi
    kolla/heat
+   kolla/horizon
    kolla/keystone
    kolla/mistral
    kolla/neutron
