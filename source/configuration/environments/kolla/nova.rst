@@ -180,3 +180,36 @@ PCI passthrough
   .. code-block:: console
 
      $ openstack --os-cloud service flavor set 1C-1G-1GB-10GB --property "pci_passthrough:alias"="nvidiap40:1"
+
+Resource isolation
+==================
+
+* https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/hyper-converged_red_hat_openstack_platform_10_and_red_hat_ceph_storage_2/tuning
+
+.. code-block:: console
+   :caption: https://github.com/RHsyseng/hci/blob/master/scripts/nova_mem_cpu_calc.py
+
+   $ python nova_mem_cpu_calc.py HOST_MEMORY_GBYTE OSDS_PER_SERVER GUEST_AVG_MEMORY_GBYTE GUEST_AVG_CPU_UTIL
+   $ python nova_mem_cpu_calc.py 256 56 6 8 0.1
+   Inputs:
+   - Total host RAM in GB: 256
+   - Total host cores: 56
+   - Ceph OSDs per host: 6
+   - Average guest memory size in GB: 8
+   - Average guest CPU utilization: 10%
+
+   Results:
+   - number of guests allowed based on memory = 28
+   - number of guest vCPUs allowed = 500
+   - nova.conf reserved_host_memory = 32000 MB
+   - nova.conf cpu_allocation_ratio = 8.928571
+
+Compare "guest vCPUs allowed" to "guests allowed based on memory" for actual guest count
+
+.. code-block:: ini
+   :caption: environments/kolla/files/overlays/nova.conf
+
+   [DEFAULT]
+   reserved_host_cpus = 4
+   reserved_host_memory_mb = 32768
+   cpu_allocation_ratio = 9
