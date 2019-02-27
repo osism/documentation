@@ -199,3 +199,26 @@ Dashboard
    ceph_conf_overrides:
      mon:
        mgr initial modules: dashboard
+
+NUMA
+====
+
+.. code-block:: console
+
+   $ lscpu | grep NUMA
+   NUMA nodes(s):          2
+   NUMA node0 CPU(s)   :   0-13,28-41
+   NUMA node1 CPU(s)   :   14-27,42-55
+
+.. code-block:: console
+
+   $ cat /sys/class/net/ens1f0/device/numa_node
+   0
+   $ cat /sys/class/net/ens2f0/device/numa_node
+   0
+
+.. code-block:: yaml
+   :caption: inventory/host_vars/STORAGE_NODE.yml
+
+   ceph_osd_docker_cpuset_cpus: "0-13"
+   ceph_osd_docker_cpuset_mems: "0"
