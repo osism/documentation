@@ -30,3 +30,12 @@ Inventory groups
 
    [heat-engine:children]
    heat
+
+Use of self-signed certificates
+===============================
+
+.. code-block:: ini
+   :caption: environments/kolla/files/overlays/heat.conf
+
+   [clients_keystone]
+   insecure = True
