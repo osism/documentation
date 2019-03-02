@@ -37,4 +37,4 @@ Logging
    Then reload the Kibana application in the browser and create a new index
    pattern (index pattern: ``flog-*``, time filter field name: ``@timestamp``).
 
-   * https://github.com/elastic/kibana/issues/14934
+   https://github.com/elastic/kibana/issues/14934
