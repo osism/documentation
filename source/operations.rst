@@ -6,6 +6,5 @@ Operations
    :maxdepth: 2
 
    operations/backup
-   operations/docker
    operations/generic
    operations/services

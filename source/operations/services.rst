@@ -10,6 +10,7 @@ Services
    services/cinder
    services/cobbler
    services/cockpit
+   services/docker
    services/elasticsearch
    services/grafana
    services/haproxy
