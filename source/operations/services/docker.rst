@@ -19,10 +19,9 @@ containers will be stopped when the docker service is stopped.
 
    $ docker start $(docker ps -a -q)
 
-.. note::
-
-   Make sure that any containers intentionally stopped on the system are also started. This can lead to unintended side effects.
-   Therefore, in many cases it is better to save the output of ``docker ps -q`` before the stop and, based on this, start the containers later.
+Make sure that any containers intentionally stopped on the system are also started. This can lead to
+unintended side effects. Therefore, in many cases it is better to save the output of
+``docker ps -q`` before the stop and, based on this, start the containers later.
 
 Start / Stop all containers of a service
 ======================================
@@ -91,7 +90,7 @@ Move /var/lib/docker to a block device
 unable to find user X: no matching entries in passwd file
 =========================================================
 
-* https://stackoverflow.com/questions/41636759/unable-to-find-user-root-no-matching-entries-in-passwd-file/41963861
+- https://stackoverflow.com/questions/41636759/unable-to-find-user-root-no-matching-entries-in-passwd-file/41963861
 
 .. code-block:: console
 
@@ -107,33 +106,31 @@ unable to find user X: no matching entries in passwd file
    $ docker exec -it kolla_toolbox bash
    (kolla-toolbox)[root@hostname /]#
 
-.. note::
-
-   Do not use ``restart``. ``restart`` will not solve the issue.
+Do not use ``restart``. ``restart`` will not solve the issue.
 
 Cleanup
 =======
 
 Images
-======
+------
 
 * Manual
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker image prune --all
-   WARNING! This will remove all images without at least one container associated to them.
-   Are you sure you want to continue? [y/N] y
-   Deleted Images:
-   untagged: osism/openvswitch-vswitchd:pike-20180807-0
-   untagged: osism/keepalived:pike-latest
-   untagged: osism/keepalived@sha256:59b611a3a84060f38b97dbbd68ab51a52c503a81309ed86c46a92fd0227b09e1
+     $ docker image prune --all
+     WARNING! This will remove all images without at least one container associated to them.
+     Are you sure you want to continue? [y/N] y
+     Deleted Images:
+     untagged: osism/openvswitch-vswitchd:pike-20180807-0
+     untagged: osism/keepalived:pike-latest
+     untagged: osism/keepalived@sha256:59b611a3a84060f38b97dbbd68ab51a52c503a81309ed86c46a92fd0227b09e1
 
-   [...]
-   Total reclaimed space: 9.681GB
+     [...]
+     Total reclaimed space: 9.681GB
 
 * Ansible
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ osism-generic cleanup-docker --tags images
+     $ osism-generic cleanup-docker --tags images
