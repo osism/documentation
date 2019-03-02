@@ -2,7 +2,10 @@
 Docker
 ======
 
-Stop / start all containers
+.. contents::
+   :local:
+
+Start / Stop all containers
 ===========================
 
 When using the live restore (https://docs.docker.com/engine/admin/live-restore/) feature, not all
@@ -20,6 +23,33 @@ containers will be stopped when the docker service is stopped.
 
    Make sure that any containers intentionally stopped on the system are also started. This can lead to unintended side effects.
    Therefore, in many cases it is better to save the output of ``docker ps -q`` before the stop and, based on this, start the containers later.
+
+Start / Stop all containers of a service
+======================================
+
+.. code-block:: bash
+
+   #!/usr/bin/env bash
+
+   ACTION=${1:-start}
+   SERVICE=${2:-keystone}
+   OPENSTACK_RELEASE=queens
+
+   case $ACTION in
+     start)
+       for container in $(docker ps -a | grep osism/$SERVICE | grep $OPENSTACK_RELEASE | grep Exited | awk '{ print $1 }'); do
+         docker start $container
+         sleep 1
+       done
+     ;;
+
+     stop)
+       for container in $(docker ps -a | grep osism/$SERVICE | grep $OPENSTACK_RELEASE | grep -v Exited | awk '{ print $1 }'); do
+         docker stop $container
+         sleep 1
+       done
+     ;;
+   esac
 
 Move /var/lib/docker to a block device
 ======================================
