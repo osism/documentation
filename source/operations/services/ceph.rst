@@ -2,31 +2,46 @@
 Ceph
 ====
 
+.. contents::
+   :local:
+
 Node reboot
 ===========
 
-.. code-block:: console
+1. Disable rebalancing temporarily
 
-   $ ceph osd set noout
-   noout is set
-   $ ceph osd set norebalance
-   norebalance is set
-   $ ceph -s
-     cluster:
-       id:     xxx
-       health: HEALTH_WARN
-               noout,norebalance flag(s) set
-   [...]
-   $ sudo reboot
-   $ ceph osd unset noout
-   noout is unset
-   $ ceph osd unset norebalance
-   norebalance is unset
-   $ ceph -s
-     cluster:
-       id:     xxx
-       health: HEALTH_OK
-   [...]
+   .. code-block:: console
+
+      $ ceph osd set noout
+      noout is set
+      $ ceph osd set norebalance
+      norebalance is set
+      $ ceph -s
+        cluster:
+          id:     xxx
+          health: HEALTH_WARN
+                  noout,norebalance flag(s) set
+      [...]
+
+2. Reboot the node
+
+   .. code-block:: console
+
+      $ sudo reboot
+
+3. When the reboot is complete enable cluster rebalancing again
+
+   .. code-block:: console
+
+      $ ceph osd unset noout
+      noout is unset
+      $ ceph osd unset norebalance
+      norebalance is unset
+      $ ceph -s
+        cluster:
+          id:     xxx
+          health: HEALTH_OK
+      [...]
 
 Cluster start and stop
 ======================
@@ -34,86 +49,87 @@ Cluster start and stop
 * http://docs.ceph.com/docs/mimic/rados/operations/operating/#running-ceph-with-systemd
 * https://www.openattic.org/posts/how-to-do-a-ceph-cluster-maintenanceshutdown/
 
-**Stop**
+Stop
+----
 
-.. warning::
-
-   Ensure that any services/clients using Ceph are stopped and that the cluster is in a healthy state.
+Ensure that any services/clients using Ceph are stopped and that the cluster is in a healthy state.
 
 1. Set OSD flags
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ceph osd set noout
-   $ ceph osd set nobackfill
-   $ ceph osd set norecover
-   $ ceph osd set norebalance
-   $ ceph osd set nodown
-   $ ceph osd set pause
+      $ ceph osd set noout
+      $ ceph osd set nobackfill
+      $ ceph osd set norecover
+      $ ceph osd set norebalance
+      $ ceph osd set nodown
+      $ ceph osd set pause
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ceph -s
-     cluster:
-     [...]
-       health: HEALTH_WARN
-               pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover flag(s) set
+      $ ceph -s
+        cluster:
+        [...]
+          health: HEALTH_WARN
+                  pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover flag(s) set
  
-     services:
-     [...]
-       osd: x osds: y up, z in
-            flags pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover
+        services:
+        [...]
+          osd: x osds: y up, z in
+               flags pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover
 
-2. Stop the services (manager, mds, ..) (one by one)
+2. Stop the management services (manager, mds, ..) (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ sudo systemctl stop ceph-mgr\*.service
+      $ sudo systemctl stop ceph-mgr\*.service
 
-3. Stop the osd servies (one by one)
+3. Stop the osd services (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ sudo systemctl stop ceph-osd\*.service
+      $ sudo systemctl stop ceph-osd\*.service
 
-4. Stop the monitor service (one by one)
+4. Stop the monitor service (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ sudo systemctl stop ceph-mon\*.service
+      $ sudo systemctl stop ceph-mon\*.service
 
-**Start**
+Start
+-----
 
-1. Start the monitor services (one by one)
+1. Start the monitor services (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ sudo systemctl start ceph-mon\*.service
+      $ sudo systemctl start ceph-mon\*.service
 
-2. Start the osd services (one by one)
+2. Start the osd services (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ systemctl start ceph-osd@DEVICE.service              
+      $ systemctl start ceph-osd@DEVICE.service
 
-3. Start the services (manager, mds, ..) (one by one)
+3. Start the management services (manager, mds, ..) (node by node)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ sudo systemctl start ceph-mgr\*.service
+      $ sudo systemctl start ceph-mgr\*.service
 
 4. Unset OSD flags
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ceph osd unset pause
-   $ ceph osd unset nodown
-   $ ceph osd unset norebalance
-   $ ceph osd unset norecover
-   $ ceph osd unset nobackfill
-   $ ceph osd unset noout
+      $ ceph osd unset pause
+      $ ceph osd unset nodown
+      $ ceph osd unset norebalance
+      $ ceph osd unset norecover
+      $ ceph osd unset nobackfill
+      $ ceph osd unset noout
 
-**Check**
+Check
+-----
 
 .. code-block:: console
 
@@ -138,24 +154,24 @@ Cluster start and stop
 Deep scrub distribution
 =======================
 
-* https://ceph.com/geen-categorie/deep-scrub-distribution/
+- https://ceph.com/geen-categorie/deep-scrub-distribution/
 
-Distribution per weekday:
+* Distribution per weekday:
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ for date in $(ceph pg dump | grep active | awk '{ print $20 })'; do date +%A -d $date; done | sort | uniq -c
+     $ for date in $(ceph pg dump | grep active | awk '{ print $20 })'; do date +%A -d $date; done | sort | uniq -c
 
-Distribution per hours:
+* Distribution per hours:
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ for date in $(ceph pg dump | grep active | awk '{ print $21 }'); do date +%H -d $date; done | sort | uniq -c
+     $ for date in $(ceph pg dump | grep active | awk '{ print $21 }'); do date +%H -d $date; done | sort | uniq -c
 
 Set the number of placement groups
 ==================================
 
-* http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#set-the-number-of-placement-groups
+- http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#set-the-number-of-placement-groups
 
 .. code-block:: console
 
@@ -164,31 +180,28 @@ Set the number of placement groups
    $ ceph osd pool set {pool-name} pgp_num {pgp_num}
    set pool x pgp_num to {pgp_num}
 
-.. note::
-
-   The new number of PGs should also be updated in ``environments/ceph/configuration.yml``.
+The new number of PGs should also be updated in ``environments/ceph/configuration.yml``.
 
 1 pools have many more objects per pg than average
 ==================================================
 
-* https://www.spinics.net/lists/ceph-devel/msg41403.html
-* https://www.suse.com/de-de/support/kb/doc/?id=7018414
+- https://www.spinics.net/lists/ceph-devel/msg41403.html
+- https://www.suse.com/de-de/support/kb/doc/?id=7018414
 
-* set ``mon pg warn max object skew = 0``
+* Set ``mon pg warn max object skew = 0``
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ ceph tell mon.* injectargs '--mon_pg_warn_max_object_skew 0'
+     $ ceph tell mon.* injectargs '--mon_pg_warn_max_object_skew 0'
 
-* restart the active manager service (http://lists.ceph.com/pipermail/ceph-users-ceph.com/2018-July/027856.html)
+* Restart the active manager service (http://lists.ceph.com/pipermail/ceph-users-ceph.com/2018-July/027856.html)
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ sudo systemctl restart ceph-mgr\*.service
-
-* ``environments/ceph/configuration.yml``
+     $ sudo systemctl restart ceph-mgr\*.service
 
 .. code-block:: yaml
+   :caption: environments/ceph/configuration.yml
 
    ##########################
    # custom
@@ -200,69 +213,71 @@ Set the number of placement groups
 Logging
 =======
 
-* Ceph daemons are configured to log to the console instead of log files. OSDs are configured to log to MONs.
+* Ceph daemons are configured to log to the console instead of log files.
+  OSDs are configured to log to MONs.
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker logs ceph-mon-ceph01
+     $ docker logs ceph-mon-ceph01
 
-* Logs can become very big. ``docker logs`` provides some useful parameters to only show newest logs and to see new log messages when they appear.
+* Logs can become very big. ``docker logs`` provides some useful parameters
+  to only show newest logs and to see new log messages when they appear.
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker logs --tail 100 --follow ceph-mon-ceph01
+     $ docker logs --tail 100 --follow ceph-mon-ceph01
 
 Replace defect OSD
 ==================
 
 * Locate defect OSD
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ ceph osd metadata osd.22
-     "bluefs_slow_dev_node": "sdk",
-     "hostname": "ceph04",
+     $ ceph osd metadata osd.22
+       "bluefs_slow_dev_node": "sdk",
+       "hostname": "ceph04",
 
-   $ ssh ceph04
-   $ dmesg -T | grep sdk | grep -i error
-     ...
-     blk_update_request: I/O error, dev sdk, sector 7501476358
-     Buffer I/O error on dev sdk1, logical block 7470017030, async page read
-     blk_update_request: I/O error, dev sdk, sector 7501476359
-     Buffer I/O error on dev sdk1, logical block 7470017031, async page read
+     $ ssh ceph04
+     $ dmesg -T | grep sdk | grep -i error
+       ...
+       blk_update_request: I/O error, dev sdk, sector 7501476358
+       Buffer I/O error on dev sdk1, logical block 7470017030, async page read
+       blk_update_request: I/O error, dev sdk, sector 7501476359
+       Buffer I/O error on dev sdk1, logical block 7470017031, async page read
 
 * Find and replace actual hardware
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ sudo udevadm info --query=all --name=/dev/sdk
-   $ sudo hdparm -I /dev/sdk
+     $ sudo udevadm info --query=all --name=/dev/sdk
+     $ sudo hdparm -I /dev/sdk
 
 * Prepare new OSD
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker start -ai ceph-osd-prepare-ceph04-sdk
+     $ docker start -ai ceph-osd-prepare-ceph04-sdk
 
 * Add OSD to tree
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ ceph osd df tree
-      CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
-               7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
-       hdd     3.7       0      0      0      0     0    0        osd.22
-       hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
-       ...
-       hdd     0.0       0      0      0      0     0    0 osd.27
+     $ ceph osd df tree
+        CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
+                 7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
+         hdd     3.7       0      0      0      0     0    0        osd.22
+         hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
+         ...
+         hdd     0.0       0      0      0      0     0    0 osd.27
 
-   $ ceph osd crush create-or-move osd.27 3.7 hdd=ceph04-hdd
-   $ ceph osd purge osd.22
-   $ ceph osd df tree
-      CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
-               7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
-       hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
-       hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
+     $ ceph osd crush create-or-move osd.27 3.7 hdd=ceph04-hdd
+     $ ceph osd purge osd.22
+     $ ceph osd df tree
+        CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
+                 7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
+         hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
+         hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
 
 Export image
 ============
