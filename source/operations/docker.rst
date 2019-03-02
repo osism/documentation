@@ -24,7 +24,7 @@ unintended side effects. Therefore, in many cases it is better to save the outpu
 ``docker ps -q`` before the stop and, based on this, start the containers later.
 
 Start / Stop all containers of a service
-======================================
+========================================
 
 .. code-block:: bash
 
