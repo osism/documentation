@@ -2,38 +2,41 @@
 MariaDB
 =======
 
+.. contents::
+   :local:
+
 Cluster start and stop
 ======================
 
-* http://galeracluster.com/documentation-webpages/restartingcluster.html
+http://galeracluster.com/documentation-webpages/restartingcluster.html
 
-**Stop**
+Stop
+----
 
-.. warning::
-
-   Ensure that any services using MariaDB are stopped.
+Ensure that any services using MariaDB are stopped.
 
 Carry out the following steps on all controller nodes (one by one).
 
 1. Ensure that ``wsrep_local_state_comment`` is ``synced``
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
-   Enter password: 
-   +---------------------------+--------+
-   | Variable_name             | Value  |
-   +---------------------------+--------+
-   | wsrep_local_state_comment | Synced |
-   +---------------------------+--------+
+      $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
+      Enter password:
+      +---------------------------+--------+
+      | Variable_name             | Value  |
+      +---------------------------+--------+
+      | wsrep_local_state_comment | Synced |
+      +---------------------------+--------+
 
 2. Stop the ``mariadb`` container
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ docker stop mariadb
+      $ docker stop mariadb
 
-**Start**
+Start
+-----
 
 On the manager node run the recovery process.
 
@@ -41,11 +44,13 @@ On the manager node run the recovery process.
 
    $ osism-kolla deploy mariadb_recovery
 
-**Check**
+Check
+-----
 
 .. code-block:: console
 
    $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_%'"
+   Enter password:
    +------------------------------+----------------------------------------------------+
    | Variable_name                | Value                                              |
    +------------------------------+----------------------------------------------------+
@@ -63,7 +68,7 @@ On the manager node run the recovery process.
 Cluster recovery
 ================
 
-* http://galeracluster.com/2016/11/introducing-the-safe-to-bootstrap-feature-in-galera-cluster/
+http://galeracluster.com/2016/11/introducing-the-safe-to-bootstrap-feature-in-galera-cluster/
 
 On the controller nodes stop the ``mariadb`` containers.
 
@@ -104,7 +109,7 @@ Cleanup and run the playbook again.
 [ERROR] Found 1 prepared transactions!
 ======================================
 
-* https://bugzilla.redhat.com/show_bug.cgi?id=1195226
+https://bugzilla.redhat.com/show_bug.cgi?id=1195226
 
 Description
 -----------
@@ -123,13 +128,11 @@ Description
    160601  0:25:37 [Note] InnoDB: Shutdown completed; log sequence number 20410674
    160601  0:25:37 [Note] /usr/sbin/mysqld: Shutdown complete'
 
-
 Notes
 -----
 
 * A restart of the mariadb container is not working, it will result in the same issue.
 * Run a manual backup of the mariadb volume, located at ``/var/lib/docker/volumes/mariadb``.
-
 
 Solution
 --------
@@ -198,7 +201,7 @@ Attach a shell to the mariadb container and login to the MariaDB server to check
 
    # docker exec -it mariadb bash
    (mariadb)[mysql@de-1-controller-1 /]$ mysql -u root -p 
-   Enter password: 
+   Enter password:
    Welcome to the MariaDB monitor.  Commands end with ; or \g.
    Your MariaDB connection id is 1171
    Server version: 10.0.25-MariaDB-1~trusty-wsrep
@@ -218,11 +221,10 @@ Attach a shell to the mariadb container and login to the MariaDB server to check
 Change binary logs days
 =======================
 
-* https://www.percona.com/blog/2018/03/28/safely-purging-binary-logs-from-master/
+https://www.percona.com/blog/2018/03/28/safely-purging-binary-logs-from-master/
 
-* ``environments/kolla/files/overlays/galera.cnf``
-
-.. code-block:: console
+.. code-block:: ini
+   :caption: environments/kolla/files/overlays/galera.cnf
 
    [mysqld]
    expire_logs_days = 14
@@ -239,7 +241,7 @@ without restart of galera cluster
 
 * set in ``/etc/kolla/mariadb/galera.cnf`` on each galera cluster node
 
-.. code-block:: console
+.. code-block:: ini
 
    [mysqld]
    expire_logs_days = 14
@@ -295,37 +297,37 @@ Large Horizon table for django_session
 
 * table django_session size in database horizon is large
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ ls -lah /var/lib/docker/volumes/mariadb/_data/horizon/
-   total 3.5G
-   ...
-   -rw-rw----  1 42434 42434 1.6K Sep 10 12:07 django_session.frm
-   -rw-rw----  1 42434 42434 3.5G Dec  5 14:53 django_session.ibd
-   ...
+     $ ls -lah /var/lib/docker/volumes/mariadb/_data/horizon/
+     total 3.5G
+     ...
+     -rw-rw----  1 42434 42434 1.6K Sep 10 12:07 django_session.frm
+     -rw-rw----  1 42434 42434 3.5G Dec  5 14:53 django_session.ibd
+     ...
 
 * cleanup the sessions in horizon container
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker exec -it horizon manage.py clearsessions
+     $ docker exec -it horizon manage.py clearsessions
 
 * optimize the table size
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ docker exec -it mariadb mysqlcheck -u root -p --optimize --skip-write-binlog horizon django_session
-   Enter password: 
-   horizon.django_session
-   note     : Table does not support optimize, doing recreate + analyze instead
-   status   : OK
+     $ docker exec -it mariadb mysqlcheck -u root -p --optimize --skip-write-binlog horizon django_session
+     Enter password:
+     horizon.django_session
+     note     : Table does not support optimize, doing recreate + analyze instead
+     status   : OK
 
 * table django_session size in database horizon
 
-.. code-block:: console
+  .. code-block:: console
 
-   $ sudo ls -lah /var/lib/docker/volumes/mariadb/_data/horizon/
-   ...
-   -rw-rw----  1 42434 42434 1.6K Dec  5 15:02 django_session.frm
-   -rw-rw----  1 42434 42434 9.0M Dec  5 15:04 django_session.ibd
-   ...
+     $ sudo ls -lah /var/lib/docker/volumes/mariadb/_data/horizon/
+     ...
+     -rw-rw----  1 42434 42434 1.6K Dec  5 15:02 django_session.frm
+     -rw-rw----  1 42434 42434 9.0M Dec  5 15:04 django_session.ibd
+     ...
