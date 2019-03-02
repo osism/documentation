@@ -2,60 +2,70 @@
 Elasticsearch
 =============
 
+.. contents::
+   :local:
+
 Cluster start and stop
 ======================
 
-* https://www.elastic.co/guide/en/elasticsearch/reference/current/restart-upgrade.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/restart-upgrade.html
 
-**Stop**
+Stop
+----
 
 1. Disable shard allocation
 
-.. code-block:: console
+   .. code-block:: none
 
-   $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
-   {
-     "persistent": {
-       "cluster.routing.allocation.enable": "none"
-     }
-   }
-   '
+      $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+      {
+        "persistent": {
+          "cluster.routing.allocation.enable": "none"
+        }
+      }
+      '
 
 2. Stop indexing and perform a synced flush
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
+      $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
 
 3. Stop the ``elasticsearch`` containers on all controller nodes (one by one)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ docker stop elasticsearch
+      $ docker stop elasticsearch
 
-**Start**
+Start
+-----
 
 1. Start the ``elasticsearch`` containers on all controller nodes (one by one)
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ docker start elasticsearch
+      $ docker start elasticsearch
 
 2. Wait for all nodes to join the cluster and report a status of yellow
 
+   .. code-block:: console
+
+      $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/health"
+
 3. Reenable allocation
 
-.. code-block:: console
+   .. code-block:: none
 
-   $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
-   {
-     "persistent": {
-       "cluster.routing.allocation.enable": null
-     }
-   }
-   '
+      $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+      {
+        "persistent": {
+          "cluster.routing.allocation.enable": null
+        }
+      }
+      '
 
-**Check**
+Check
+-----
 
 .. code-block:: console
 
