@@ -2,14 +2,16 @@
 RabbitMQ
 ========
 
+.. contents::
+   :local:
+
 Cluster start and stop
 ======================
 
-**Stop**
+Stop
+----
 
-.. warning::
-
-   Ensure that any services using RabbitMQ are stopped.
+Ensure that any services using RabbitMQ are stopped.
 
 Stop the ``rabbitmq`` container on all controller nodes (one by one) and note the order of the nodes.
 
@@ -17,7 +19,8 @@ Stop the ``rabbitmq`` container on all controller nodes (one by one) and note th
 
    $ docker stop rabbitmq
 
-**Start**
+Start
+-----
 
 Successively start the ``rabbitmq`` container on all controller nodes (one by one) in the reverse order.
 
@@ -25,7 +28,8 @@ Successively start the ``rabbitmq`` container on all controller nodes (one by on
 
    $ docker start rabbitmq
 
-**Check**
+Check
+-----
 
 .. code-block:: console
 
@@ -57,12 +61,14 @@ individual notification queues.
 rabbitmqadmin
 =============
 
-* https://www.rabbitmq.com/management-cli.html
+https://www.rabbitmq.com/management-cli.html
 
-.. blockqoute:
+The management plugin ships with a command line tool rabbitmqadmin which can perform
+some of the same actions as the Web-based UI, and which may be more convenient for
+automation tasks. Note that rabbitmqadmin is just a specialised HTTP client; if you
+are contemplating invoking rabbitmqadmin from your own program you may want to consider
+using an HTTP API client library instead.
 
-   The management plugin ships with a command line tool rabbitmqadmin which can perform
-   some of the same actions as the Web-based UI, and which may be more convenient for
-   automation tasks. Note that rabbitmqadmin is just a specialised HTTP client; if you
-   are contemplating invoking rabbitmqadmin from your own program you may want to consider
-   using an HTTP API client library instead. [#s1]_
+.. code-block:: console
+
+   $ curl -o rabbitmqadmin http://INTERNAL_VIP_ADDRESS:15672/cli/rabbitmqadmin
