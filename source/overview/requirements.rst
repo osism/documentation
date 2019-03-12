@@ -32,6 +32,9 @@ Manager node:
 Network
 =======
 
+VLAN based
+----------
+
 .. list-table:: Required VLANs
    :header-rows: 1
    :widths: 7 10 3 3
