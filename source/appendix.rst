@@ -6,5 +6,4 @@ Appendix
    :maxdepth: 2
 
    appendix/tables
-   appendix/trademark-information
    appendix/license
