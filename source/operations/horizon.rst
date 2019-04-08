@@ -41,6 +41,14 @@ Solution
 
 You have to cleanup and restart all horizon containers.
 
-.. code-block:: console
+* Up to Queens release:
 
-   $ docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon
+  .. code-block:: console
+
+     $ docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt && docker restart horizon
+
+* As of Rocky release
+
+  .. code-block:: console
+
+     $ docker exec -it horizon rm /var/lib/kolla/.settings.md5sum.txt && docker restart horizon
