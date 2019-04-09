@@ -110,3 +110,6 @@ Configuration
 -------------
 
 * in ``environments/kolla/configuration.yml`` change ``serial`` to ``kolla_serial``
+* in ``environments/kolla/files/overlays`` add the gnocci ceph keyfile and configuration file to the ``gnocchi``
+  directory, the ceph keyfiles and configuration files in the ``gnocchi-metricd``, ``gnocchi-statsd``, and ``gnocchi-api``
+  directories can be removed
