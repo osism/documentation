@@ -113,3 +113,4 @@ Configuration
 * in ``environments/kolla/files/overlays`` add the gnocci ceph keyfile and configuration file to the ``gnocchi``
   directory, the ceph keyfiles and configuration files in the ``gnocchi-metricd``, ``gnocchi-statsd``, and ``gnocchi-api``
   directories can be removed
+* the ``glance_registry`` containers on the controller nodes can be removed, the service was deprecated in Queens and will be removed in Stein
