@@ -106,6 +106,23 @@ Queens -> Rocky
 * https://docs.openstack.org/releasenotes/kolla/rocky.html
 * https://docs.openstack.org/releasenotes/kolla-ansible/rocky.html
 
+Inventory
+---------
+
+* Add new host groups to ``inventory/hosts`` to the ``environment: kolla`` section
+
+  .. code-block:: ini
+
+     # neutron
+
+     [...]
+
+     [neutron-infoblox-ipam-agent:children]
+     network
+
+     [ironic-neutron-agent:children]
+     network
+
 Configuration
 -------------
 
