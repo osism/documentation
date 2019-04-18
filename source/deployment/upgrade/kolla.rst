@@ -133,3 +133,18 @@ Configuration
   directory, the ceph keyfiles and configuration files in the ``gnocchi-metricd``, ``gnocchi-statsd``, and ``gnocchi-api``
   directories can be removed
 * the ``glance_registry`` containers on the controller nodes can be removed, the service was deprecated in Queens and will be removed in Stein
+
+Elasticsearch
+-------------
+
+Upgrading Elasticsearch might fail, because it still has pending operations when trying
+to perform a synced flush. Normally it does not matter if you loose some logging data
+while upgrading Elasticsearch, so you can use `osism-kolla deploy elasticsearch` instead
+of `osism-kolla upgrade elasticsearch`. It basically does the same, but does not wait for
+Elasticsearch to stop all operations on the cluster before restarting it.
+
+Kibana
+------
+
+You might have to delete (or update) the `.kibana` index in Elasticsearch after the
+Upgrade. You will loose dashboards and saved searches in Kibana, if you delete the index.
