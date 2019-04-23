@@ -23,6 +23,18 @@ Preparations
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server from this USB stick/CD
 
+Partitioning
+------------
+
+* The use of a RAID is recommended
+* The use of a LVM2 is recommended
+* The use of own file systems for the following mountpoints is recommended
+
+  * ``/home``
+  * ``/tmp``
+  * ``/var/log/audit``
+  * ``/var``
+
 Installation
 ------------
 
