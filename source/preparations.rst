@@ -35,6 +35,8 @@ Partitioning
   * ``/var/log/audit``
   * ``/var``
 
+* The use of a swap partition is recommended
+
 Installation
 ------------
 
