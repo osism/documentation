@@ -13,6 +13,41 @@ Preparations
 
 * gather facts with ``osism-generic facts`` before the upgrade
 
+* adjust versions
+
+.. code-block:: yaml
+   :caption: environments/configuration.yml
+
+   ##########################
+   # versions
+
+   openstack_version: rocky
+   repository_version: 2019.2.0
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration-mirror-images.yml
+
+   ##########################
+   # versions
+
+   openstack_version: rocky
+   repository_version: 2019.2.0
+
+.. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
+
+   ##########################
+   # images
+
+   openstack_release: rocky
+
+* sync with master configuration repository
+
+.. code-block:: console
+
+  $ MANAGER_VERSION=2019.2.0 gilt overlay
+  $ MANAGER_VERSION=2019.2.0 gilt overlay
+
 Notes
 =====
 
