@@ -123,6 +123,12 @@ PCI passthrough
      $ sudo update-initramfs -u
      $ sudo reboot
 
+* get vendor and product IDs
+
+  .. code-block:: console
+
+     $ lspci -nn
+
 * enable PCI passthrough module in ``/etc/modprobe.d/vfio.conf``
 
   .. code-block:: console
@@ -136,12 +142,6 @@ PCI passthrough
 
      [filter_scheduler]
      enabled_filters = ..., PciPassthroughFilter
-
-* get vendor and product IDs
-
-  .. code-block:: console
-
-     $ lspci -nn
 
 * specify PCI aliases for the devices in ``environments/kolla/files/overlays/nova/nova-api.conf`` and ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
