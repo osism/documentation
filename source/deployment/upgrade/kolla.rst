@@ -13,6 +13,8 @@ Preparations
 
 * gather facts with ``osism-generic facts`` before the upgrade
 
+* backup MariaDB databases before the upgrade
+
 Notes
 =====
 
