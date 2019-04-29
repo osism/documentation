@@ -84,7 +84,7 @@ Inventory
 Configuration
 -------------
 
-* Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with``enable_redis: "yes"``, add ``redis_master_password`` to ``secrets.yml``)
+* Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with ``enable_redis: "yes"``, add ``redis_master_password`` to ``secrets.yml``)
 
 * Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone and remove the ``ceilometer-api`` host group from the inventory
 
