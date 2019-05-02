@@ -50,11 +50,9 @@ After deploying Ceph, the remaining individual keys must be stored in the config
    ./environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
    ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
    ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
-   ./environments/kolla/files/overlays/gnocchi-statsd/ceph.client.gnocchi.keyring
+   ./environments/kolla/files/overlays/gnocchi/ceph.client.gnocchi.keyring
    ./environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
    ./environments/kolla/files/overlays/nova/ceph.client.nova.keyring
-   ./environments/kolla/files/overlays/gnocchi-metricd/ceph.client.gnocchi.keyring
-   ./environments/kolla/files/overlays/gnocchi-api/ceph.client.gnocchi.keyring
    ./environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
    ./environments/infrastructure/files/ceph/ceph.client.admin.keyring
 
