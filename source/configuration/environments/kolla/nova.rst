@@ -113,15 +113,9 @@ PCI passthrough
 
   .. code-block:: console
     
+     blacklist snd_hda_intel # customer gpu
      blacklist nouveau
      options nouveau modeset=0
-
-* rebuild the initramfs and reboot
-
-  .. code-block:: console
-
-     $ sudo update-initramfs -u
-     $ sudo reboot
 
 * get vendor and product IDs
 
@@ -133,8 +127,32 @@ PCI passthrough
 
   .. code-block:: console
  
-     options vfio-pci ids=10de:1b38
+     options vfio-pci ids=10de:1b38[,10de:1038]
      options vfio-pci disable_vga=1
+
+* enable modul after reboot in ``/etc/modules``
+
+  .. code-block:: console
+
+     ...
+     vfio-pci
+
+* rebuild the initramfs and reboot
+
+  .. code-block:: console
+
+     $ sudo update-initramfs -u
+     $ sudo reboot
+
+* check if ``vfio`` is used for ID
+
+  .. code-block:: console
+
+     $ lspci -nn -s 84:00.0
+     84:00.0 VGA compatible controller [0300]: NVIDIA Corporation GV102 [10de:1e07] (rev a1)
+             Subsystem: Gigabyte Technology Co., Ltd Device [1458:37a9]
+             Kernel driver in use: vfio-pci
+             Kernel modules: nvidiafb, nouveau
 
 * enable the ``PciPassthroughFilter`` scheduler in ``environments/kolla/files/overlays/nova/nova-scheduler.conf``
 
