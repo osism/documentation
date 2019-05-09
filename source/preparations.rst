@@ -17,7 +17,7 @@ Preparations
 
   * Use the ``ubuntu-18.04.2-server-amd64.iso`` image
   * Do not use the ``ubuntu-18.04.2-live-server-amd64.iso`` image
-  * The version number may be different
+  * The version number may be different, always use the latest available version of 18.04 LTS
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
@@ -30,12 +30,20 @@ Partitioning
 * The use of a LVM2 is recommended
 * The use of own file systems for the following mountpoints is recommended
 
+  * ``/``
   * ``/home``
   * ``/tmp``
+  * ``/var/lib/docker``
   * ``/var/log/audit``
+  * ``/var/log``
   * ``/var``
 
 * The use of a swap partition is recommended
+
+When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
+
+  * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
+  * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 Installation
 ------------
@@ -113,7 +121,7 @@ should be used.
 * You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
 
 * At the beginning it is sufficient to be able to reach the system via SSH. The network configuration is
-  rolled out during the bootstrap. Therefore a manual configuration is sufficient.
+  rolled out during the bootstrap. Therefore a manual configuration is sufficient and recommended.
 
 Seed node
 =========
@@ -124,7 +132,7 @@ Execute the following commands on the seed node.
 
   .. code-block:: console
 
-     $ sudo apt install git python-pip python-virtualenv sshpass
+     $ sudo apt install git python3-pip python3-virtualenv sshpass
 
 * Clone the configuration repository
 
@@ -215,6 +223,7 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
      $ ./run.sh network
 
   * The network configuration already present on a system should be saved before this step.
+  * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
   * Upon completion of this step, a system reboot should be performed to ensure that the
     configuration is functional and reboot secure. Since network services are not
     restarted automatically, later changes to the network configuration are not effective
@@ -277,7 +286,7 @@ Alternatively, Git itself can be used on the manager node to update the reposito
 .. code-block:: console
 
    $ cd /opt/configuration
-   $ ssh-agent bash -c 'ssh-add /home/dragon/.ssh/id_rsa.configuration; git pull'
+   $ ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa.configuration; git pull'
 
 Infrastructure services
 =======================
@@ -287,12 +296,16 @@ Execute the following commands on the manager node.
 Cobbler
 -------
 
+This step is optional.
+
 .. code-block:: console
 
    $ osism-infrastructure cobbler
 
 Mirror
 ------
+
+This step is optional.
 
 .. code-block:: console
 
