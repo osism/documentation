@@ -31,7 +31,16 @@ It is recommended to always use a virtual environment when you install packages 
 
 .. code-block:: console
 
-   $ pip install cookiecutter oslo.utils pycrypto pyyaml ruamel.yaml python-gilt paramiko
+   $ pip install \
+       cookiecutter \
+       cryptography \
+       oslo.utils \
+       paramiko \
+       passlib \
+       pycrypto \
+       python-gilt \
+       pyyaml \
+       ruamel.yaml
 
 When you run cookiecutter, you are asked for the information you collected before.
 A list with all queries can be found in the ``cookiecutter.json`` configuration file.
