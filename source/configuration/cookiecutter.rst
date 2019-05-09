@@ -31,7 +31,7 @@ It is recommended to always use a virtual environment when you install packages 
 
 .. code-block:: console
 
-   $ pip install \
+   $ pip3 install \
        cookiecutter \
        cryptography \
        oslo.utils \
