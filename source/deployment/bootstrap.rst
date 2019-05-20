@@ -47,6 +47,7 @@ Execute the following commands on the manager node.
      $ osism-generic network -l 'all:!manager'
 
   * The network configuration already present on a system should be saved before this step.
+  * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
   * Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
 
 * Bootstrap of the nodes
@@ -57,7 +58,7 @@ Execute the following commands on the manager node.
 
   .. note::
 
-     The reexecution of the bootstrap on the manager is intended.
+     The re-execution of the bootstrap on the manager is intended.
 
 Single node
 ===========
