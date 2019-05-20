@@ -48,11 +48,6 @@ Execute the following commands on the manager node.
 
   * The network configuration already present on a system should be saved before this step.
   * Upon completion of this step, a system reboot should be performed to ensure that the configuration is functional and reboot secure.
-  * When using Ubuntu 18.04 the following call is necessary.
-
-    .. code-block:: console
-
-       $ osism-generic grub -l 'all:!manager'
 
 * Bootstrap of the nodes
 

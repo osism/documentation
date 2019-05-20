@@ -228,12 +228,6 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
     configuration is functional and reboot secure. Since network services are not
     restarted automatically, later changes to the network configuration are not effective
     without a manual restart of the network service or reboot of the nodes.
-  * When using Ubuntu 18.04 the following call is necessary.
-
-    .. code-block:: console
-
-       $ ./run.sh grub
-
   * A reboot is performed to activate and test the network configuration.
     The reboot must be performed before the bootstrap is performed.
 
