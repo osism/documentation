@@ -5,27 +5,39 @@ Ceph
 .. contents::
    :local:
 
-Execute the following commands on the manager node.
+.. note::
 
-Before deployment make sure that NTP works.
+   Execute the following commands on the manager node.
+
+.. warning::
+
+   Before deployment make sure that NTP works.
 
 Management services
 ===================
 
-.. code-block:: console
+* ceph-mon is the cluster monitor daemon for the Ceph distributed file system
 
-   $ osism-ceph mons
-   $ osism-ceph mgrs
+  .. code-block:: console
+
+     $ osism-ceph mons
+
+* ceph-mon is the cluster monitor daemon for the Ceph distributed file system
+
+  .. code-block:: console
+
+     $ osism-ceph mgrs
 
 Client service
 ==============
 
 * Set the ``ceph.client.admin.keyring`` in the ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file
+  in the configuration repository
 
   * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor node
-  * Update the configuration repository on the manager node
+  * Update the configuration repository on the manager node with ``osism-generic configuration``
 
-* Deploy the cephclient service on the monitor nodes
+* Deploy the cephclient service
 
 .. code-block:: console
 
@@ -34,10 +46,17 @@ Client service
 Storage services
 ================
 
-.. code-block:: console
+* ceph-mds is the metadata server daemon for the Ceph distributed file system
 
-   $ osism-ceph mdss  # only when using cephfs
-   $ osism-ceph osds
+  .. code-block:: console
+
+     $ osism-ceph mdss  # only when using cephfs
+
+* ceph-osd is the object storage daemon for the Ceph distributed file system
+
+  .. code-block:: console
+
+     $ osism-ceph osds
 
 Post-processing
 ===============
@@ -70,4 +89,4 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
    ceph.conf
    ceph.mon.keyring
 
-Don't forget to update the configuration repository on the manager afterwards.
+Don't forget to update the configuration repository on the manager afterwards with ``osism-generic configuration``.
