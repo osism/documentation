@@ -58,3 +58,9 @@ Execute the following commands on the manager node.
   .. note::
 
      The re-execution of the bootstrap on the manager is intended.
+
+* Refresh facts
+
+  .. code-block:: console
+
+     $ osism-generic facts
