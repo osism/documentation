@@ -6,6 +6,7 @@ Deployment
    :maxdepth: 2
 
    deployment/bootstrap
+   deployment/single
    deployment/infrastructure
    deployment/ceph
    deployment/kolla
