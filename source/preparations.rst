@@ -285,12 +285,12 @@ Alternatively, Git itself can be used on the manager node to update the reposito
 Infrastructure services
 =======================
 
+The deployment of these infrastructure services is optional.
+
 Execute the following commands on the manager node.
 
 Cobbler
 -------
-
-This step is optional.
 
 .. code-block:: console
 
@@ -298,8 +298,6 @@ This step is optional.
 
 Mirror
 ------
-
-This step is optional.
 
 .. code-block:: console
 
