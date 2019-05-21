@@ -120,35 +120,33 @@ The order is important. If this is not followed, an error occurs when starting H
 Generate self-signed certificates
 ---------------------------------
 
-.. note:: Run this command on the manager node.
-
-.. note:: ``10-11.betacloud.xyz`` is the manager node.
+Run this command on the manager node.
 
 .. code-block:: console
 
-   $ osism-kolla _ certificates --limit 10-11.betacloud.xyz
+   $ osism-kolla _ certificates
    PLAY [Apply role certificates] *************************************************
 
    TASK [certificates : Ensuring config directories exist] ************************
-   ok: [10-11.betacloud.xyz] => (item=certificates/private)
+   ok: [localhost] => (item=certificates/private)
 
    TASK [certificates : Creating SSL configuration file] **************************
-   ok: [10-11.betacloud.xyz] => (item=openssl-kolla.cnf)
+   ok: [localhost] => (item=openssl-kolla.cnf)
 
    TASK [certificates : Creating Key] *********************************************
-   ok: [10-11.betacloud.xyz] => (item=/etc/kolla//certificates/private/haproxy.key)
+   ok: [localhost] => (item=/etc/kolla//certificates/private/haproxy.key)
 
    TASK [certificates : Creating Server Certificate] ******************************
-   ok: [10-11.betacloud.xyz] => (item=/etc/kolla//certificates/private/haproxy.crt)
+   ok: [localhost] => (item=/etc/kolla//certificates/private/haproxy.crt)
 
    TASK [certificates : Creating CA Certificate File] *****************************
-   ok: [10-11.betacloud.xyz]
+   ok: [localhost]
 
    TASK [certificates : Creating Server PEM File] *********************************
-   ok: [10-11.betacloud.xyz]
+   ok: [localhost]
 
    PLAY RECAP *********************************************************************
-   10-11.betacloud.xyz        : ok=6    changed=0    unreachable=0    failed=0
+   localhost        : ok=6    changed=0    unreachable=0    failed=0
 
 On the manager node the self-signed certificate is located in ``/etc/kolla/certificates/haproxy.pem``
 inside the ``manager_kolla-ansible_1`` container.
@@ -163,6 +161,15 @@ If the ``pem`` file is not created correctly that is not a problem. Then just us
 Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.yml`` and add the
 content of the self-signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
 ``environments/kolla/secrets.yml`` file.
+
+.. code-block:: yaml
+
+   kolla_external_fqdn_cert
+     -----BEGIN CERTIFICATE-----
+     [...]
+     -----END CERTIFICATE-----
+     -----BEGIN RSA PRIVATE KEY-----
+     -----END RSA PRIVATE KEY-----
 
 You should also add the self-signed certificate to the list of trusted certifcates on every computer
 that uses the external API. The workflow is different for different Linux distributions.
