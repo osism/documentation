@@ -5,13 +5,11 @@ Ceph
 .. contents::
    :local:
 
-.. note::
-
-   Execute the following commands on the manager node.
-
 .. warning::
 
    Before deployment make sure that NTP works.
+
+Execute the following commands on the manager node.
 
 Management services
 ===================
