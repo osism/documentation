@@ -33,7 +33,7 @@ Partitioning
   * ``/``
   * ``/home``
   * ``/tmp``
-  * ``/var/lib/docker``
+  * ``/var/lib/docker`` (do not set the nosuid flag on ``/var/lib/docker``)
   * ``/var/log/audit``
   * ``/var/log``
   * ``/var``
