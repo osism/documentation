@@ -7,7 +7,7 @@ Run commands
 
 .. code-block:: console
 
-   $ osism-ansible generic -m shell -a date all
+   $ osism-ansible generic all -m shell -a date
    20-10.betacloud.xyz | SUCCESS | rc=0 >>
    Sun Dec  2 10:28:42 UTC 2018
 
