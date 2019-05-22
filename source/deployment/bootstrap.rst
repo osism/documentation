@@ -49,6 +49,12 @@ Execute the following commands on the manager node.
 
      $ osism-generic reboot -l 'all:!manager'
 
+* Refresh facts
+
+  .. code-block:: console
+
+     $ osism-generic facts
+
 * Bootstrap of the nodes
 
   .. code-block:: console
@@ -58,9 +64,3 @@ Execute the following commands on the manager node.
   .. note::
 
      The re-execution of the bootstrap on the manager is intended.
-
-* Refresh facts
-
-  .. code-block:: console
-
-     $ osism-generic facts
