@@ -11,6 +11,12 @@ Common
 
    $ osism-kolla deploy common
 
+This role includes the following services:
+
+* cron
+* fluentd
+* kolla_toolbox
+
 Logging
 =======
 
