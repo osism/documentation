@@ -9,6 +9,11 @@ Ceph
 
    Before deployment make sure that NTP works.
 
+   .. code-block:: console
+
+      $ osism-ansible generic all -m shell -a 'chronyc sources'
+      $ osism-ansible generic all -m shell -a 'chronyc tracking'
+
 Execute the following commands on the manager node.
 
 Management services
