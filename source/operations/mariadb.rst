@@ -19,6 +19,9 @@ Carry out the following steps on all controller nodes (one by one).
 
 1. Ensure that ``wsrep_local_state_comment`` is ``synced``
 
+   The password for MariaDB can be found in the file ``environments/kolla/secrets.yml`` in
+   the variable ``database_password``.
+
    .. code-block:: console
 
       $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"

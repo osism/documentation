@@ -135,6 +135,9 @@ Login to the mariadb databaserver (run ``docker exec -it mariadb mysql -u root -
 database nodes or use phpMyAdmin running on the manager node on port ``8110``) and run the following
 query.
 
+The password for MariaDB can be found in the file ``environments/kolla/secrets.yml`` in the variable
+``database_password``.
+
 .. code-block:: console
 
    MariaDB [(none)]> SHOW GLOBAL STATUS LIKE 'wsrep_%';
