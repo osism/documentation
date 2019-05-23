@@ -14,4 +14,4 @@ Manager
 
 .. code-block:: console
 
-  $ osism-manager manager
+   $ osism-manager manager
