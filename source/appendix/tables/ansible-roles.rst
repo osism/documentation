@@ -7,6 +7,7 @@ Ansible roles
 ======================================== ============================================================ ==========================================================
 Name                                     Repository                                                   Role
 ======================================== ============================================================ ==========================================================
+osism/ansible-chrony                     https://github.com/osism/ansible-chrony                      osism.chrony
 osism/ansible-cobbler                    https://github.com/osism/ansible-cobbler                     osism.cobbler
 osism/ansible-cockpit                    https://github.com/osism/ansible-cockpit                     osism.cockpit
 osism/ansible-common                     https://github.com/osism/ansible-common                      osism.common
