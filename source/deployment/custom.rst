@@ -2,6 +2,9 @@
 Custom
 ======
 
+Cronjobs
+========
+
 Execute the following commands on the manager node.
 
 .. code-block:: console

@@ -12,5 +12,4 @@ Deployment
    deployment/kolla
    deployment/monitoring
    deployment/custom
-   deployment/notes
    deployment/upgrade

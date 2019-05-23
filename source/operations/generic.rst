@@ -157,3 +157,10 @@ Currently the following plugins are activated.
 - udev
 - usb
 - xfs
+
+Update rsyslog configuration
+============================
+
+.. code-block:: console
+
+   $ osism-generic common --skip-tags always --tags logging

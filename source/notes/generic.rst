@@ -97,3 +97,10 @@ Spectre & Meltdown
    Kernel is Linux 4.4.0-127-generic #153-Ubuntu SMP Sat May 19 10:58:46 UTC 2018 x86_64
    CPU is AMD EPYC 7251 8-Core Processor
    [...]
+
+Deleting all partitions
+=======================
+
+.. code-block:: console
+
+   $ sudo dd if=/dev/zero of=/dev/sdc bs=512 count=1 conv=notrunc

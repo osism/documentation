@@ -11,3 +11,4 @@ Notes
    notes/networking
    notes/openstack
    notes/ubuntu
+   notes/troubleshooting
