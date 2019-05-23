@@ -26,7 +26,7 @@ creation and its contents are explained here.
    configuration/environments/manager
    configuration/environments/generic
    configuration/environments/infrastructure
-   configuration/environments/kolla
+   configuration/environments/openstack
    configuration/environments/ceph
    configuration/environments/monitoring
    configuration/environments/custom

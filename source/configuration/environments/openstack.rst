@@ -1,6 +1,6 @@
-=====
-Kolla
-=====
+=========
+OpenStack
+=========
 
 Base directory: ``environments/kolla``
 
@@ -9,16 +9,16 @@ The documentation for ``kolla-ansible`` can be found on https://docs.openstack.o
 .. toctree::
    :maxdepth: 2
 
-   kolla/cinder
-   kolla/freezer
-   kolla/gnocchi
-   kolla/heat
-   kolla/horizon
-   kolla/keystone
-   kolla/mistral
-   kolla/neutron
-   kolla/nova
-   kolla/skydive
+   openstack/cinder
+   openstack/freezer
+   openstack/gnocchi
+   openstack/heat
+   openstack/horizon
+   openstack/keystone
+   openstack/mistral
+   openstack/neutron
+   openstack/nova
+   openstack/skydive
 
 Generate secrets
 ================
