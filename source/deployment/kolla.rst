@@ -4,9 +4,14 @@ Kolla
 
 Execute the following commands on the manager node.
 
+The deployment of a single Kolla service is done via the ``osism-kolla`` wrapper.
+
 .. code-block:: console
 
    $ osism-kolla deploy ROLE
+
+Depending on the available bandwidth, it may be a good idea to pull the Docker
+images in advance prior to deployment. This can be done with ``osism-kolla pull ROLE``.
 
 Infrastructure
 ==============
@@ -14,7 +19,7 @@ Infrastructure
 * memcached
 * mariadb
 * rabbitmq
-* redis (>= ``pike``, required by Mistral)
+* redis (>= ``pike``, required by Mistral & Gnocchi)
 
 .. code-block:: console
 
