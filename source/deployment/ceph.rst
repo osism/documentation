@@ -40,6 +40,8 @@ Client service
   * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor node
   * Update the configuration repository on the manager node with ``osism-generic configuration``
 
+* Ensure that ``cephclient_mons`` is set accordingly in the ``environments/infrastructure/configuration.yml`` file
+
 * Deploy the cephclient service
 
 .. code-block:: console
