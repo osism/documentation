@@ -1,6 +1,6 @@
-=====
-Kolla
-=====
+=========
+OpenStack
+=========
 
 Execute the following commands on the manager node.
 
