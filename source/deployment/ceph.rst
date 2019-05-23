@@ -63,6 +63,18 @@ Storage services
 
      $ osism-ceph osds
 
+  .. note::
+
+     Due to a bug the distribution of the Ceph keys fails in the first run. The following intermediate
+     step is currently required.
+
+     Execute the following command on the first Ceph monitor node. Then ``osism-ceph osds`` must be
+     executed again.
+
+     .. code-block:: console
+
+        $ sudo cp /opt/cephclient/configuration/*.keyring /etc/ceph
+
 Post-processing
 ===============
 
