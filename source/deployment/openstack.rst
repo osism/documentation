@@ -25,12 +25,12 @@ Infrastructure
 * memcached
 * mariadb
 * rabbitmq
-* redis (>= ``pike``, required by Mistral & Gnocchi)
+* redis (required by Mistral & Gnocchi)
 
 Networking
 ==========
 
-* openvswitch (>= ``pike``)
+* openvswitch
 
 Storage
 =======
