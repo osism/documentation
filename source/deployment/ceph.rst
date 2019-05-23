@@ -95,3 +95,7 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
    ceph.mon.keyring
 
 Don't forget to update the configuration repository on the manager afterwards with ``osism-generic configuration``.
+
+After the initial deployment of the Ceph Clusters, the ``openstack_config`` parameter in the
+``environments/ceph/configuration.yml`` can be set to ``false``. It must only be set to ``true`` when new
+pools or keys are added.
