@@ -30,6 +30,7 @@ creation and its contents are explained here.
    configuration/environments/ceph
    configuration/environments/monitoring
    configuration/environments/custom
+   configuration/update
 
 With the exception of a special environment for the manager, all
 environments have the same structure and share the same inventory.

@@ -26,6 +26,7 @@ to write an e-mail to info@betacloud-solutions.de if you have questions or doubt
 
    overview
    configuration
+   installation
    preparations
    deployment
    upgrade

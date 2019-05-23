@@ -20,33 +20,6 @@ The documentation for ``kolla-ansible`` can be found on https://docs.openstack.o
    openstack/nova
    openstack/skydive
 
-Generate secrets
-================
-
-This step is not necessary when using the cookiecutter template.
-
-* ``environments/kolla/secets.yml``
-
-.. code-block:: console
-
-   $ wget https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/scripts/generate-secrets.py
-   $ wget https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/secrets.yml.pike
-   $ python generate-secrets.py -p secrets.yml.pike
-   $ mv secrets.yml.pike secrets.yml
-   $ rm generate-secrets.py
-
-Depending on the environment, additional parameters must be added manually in this file.
-These parameters are not yet included in the upstream of ``kolla-ansible``.
-
-Currently the following additional parameters are available:
-
-* ``prometheus_database_password``
-* ``kolla_external_fqdn_cert``
-
-The ``secrets.yml`` file should be encrypted with Ansibe Vault.
-
-* https://docs.ansible.com/ansible/2.5/user_guide/vault.html
-
 Inventory
 =========
 
