@@ -9,6 +9,6 @@ Deployment
    deployment/single
    deployment/infrastructure
    deployment/ceph
-   deployment/kolla
+   deployment/openstack
    deployment/monitoring
    deployment/custom
