@@ -2,6 +2,9 @@
 Rally
 =====
 
+.. contents::
+   :local:
+
 Rally is a tool for performance analysis and benchmarking of individual OpenStack components.
 
 * https://github.com/openstack/rally

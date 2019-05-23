@@ -2,6 +2,9 @@
 Generic
 =======
 
+.. contents::
+   :local:
+
 Docker
 ======
 

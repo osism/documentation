@@ -2,6 +2,9 @@
 OpenStack
 =========
 
+.. contents::
+   :local:
+
 Preparations
 ============
 

@@ -2,6 +2,9 @@
 Shaker
 ======
 
+.. contents::
+   :local:
+
 Shaker is a distributed data-plane testing tool built for OpenStack.
 
 * https://github.com/openstack/shaker

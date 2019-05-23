@@ -2,6 +2,9 @@
 Ceph
 ====
 
+.. contents::
+   :local:
+
 * https://tracker.ceph.com/projects/ceph/wiki/Benchmark_Ceph_Cluster_Performance
 
 .. note::

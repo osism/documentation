@@ -2,6 +2,9 @@
 Infrastructure
 ==============
 
+.. contents::
+   :local:
+
 Network
 =======
 

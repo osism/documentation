@@ -2,6 +2,9 @@
 RefStack
 ========
 
+.. contents::
+   :local:
+
 RefStack is a source of tools for OpenStack interoperability testing.
 
 * https://refstack.openstack.org
