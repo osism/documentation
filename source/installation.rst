@@ -118,6 +118,7 @@ should be used.
 
 * You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
 
-* At the beginning it is sufficient to be able to reach the system via SSH. The network configuration is
-  rolled out during the bootstrap. Therefore a manual configuration is sufficient and recommended.
+* At the beginning it is sufficient to be able to reach the system via SSH.
 
+* It is not necessary to create the entire network configuration. The network configuration is created during
+  the bootstrap on the systems.
