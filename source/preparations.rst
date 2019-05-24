@@ -8,21 +8,31 @@ Preparations
 Seed node
 =========
 
+The seed node is used once for the first bootstrap of the manager node. It is sufficient to use
+the local workstation. It doesn't have to be a dedicated system. The seed node must be able to
+reach the manager node via SSH.
+
+The use of Linux on the seed node is recommended. Other operating systems should also work
+without problems.
+
 Execute the following commands on the seed node.
 
-* Install required packages
+Packages
+--------
 
-  .. code-block:: console
+.. code-block:: console
 
-     $ sudo apt install git python3-pip python3-virtualenv sshpass
+   $ sudo apt install git python3-pip python3-virtualenv sshpass
 
-* Clone the configuration repository
+Configuration repository
+------------------------
 
-  .. code-block:: console
+.. code-block:: console
 
-     $ git clone ssh://git@git.betacloud-solutions.de:10022/customers/xxx/cfg-yyy.git
+   $ git clone ssh://git@git.betacloud-solutions.de:10022/customers/xxx/cfg-yyy.git
 
-If necessary, the deployment key can be used for the initial transfer of the repository.
+If necessary, the configuration SSH key can be used for the initial transfer of the
+repository.
 
 For this, the following content is added in ``~/.ssh/config`` and the SSH privte key is
 stored in ``~/.ssh/id_rsa.configuration``.
@@ -37,6 +47,9 @@ stored in ``~/.ssh/id_rsa.configuration``.
 
 Manager node
 ============
+
+The manager node is used to manage all other nodes of the environment. The use of a dedicated system
+is recommended. In many environments, one of the controller nodes is used as the manager node.
 
 Execute the following commands on the seed node. Execute the commands within the
 manager environment (``cd environments/manager``).
