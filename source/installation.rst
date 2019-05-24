@@ -57,6 +57,10 @@ Installation
 * Set the hostname (the hostname is ``60-10`` and not ``60-10.betacloud.xyz``)
 * Set ``ubuntu`` as full name for the new user
 * Set ``ubuntu`` as the username for the account
+
+  * The later used operator user ``dragon`` is created during the bootstrap
+    and should not be created during the installation.
+
 * Set a password for the account
 
   * The account is only needed initially and can be deleted
