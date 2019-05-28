@@ -6,6 +6,7 @@ Configuration
    :maxdepth: 2
 
    configuration/cookiecutter
+   configuration/synchronisation
    configuration/networks
 
 The basis of an OSISM environment is a configuration repository,
