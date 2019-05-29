@@ -227,6 +227,13 @@ Logging
 
      $ docker logs --tail 100 --follow ceph-mon-ceph01
 
+Add new OSD
+===========
+
+* Add the new device to the ``devices`` list in the inventory of the corresponding host
+
+* Execute ``osism-ceph osds -l HOST`` on the manager node
+
 Replace defect OSD
 ==================
 
