@@ -5,8 +5,60 @@ Network
 .. contents::
    :local:
 
+External connectivity
+=====================
+
+speedtest.net
+-------------
+
+* https://www.speedtest.net
+* https://github.com/sivel/speedtest-cli
+
+.. code-block:: console
+
+   $ sudo apt-get install speedtest-cli
+
+.. code-block:: console
+
+   $ speedtest-cli --no-upload
+   Retrieving speedtest.net configuration...
+   Testing from TelemaxX Telekommunikation GmbH (a.b.c.d)...
+   Retrieving speedtest.net server list...
+   Selecting best server based on ping...
+   Hosted by TelemaxX Telekommunikation GmbH (Karlsruhe) [1.17 km]: 1.483 ms
+   Testing download speed................................................................................
+   Download: 935.77 Mbit/s
+   Skipping upload test
+
+curl
+----
+
+.. code-block:: console
+
+   $ curl ftp://speedtest.tele2.net/1GB.zip -o speedtest.zip
+     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+   100 1024M  100 1024M    0     0  90.0M      0  0:00:11  0:00:11 --:--:--  107M
+
+.. code-block:: console
+
+   $ curl https://speed.hetzner.de/10GB.bin -o /dev/null
+     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+   100  9.7G  100  9.7G    0     0   109M      0  0:01:31  0:01:31 --:--:--  111M
+
+.. code-block:: console
+
+   $ curl -T speedtest.zip ftp://speedtest.tele2.net/upload/
+     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+   100 1024M    0     0  100 1024M      0  95.7M  0:00:10  0:00:10 --:--:--  103M
+
+Internal connectivity
+=====================
+
 iPerf
-=====
+-----
 
 * https://iperf.fr
 * https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/
