@@ -2,10 +2,13 @@
 Installation
 ============
 
+.. contents::
+   :local:
+
 The manual node installation is completely possible without network connectivity.
 
 Preparations
-------------
+============
 
 * Download the latest ISO image for Ubuntu 18.04 from http://cdimage.ubuntu.com/releases/18.04/release/
 
@@ -18,7 +21,7 @@ Preparations
 * Boot bare-metal server from this USB stick/CD
 
 Partitioning
-------------
+============
 
 * The use of a RAID is recommended
 * The use of a LVM2 is recommended
@@ -42,7 +45,7 @@ When using XFS as the file system for ``/var/lib/docker``, note the following: R
   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 Installation
-------------
+============
 
 * Choose ``English`` as language
 * Choose ``Install Ubuntu Server``
@@ -87,24 +90,32 @@ Installation
    ``python-minimal`` must be installed on the systems.
 
 Post-processing
----------------
+===============
 
 After the first boot depending on the environment it is necessary to create the network
 configuration for the management interface manually, because for example bonding or VLANs
 should be used.
 
+* At the beginning it is sufficient to be able to reach the system via SSH.
+* It is not necessary to create the entire network configuration. The network configuration is created during
+  the bootstrap on the systems.
+
+iproute2
+--------
+
 * https://baturin.org/docs/iproute2/
 * https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-vlan_on_bond_and_bridge_using_ip_commands
+* https://www.kernel.org/doc/Documentation/networking/bonding.txt
 
 .. code-block:: console
 
    # modprobe bonding
    # ip link add bond0 type bond
    # ip link set bond0 type bond miimon 100 mode 802.3ad
-   # ip link set enp8s0f0 down
-   # ip link set enp8s0f0 master bond0
-   # ip link set enp8s0f1 down
-   # ip link set enp8s0f1 master bond0
+   # ip link set eno1 down
+   # ip link set eno1 master bond0
+   # ip link set eno2 down
+   # ip link set eno2 master bond0
    # ip link set bond0 up
    # cat /proc/net/bonding/bond0
 
@@ -115,12 +126,50 @@ should be used.
 
 .. code-block:: console
 
-   $ ip address add 172.17.60.10/16 dev vlan101
+   # ip address add 172.17.60.10/16 dev vlan101
    # ip route add default via 172.17.40.10
 
 * You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
 
-* At the beginning it is sufficient to be able to reach the system via SSH.
+Netplan
+-------
 
-* It is not necessary to create the entire network configuration. The network configuration is created during
-  the bootstrap on the systems.
+* https://netplan.io/examples
+
+.. code-block:: yaml
+   :caption: /etc/netplan/01-netcfg.yaml
+
+   ---
+   network:
+     version: 2
+     renderer: networkd
+     ethernets:
+       eno1:
+	 dhcp4: no
+       eno2:
+	 dhcp4: no
+     bonds:
+       bond0:
+	 dhcp4: no
+	 interfaces:
+	   - eno1
+	   - eno2
+	 parameters:
+	   mode: 802.3ad
+	   lacp-rate: fast
+           mii-monitor-interval: 100
+     vlans:
+       vlan101:
+	 id: 101
+	 link: bond0
+	 addresses: [ "172.17.60.10/16" ]
+	 routes:
+	  - to: 0.0.0.0/0
+	    via: 172.17.40.10
+	 nameservers:
+	   search: [ betacloud.xyz ]
+	   addresses: [ "8.8.8.8", "8.8.4.4" ]
+
+.. code-block:: console
+
+   # netplan apply
