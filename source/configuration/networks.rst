@@ -14,31 +14,35 @@ Managment / Console
 ===================
 
 The managment or console network is there to access all nodes via SSH as well as some infrastructure and helper
-services. It is configured with the ``console_interface`` variable in the host inventory:
+services, e.g. phpMyAdmin or the web interface of ARA.
+
+The network configured with the ``console_interface`` variable in the host inventory.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
    console_interface: eth0
 
 Internal
 ========
 
 The internal network is used for internal communication between different hosts. It is also used for
-traffic that has no dedicated network.
+traffic that has no dedicated network. Ansible playbooks also access this network.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
+   ##########################################################
+   # generic
+
    managment_interface: eth1
    internal_address: 10.0.1.2
+   fluentd_host: 10.0.1.2
 
-   [...]
-   ##########################
+.. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
    # kolla
 
    network_interface: eth1
@@ -46,9 +50,7 @@ traffic that has no dedicated network.
 .. code-block:: yaml
    :caption: environments/kolla/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # haproxy
 
    kolla_internal_fqdn: internal-api.betacloud.xyz
@@ -56,15 +58,15 @@ traffic that has no dedicated network.
 .. code-block:: yaml
    :caption: environments/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # hosts
 
    host_additional_entries:
      internal-api.betacloud.xyz: 10.0.1.10
 
-   [...]
+.. code-block:: yaml
+   :caption: environments/configuration.yml
+
    ##########################
    # kolla
 
@@ -79,12 +81,7 @@ at ``environments/monitorning/configuration.yml``.
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
-   fluentd_host: 10.0.1.2
-
-   [...]
-   ##########################
+   ##########################################################
    # monitoring
 
    prometheus_scaper_interface: eth1
@@ -99,9 +96,7 @@ network.
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # kolla
 
    tunnel_interface: eth2
@@ -114,9 +109,7 @@ External API endpoints are in this network.
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # kolla
 
    kolla_external_vip_interface: eth3
@@ -124,9 +117,7 @@ External API endpoints are in this network.
 .. code-block:: yaml
    :caption: environments/kolla/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # haproxy
 
    kolla_external_fqdn: external-api.betacloud.xyz
@@ -134,16 +125,16 @@ External API endpoints are in this network.
 .. code-block:: yaml
    :caption: environments/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # hosts
 
    host_additional_entries:
      external-api.betacloud.xyz: 10.0.3.10
 
-   [...]
-   ##########################
+.. code-block:: yaml
+   :caption: environments/configuration.yml
+
+   ##########################################################
    # kolla
 
    kolla_external_vip_address: 10.0.3.10
@@ -156,9 +147,7 @@ The external network connects virtual machines to the outside.
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # kolla
 
    neutron_external_interface: eth4
@@ -171,15 +160,15 @@ The storage frontend network is the connection between ceph nodes and all other 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # kolla
 
    storage_interface: eth5
 
-   [...]
-   ##########################
+.. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
    # ceph
 
    monitor_interface: eth5
@@ -187,19 +176,15 @@ The storage frontend network is the connection between ceph nodes and all other 
 .. code-block:: yaml
    :caption: environments/kolla/configuration.yml
 
-   ---
-   [...]
-   ##########################
-   # external_ceph
+   ##########################################################
+   # external ceph
 
    ceph_public_network: 10.0.5.0/24
 
 .. code-block:: yaml
    :caption: environments/ceph/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # network
 
    public_network: 10.0.5.0/24
@@ -207,9 +192,7 @@ The storage frontend network is the connection between ceph nodes and all other 
 .. code-block:: yaml
    :caption: environments/monitoring/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # exporter
 
    prometheus_exporter_ceph_public_network: 10.0.5.0/24
@@ -222,9 +205,7 @@ The storage backend network is the internal connection between ceph nodes.
 .. code-block:: yaml
    :caption: environments/ceph/configuration.yml
 
-   ---
-   [...]
-   ##########################
+   ##########################################################
    # network
 
    cluster_network: 10.0.6.0/24
