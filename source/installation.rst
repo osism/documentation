@@ -23,6 +23,7 @@ Preparations
 Partitioning
 ============
 
+* The use of a UEFI is recommended
 * The use of a RAID is recommended
 * The use of a LVM2 is recommended
 * The use of own file systems for the following mountpoints is recommended
