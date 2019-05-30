@@ -12,3 +12,4 @@ Notes
    notes/openstack
    notes/ubuntu
    notes/troubleshooting
+   notes/supermicro
