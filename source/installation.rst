@@ -92,6 +92,56 @@ Installation
 Post-processing
 ===============
 
+EFI partitions
+--------------
+
+* https://askubuntu.com/questions/1066028/install-ubuntu-18-04-desktop-with-raid-1-and-lvm-on-machine-with-uefi-bios
+
+.. code-block:: console
+
+   # lsblk
+   NAME                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+   sda                   8:0    0 59.6G  0 disk  
+   ├─sda1                8:1    0  476M  0 part  /boot/efi
+   └─sda2                8:2    0 59.2G  0 part  
+     └─md0               9:0    0 59.1G  0 raid1 
+       ├─system-root   253:0    0  9.3G  0 lvm   /
+       ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
+       ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
+       ├─system-audit  253:3    0  952M  0 lvm   /var/log/audit
+       ├─system-var    253:4    0  9.3G  0 lvm   /var
+       ├─system-docker 253:5    0  9.3G  0 lvm   /var/lib/docker
+       └─system-home   253:6    0  1.9G  0 lvm   /home
+   sdb                   8:16   0 59.6G  0 disk  
+   ├─sdb1                8:17   0  476M  0 part  
+   └─sdb2                8:18   0 59.2G  0 part  
+     └─md0               9:0    0 59.1G  0 raid1 
+       ├─system-root   253:0    0  9.3G  0 lvm   /
+       ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
+       ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
+       ├─system-audit  253:3    0  952M  0 lvm   /var/log/audit
+       ├─system-var    253:4    0  9.3G  0 lvm   /var
+       ├─system-docker 253:5    0  9.3G  0 lvm   /var/lib/docker
+       └─system-home   253:6    0  1.9G  0 lvm   /home
+
+.. code-block:: console
+
+   # dd if=/dev/sda1 of=/dev/sdb1
+
+.. code-block:: console
+
+   # efibootmgr -v | grep ubuntu
+   Boot0000* ubuntu	HD(1,GPT,f6b80cef-a636-439a-b2c2-e30bc385eada,0x800,0xee000)/File(\EFI\UBUNTU\SHIMX64.EFI)
+   Boot0018* ubuntu	HD(1,GPT,f6b80cef-a636-439a-b2c2-e30bc385eada,0x800,0xee000)/File(\EFI\UBUNTU\GRUBX64.EFI)
+
+.. code-block:: console
+
+   # efibootmgr -c -d /dev/sdb -p 1 -L "ubuntu2" -l "\EFI\UBUNTU\GRUBX64.EFI"
+   # efibootmgr -c -d /dev/sdb -p 1 -L "ubuntu2" -l "\EFI\UBUNTU\SHIMX64.EFI"
+
+Network
+-------
+
 After the first boot depending on the environment it is necessary to create the network
 configuration for the management interface manually, because for example bonding or VLANs
 should be used.
@@ -101,7 +151,7 @@ should be used.
   the bootstrap on the systems.
 
 iproute2
---------
+~~~~~~~~
 
 * https://baturin.org/docs/iproute2/
 * https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-vlan_on_bond_and_bridge_using_ip_commands
@@ -132,7 +182,7 @@ iproute2
 * You may have to set the nameservers in ``/etc/resolv.conf``. Temporarily remove the ``127.0.0.53`` entry.
 
 Netplan
--------
+~~~~~~~
 
 * https://netplan.io/examples
 
