@@ -14,6 +14,18 @@ Storage devices
 
 * https://linux.die.net/man/8/badblocks
 
+When using larger hard disks, the following error may occur. In this case, the block size used must be
+raised accordingly (``-b 4096``).
+
+.. code-block:: console
+
+   # badblocks -wsv /dev/sdc
+   badblocks: Value too large for defined data type invalid end block (9766436864): must be 32-bit value
+
+.. code-block:: console
+
+   # badblocks -b 4096 -wsv /dev/sdc
+
 stressapptest
 -------------
 
