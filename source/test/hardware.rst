@@ -59,6 +59,54 @@ fio
 
    # apt-get install fio
 
+.. code-block:: ini
+   :caption: ssd.fio
+
+   [global]
+   bs=4k
+   ioengine=libaio
+   iodepth=16
+   size=10g
+   direct=1
+   runtime=60
+   filename=/dev/nvme2n1
+   numjobs=4
+
+   [seq-read]
+   rw=read
+   stonewall
+
+   [rand-read]
+   rw=randread
+   stonewall
+
+   [seq-write]
+   rw=write
+   stonewall
+
+   [rand-write]
+   rw=randwrite
+   stonewall
+
+.. code-block:: console
+
+   # fio ssd.fio
+   [...]
+   Run status group 0 (all jobs):
+      READ: bw=1470MiB/s (1541MB/s), 367MiB/s-369MiB/s (385MB/s-387MB/s), io=40.0GiB (42.9GB), run=27717-27865msec
+
+   Run status group 1 (all jobs):
+      READ: bw=1873MiB/s (1964MB/s), 468MiB/s-475MiB/s (491MB/s-498MB/s), io=40.0GiB (42.9GB), run=21553-21873msec
+
+   Run status group 2 (all jobs):
+     WRITE: bw=1823MiB/s (1911MB/s), 456MiB/s-467MiB/s (478MB/s-489MB/s), io=40.0GiB (42.9GB), run=21938-22473msec
+
+   Run status group 3 (all jobs):
+     WRITE: bw=1628MiB/s (1708MB/s), 407MiB/s-415MiB/s (427MB/s-435MB/s), io=40.0GiB (42.9GB), run=24698-25152msec
+
+   Disk stats (read/write):
+     nvme2n1: ios=20971830/20968781, merge=0/0, ticks=2605416/2512764, in_queue=4844040, util=99.07%
+
 CPU
 ===
 
