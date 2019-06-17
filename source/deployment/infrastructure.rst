@@ -44,5 +44,10 @@ In this case the ``.kibana`` index must be removed manually.
    $ curl -X DELETE http://KOLLA_INTERNAL_VIP_ADDRESS:9200/.kibana
    {"acknowledged":true}
 
+If the Kibana webinterface is not callable after the first deployment (``503 Service Unavailable``) and a
+``docker logs kibana`` shows the error ``Index .kibana belongs to a version of Kibana that cannot be
+automatically migrated. Reset it or use the X-Pack upgrade assistant`` the ``.kibana`` index must also
+be removed manually.
+
 Then reload the Kibana application in the browser and create a new index
 pattern (index pattern: ``flog-*``, time filter field name: ``@timestamp``).
