@@ -142,6 +142,7 @@ content of the self-signed certificate to the ``kolla_external_fqdn_cert`` param
      [...]
      -----END CERTIFICATE-----
      -----BEGIN RSA PRIVATE KEY-----
+     [...]
      -----END RSA PRIVATE KEY-----
 
 You should also add the self-signed certificate to the list of trusted certifcates on every computer
