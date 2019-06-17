@@ -90,6 +90,8 @@ The order is important. If this is not followed, an error occurs when starting H
 * server private key (without any password)
 * intermediate certificates
 
+.. _generation-of-self-signed-certificate:
+
 Generate self-signed certificates
 ---------------------------------
 

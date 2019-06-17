@@ -14,9 +14,14 @@ Before you create the configuration, you need some basic information:
 * NTP servers
 * DNS servers
 * FQDNs and IP addresses for the API endpoints
-* SSL certificate, if one is used
 * desired versions of OSISM, OpenStack, Ceph and Docker
 * CIDRs of networks for Ceph
+* SSL certificate, if one is used
+
+.. note::
+
+   After the deployment of the manager, it is possible to generate a self-signed SSL certificate
+   using an included Ansible playbook. See :ref:`generation-of-self-signed-certificate` for more information.
 
 To prepare the configuration repository, you need cookiecutter. Usually you prepare and edit the
 repository on your workstation. It is pushed to a central server and pulled from the manager node
