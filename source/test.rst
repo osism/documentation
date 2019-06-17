@@ -5,10 +5,10 @@ Test
 .. toctree::
    :maxdepth: 1
 
-   test/hardware
-   test/generic
-   test/infrastructure
+   test/benchmark
    test/ceph
+   test/generic
+   test/hardware
+   test/infrastructure
    test/openstack
    test/refstack
-   test/benchmark
