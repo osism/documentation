@@ -137,9 +137,11 @@ Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.y
 content of the self-signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
 ``environments/kolla/secrets.yml`` file.
 
+* https://www.meshcloud.io/en/2017/04/18/pem-file-layout-for-haproxy/
+
 .. code-block:: yaml
 
-   kolla_external_fqdn_cert
+   kolla_external_fqdn_cert: |
      -----BEGIN CERTIFICATE-----
      [...]
      -----END CERTIFICATE-----
