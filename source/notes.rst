@@ -10,6 +10,6 @@ Notes
    notes/generic
    notes/networking
    notes/openstack
-   notes/ubuntu
-   notes/troubleshooting
    notes/supermicro
+   notes/troubleshooting
+   notes/ubuntu
