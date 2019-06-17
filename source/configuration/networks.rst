@@ -84,7 +84,7 @@ at ``environments/monitorning/configuration.yml``.
    ##########################################################
    # monitoring
 
-   prometheus_scaper_interface: eth1
+   prometheus_scraper_interface: eth1
 
 Tunnel
 ======
