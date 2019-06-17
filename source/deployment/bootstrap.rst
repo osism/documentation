@@ -70,3 +70,10 @@ Execute the following commands on the manager node.
   .. note::
 
      The re-execution of the bootstrap on the manager is intended.
+
+* Further reboot of the nodes
+
+  .. code-block:: console
+
+     $ osism-generic reboot -l 'all:!manager'
+     $ osism-generic reboot -l manager
