@@ -5,9 +5,13 @@ Keystone
 LDAP integration
 ================
 
-* ``environments/kolla/files/overlays/keystone/domains/keystone.domainname.conf``
+* https://docs.openstack.org/keystone/latest/admin/configuration.html#integrate-identity-with-ldap
+
+The configuration of a domain is stored in an overlay configuration file of Kolla. The name of
+the domain is stored in the file name.
 
 .. code-block:: ini
+   :caption: ``environments/kolla/files/overlays/keystone/domains/keystone.DOMAIN.conf``
 
    [identity]
    driver = ldap
@@ -42,3 +46,17 @@ LDAP integration
    user_objectclass = inetOrgPerson
    user_tree_dn = ou=users,dc=betacloud,dc=io
 
+To use the domain, the domain must be created after Keystone has been deployed or reconfigured.
+
+.. code-block:: console
+
+   $ openstack --os-cloud service domain create --or-show DOMAIN
+   +-------------+------------+
+   | Field       | Value      |
+   +-------------+------------+
+   | description |            |
+   | enabled     | True       |
+   | id          | 1ef08b0... |
+   | name        | DOMAIN     |
+   | tags        | []         |
+   +-------------+------------+
