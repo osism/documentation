@@ -5,7 +5,6 @@ Operations
 .. toctree::
    :maxdepth: 2
 
-   operations/generic
    operations/aptly
    operations/ceph
    operations/cinder
@@ -13,6 +12,7 @@ Operations
    operations/cockpit
    operations/docker
    operations/elasticsearch
+   operations/generic
    operations/grafana
    operations/haproxy
    operations/heat
