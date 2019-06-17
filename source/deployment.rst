@@ -8,7 +8,6 @@ Deployment
    deployment/seed
    deployment/manager
    deployment/bootstrap
-   deployment/single
    deployment/infrastructure
    deployment/ceph
    deployment/openstack
