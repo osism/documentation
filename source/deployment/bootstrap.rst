@@ -49,6 +49,12 @@ Execute the following commands on the manager node.
 
      $ osism-generic reboot -l 'all:!manager'
 
+* Check if all systems are reachable
+
+  .. code-block:: console
+
+     $ osism-generic ping
+
 * Refresh facts
 
   .. code-block:: console
