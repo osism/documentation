@@ -60,11 +60,27 @@ Storage services
 
 * ceph-osd is the object storage daemon for the Ceph distributed file system
 
+  .. note::
+
+     Block devices must be raw and not have any GPT, FS, or RAID signatures. Existing signatures can
+     be removed with ``wipefs``.
+
+     .. code-block:: console
+
+        # wipefs -f -a /dev/sdX
+        /dev/sdX: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
+        /dev/sdX: 8 bytes were erased at offset 0x2e934855e00 (gpt): 45 46 49 20 50 41 52 54
+        /dev/sdX: 2 bytes were erased at offset 0x000001fe (PMBR): 55 aa
+        /dev/sdX: calling ioctl to re-read partition table: Success
+
   .. code-block:: console
 
      $ osism-ceph osds
 
   .. note::
+
+     This workaround is only necessary when using OSISM <= 2019.3.0 (ceph-ansible 3.1.x). In newer
+     versions (OSISM >= 2019.4.0, ceph-ansible >= 3.2.x) this problem has been fixed.
 
      Due to a bug the distribution of the Ceph keys fails in the first run. The following intermediate
      step is currently required.
