@@ -5,12 +5,14 @@ Bootstrap
 .. contents::
    :local:
 
+.. _initialize-nodes:
+
 Initialization
 ==============
 
-The following steps are performed to initialize all nodes.
+.. note:: Execute the following commands on the manager node.
 
-Execute the following commands on the manager node.
+The following steps are performed to initialize all nodes. :ref:`add-node` describes how to add a new node to an existing environment.
 
 * Creation of the necessary operator user
 
@@ -86,12 +88,14 @@ Execute the following commands on the manager node.
      $ osism-generic reboot -l 'all:!manager'
      $ osism-generic reboot -l manager
 
+.. _add-node:
+
 Add node
 ========
 
-The following steps are performed to add a new node to the environment.
+.. note:: Execute the following commands on the manager node.
 
-Execute the following commands on the manager node.
+The following steps are performed to add a new node to the environment. :ref:`initialize-nodes` describes how to initialize all nodes in a new environment.
 
 Provisioning
 ------------

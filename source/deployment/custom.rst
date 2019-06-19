@@ -2,7 +2,7 @@
 Custom
 ======
 
-Execute the following commands on the manager node.
+.. note:: Execute the following commands on the manager node.
 
 Cronjobs
 ========

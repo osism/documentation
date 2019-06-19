@@ -5,7 +5,7 @@ OpenStack
 .. contents::
    :local:
 
-Execute the following commands on the manager node.
+.. note:: Execute the following commands on the manager node.
 
 The deployment of a single Kolla service is done via the ``osism-kolla`` wrapper.
 
@@ -15,6 +15,9 @@ The deployment of a single Kolla service is done via the ``osism-kolla`` wrapper
 
 Depending on the available bandwidth, it may be a good idea to pull the Docker
 images in advance prior to deployment. This can be done with ``osism-kolla pull SERVICE``.
+
+Preparations
+============
 
 The facts should be updated once with ``osism-generic facts`` before starting the deployment
 of the individual services.

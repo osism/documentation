@@ -5,7 +5,10 @@ Infrastructure
 .. contents::
    :local:
 
-Execute the following commands on the manager node.
+.. note:: Execute the following commands on the manager node.
+
+Preparations
+============
 
 The facts should be updated once with ``osism-generic facts`` before starting the deployment
 of the individual services.
@@ -17,18 +20,24 @@ Common
 
    $ osism-kolla deploy common
 
-This role includes the following services:
+The common role includes the following services:
 
 * cron
 * fluentd
 * kolla_toolbox
+
+HAProxy
+=======
+
+.. code-block:: console
+
+   $ osism-kolla deploy haproxy
 
 Logging
 =======
 
 .. code-block:: console
 
-   $ osism-kolla deploy haproxy
    $ osism-kolla deploy elasticsearch
    $ osism-kolla deploy kibana
 

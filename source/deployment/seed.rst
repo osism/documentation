@@ -5,6 +5,8 @@ Seed node
 .. contents::
    :local:
 
+.. note:: Execute the following commands on the seed node.
+
 The seed node is used once for the first bootstrap of the manager node. It is sufficient to use
 the local workstation. It doesn't have to be a dedicated system. The seed node must be able to
 reach the manager node via SSH.
@@ -12,10 +14,8 @@ reach the manager node via SSH.
 The use of Linux on the seed node is recommended. Other operating systems should also work
 without problems.
 
-Execute the following commands on the seed node.
-
-Packages
-========
+Required Packages
+=================
 
 .. code-block:: console
 

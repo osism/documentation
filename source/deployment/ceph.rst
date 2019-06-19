@@ -5,9 +5,13 @@ Ceph
 .. contents::
    :local:
 
-Execute the following commands on the manager node.
+.. note:: Execute the following commands on the manager node.
 
-Before deployment make sure that NTP works.
+Preparations
+============
+
+Before the deployment make sure that NTP really works. In case of problems https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
+is a good entry point
 
 .. code-block:: console
 

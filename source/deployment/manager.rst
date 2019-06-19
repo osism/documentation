@@ -5,11 +5,13 @@ Manager node
 .. contents::
    :local:
 
+.. note::
+
+   Execute the following commands on the seed node. Execute the commands within the
+   manager environment (``cd environments/manager``).
+
 The manager node is used to manage all other nodes of the environment. The use of a dedicated system
 is recommended. In many environments, one of the controller nodes is used as the manager node.
-
-Execute the following commands on the seed node. Execute the commands within the
-manager environment (``cd environments/manager``).
 
 You can use a different folder location for the virtual environment that will be created by setting
 the environment variable ``VENV_PATH``. This is required for example if your current folder path
@@ -19,13 +21,21 @@ Various Ansible configurations can be adjusted via environment variables. For ex
 password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``. If ``secrets.yml`` files are
 encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
 
-An overview with all parameters can be found at: http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables
+An overview with all parameters can be found at http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
+
+Initialization
+==============
 
 * Creation of the necessary operator user
 
   .. code-block:: console
 
      $ ANSIBLE_USER=ubuntu ./run.sh operator
+
+  .. note::
+
+     The so-called operator user is created on each system. It is used as a service account for OSISM.
+     All Docker Containers run under this user. Ansible also uses this account to access the systems.
 
   * If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
   * If at the beginning the login with an SSH key is required, the key has to be added on the manager
@@ -93,10 +103,11 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
 
      $ ./run.sh bootstrap
 
+* Further reboot of the manager node
 
-  * After the bootstrap check if a reboot is required by checking if the file
-    ``/var/run/reboot-required`` exists.  Regardless of whether a reboot is
-    necessary or not, a reboot should be performed.
+  .. code-block:: console
+
+     $ ./run.sh reboot
 
 * Transfer configuration repository
 
@@ -110,15 +121,20 @@ An overview with all parameters can be found at: http://docs.ansible.com/ansible
 
      $ ./run.sh manager
 
-Infrastructure services
-=======================
+Optional infrastructure services
+================================
 
-The deployment of these infrastructure services is optional.
-
-Execute the following commands on the manager node.
+The deployment of these infrastructure services is optional. They are only deployed if they are
+to be used.
 
 Cobbler
 -------
+
+Cobbler is a Linux installation server that allows for rapid setup of network installation environments.
+It glues together and automates many associated Linux tasks so you do not have to hop between lots of
+various commands and applications when rolling out new systems, and, in some cases, changing existing
+ones. It can help with installation, DNS, DHCP, package updates, power management, configuration
+management orchestration, and much more. [#]_
 
 .. code-block:: console
 
@@ -126,6 +142,9 @@ Cobbler
 
 Mirror
 ------
+
+With the mirror services it is possible to store packages for Ubuntu and images for Docker in one central
+location.
 
 .. code-block:: console
 
@@ -138,3 +157,5 @@ the bandwidth, this process will take several hours.
 
    $ osism-mirror images
    $ osism-mirror packages
+
+.. [#] source: https://github.com/cobbler/cobbler/blob/master/README.md
