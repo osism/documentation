@@ -33,7 +33,7 @@ Partitioning
   * ``/``
   * ``/home``
   * ``/tmp``
-  * ``/var/lib/docker`` (do not set the nosuid flag on ``/var/lib/docker``)
+  * ``/var/lib/docker`` (do not set the ``nosuid`` flag on ``/var/lib/docker``)
   * ``/var/log/audit``
   * ``/var/log``
   * ``/var``
@@ -42,10 +42,13 @@ Partitioning
 
 .. image:: /images/installation-partition-disks.png
 
-When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
+.. note::
 
-  * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
-  * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+   When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
+   ithout d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
+
+   * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
+   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 Installation
 ============
