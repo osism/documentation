@@ -12,14 +12,14 @@ to write an e-mail to info@betacloud-solutions.de if you have questions or doubt
 * **OpenStack** is a cloud operating system that controls large pools of
   compute, storage, and networking resources throughout a datacenter, all managed
   through a dashboard that gives administrators control while empowering their users
-  to provision resources through a web interface. [#s1]_
+  to provision resources through a web interface. [#]_
 
-* **Ceph** uniquely delivers object, block, and file storage in one unified system. [#s2]_
+* **Ceph** uniquely delivers object, block, and file storage in one unified system. [#]_
 
-* **Ansible** is a simple, agentless and powerful open source IT automation. [#s3]_
+* **Ansible** is a simple, agentless and powerful open source IT automation. [#]_
 
 * **Docker** provides a way to run applications securely isolated in a container,
-  packaged with all its dependencies and libraries. [#s4]_
+  packaged with all its dependencies and libraries. [#]_
 
 .. toctree::
    :maxdepth: 2
@@ -37,7 +37,7 @@ to write an e-mail to info@betacloud-solutions.de if you have questions or doubt
 The documentation is maintained on Github: https://github.com/osism/documentation.
 There you can open issues for found errors and so on.
 
-.. [#s1] source: https://docs.openstack.org
-.. [#s2] source: http://docs.ceph.com
-.. [#s3] source: http://docs.ansible.com
-.. [#s4] source: https://docs.docker.com
+.. [#] source: https://docs.openstack.org
+.. [#] source: http://docs.ceph.com
+.. [#] source: http://docs.ansible.com
+.. [#] source: https://docs.docker.com
