@@ -1,11 +1,17 @@
-============
-Installation
-============
+==================================
+Provisioning of bare-metal servers
+==================================
 
 .. contents::
    :local:
 
-The manual installation of a system is described below. The use of an installation server like Cobbler is recommended.
+The manual installation of a system is described below.
+
+The use of an installation server is recommended. Cobbler, which is integrated in OSISM,
+can be used for this purpose.
+
+When using Cobbler it is only necessary to manually prepare the bare-metal system used as
+manager node. The remaining nodes can then be provisioned using Cobbler.
 
 The manual node installation is completely possible without network connectivity.
 
