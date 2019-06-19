@@ -5,6 +5,8 @@ Installation
 .. contents::
    :local:
 
+The manual installation of a system is described below. The use of an installation server like Cobbler is recommended.
+
 The manual node installation is completely possible without network connectivity.
 
 Preparations
