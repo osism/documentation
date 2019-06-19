@@ -10,10 +10,23 @@ language = 'en'
 exclude_patterns = []
 pygments_style = 'sphinx'
 todo_include_todos = True
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 html_show_sphinx = False
 html_show_sourcelink = False
 html_show_copyright = True
 htmlhelp_basename = 'documentation'
-html_theme_options = {}
+html_theme_options = {
+    'display_version': False,
+    'canonical_url': 'https://docs.osism.io/',
+    'style_external_links': True,
+    'logo_only': True
+}
+html_context = {
+    'display_github': True,
+    'github_user': 'osism',
+    'github_repo': 'documentation',
+    'github_version': 'master',
+    'conf_py_path': '/source/'
+}
+html_logo = 'images/logo.png'
 latex_elements = {}
