@@ -199,3 +199,36 @@ Fluentd
    2018-06-14 08:15:52 +0000 [info]: #0 listening syslog socket on 10.49.10.11:5140 with udp
    [...]
    2018-06-14 08:27:05 +0000 [info]: #0 Connection opened to Elasticsearch cluster => {:host=>"10.49.0.100", :port=>9200, :scheme=>"http"}
+
+Redis
+=====
+
+The password for Redis is stored in the ``environments/kolla/secrets.yml`` file in the ``redis_master_password`` parameter.
+
+.. code-block:: console
+
+   $ docker exec -it redis redis-cli -h 10.49.20.10
+   10.49.20.10:6379> auth password
+   OK
+   10.49.20.10:6379> ping
+   PONG
+   10.49.20.10:6379> info replication
+   # Replication
+   role:slave
+   master_host:10.49.20.10
+   master_port:6379
+   master_link_status:up
+   master_last_io_seconds_ago:0
+   master_sync_in_progress:0
+   slave_repl_offset:62561
+   slave_priority:100
+   slave_read_only:1
+   connected_slaves:0
+   master_replid:899e93628c8c8864efb0b80c9896ab2a9c6b4b4e
+   master_replid2:0000000000000000000000000000000000000000
+   master_repl_offset:62561
+   second_repl_offset:-1
+   repl_backlog_active:1
+   repl_backlog_size:1048576
+   repl_backlog_first_byte_offset:1
+   repl_backlog_histlen:62561
