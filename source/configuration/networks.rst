@@ -101,6 +101,19 @@ network.
 
    tunnel_interface: eth2
 
+Migration
+=========
+
+Live migration of instances is performed over this network.
+
+.. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
+   # kolla
+
+   migration_interface: eth2
+
 External API
 ============
 
