@@ -62,10 +62,6 @@ Use a specific image version
    magnum_conductor_image: "{{ docker_registry }}/osism/magnum-conductor"
    magnum_conductor_tag: "pike-latest"
 
-* possible images for ``ocata``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-ocata.yml
-* possible images for ``pike``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-pike.yml
-* possible images for ``queens``: https://github.com/osism/docker-kolla-ansible/blob/master/files/images-queens.yml
-
 Enable service
 ==============
 
