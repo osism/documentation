@@ -7,7 +7,9 @@ Configuration
 
    configuration/cookiecutter
    configuration/synchronisation
+   configuration/update
    configuration/networks
+   configuration/environments
 
 The basis of an OSISM environment is a configuration repository,
 that is divided into individual environments. The structure, the
@@ -21,17 +23,13 @@ creation and its contents are explained here.
 
 **Environments**
 
-.. toctree::
-   :maxdepth: 1
-
-   configuration/environments/manager
-   configuration/environments/generic
-   configuration/environments/infrastructure
-   configuration/environments/openstack
-   configuration/environments/ceph
-   configuration/environments/monitoring
-   configuration/environments/custom
-   configuration/update
+* :ref:`configuration-environment-manager`
+* :ref:`configuration-environment-generic`
+* :ref:`configuration-environment-infrastructure`
+* :ref:`configuration-environment-openstack`
+* :ref:`configuration-environment-ceph`
+* :ref:`configuration-environment-monitoring`
+* :ref:`configuration-environment-custom`
 
 With the exception of a special environment for the manager, all
 environments have the same structure and share the same inventory.

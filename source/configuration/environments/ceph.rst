@@ -1,3 +1,5 @@
+.. _configuration-environment-ceph:
+
 ====
 Ceph
 ====
