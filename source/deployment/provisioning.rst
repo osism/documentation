@@ -78,15 +78,14 @@ Partitioning
 * The use of a LVM2 is recommended
 * The use of own file systems for the following mountpoints is recommended
 
-  * ``/``
-  * ``/home``
-  * ``/tmp``
-  * ``/var/lib/docker`` (do not set the ``nosuid`` flag on ``/var/lib/docker``)
-  * ``/var/log/audit``
-  * ``/var/log``
-  * ``/var``
+  * ``/`` (10 GByte)
+  * ``/home`` (2 GByte)
+  * ``/tmp`` (2 GByte)
+  * ``/var/lib/docker`` (10 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
+  * ``/var/log/audit`` (1 GByte)
+  * ``/var`` (10 GByte)
 
-* The use of a swap partition is recommended
+* The use of a swap partition with at least 8 GByte is recommended
 
 .. image:: /images/installation-partition-disks.png
 
