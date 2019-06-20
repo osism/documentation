@@ -1,3 +1,6 @@
+def setup(app):
+    app.add_stylesheet('css/custom.css')
+
 extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome']
 source_suffix = '.rst'
 master_doc = 'index'
@@ -30,4 +33,7 @@ html_context = {
     'conf_py_path': '/source/'
 }
 html_logo = 'images/logo.png'
+html_static_path = [
+    '_static'
+]
 latex_elements = {}
