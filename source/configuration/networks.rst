@@ -5,6 +5,9 @@ Networks
 The configuration of the individual networks is distributed across all environments and the inventory
 and is summarized here.
 
+These networks do not all have to be different. They do not all have to be routed to different VLANs
+or physical interfaces. Only neutron_external_interface should be on its own physical interface.
+
 The following networks are used:
 
 .. contents::
