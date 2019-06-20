@@ -28,34 +28,6 @@ Preparations
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server from this USB stick/CD
 
-Partitioning
-============
-
-* The use of a UEFI is recommended
-* The use of a RAID is recommended
-* The use of a LVM2 is recommended
-* The use of own file systems for the following mountpoints is recommended
-
-  * ``/``
-  * ``/home``
-  * ``/tmp``
-  * ``/var/lib/docker`` (do not set the ``nosuid`` flag on ``/var/lib/docker``)
-  * ``/var/log/audit``
-  * ``/var/log``
-  * ``/var``
-
-* The use of a swap partition is recommended
-
-.. image:: /images/installation-partition-disks.png
-
-.. note::
-
-   When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
-   ithout d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
-
-   * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
-   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
-
 Installation
 ============
 
@@ -86,12 +58,7 @@ Installation
 * Choose ``Manual`` as partitioning method and execute the partitioning according to
   company specifications
 
-  * The use of LVM2 and RAID1 is recommended.
-  * Do not assign the entire storage to the LV for ``/``.
-  * Booting from a ``/boot`` logical volume on a software raid is possible.
-  * At this point, only configure devices that are required for the system
-    installation. Devices which are dedicated for e.g. Docker or Ceph are
-    not configured here.
+  * Details can be found in section :ref:`partitioning`
 
 * Choose ``No automatic updates``
 * Choose ``OpenSSH server`` as software to install
@@ -100,6 +67,37 @@ Installation
 .. note::
 
    ``python-minimal`` must be installed on the systems.
+
+.. _partitioning:
+
+Partitioning
+------------
+
+* The use of a UEFI is recommended
+* The use of a RAID is recommended
+* The use of a LVM2 is recommended
+* The use of own file systems for the following mountpoints is recommended
+
+  * ``/``
+  * ``/home``
+  * ``/tmp``
+  * ``/var/lib/docker`` (do not set the ``nosuid`` flag on ``/var/lib/docker``)
+  * ``/var/log/audit``
+  * ``/var/log``
+  * ``/var``
+
+* The use of a swap partition is recommended
+
+.. image:: /images/installation-partition-disks.png
+
+.. note::
+
+   When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
+   ithout d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
+
+   * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
+   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+
 
 Post-processing
 ===============
