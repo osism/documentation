@@ -165,6 +165,17 @@ The external network connects virtual machines to the outside.
 
    neutron_external_interface: eth4
 
+Loadbalancer
+============
+
+.. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
+   # kolla
+
+   octavia_network_interface: eth5
+
 Storage Frontend
 ================
 
