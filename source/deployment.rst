@@ -18,8 +18,4 @@ The phases are documented in this chapter.
    deployment/provisioning
    deployment/manager
    deployment/bootstrap
-   deployment/infrastructure
-   deployment/ceph
-   deployment/openstack
-   deployment/monitoring
-   deployment/custom
+   deployment/services
