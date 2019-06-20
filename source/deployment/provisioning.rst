@@ -92,7 +92,7 @@ Partitioning
 .. note::
 
    When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
-   ithout d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
+   without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
 
    * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
    * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
