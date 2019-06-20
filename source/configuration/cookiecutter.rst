@@ -6,6 +6,11 @@ Cookiecutter
 
    To gain access to the cookiecutter repository, please send a request to info@betacloud-solutions.de.
 
+To prepare the configuration repository, you need the tool `Cookiecutter <https://github.com/audreyr/cookiecutter>`_.
+
+Preparations
+============
+
 You need a Git repository to store the configuration of the environment. It has to be accessible
 from the manager node. A SSH deploy key for read-only access is sufficient.
 
@@ -21,11 +26,14 @@ Before you create the configuration, you need some basic information:
 .. note::
 
    After the deployment of the manager, it is possible to generate a self-signed SSL certificate
-   using an included Ansible playbook. See :ref:`generation-of-self-signed-certificate` for more information.
+   using an included Ansible playbook. See :ref:`generation-of-self-signed-certificate` for more
+   information.
 
-To prepare the configuration repository, you need cookiecutter. Usually you prepare and edit the
-repository on your workstation. It is pushed to a central server and pulled from the manager node
-later.
+Usually you prepare and edit the configuration on your workstation. It is pushed to a central Git
+server and pulled from the manager node later.
+
+Installation
+============
 
 It is recommended to always use a virtual environment when you install packages from PyPI.
 
@@ -33,27 +41,36 @@ It is recommended to always use a virtual environment when you install packages 
 
    $ virtualenv -p python3 .venv
    $ source .venv/bin/activate
-
-.. code-block:: console
-
    $ pip3 install \
+       ansible \
        cookiecutter \
        cryptography \
        oslo.utils \
        paramiko \
        passlib \
        pycrypto \
+       pykeepass \
        python-gilt \
        pyyaml \
-       ruamel.yaml
+       ruamel.yaml \
+       yamllint
+
+Initialisation
+==============
 
 When you run cookiecutter, you are asked for the information you collected before.
-A list with all queries can be found in the ``cookiecutter.json`` configuration file.
+
+A list with all parameters can be found in the ``cookiecutter.json`` configuration file.
 A description of the individual parameters can be found in the README file of the repository.
 
 .. code-block:: console
 
    $ cookiecutter ssh://git@git.betacloud-solutions.de:10022/generic/cookiecutter.git
+   with_ceph [1]:
+   with_monitoring [1]:
+   with_vault [1]:
+   ceph_fsid [Use a great UUID here]:
+   [...]
 
 Push the contents of the newly created ``cfg-customer`` directory to your Git repository. Be careful
 not to forget dotfiles like ``.gitignore``. The directory itself is not stored in the repository.
@@ -62,9 +79,3 @@ not to forget dotfiles like ``.gitignore``. The directory itself is not stored i
 
    Directory structure after the initial commit in the Git repository. The ``secrets`` directory
    is only stored in the repository for test environments.
-
-.. warning::
-
-   In a productive environment use Ansible Vault to encrypt the newly created ``secrets.yml`` files,
-   before committing it to the Git repository. Never commit any plaintext passwords or secrets to the
-   configuration repository.
