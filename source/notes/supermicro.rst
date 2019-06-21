@@ -23,6 +23,15 @@ Copy the text you want to paste into the clipboard. Then press the hot key in th
 
 * https://gist.github.com/ethack/110f7f46272447828352768e6cd1c4cb
 
+Reset IPMI password
+===================
+
+.. code-block:: console
+
+   $ apt-get install ipmitool
+   $ ipmitool user list
+   $ ipmitool user set password 2 ADMIN
+
 Configure and mount Samba share
 ===============================
 
