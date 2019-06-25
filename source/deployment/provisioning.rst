@@ -85,6 +85,19 @@ Partitioning
   * ``/var/log/audit`` (1 GByte)
   * ``/var`` (10 GByte)
 
+  .. note::
+
+     The size of the individual partitions is minimal. Depending on the node type, the individual
+     partitions should be made larger. This applies in particular to ``/var/lib/docker``. On controllers
+     at least 100 GByte should be used.
+
+     A later enlargement is possible during operation.
+
+     .. code-block::
+
+        # lvextend -L +10G /dev/mapper/system-docker
+        # resize2fs -p /dev/mapper/system-docker
+
 * The use of a swap partition with at least 8 GByte is recommended
 
 .. image:: /images/installation-partition-disks.png
