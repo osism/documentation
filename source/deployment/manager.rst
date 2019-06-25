@@ -93,7 +93,7 @@ Initialization
 
     The default file ``01-netcfg.yaml`` with the following content can remain as it is.
 
-    ..code-block:: yaml
+    .. code-block:: yaml
 
       # This file describes the network interfaces available on your system
       # For more information, see netplan(5).
