@@ -182,6 +182,7 @@ iproute2
 .. code-block:: console
 
    # modprobe bonding
+   # ip link add bond0 type bond
    # ip link set bond0 type bond miimon 100 mode 802.3ad
    # ip link set eno1 down
    # ip link set eno1 master bond0
