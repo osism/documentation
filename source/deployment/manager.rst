@@ -26,6 +26,10 @@ An overview with all parameters can be found at http://docs.ansible.com/ansible/
 Initialization
 ==============
 
+.. note::
+
+   It is possible to manage more than one manager. In this case it may be useful to work with --limit.
+
 * Creation of the necessary operator user
 
   .. code-block:: console
