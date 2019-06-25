@@ -55,3 +55,21 @@ In the Java control panel, an exception can be added to the Exception Site List 
 Then execute the Java WS file again. There is now another safety instruction, which can easily be confirmed.
 
 .. image:: /images/supermicro-running-this-application-may-be-a-security-risk.png
+
+Use of old Java iKVM Viewer with current JRE version
+====================================================
+
+In older Supermicro systems, Java is still used for the virtual console.
+
+If the Java iKVM Viewer does not work correctly this is probably due to disabled SSLv3 support.
+
+SSLv3 can be enabled in the ``java.security`` file.
+
+The file can be found in the ``lib/security`` directory of the active JRE installation. On a MacOS e.g.
+``/Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/jre/lib/security``. The version of the
+used JRE can be obtained by calling ``java -version``.
+
+.. code-block:: ini
+
+   #jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 768
+   jdk.tls.disabledAlgorithms=RC4, MD5withRSA, DH keySize < 768
