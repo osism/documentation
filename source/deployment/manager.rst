@@ -86,6 +86,17 @@ Initialization
 
   * The network configuration already present on a system should be saved before this step.
   * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
+
+    The default file ``01-netcfg.yaml`` with the following content can remain as it is.
+
+    ..code-block:: yaml
+
+      # This file describes the network interfaces available on your system
+      # For more information, see netplan(5).
+      network:
+        version: 2
+        renderer: networkd
+
   * Upon completion of this step, a system reboot should be performed to ensure that the
     configuration is functional and reboot secure. Since network services are not
     restarted automatically, later changes to the network configuration are not effective
