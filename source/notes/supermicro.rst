@@ -40,3 +40,18 @@ Samba service
 
 Virtual Media
 -------------
+
+Application Blocked by Java Security
+====================================
+
+In older Supermicro systems, Java is still used for the virtual console.
+
+When calling the virtual console via the Java WS file you get the error ``Application Blocked by Java Security``.
+
+.. image:: /images/supermicro-application-blocked-by-java-security.png
+
+In the Java control panel, an exception can be added to the Exception Site List (under Security) (https://techhelpkb.com/why-do-i-see-application-blocked-by-security-settings/).
+
+Then execute the Java WS file again. There is now another safety instruction, which can easily be confirmed.
+
+.. image:: /images/supermicro-running-this-application-may-be-a-security-risk.png
