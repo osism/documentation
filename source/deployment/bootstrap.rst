@@ -53,6 +53,16 @@ The following steps are performed to initialize all nodes. :ref:`add-node` descr
   * The network configuration already present on a system should be saved before this step.
   * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
 
+    The default file ``01-netcfg.yaml`` with the following content can remain as it is.
+
+    .. code-block:: yaml
+
+      # This file describes the network interfaces available on your system
+      # For more information, see netplan(5).
+      network:
+        version: 2
+        renderer: networkd
+
 * Reboot of the nodes
 
   .. code-block:: console
@@ -306,6 +316,19 @@ It is recommended to install Python on the systems during the provisioning proce
      $ osism-generic network \
          --limit 20-12.betacloud.xyz \
          -i /opt/configuration/inventory/hosts.installation
+
+  * The network configuration already present on a system should be saved before this step.
+  * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
+
+    The default file ``01-netcfg.yaml`` with the following content can remain as it is.
+
+    .. code-block:: yaml
+
+      # This file describes the network interfaces available on your system
+      # For more information, see netplan(5).
+      network:
+        version: 2
+        renderer: networkd
 
 * A reboot is performed to activate and test the network configuration.
   The reboot must be performed before the bootstrap is performed.
