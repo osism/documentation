@@ -81,7 +81,7 @@ Partitioning
   * ``/`` (10 GByte)
   * ``/home`` (2 GByte)
   * ``/tmp`` (2 GByte)
-  * ``/var/lib/docker`` (10 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
+  * ``/var/lib/docker`` (30 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
   * ``/var/log/audit`` (1 GByte)
   * ``/var`` (10 GByte)
 
