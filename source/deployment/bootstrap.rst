@@ -161,6 +161,11 @@ Inventory
      [...]
      20-12.betacloud.xyz ansible_host=172.16.21.12
 
+  .. note::
+
+     The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
+     management interface differs from the IP address to be used later after the initial provisioning.
+
 * Add the node to the ``hosts`` inventory file. As ``ansible_host`` use the management IP address.
 
   .. code-block:: ini
@@ -276,6 +281,11 @@ Inventory
 
 Initialization
 --------------
+
+.. note::
+
+   The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
+   management interface differs from the IP address to be used later after the initial provisioning.
 
 Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration,
 and will reboot the system to change the network configuration.
