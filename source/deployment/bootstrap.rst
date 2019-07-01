@@ -166,6 +166,8 @@ Inventory
      The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
      management interface differs from the IP address to be used later after the initial provisioning.
 
+     This is usually the case when using Cobbler for provisioning.
+
 * Add the node to the ``hosts`` inventory file. As ``ansible_host`` use the management IP address.
 
   .. code-block:: ini
@@ -287,6 +289,8 @@ Initialization
    The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
    management interface differs from the IP address to be used later after the initial provisioning.
 
+   This is usually the case when using Cobbler for provisioning.
+
 Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration,
 and will reboot the system to change the network configuration.
 
@@ -295,21 +299,35 @@ and will reboot the system to change the network configuration.
    Of course it is also possible to add more than one new system at a time. Therefore work with pattern at
    ``limit`` accordingly. See also https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html.
 
-Depending on the environment you may need to install Python first.
+* Depending on the environment you may need to install Python first.
 
-.. code-block:: console
+  .. note::
 
-   $ osism-generic python \
-       --limit 20-12.betacloud.xyz \
-       -u root \
-       --key-file /ansible/secrets/id_rsa.cobbler \
-       -i /opt/configuration/inventory/hosts.installation
+     ``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
 
-``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
+  When using Cobbler:
 
-It is recommended to install Python on the systems during the provisioning process.
+  .. code-block:: console
+
+     $ osism-generic python \
+         --limit 20-12.betacloud.xyz \
+         -u root \
+         --key-file /ansible/secrets/id_rsa.cobbler \
+         -i /opt/configuration/inventory/hosts.installation
+
+  When not using Cobbler:
+
+  .. code-block:: console
+
+     $ osism-generic python \
+         --limit 20-12.betacloud.xyz \
+         -u ubuntu \
+         --ask-pass \
+         --ask-become-pass
 
 * Creation of the necessary operator user
+
+  When using Cobbler:
 
   .. code-block:: console
 
@@ -319,13 +337,32 @@ It is recommended to install Python on the systems during the provisioning proce
          --key-file /ansible/secrets/id_rsa.cobbler \
          -i /opt/configuration/inventory/hosts.installation
 
+  When not using Cobbler:
+
+  .. code-block:: console
+
+     $ osism-generic operator \
+         --limit 20-12.betacloud.xyz \
+         -u ubuntu \
+         --ask-pass \
+         --ask-become-pass
+
 * Configuration of the network
+
+  When using Cobbler:
 
   .. code-block:: console
 
      $ osism-generic network \
          --limit 20-12.betacloud.xyz \
          -i /opt/configuration/inventory/hosts.installation
+
+  When not using Cobbler:
+
+  .. code-block:: console
+
+     $ osism-generic network \
+         --limit 20-12.betacloud.xyz
 
   * The network configuration already present on a system should be saved before this step.
   * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
@@ -343,13 +380,26 @@ It is recommended to install Python on the systems during the provisioning proce
 * A reboot is performed to activate and test the network configuration.
   The reboot must be performed before the bootstrap is performed.
 
+  When using Cobbler:
+
   .. code-block:: console
 
      $ osism-generic reboot \
          --limit 20-12.betacloud.xyz \
          -i /opt/configuration/inventory/hosts.installation
 
-The use of the ``hosts.installation`` file is optional and is not available depending on the environment.
+  When not using Cobbler:
+
+  .. code-block:: console
+
+     $ osism-generic reboot \
+         --limit 20-12.betacloud.xyz
+
+* Check if system is reachable
+
+  .. code-block:: console
+
+     $ osism-generic ping --limit 20-12.betacloud.xyz
 
 * Refresh facts.
 
