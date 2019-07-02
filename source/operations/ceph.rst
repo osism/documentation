@@ -286,6 +286,42 @@ Replace defect OSD
          hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
          hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
 
+Add new pool
+============
+
+* http://docs.ceph.com/docs/mimic/rados/operations/pools/
+
+.. code-block:: console
+
+   $ ceph osd pool create sample 32 32
+   pool 'sample' created
+   $ ceph osd pool application enable sample rbd
+   enabled application 'rbd' on pool 'sample'
+
+* http://docs.ceph.com/docs/mimic/rados/operations/user-management/
+
+.. code-block:: console
+
+   $ ceph auth get client.cinder
+   [client.cinder]
+      key = ...
+      caps mon = "allow r"
+      caps osd = "allow class-read object_prefix rbd_children, allow rwx pool=volumes, allow rwx pool=vms, allow rx pool=images"
+   exported keyring for client.cinder
+   $ ceph auth caps client.cinder mon 'allow r' osd 'allow class-read object_prefix rbd_children, allow rwx pool=images, allow rwx pool=vms, allow rwx pool=volumes, allow rwx pool=backups, allow rwx pool=sample'
+   updated caps for client.cinder
+
+.. code-block:: console
+
+   $ ceph auth get client.nova
+   [client.nova]
+      key = ...
+      caps mon = "allow r"
+      caps osd = "allow class-read object_prefix rbd_children, allow rwx pool=images, allow rwx pool=vms, allow rwx pool=volumes, allow rwx pool=backups"
+   exported keyring for client.nova
+   $ ceph auth caps client.nova mon 'allow r' osd 'allow class-read object_prefix rbd_children, allow rwx pool=images, allow rwx pool=vms, allow rwx pool=volumes, allow rwx pool=backups, allow rwx pool=sample'
+   updated caps for client.nova
+
 Export image
 ============
 
