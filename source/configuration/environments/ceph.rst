@@ -37,7 +37,9 @@ Devices
 
    It is recommended to place the configuration of the devices in the inventory.
 
-Unlike other ``by-id`` links, WWNs (`World Wide Name <https://en.wikipedia.org/wiki/World_Wide_Name>`_) are fully persistent and will not change depending on the used subsystem.
+Unlike other ``by-id`` links, WWNs (`World Wide Name <https://en.wikipedia.org/wiki/World_Wide_Name>`_) are
+fully persistent and will not change depending on the used subsystem. For more details see
+https://wiki.archlinux.org/index.php/Persistent_block_device_naming.
 
 .. code-block:: yaml
 
