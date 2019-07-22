@@ -21,14 +21,12 @@ Generic
      # generic
 
      containerized_deployment: true
-     generate_fsid: false
-     fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
-
-     ##########################
-     # osd
 
      osd_objectstore: bluestore
      osd_scenario: lvm
+
+     generate_fsid: false
+     fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
 
 Devices
 =======
