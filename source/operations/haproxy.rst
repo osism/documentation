@@ -20,3 +20,9 @@ Manual failover
   keepalived configuration as an overlay file.
 
   https://www.virtualtothecore.com/en/manual-failover-of-keepalived/
+
+Change certificate
+==================
+
+* Update the certificate in the file ``environments/kolla/secrets.yml`` (``kolla_external_fqdn_cert``)
+* Reconfigure HAProxy with ``osism-kolla reconfigure haproxy``
