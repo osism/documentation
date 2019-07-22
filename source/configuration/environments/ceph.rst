@@ -28,7 +28,7 @@ Generic
      # osd
 
      osd_objectstore: bluestore
-     osd_scenario: collocated
+     osd_scenario: lvm
 
 Devices
 =======
