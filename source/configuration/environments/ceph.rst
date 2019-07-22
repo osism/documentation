@@ -37,14 +37,16 @@ Devices
 
    It is recommended to place the configuration of the devices in the inventory.
 
+Unlike other ``by-id`` links, WWNs (`World Wide Name <https://en.wikipedia.org/wiki/World_Wide_Name>`_) are fully persistent and will not change depending on the used subsystem.
+
 .. code-block:: yaml
 
    ##########################################################
    # ceph
 
    devices:
-     - /dev/sdd
-     - /dev/sde
+     - /dev/disk/by-id/wwn-0x50014ee206985361
+     - /dev/disk/by-id/wwn-0x50014ee2b1576368
 
 Network
 =======
