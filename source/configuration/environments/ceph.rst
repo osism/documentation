@@ -28,6 +28,16 @@ Generic
      generate_fsid: false
      fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
 
+* ``environments/configuration.yml``
+
+  .. code-block:: yaml
+
+     ##########################
+     # ceph
+
+     ceph_share_directory: /share
+     ceph_cluster_fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+
 Devices
 =======
 
@@ -40,6 +50,7 @@ fully persistent and will not change depending on the used subsystem. For more d
 https://wiki.archlinux.org/index.php/Persistent_block_device_naming.
 
 .. code-block:: yaml
+   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ##########################################################
    # ceph
@@ -75,6 +86,7 @@ Network
    It is recommended to place the configuration of the network interfaces in the inventory.
 
 .. code-block:: yaml
+   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ##########################################################
    # ceph
@@ -103,10 +115,13 @@ Pools & Keys
    ##########################
    # pools & keys
 
+   # NOTE: After the initial deployment of the Ceph Clusters, the following parameter can be
+   #       set to false. It must only be set to true again when new pools or keys are added.
+
    openstack_config: true
 
-   openstack_glance_pool:
-     name: images
+   openstack_cinder_backup_pool:
+     name: backups
      pg_num: 32
      rule_name: ""
      application: "rbd"
@@ -115,13 +130,8 @@ Pools & Keys
      pg_num: 32
      rule_name: ""
      application: "rbd"
-   openstack_nova_pool:
-     name: vms
-     pg_num: 32
-     rule_name: ""
-     application: "rbd"
-   openstack_cinder_backup_pool:
-     name: backups
+   openstack_glance_pool:
+     name: images
      pg_num: 32
      rule_name: ""
      application: "rbd"
@@ -130,14 +140,19 @@ Pools & Keys
      pg_num: 32
      rule_name: ""
      application: "rbd"
+   openstack_nova_pool:
+     name: vms
+     pg_num: 32
+     rule_name: ""
+     application: "rbd"
 
 
    openstack_pools:
-     - "{{ openstack_glance_pool }}"
-     - "{{ openstack_cinder_pool }}"
-     - "{{ openstack_nova_pool }}"
      - "{{ openstack_cinder_backup_pool }}"
+     - "{{ openstack_cinder_pool }}"
+     - "{{ openstack_glance_pool }}"
      - "{{ openstack_gnocchi_pool }}"
+     - "{{ openstack_nova_pool }}"
 
    openstack_keys:
      - name: client.glance
@@ -200,9 +215,9 @@ Dashboard
    ##########################
    # custom
 
-   ceph_conf_overrides:
-     mon:
-       mgr initial modules: dashboard
+   ceph_mgr_modules:
+     - dashboard
+     [...]
 
 NUMA
 ====
