@@ -12,7 +12,7 @@ Preparations
 ============
 
 You need a Git repository to store the configuration of the environment. It has to be accessible
-from the manager node. A SSH deploy key for read-only access is sufficient.
+from the manager node. A SSH deploy/access key for read-only access is sufficient.
 
 Before you create the configuration, you need some basic information:
 
