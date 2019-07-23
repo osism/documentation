@@ -334,3 +334,42 @@ Export image
 
    $ docker exec -it cephclient_cephclient_1 rm -f /home/dragon/035f3636-ad68-4562-88f5-11d7e295d03e.img
    $ rm -f /tmp/035f3636-ad68-4562-88f5-11d7e295d03e.img
+
+Repair PGs
+==========
+
+* Health of Ceph cluster
+
+.. code-block:: console
+
+   $ sudo ceph status
+     cluster:
+       id:     0155072f-6a71-4f5c-8967-f86e5307033f
+       health: HEALTH_ERR
+               4 scrub errors
+               Possible data damage: 1 pg inconsistent
+
+   $ sudo ceph health detail
+   HEALTH_ERR 4 scrub errors; Possible data damage: 1 pg inconsistent
+   OSD_SCRUB_ERRORS 4 scrub errors
+   PG_DAMAGED Possible data damage: 1 pg inconsistent
+       pg 54.76 is active+clean+inconsistent, acting [39,6,15]
+
+* Repair the PG
+
+.. code-block:: console
+
+   $ sudo ceph pg repair 54.76
+   instructing pg 54.76 on osd.39 to repair
+
+* give the Ceph cluster some time for repair and check health
+
+.. code-block:: console
+
+   $ sudo ceph health detail 
+   HEALTH_OK
+
+   $ sudo ceph status
+     cluster:
+       id:     0155072f-6a71-4f5c-8967-f86e5307033f
+       health: HEALTH_OK
