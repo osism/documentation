@@ -16,9 +16,6 @@ is a good entry point
    $ osism-ansible generic all -m shell -a 'chronyc sources'
    $ osism-ansible generic all -m shell -a 'chronyc tracking'
 
-The facts should be updated once with ``osism-generic facts`` before starting the deployment
-of the individual services.
-
 Management services
 ===================
 
