@@ -255,7 +255,7 @@ Volume from image
 Neutron
 =======
 
-Open vSwtich agent
+Open vSwitch agent
 ------------------
 
 On network nodes and compute nodes with provider networks, after the initial start of
