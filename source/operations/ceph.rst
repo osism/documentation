@@ -172,6 +172,7 @@ Set the number of placement groups
 ==================================
 
 - http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#set-the-number-of-placement-groups
+- http://ceph.com/pgcalc
 
 .. code-block:: console
 
