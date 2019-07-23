@@ -15,10 +15,10 @@ The ``clouds.yml`` file should be adapted accordingly.
 
    ---
    clouds:
-     testbed:
+     admin:
        auth:
-         username: testbed
-         project_name: testbed
+         username: admin
+         project_name: admin
         auth_url: https://api-1.betacloud.io:5000/v3
         project_domain_name: default
         user_domain_name: default
@@ -33,18 +33,16 @@ It is not recommended to store passwords in plain text in the confiugration repo
 
    ---
    clouds:
-     testbed:
+     admin:
        auth:
          password: password
-
-A project ``testbed`` and a user ``testbed`` are to be created accordingly.
 
 Keystone
 ========
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed token issue
+   $ openstack --os-cloud admin token issue
    +------------+-------------------------------+
    | Field      | Value                         |
    +------------+-------------------------------+
@@ -56,10 +54,10 @@ Keystone
 
 Other tests are the following commands.
 
-* ``openstack --os-cloud testbed catalog list``
-* ``openstack --os-cloud testbed endpoint list``
-* ``openstack --os-cloud testbed domain list``
-* ``openstack --os-cloud testbed user list --domain default``
+* ``openstack --os-cloud admin catalog list``
+* ``openstack --os-cloud admin endpoint list``
+* ``openstack --os-cloud admin domain list``
+* ``openstack --os-cloud admin user list --domain default``
 
 Glance
 ======
@@ -73,7 +71,7 @@ Glance
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed image create --file /configuration/random.img random
+   $ openstack --os-cloud admin image create --file /configuration/random.img random
    +------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
    | Field            | Value                                                                                                                                   |
    +------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
@@ -134,7 +132,7 @@ Glance
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed image delete random
+   $ openstack --os-cloud admin image delete random
 
 Cinder
 ======
@@ -151,7 +149,7 @@ Empty volume
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume create --size 10 testing
+   $ openstack --os-cloud admin volume create --size 10 testing
    +---------------------+--------------------------------------+
    | Field               | Value                                |
    +---------------------+--------------------------------------+
@@ -179,7 +177,7 @@ Empty volume
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume list
+   $ openstack --os-cloud admin volume list
    +--------------------------------------+--------------+-----------+------+-------------+
    | ID                                   | Display Name | Status    | Size | Attached to |
    +--------------------------------------+--------------+-----------+------+-------------+
@@ -205,7 +203,7 @@ Empty volume
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume delete testing
+   $ openstack --os-cloud admin volume delete testing
 
 Volume from image
 -----------------
@@ -221,12 +219,12 @@ Volume from image
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume create --image random --size 10 testing-glance
+   $ openstack --os-cloud admin volume create --image random --size 10 testing-glance
    [...]
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume show testing-glance
+   $ openstack --os-cloud admin volume show testing-glance
    [...]
    | volume_image_metadata          | {u'container_format': u'bare', u'min_ram': u'0', u'disk_format': u'raw', u'image_name': u'random', u'image_id': u'c65f20fb-e693-444f-926c-6c5b7861639c', u'checksum': u'f936234a5e7662792086365e1483a0b1', u'min_disk': u'0', u'size': u'104857600'} |
    [...]
@@ -252,7 +250,7 @@ Volume from image
 
 .. code-block:: console
 
-   $ openstack --os-cloud testbed volume delete testing-glance
+   $ openstack --os-cloud admin volume delete testing-glance
 
 Neutron
 =======
