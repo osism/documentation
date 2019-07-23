@@ -144,6 +144,13 @@ Check Ceph connection
 
    $ docker exec -ti cinder_volume ceph -k /etc/ceph/ceph.client.cinder.keyring -n client.cinder -s
 
+Check services
+--------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin volume service list
+
 Empty volume
 ------------
 
@@ -255,6 +262,13 @@ Volume from image
 Neutron
 =======
 
+Check services
+--------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin network agent list
+
 Open vSwitch agent
 ------------------
 
@@ -310,9 +324,26 @@ the ``neutron-openvswitch-agent`` service.
 Nova
 ====
 
+Check services
+--------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin compute service list
+
 Check Ceph connection
 ---------------------
 
 .. code-block:: console
 
    $ docker exec -ti nova_compute ceph -k /etc/ceph/ceph.client.nova.keyring -n client.nova -s
+
+Heat
+====
+
+Check services
+--------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin orchestration service list
