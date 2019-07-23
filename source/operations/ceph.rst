@@ -260,11 +260,20 @@ Replace defect OSD
      $ sudo udevadm info --query=all --name=/dev/sdk
      $ sudo hdparm -I /dev/sdk
 
+* disable defect OSD/disk
+
+  .. code-block:: console
+
+     $ ceph osd out 22
+     $ ceph osd purge osd.22
+     $ sudo systemctl stop ceph-osd@sdk.service
+
 * Prepare new OSD
 
   .. code-block:: console
 
      $ docker start -ai ceph-osd-prepare-ceph04-sdk
+     $ sudo systemctl start ceph-osd@sdk.service
 
 * Add OSD to tree
 
@@ -278,12 +287,11 @@ Replace defect OSD
          ...
          hdd     0.0       0      0      0      0     0    0 osd.27
 
-     $ ceph osd crush create-or-move osd.27 3.7 hdd=ceph04-hdd
-     $ ceph osd purge osd.22
+     $ ceph osd crush create-or-move osd.22 3.7 hdd=ceph04-hdd
      $ ceph osd df tree
         CLASS WEIGHT REWEIGHT SIZE   USE    AVAIL  %USE  VAR TYPE NAME
                  7.4       -  3709G  2422G  1287G 65.30 1.06  hdd ceph04-hdd
-         hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.27
+         hdd     3.7 1.00000  3709G      0  3709G     0    0        osd.22
          hdd     3.7 1.00000  3709G  2422G  1287G 65.30 1.08        osd.6
 
 Add new pool
