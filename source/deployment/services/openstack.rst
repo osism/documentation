@@ -5,8 +5,6 @@ OpenStack
 .. contents::
    :local:
 
-.. note:: Execute the following commands on the manager node.
-
 The deployment of a single Kolla service is done via the ``osism-kolla`` wrapper.
 
 .. code-block:: console

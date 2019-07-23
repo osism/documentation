@@ -2,8 +2,6 @@
 Monitoring
 ==========
 
-.. note:: Execute the following commands on the manager node.
-
 The deployment of the monitoring services is optional. They are only deployed if they are
 to be used.
 

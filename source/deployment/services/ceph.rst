@@ -5,8 +5,6 @@ Ceph
 .. contents::
    :local:
 
-.. note:: Execute the following commands on the manager node.
-
 Preparations
 ============
 

@@ -5,14 +5,6 @@ Infrastructure
 .. contents::
    :local:
 
-.. note:: Execute the following commands on the manager node.
-
-Preparations
-============
-
-The facts should be updated once with ``osism-generic facts`` before starting the deployment
-of the individual services.
-
 Common
 ======
 
