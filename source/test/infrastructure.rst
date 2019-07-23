@@ -188,6 +188,7 @@ Elasticsearch
 
 * ``number_of_data_nodes`` should be the number of available Elasticsearch nodes
 * ``status`` should be ``green``
+* ``active_shards_percent_as_number`` should be ``100.0``
 
 Fluentd
 =======
