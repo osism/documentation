@@ -266,8 +266,8 @@ Replace defect OSD
   .. code-block:: console
 
      $ ceph osd out 22
-     $ ceph osd purge osd.22
      $ sudo systemctl stop ceph-osd@sdk.service
+     $ ceph osd purge osd.22
 
 * Prepare new OSD
 
