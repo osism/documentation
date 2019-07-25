@@ -83,7 +83,7 @@ Network
      # network
 
      public_network: 10.200.250.0/24
-     cluster_network: 10.200.251.0/24
+     # cluster_network:
 
 * ``environments/kolla/configuration.yml``
 
