@@ -105,6 +105,7 @@ Network
    # ceph
 
    monitor_interface: eth0
+   # monitor_address:
 
 Pools & Keys
 ============
