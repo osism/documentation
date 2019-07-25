@@ -59,6 +59,19 @@ https://wiki.archlinux.org/index.php/Persistent_block_device_naming.
      - /dev/disk/by-id/wwn-0x50014ee206985361
      - /dev/disk/by-id/wwn-0x50014ee2b1576368
 
+When using NVMe devices, the EUI-64 (`64-Bit Extended Unique Identifier <https://tools.ietf.org/html/rfc4291#section-2.5.1>`_)
+is used.
+
+.. code-block:: yaml
+   :caption: inventory/host_vars/STORAGE_NODE.yml
+
+   ##########################################################
+   # ceph
+
+   devices:
+     - /dev/disk/by-id/nvme-eui.343338304d1002630025384600000001
+     - /dev/disk/by-id/nvme-eui.343338304d1002450025384600000001
+
 Network
 =======
 
