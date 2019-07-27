@@ -183,7 +183,7 @@ iproute2
 
    # modprobe bonding
    # ip link add bond0 type bond
-   # ip link set bond0 type bond miimon 100 mode 802.3ad
+   # ip link set bond0 type bond miimon 100 mode 802.3ad lacp_rate 1
    # ip link set eno1 down
    # ip link set eno1 master bond0
    # ip link set eno2 down
