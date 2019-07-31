@@ -5,6 +5,18 @@ Generic
 .. contents::
    :local:
 
+DNS
+===
+
+.. code-block:: console
+
+   $ systemd-resolve --status
+   Global
+             DNS Servers: 10.11.7.60
+                          10.11.7.61
+             DNS Domain: betacloud.xyz
+   [...]
+
 Docker
 ======
 
