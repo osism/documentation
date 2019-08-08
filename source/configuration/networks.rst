@@ -2,24 +2,27 @@
 Networks
 ========
 
-The configuration of the individual networks is distributed across all environments and the inventory
-and is summarized here.
+The configuration of dedicated networks is distributed across all
+environments and the inventory and is summarized here.
 
-These networks do not all have to be different. They do not all have to be routed to different VLANs
-or physical interfaces. Only neutron_external_interface should be on its own physical interface.
+Not necessarily all of these networks have to be separate physical or
+VLAN networks. Only the external network defined by the host specific variable
+``neutron_external_interface`` should be a dedicated physical or VLAN network.
 
 The following networks are used:
 
 .. contents::
    :local:
 
-Managment / Console
+Management / Console
 ===================
 
-The managment or console network is there to access all nodes via SSH as well as some infrastructure and helper
-services, e.g. phpMyAdmin or the web interface of ARA.
+The ``management`` or ``console`` network is used to access all nodes via SSH.
+It is also used by some infrastructure and helper services like phpMyAdmin or
+the web interface for ARA.
 
-The network configured with the ``console_interface`` variable in the host inventory.
+This network is defined by ``console_interface`` in the host specific variable
+file like so:
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -29,8 +32,9 @@ The network configured with the ``console_interface`` variable in the host inven
 Internal
 ========
 
-The internal network is used for internal communication between different hosts. It is also used for
-traffic that has no dedicated network. Ansible playbooks also access this network.
+The internal network is used for communication between services located on
+different hosts. It is also used for traffic that has no dedicated network.
+Ansible playbooks also use this network to access target hosts.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -38,12 +42,9 @@ traffic that has no dedicated network. Ansible playbooks also access this networ
    ##########################################################
    # generic
 
-   managment_interface: eth1
+   management_interface: eth1
    internal_address: 10.0.1.2
    fluentd_host: 10.0.1.2
-
-.. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -58,17 +59,11 @@ traffic that has no dedicated network. Ansible playbooks also access this networ
 
    kolla_internal_fqdn: internal-api.betacloud.xyz
 
-.. code-block:: yaml
-   :caption: environments/configuration.yml
-
    ##########################################################
    # hosts
 
    host_additional_entries:
      internal-api.betacloud.xyz: 10.0.1.10
-
-.. code-block:: yaml
-   :caption: environments/configuration.yml
 
    ##########################
    # kolla
@@ -78,8 +73,9 @@ traffic that has no dedicated network. Ansible playbooks also access this networ
 Monitoring
 ==========
 
-The monitoring network normally falls together with the internal network. Those can be further separated
-at ``environments/monitorning/configuration.yml``.
+The monitoring network normally shares the internal network. A separate network
+for monitoring services related traffic can be configured at
+``environments/monitorning/configuration.yml``.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -89,12 +85,17 @@ at ``environments/monitorning/configuration.yml``.
 
    prometheus_scraper_interface: eth1
 
+   ##########################################################
+   # cockpit
+
+   cockpit_ssh_interface: eth1
+
 Tunnel
 ======
 
-Traffic between guest virtual machines on different compute nodes or between layer 3 networking
-components such as virtual routers are usually tunneled through VXLAN or GRE tunnels over the tunnel
-network.
+Traffic between guest virtual machines on different compute nodes or between
+layer 3 networking components such as virtual routers are usually routed through
+VXLAN or GRE tunnels on the tunnel network.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -120,7 +121,8 @@ Live migration of instances is performed over this network.
 External API
 ============
 
-External API endpoints are in this network.
+External API endpoints are accessible on the external API network. This network
+is reachable by consumers of the cloud services.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -158,7 +160,7 @@ External API endpoints are in this network.
 External
 ========
 
-The external network connects virtual machines to the outside.
+The external network connects virtual machines to the outside world.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -171,6 +173,8 @@ The external network connects virtual machines to the outside.
 Loadbalancer
 ============
 
+This network is used for accessing Loadbalancer as a Service public endpoints.
+
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
@@ -182,7 +186,8 @@ Loadbalancer
 Storage Frontend
 ================
 
-The storage frontend network is the connection between ceph nodes and all other nodes.
+The storage frontend network is the connection between ceph nodes and all other
+hosts which need access to storage services.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
