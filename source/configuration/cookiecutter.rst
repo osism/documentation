@@ -35,6 +35,13 @@ server and pulled from the manager node later.
 Installation
 ============
 
+Installation of gcc and python-development packages is a prerequisite to install
+required Python packages.
+
+.. code-block:: console
+
+   $ apt-get install build-essential python3-dev
+
 It is recommended to always use a virtual environment when you install packages from PyPI.
 
 .. code-block:: console
@@ -65,12 +72,35 @@ A description of the individual parameters can be found in the README file of th
 
 .. code-block:: console
 
-   $ cookiecutter ssh://git@git.betacloud-solutions.de:10022/generic/cookiecutter.git
-   with_ceph [1]:
-   with_monitoring [1]:
-   with_vault [1]:
-   ceph_fsid [Use a great UUID here]:
-   [...]
+   $ cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
+
+   with_ceph [1]: yes
+   with_monitoring [1]: no
+   with_vault [1]: yes
+   ceph_fsid [Use a great UUID here]: 1a6b162c-cc15-4569-aa09-db536c93569f
+   ceph_manager_version [2019.3.0]:
+   ceph_network_backend [192.168.101.0/24]: 10.0.6.0/24
+   ceph_network_frontend [192.168.100.0/24]: 10.0.5.0/24
+   ceph_version [luminous]:
+   docker_registry [index.docker.io]:
+   docker_version [5:18.09.5]:
+   domain [osism.io]: betacloud.io
+   fqdn_external [api-1.osism.io]: external-api.betacloud.io
+   fqdn_internal [api-1.osism.xyz]: internal-api.betacloud.xyz
+   git_host [git.betacloud-solutions.de]:
+   git_port [22]:
+   git_repository [generic/cookiecutter]:
+   git_username [git]:
+   git_version [master]:
+   ip_external [192.168.0.200]: 10.0.3.10
+   ip_internal [192.168.0.100]: 10.0.1.10
+   kolla_manager_version [2019.3.0]:
+   openstack_version [rocky]:
+   osism_manager_version [2019.3.0]:
+   project_name [customer]: betacloud
+   repository_version [2019.3.0]:
+   name_servers [default]: { "values": ["10.0.0.1"] }
+   ntp_servers [default]: { "values": ["10.0.0.1"] }
 
 Push the contents of the newly created ``cfg-customer`` directory to your Git repository. Be careful
 not to forget dotfiles like ``.gitignore``. The directory itself is not stored in the repository.
