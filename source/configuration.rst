@@ -11,9 +11,13 @@ Configuration
    configuration/networks
    configuration/environments
 
-The basis of an OSISM environment is a configuration repository,
-that is divided into individual environments. The structure, the
-creation and its contents are explained here.
+The basis of an OSISM installation is a configuration repository, which is
+specific to the customers infrastructure, and is divided into individual
+environments. Environments are the components used to configure the whole
+infrastructure, like manager node, frontend and backend services, and so forth.
+
+The structure, creation and content of the configuration repository is explained
+in this chapter.
 
 **Directories**
 
