@@ -2,10 +2,11 @@
 Synchronisation
 ===============
 
-The configuration repository must be regularly synchronized with https://github.com/osism/cfg-master.
+The configuration repository, created using cookiecutter has to be synchronized
+regularly with https://github.com/osism/cfg-master to obtain any updates.
 
-``cfg-master`` contains in particular ``environments/manager``, which is needed to build the manager
-node for new environments.
+``cfg-master`` contains in particular ``environments/manager``, which is needed
+to initially build the manager node, and is updated on a regular basis.
 
 If there are errors when rebuilding an environment, such as a missing Ansible role, you should first
 try synchronizing before time-consuming debugging.
@@ -21,8 +22,21 @@ repository.
 
 .. code-block:: console
 
-   $ virtualenv -p python3 .venv
-   $ pip install -r requirements.txt
-   $ MANAGER_VERSION=2019.3.0 gilt overlay
+   virtualenv -p python3 .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   MANAGER_VERSION=2019.3.0 gilt overlay
 
-After synchronization, check changes with ``git status`` and commit them.
+After synchronization, check for changes in the configuration repository.
+
+.. code-block:: console
+
+   git status
+
+If there are changes, review and commit them.
+
+.. code-block:: console
+
+   git diff
+   git add .
+   git commit
