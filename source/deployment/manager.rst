@@ -7,170 +7,229 @@ Manager node
 
 .. note::
 
-   Execute the following commands on the seed node. Execute the commands within the
-   manager environment (``cd environments/manager``).
+   Execute the following commands on the seed node. Execute the commands within
+   the manager environment (``cd environments/manager``) of the configuration
+   repository.
 
-The manager node is used to manage all other nodes of the environment. The use of a dedicated system
-is recommended. In many environments, one of the controller nodes is used as the manager node.
+The manager node is used to manage all other nodes of the environment. The use
+of a dedicated system is recommended. In many environments, one of the
+controller nodes is used as the manager node.
 
-You can use a different folder location for the virtual environment that will be created by setting
-the environment variable ``VENV_PATH``. This is required for example if your current folder path
-contains blank characters.
+You can use a different folder location for the virtual environment that will be
+created by setting the environment variable ``VENV_PATH``. This is required for
+example if your current folder path contains blank characters.
 
-Various Ansible configurations can be adjusted via environment variables. For example, to query the
-password for using ``sudo``, add ``ANSIBLE_BECOME_ASK_PASS=True``. If ``secrets.yml`` files are
-encrypted with Ansible Vault, ``ANSIBLE_ASK_VAULT_PASS=True`` is added.
+Various Ansible configurations can be adjusted via environment variables.
 
-An overview with all parameters can be found at http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
+* to query the password for using ``sudo``:
+
+  .. code-block:: shell
+
+    ANSIBLE_BECOME_ASK_PASS=True
+
+* if ``secrets.yml`` files are encrypted with Ansible Vault, let Ansible prompt
+  for the password by using:
+
+  .. code-block:: shell
+
+    ANSIBLE_ASK_VAULT_PASS=True
+
+* set the password file location (password will be in cleartext!)
+
+  .. code-block:: shell
+
+    ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
+
+An overview with all parameters can be found at
+http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
 
 Initialization
 ==============
 
 .. note::
 
-   It is possible to manage more than one manager. In this case it may be useful to work with --limit.
+  It is possible to manage more than one manager. In this case it may be useful
+  to work with --limit.
 
-* Creation of the necessary operator user
+Creation of the operator user
+-----------------------------
 
-  .. code-block:: console
+.. code-block:: console
 
-     $ ANSIBLE_USER=ubuntu ./run.sh operator
+  ANSIBLE_USER=ubuntu ./run.sh operator
 
-  .. note::
+.. note::
 
-     The so-called operator user is created on each system. It is used as a service account for OSISM.
-     All Docker Containers run under this user. Ansible also uses this account to access the systems.
+  The *operator user* is created on each system. It is used as a service account
+  for OSISM. All Docker containers run with this user. Ansible also uses this
+  user to access the systems. Commands on the manager node need to be run as
+  this user!
 
-  * If at the beginning the login with a password is required, ``ANSIBLE_ASK_PASS=True`` must be set.
-  * If at the beginning the login with an SSH key is required, the key has to be added on the manager
-    node to ``authorized_keys`` of the user specified in ``ANSIBLE_USER``.
-  * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
-    the manager node with ``ANSIBLE_USER=ubuntu ./run.sh python``.
-  * To verify the creation of the operator user, use the private key file ``id_rsa.operator``:
-    ``ssh -i id_rsa.operator dragon@10.49.20.10``.
-  * A typical call to create the operator user looks like this.
+* If a password is required to login to the manager node,
+  ``ANSIBLE_ASK_PASS=True`` must be set.
 
-    .. code-block:: console
+* If an SSH key is required to login to the manager node, the key has to be
+  added on the manager node to ``~/.ssh/authorized_keys`` in the home directory
+  of the user specified as ``ANSIBLE_USER``.
 
-       $ ANSIBLE_BECOME_ASK_PASS=True \
-         ANSIBLE_ASK_VAULT_PASS=True \
-         ANSIBLE_ASK_PASS=True \
-         ANSIBLE_USER=ubuntu \
-         ./run.sh operator
+* If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python has to
+  be installed on the manager node by executing:
 
-  .. warning::
+  .. code-block::
 
-     If the operator user was already created when the operating system was provisioned, this
-     role must still be executed. ``ANSIBLE_USER`` is then adjusted accordingly.
+    ANSIBLE_USER=ubuntu ./run.sh python
 
-     The UID and GID must also be checked. If it is not ``45000``, it must be adapted accordingly.
+* To verify the creation of the operator user, use the private key file
+  ``id_rsa.operator``:
 
-     .. code-block:: console
+  .. code-block::
 
-        # usermod -u 45000 dragon
-        # groupmod -g 45000 dragon
+    ssh -i id_rsa.operator dragon@manager01
 
-        # chgrp dragon /home/dragon/
-        # chown dragon /home/dragon/
-
-        # find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
-        # find /home/dragon -user 1000 -exec chown -h dragon {} \;
-
-* If Ansible Vault is used, the ``ANSIBLE_ASK_VAULT_PASS`` variable will be used accordingly
+* A typical call to create the *operator user* looks like this:
 
   .. code-block:: console
 
-     $ export ANSIBLE_ASK_VAULT_PASS=True
+    ANSIBLE_BECOME_ASK_PASS=True \
+    ANSIBLE_ASK_VAULT_PASS=True \
+    ANSIBLE_ASK_PASS=True \
+    ANSIBLE_USER=ubuntu \
+    ./run.sh operator
 
-* Configuration of the network
+.. warning::
 
-  .. code-block:: console
+  If the *operator user* was already created when the operating system was
+  provisioned, ``./run.sh operator`` must still be executed. ``ANSIBLE_USER``
+  should be set to a user with sudo rights and different from the
+  *operator user*.
 
-     $ ./run.sh network
-
-  * The network configuration already present on a system should be saved before this step.
-  * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
-
-    The default file ``01-netcfg.yaml`` with the following content can remain as it is.
-
-    .. code-block:: yaml
-
-      # This file describes the network interfaces available on your system
-      # For more information, see netplan(5).
-      network:
-        version: 2
-        renderer: networkd
-
-  * Upon completion of this step, a system reboot should be performed to ensure that the
-    configuration is functional and reboot secure. Since network services are not
-    restarted automatically, later changes to the network configuration are not effective
-    without a manual restart of the network service or reboot of the nodes.
-  * A reboot is performed to activate and test the network configuration.
-    The reboot must be performed before the bootstrap is performed.
-
-    .. code-block:: console
-
-       $ ./run.sh reboot
-
-* Bootstrap of the manager node
+  The UID and GID of the *operator user* need to be ``45000``. Execute the
+  following commands as *root* user on the manger node:
 
   .. code-block:: console
 
-     $ ./run.sh bootstrap
+    usermod -u 45000 dragon
+    groupmod -g 45000 dragon
 
-* Further reboot of the manager node
+    chgrp dragon /home/dragon/
+    chown dragon /home/dragon/
+
+    find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
+    find /home/dragon -user 1000 -exec chown -h dragon {} \;
+
+* If Ansible Vault is used, direct Ansible to prompt for the Vault password:
+
+  .. code-block:: shell
+
+    export ANSIBLE_ASK_VAULT_PASS=True
+
+  or the password file location can be exported
+  (password will be in cleartext!):
+
+  .. code-block:: shell
+
+    export ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
+
+Configuration of the network
+----------------------------
+
+.. code-block:: console
+
+  ./run.sh network
+
+* The network configuration, already present on a system should be saved before
+  this step.
+
+* Currently we are still using ``/etc/network/interfaces``. Hence rename all
+  files below ``/etc/netplan`` to ``X.unused``.
+
+  The default file ``01-netcfg.yaml`` with the following content can remain as
+  is.
+
+  .. code-block:: yaml
+
+    # This file describes the network interfaces available on your system
+    # For more information, see netplan(5).
+    network:
+      version: 2
+      renderer: networkd
+
+* Upon completion of the network configurtion, a system reboot should be
+  performed to ensure the configuration is functional and reboot safe. Since
+  network services are not restarted automatically, later changes to the network
+  configuration are not effective without a manual restart of the network
+  service or reboot of the nodes.
+
+* A reboot is performed to activate and test the network configuration. The
+  reboot must be performed before the bootstrap is performed.
 
   .. code-block:: console
 
-     $ ./run.sh reboot
+     ./run.sh reboot
 
-* Transfer configuration repository
-
-  .. code-block:: console
-
-     $ ./run.sh configuration
-
-* Deployment of necessary manager services
+Bootstrap of the manager node
+-----------------------------
 
   .. code-block:: console
 
-     $ ./run.sh manager
+    ./run.sh bootstrap
+
+Reboot the manager node afterwards to ensure changes are boot safe:
+
+  .. code-block:: console
+
+    ./run.sh reboot
+
+Deploy the configuration repository on the manager node:
+
+  .. code-block:: console
+
+     ./run.sh configuration
+
+Deploy the manager services:
+
+  .. code-block:: console
+
+    ./run.sh manager
 
 Optional infrastructure services
 ================================
 
-The deployment of these infrastructure services is optional. They are only deployed if they are
-to be used.
+The deployment of these infrastructure services is optional. They are only
+deployed if they are to be used.
 
 Cobbler
 -------
 
-Cobbler is a Linux installation server that allows for rapid setup of network installation environments.
-It glues together and automates many associated Linux tasks so you do not have to hop between lots of
-various commands and applications when rolling out new systems, and, in some cases, changing existing
-ones. It can help with installation, DNS, DHCP, package updates, power management, configuration
-management orchestration, and much more. [#]_
+Cobbler is a Linux installation server that allows for rapid setup of network
+installation environments. It glues together and automates many associated Linux
+tasks so you do not have to hop between lots of various commands and
+applications when rolling out new systems, and, in some cases, changing existing
+ones. It can help with installation, DNS, DHCP, package updates, power
+management, configuration management orchestration, and much more. [#]_
+
+On the manager node execute the following command:
 
 .. code-block:: console
 
-   $ osism-infrastructure cobbler
+  osism-infrastructure cobbler
 
 Mirror
 ------
 
-With the mirror services it is possible to store packages for Ubuntu and images for Docker in one central
-location.
+With the mirror services it is possible to store packages for Ubuntu and images
+for Docker in one central location.
 
 .. code-block:: console
 
-   $ osism-infrastructure mirror
+  osism-infrastructure mirror
 
-After the bootstrap of the mirror services they have to be synchronized. Depending on
-the bandwidth, this process will take several hours.
+After the bootstrap of the mirror services they have to be synchronized.
+Depending on the bandwidth, this process will take several hours.
 
 .. code-block:: console
 
-   $ osism-mirror images
-   $ osism-mirror packages
+  osism-mirror images
+  osism-mirror packages
 
 .. [#] source: https://github.com/cobbler/cobbler/blob/master/README.md
