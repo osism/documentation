@@ -4,17 +4,18 @@ Cookiecutter
 
 .. note::
 
-   To gain access to the cookiecutter repository, please send a request to info@betacloud-solutions.de.
-
-To prepare the configuration repository, you need the tool `Cookiecutter <https://github.com/audreyr/cookiecutter>`_.
+   To gain access to the configuration repository for your customer specific
+   infrastructure, please send a request to info@betacloud-solutions.de.
 
 Preparations
 ============
 
-You need a Git repository to store the configuration of the environment. It has to be accessible
-from the manager node. A SSH deploy/access key for read-only access is sufficient.
+A Git repository is required to store the configuration for your specific
+infrastructure. The manager node needs to have access to this repository.
+An SSH deploy/access key for read-only access is sufficient.
 
-Before you create the configuration, you need some basic information:
+Before creating the configuration repository, infrastructure specific
+information needs to be provided:
 
 * NTP servers
 * DNS servers
@@ -25,54 +26,58 @@ Before you create the configuration, you need some basic information:
 
 .. note::
 
-   After the deployment of the manager, it is possible to generate a self-signed SSL certificate
-   using an included Ansible playbook. See :ref:`generation-of-self-signed-certificate` for more
-   information.
+   After the deployment of the manager node, it is possible to generate a
+   self-signed SSL certificate using an included Ansible playbook.
+   See :ref:`generation-of-self-signed-certificate` for more information.
 
-Usually you prepare and edit the configuration on your workstation. It is pushed to a central Git
-server and pulled from the manager node later.
+Usually the configuration repository is prepared on your workstation. After
+the repository creation, it needs to be pushed to a central Git server, to make
+it available to the manager node.
 
 Installation
 ============
 
-Installation of gcc and python-development packages is a prerequisite to install
-required Python packages.
+Installation of *gcc*, *python-development* and *git* packages is a
+prerequisite to install required Python packages.
 
 .. code-block:: console
 
-   $ apt-get install build-essential python3-dev
+   apt-get install git build-essential python3-dev
 
-It is recommended to always use a virtual environment when you install packages from PyPI.
+It is recommended to use a virtual environment when installing packages from PyPI.
 
 .. code-block:: console
 
-   $ virtualenv -p python3 .venv
-   $ source .venv/bin/activate
-   $ pip3 install \
-       ansible \
-       cookiecutter \
-       cryptography \
-       oslo.utils \
-       paramiko \
-       passlib \
-       pycrypto \
-       pykeepass \
-       python-gilt \
-       pyyaml \
-       ruamel.yaml \
-       yamllint
+   virtualenv -p python3 .venv
+   source .venv/bin/activate
+   pip3 install \
+     ansible \
+     cookiecutter \
+     cryptography \
+     oslo.utils \
+     paramiko \
+     passlib \
+     pwgen \
+     pycrypto \
+     pykeepass \
+     python-gilt \
+     pyyaml \
+     ruamel.yaml \
+     yamllint
 
 Initialisation
 ==============
 
-When you run cookiecutter, you are asked for the information you collected before.
+When running cookiecutter, infrastructure specific information needs to be
+provided.
 
-A list with all parameters can be found in the ``cookiecutter.json`` configuration file.
-A description of the individual parameters can be found in the README file of the repository.
+A list with all parameters can be found in the ``cookiecutter.json``
+configuration file inside the configuration repository. A description of the
+individual parameters can be found in the README file of the repository.
 
 .. code-block:: console
 
-   $ cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
+   cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
 
    with_ceph [1]: yes
    with_monitoring [1]: no
@@ -99,11 +104,25 @@ A description of the individual parameters can be found in the README file of th
    osism_manager_version [2019.3.0]:
    project_name [customer]: betacloud
    repository_version [2019.3.0]:
-   name_servers [default]: { "values": ["10.0.0.1"] }
-   ntp_servers [default]: { "values": ["10.0.0.1"] }
+   name_servers [default]: { "values": ["8.8.8.8", "4.4.4.4"] }
+   ntp_servers [default]: { "values": ["de.pool.ntp.org"] }
 
-Push the contents of the newly created ``cfg-customer`` directory to your Git repository. Be careful
-not to forget dotfiles like ``.gitignore``. The directory itself is not stored in the repository.
+Create a Git repository inside the newly created ``cfg-customer`` directory.
+Be careful not to forget dotfiles like ``.gitignore``.
+
+.. code-block:: console
+
+    cd cfg-customer
+    git init
+    git add .
+    git commit -m "Initial commit"
+
+Push the repository to a Git server, so it will be available to the manager node.
+
+.. code-block:: console
+
+    git remote add origin <your-git-server>/cfg-customer
+    git push --set-upstream origin master
 
 .. figure:: /images/gitlab-initial-commit.png
 
