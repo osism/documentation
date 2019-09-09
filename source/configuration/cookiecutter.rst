@@ -79,9 +79,9 @@ individual parameters can be found in the README file of the repository.
 
    cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
 
-   with_ceph [1]: yes
-   with_monitoring [1]: no
-   with_vault [1]: yes
+   with_ceph [1]: 1
+   with_monitoring [1]: 0
+   with_vault [1]: 1
    ceph_fsid [Use a great UUID here]: 1a6b162c-cc15-4569-aa09-db536c93569f
    ceph_manager_version [2019.3.0]:
    ceph_network_backend [192.168.101.0/24]: 10.0.6.0/24
