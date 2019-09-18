@@ -84,6 +84,7 @@ Partitioning
   * ``/var/lib/docker`` (30 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
   * ``/var/log/audit`` (1 GByte)
   * ``/var`` (10 GByte)
+  * ``swap`` (min 8 GByte)
 
   .. note::
 
@@ -97,8 +98,6 @@ Partitioning
 
         # lvextend -L +10G /dev/mapper/system-docker
         # resize2fs -p /dev/mapper/system-docker
-
-* The use of a swap partition with at least 8 GByte is recommended
 
 .. image:: /images/installation-partition-disks.png
 
@@ -123,10 +122,10 @@ EFI partitions
 
    # lsblk
    NAME                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
-   sda                   8:0    0 59.6G  0 disk  
+   sda                   8:0    0 59.6G  0 disk
    ├─sda1                8:1    0  476M  0 part  /boot/efi
-   └─sda2                8:2    0 59.2G  0 part  
-     └─md0               9:0    0 59.1G  0 raid1 
+   └─sda2                8:2    0 59.2G  0 part
+     └─md0               9:0    0 59.1G  0 raid1
        ├─system-root   253:0    0  9.3G  0 lvm   /
        ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
        ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
@@ -134,10 +133,10 @@ EFI partitions
        ├─system-var    253:4    0  9.3G  0 lvm   /var
        ├─system-docker 253:5    0  9.3G  0 lvm   /var/lib/docker
        └─system-home   253:6    0  1.9G  0 lvm   /home
-   sdb                   8:16   0 59.6G  0 disk  
-   ├─sdb1                8:17   0  476M  0 part  
-   └─sdb2                8:18   0 59.2G  0 part  
-     └─md0               9:0    0 59.1G  0 raid1 
+   sdb                   8:16   0 59.6G  0 disk
+   ├─sdb1                8:17   0  476M  0 part
+   └─sdb2                8:18   0 59.2G  0 part
+     └─md0               9:0    0 59.1G  0 raid1
        ├─system-root   253:0    0  9.3G  0 lvm   /
        ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
        ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
