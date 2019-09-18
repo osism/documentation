@@ -21,6 +21,8 @@ The common role includes the following services:
 HAProxy
 =======
 
+Please read certificate configuration (https://docs.osism.io/configuration/environments/openstack.html#haproxy)
+
 .. code-block:: console
 
    $ osism-kolla deploy haproxy
