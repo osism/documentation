@@ -25,7 +25,7 @@ Management services
 
      $ osism-ceph mons
 
-* ceph-mon is the cluster monitor daemon for the Ceph distributed file system
+* ceph-mgr is the cluster manager daemon for the Ceph distributed file system
 
   .. code-block:: console
 
