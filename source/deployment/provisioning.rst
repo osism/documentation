@@ -28,8 +28,8 @@ Preparations
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server from this USB stick/CD
 
-Installation
-============
+Manuel Installation
+===================
 
 * Choose ``English`` as language
 * Choose ``Install Ubuntu Server``
@@ -111,6 +111,88 @@ Partitioning
    * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 
+Preseed Installation
+====================
+
+Prepare Ubuntu Server ISO
+-------------------------
+
+* Prepare your environment as root
+
+.. code-block:: console
+
+   $ mkdir /dev/shm/ubuntu-seed
+   $ sudo mount -o loop,ro ubuntu-18.04.3-server-amd64.iso /mnt/
+   $ cp -rT /mnt /dev/shm/ubuntu-seed
+
+* Edit in both files the first entry
+
+.. code-block:: console
+
+   $ vim boot/grub/grub.cfg
+   menuentry "Install Ubuntu Server OSISM" {
+       set gfxpayload=keep
+       linux  /install/vmlinuz auto console-setup/ask_detect=false console-setup/layoutcode=us console-setup/modelcode=pc105 debconf/frontend=noninteractive debian-installer=en_US.UTF-8 fb=false initrd=/install/initrd.gz kbd-chooser/method=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA locale=en_US.UTF-8 noapic preseed/file=/cdrom/preseed/osism-ubuntu-server.seed ---
+       initrd /install/initrd.gz
+   }
+   $ vim isolinux/txt.cfg
+   label install
+     menu label ^Install Ubuntu Server OSISM
+     kernel /install/vmlinuz
+     append auto console-setup/ask_detect=false console-setup/layoutcode=us console-setup/modelcode=pc105 debconf/frontend=noninteractive debian-installer=en_US.UTF-8 fb=false initrd=/install/initrd.gz kbd-chooser/method=us keyboard-configuration/layout=USA keyboard-configuration/variant=USA locale=en_US.UTF-8 noapic preseed/file=/cdrom/preseed/osism-ubuntu-server.seed vga=788 initrd=/install/initrd.gz ---
+
+.. note::
+
+   Please use ``:w!`` in vim for writing readonly files
+
+* Create preseed file, :ref:`osism-ubuntu-preseed`
+
+.. code-block:: console
+
+   $ cat preseed/osism-ubuntu-server.seed
+   ### Localization
+
+   # Preseeding language, country and locale
+   d-i debian-installer/locale string en_US.UTF-8
+   ...
+   ### Boot loader installation
+
+   d-i grub-installer/grub2_instead_of_grub_legacy boolean true
+   d-i grub-installer/only_debian boolean false
+   d-i grub-installer/with_other_os boolean true
+   d-i grub-installer/bootdev string default
+   d-i grub-installer/timeout string 5
+   # Avoid that last message about the install being complete.
+   d-i finish-install/reboot_in_progress note
+
+* Write new md5sum in reference file, md5sum.txt
+
+.. code-block:: console
+
+   $ md5sum boot/grub/grub.cfg
+   39c2565e2d6eff27b806f0b41382db66  boot/grub/grub.cfg
+   $ grep grub.cfg md5sum.txt
+   ...
+   39c2565e2d6eff27b806f0b41382db66  ./boot/grub/grub.cfg
+
+   $ md5sum preseed/osism-ubuntu-server.seed
+   09361c56b41e218df314478947491cb3  preseed/osism-ubuntu-server.seed
+   $ grep osism md5sum.txt
+   09361c56b41e218df314478947491cb3  ./preseed/osism-ubuntu-server.seed
+
+* Build ISO file
+
+.. code-block:: console
+
+   $ mkisofs -U -A "UbuntuOSISM" -V "UbuntuOSISM" -volset "UbuntuOSISM" -J -joliet-long -r -v -T -o /path/to/osism-ubuntu-seed.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot /dev/shm/ubuntu-seed/
+
+.. note::
+
+   Please use console, ALT+F4, for debugging
+
+* Download prepared ISO files (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
+
+
 Post-processing
 ===============
 
@@ -123,10 +205,10 @@ EFI partitions
 
    # lsblk
    NAME                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
-   sda                   8:0    0 59.6G  0 disk  
+   sda                   8:0    0 59.6G  0 disk
    ├─sda1                8:1    0  476M  0 part  /boot/efi
-   └─sda2                8:2    0 59.2G  0 part  
-     └─md0               9:0    0 59.1G  0 raid1 
+   └─sda2                8:2    0 59.2G  0 part
+     └─md0               9:0    0 59.1G  0 raid1
        ├─system-root   253:0    0  9.3G  0 lvm   /
        ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
        ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
@@ -134,10 +216,10 @@ EFI partitions
        ├─system-var    253:4    0  9.3G  0 lvm   /var
        ├─system-docker 253:5    0  9.3G  0 lvm   /var/lib/docker
        └─system-home   253:6    0  1.9G  0 lvm   /home
-   sdb                   8:16   0 59.6G  0 disk  
-   ├─sdb1                8:17   0  476M  0 part  
-   └─sdb2                8:18   0 59.2G  0 part  
-     └─md0               9:0    0 59.1G  0 raid1 
+   sdb                   8:16   0 59.6G  0 disk
+   ├─sdb1                8:17   0  476M  0 part
+   └─sdb2                8:18   0 59.2G  0 part
+     └─md0               9:0    0 59.1G  0 raid1
        ├─system-root   253:0    0  9.3G  0 lvm   /
        ├─system-swap   253:1    0  7.5G  0 lvm   [SWAP]
        ├─system-tmp    253:2    0  1.9G  0 lvm   /tmp
