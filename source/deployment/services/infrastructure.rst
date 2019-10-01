@@ -21,7 +21,7 @@ The common role includes the following services:
 HAProxy
 =======
 
-Please read certificate configuration (https://docs.osism.io/configuration/environments/openstack.html#haproxy)
+Please read certificate configuration :ref:`haproxy-self-signed-cert`
 
 .. code-block:: console
 
