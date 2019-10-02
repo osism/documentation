@@ -96,5 +96,5 @@ Ceph
      $ ceph health
      HEALTH_OK
      $ ceph df
-     $ ceph mon_status
-     $ ceph quorum_status
+     $ ceph mon_status | python -m json.tool
+     $ ceph quorum_status | python -m json.tool
