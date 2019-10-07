@@ -382,3 +382,54 @@ Repair PGs
      cluster:
        id:     0155072f-6a71-4f5c-8967-f86e5307033f
        health: HEALTH_OK
+       
+Rebalance the cluster
+=====================
+
+* https://docs.ceph.com/docs/luminous/rados/operations/control/
+
+# Test what OSDs would be affected by teh reweight
+
+.. code-block:: console
+
+    $ sudo ceph osd test-reweight-by-utilization
+    no change
+    moved 6 / 4352 (0.137868%)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
+    min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
+    
+    oload 120
+    max_change 0.05
+    max_change_osds 4
+    average_utilization 0.4187
+    overload_utilization 0.5025
+    osd.14 weight 0.9500 -> 0.9000
+    osd.27 weight 0.9500 -> 0.9000
+    osd.37 weight 0.9500 -> 0.9000
+    osd.29 weight 1.0000 -> 0.9500
+    
+# If the OSDs match your "fullest" OSDs execute the reweight
+
+.. code-block:: console
+
+    $ sudo ceph osd reweight-by-utilization
+    no change
+    moved 6 / 4352 (0.137868%)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
+    min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
+    
+    oload 120
+    max_change 0.05
+    max_change_osds 4
+    average_utilization 0.4187
+    overload_utilization 0.5025
+    osd.14 weight 0.9500 -> 0.9000
+    osd.27 weight 0.9500 -> 0.9000
+    osd.37 weight 0.9500 -> 0.9000
+    osd.29 weight 1.0000 -> 0.9500
+    
+# Wait for the cluster to rebalance itself and check disk usage again
