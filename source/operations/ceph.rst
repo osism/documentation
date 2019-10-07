@@ -388,7 +388,7 @@ Rebalance the cluster
 
 * https://docs.ceph.com/docs/luminous/rados/operations/control/
 
-# Test what OSDs would be affected by teh reweight
+1. Test what OSDs would be affected by teh reweight
 
 .. code-block:: console
 
@@ -410,7 +410,7 @@ Rebalance the cluster
     osd.37 weight 0.9500 -> 0.9000
     osd.29 weight 1.0000 -> 0.9500
     
-# If the OSDs match your "fullest" OSDs execute the reweight
+2. If the OSDs match your "fullest" OSDs execute the reweight
 
 .. code-block:: console
 
@@ -432,4 +432,4 @@ Rebalance the cluster
     osd.37 weight 0.9500 -> 0.9000
     osd.29 weight 1.0000 -> 0.9500
     
-# Wait for the cluster to rebalance itself and check disk usage again
+3. Wait for the cluster to rebalance itself and check disk usage again. Repeat above if necessary
