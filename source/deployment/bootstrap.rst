@@ -23,6 +23,7 @@ The following steps are performed to initialize all nodes. :ref:`add-node` descr
   * The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
     specified with ``-u``.
   * Alternatively, you can work with the parameters ``--ask-pass`` and ``--ask-become-pass``.
+  * For using ``sudo`` please use ``--become``.
   * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
     the manager node with ``osism-generic python -l 'all:!manager' -u ubuntu``.
 
