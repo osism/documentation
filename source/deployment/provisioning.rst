@@ -28,7 +28,7 @@ Preparations
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server from this USB stick/CD
 
-Manuel Installation
+Manual Installation
 ===================
 
 * Choose ``English`` as language
