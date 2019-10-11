@@ -125,7 +125,7 @@ Prepare Ubuntu Server ISO
    $ sudo mount -o loop,ro ubuntu-18.04.3-server-amd64.iso /mnt/
    $ cp -rT /mnt /dev/shm/ubuntu-seed
 
-* Edit in both files the first entry
+* Edit in both files the first entry as ``root``
 
 .. code-block:: console
 
