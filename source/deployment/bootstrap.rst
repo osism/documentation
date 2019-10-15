@@ -460,10 +460,3 @@ Deploy services
      $ osism-kolla deploy openvswitch --limit 20-12.betacloud.xyz
      $ osism-kolla deploy neutron --limit 20-12.betacloud.xyz
      $ osism-kolla deploy nova --limit 20-12.betacloud.xyz
-
-* Monitoring services (if monitoring is used)
-
-  .. code-block:: console
-
-     $ osism-monitoring prometheus-exporter --limit 20-12.betacloud.xyz
-     $ osism-monitoring prometheus

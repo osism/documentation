@@ -13,5 +13,4 @@ of the individual services.
    services/infrastructure
    services/ceph
    services/openstack
-   services/monitoring
    services/custom
