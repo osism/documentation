@@ -24,9 +24,10 @@ Preparations
   * Do not use the ``ubuntu-18.04.2-live-server-amd64.iso`` image
   * The version number may be different, always use the latest available version of 18.04 LTS
 
+* Or use the preseed ISO, (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
-* Boot bare-metal server from this USB stick/CD
+* Boot bare-metal via UEFI (recommended) server from this USB stick/CD
 
 Manual Installation
 ===================
