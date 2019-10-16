@@ -69,3 +69,24 @@ The new secret ``ara_password`` is added to the ``environments/secrets.yml`` fil
    # manager
 
    ara_password: password
+
+When using Ceph, the following groups must be added to the inventory. Insert after the ``ceph-osd`` group.
+
+.. code-block:: ini
+
+# NOTES: Subsequent groups necessary for compatibility to ceph-ansible. Don't change it.
+
+   [mdss:children]
+   ceph-mds
+
+   [mgrs:children]
+   ceph-mgr
+
+   [mons:children]
+   ceph-mon
+
+   # [rgws:children]
+   # ceph-rgw
+
+   [osds:children]
+   ceph-osd
