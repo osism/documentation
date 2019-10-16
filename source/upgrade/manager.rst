@@ -2,6 +2,9 @@
 Manager
 =======
 
+.. contents::
+   :local:
+
 The following parameters are adjusted accordingly in the configuration repository.
 
 .. code-block:: yaml
