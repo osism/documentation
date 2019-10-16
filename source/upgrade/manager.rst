@@ -74,7 +74,7 @@ When using Ceph, the following groups must be added to the inventory. Insert aft
 
 .. code-block:: ini
 
-# NOTES: Subsequent groups necessary for compatibility to ceph-ansible. Don't change it.
+   # NOTES: Subsequent groups necessary for compatibility to ceph-ansible. Don't change it.
 
    [mdss:children]
    ceph-mds
