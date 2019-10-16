@@ -90,3 +90,8 @@ When using Ceph, the following groups must be added to the inventory. Insert aft
 
    [osds:children]
    ceph-osd
+
+.. warning::
+
+   The environment ``monitoring`` is deprecated. The associated Ansible roles and Docker images
+   (Prometheus and Prometheus exporters) will be removed in a future release.
