@@ -40,3 +40,35 @@ included playbooks.
 .. note::
 
    Do not customize the ``run.sh`` script. The file will be updated from time to time.
+
+Caching
+=======
+
+Redis
+-----
+
+.. code-block:: ini
+   :caption: environments/ansible.cfg
+
+   # Fact caching
+   gathering = smart
+   fact_caching = redis
+   fact_caching_timeout = 86400
+   fact_caching_connection = cache:6379:0
+
+JSON file
+---------
+
+.. code-block:: ini
+   :caption: environments/manager/configuration.yml
+
+   redis_enable: false
+
+.. code-block:: ini
+   :caption: environments/ansible.cfg
+
+   # Fact caching
+   gathering = smart
+   fact_caching = jsonfile
+   fact_caching_timeout = 86400
+   fact_caching_connection = /share/facts
