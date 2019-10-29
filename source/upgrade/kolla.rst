@@ -22,6 +22,18 @@ Notes
 
 * Nova: Upgrade the controller (``osism-kolla upgrade nova -l controller``) followed by the compute nodes (``osism-kolla upgrade nova -l compute``)
 
+* Elasticsearch: After the ugprade of Elasticsearch enable the shard allocation.
+
+  .. code-block:: console
+
+     curl -X PUT "http://KOLLA_INTERNAL_VIP_ADDRESS:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+     {
+       "persistent": {
+         "cluster.routing.allocation.enable": null
+       }
+     }
+     '
+
 Ocata -> Pike
 =============
 
