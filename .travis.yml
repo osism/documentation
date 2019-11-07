@@ -3,11 +3,21 @@ language: python
 python:
   - "3.6"
 
+before_install:
+  - sudo apt-get -y install lftp
+
 install:
   - pip install -r requirements.txt
 
 script:
   - sphinx-build -b html source build/html
+
+after_success:
+  - |
+      if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then
+        rm -rf build/html/.buildinfo build/html/.doctrees
+        lftp -u "$FTP_USERNAME,$FTP_PASSWORD" -e 'set sftp:auto-confirm yes; mirror -R --delete build/html osism; exit;' sftp://betacloud.io
+      fi
 
 notifications:
   irc:
