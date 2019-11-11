@@ -198,7 +198,7 @@ Prepare Ubuntu Server ISO
 
 .. note::
 
-   please use disk size minimum of 63GB (10 + 2 + 2 + 30 + 1 + 10 + 8, see partitioning above)
+   please use disk size minimum of 63GB (10 + 2 + 2 + 30 + 1 + 10 + 8, see partitioning above), otherwise the default LVs will be active, root/swap
 
 
 Post-processing
