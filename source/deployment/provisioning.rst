@@ -192,6 +192,14 @@ Prepare Ubuntu Server ISO
 
 * Download prepared ISO files (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
 
+.. note::
+
+   UEFI boot only
+
+.. note::
+
+   please use disk size minimum of 63GB (10 + 2 + 2 + 30 + 1 + 10 + 8, see partitioning above)
+
 
 Post-processing
 ===============
