@@ -26,6 +26,12 @@ Preparations
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
+
+  .. note::
+
+     We prefer the use of software RAIDs to make us less dependent on hardware. But there is nothing against
+     using hardware RAIDs.
+
 * Boot bare-metal server from this USB stick/CD
 
 Manual Installation
@@ -75,8 +81,22 @@ Partitioning
 
 * The use of a UEFI is recommended
 * The use of a RAID is recommended
+
+  .. note::
+
+     We prefer the use of software RAIDs to make us less dependent on hardware. But there is nothing against
+     using hardware RAIDs.
+
 * The use of a LVM2 is recommended
-* The use of own file systems for the following mountpoints is recommended
+
+  .. note::
+
+     Dedicated disks may be provided for ``/var/lib/docker`` on the controller nodes. In this case, do
+     not use an LV for ``/var/lib/docker`` but the devices provided for it.
+
+* Do not configure devices that are not required for the operating system
+
+The use of own file systems for the following mountpoints is recommended:
 
   * ``/`` (10 GByte)
   * ``/home`` (2 GByte)
@@ -98,6 +118,8 @@ Partitioning
 
         # lvextend -L +10G /dev/mapper/system-docker
         # resize2fs -p /dev/mapper/system-docker
+
+The following is a sample view from the Ubuntu installer. This view may vary depending on the environment.
 
 .. image:: /images/installation-partition-disks.png
 
