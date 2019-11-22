@@ -8,7 +8,7 @@ Base directory: ``environments/ceph``
 
 .. note ::
 
-   The documentation for ``ceph-ansible`` can be found on http://docs.ceph.com/ceph-ansible/master/.
+   The documentation for ``ceph-ansible`` can be found at http://docs.ceph.com/ceph-ansible/master/.
 
 Generic
 =======
@@ -21,6 +21,10 @@ Generic
      # generic
 
      containerized_deployment: true
+
+     ceph_origin: repository
+     ceph_repository: community
+     ceph_stable_release: luminous
 
      osd_objectstore: bluestore
      osd_scenario: lvm
@@ -75,6 +79,11 @@ is used.
 Network
 =======
 
+Ceph uses a ``public_network`` which needs to be reachable by Ceph clients and
+a separate network, which is used by OSDs. The network used by OSDs is called
+``cluster_network``. When omitting the ``cluster_network`` variable, the
+``public_network`` is used by OSDs as well.
+
 * ``environments/ceph/configuration.yml``
 
   .. code-block:: yaml
@@ -83,7 +92,7 @@ Network
      # network
 
      public_network: 10.200.250.0/24
-     # cluster_network:
+     cluster_network: 10.200.249.0/24
 
 * ``environments/kolla/configuration.yml``
 
@@ -114,7 +123,7 @@ Pools & Keys
 
 .. note::
 
-   Remove unneeded pools & keys accordingly.
+   Add or remove unneeded pools & keys accordingly.
 
 .. note::
 
@@ -131,9 +140,9 @@ Pools & Keys
 
    # NOTE: After the initial deployment of the Ceph Clusters, the following parameter can be
    #       set to false. It must only be set to true again when new pools or keys are added.
-
    openstack_config: true
 
+   # Define pools for Openstack services
    openstack_cinder_backup_pool:
      name: backups
      pg_num: 32
@@ -160,7 +169,6 @@ Pools & Keys
      rule_name: ""
      application: "rbd"
 
-
    openstack_pools:
      - "{{ openstack_cinder_backup_pool }}"
      - "{{ openstack_cinder_pool }}"
@@ -168,32 +176,61 @@ Pools & Keys
      - "{{ openstack_gnocchi_pool }}"
      - "{{ openstack_nova_pool }}"
 
+   # Define keys for Ceph clients
    openstack_keys:
      - name: client.glance
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}"
+         osd: >
+           allow class-read object_prefix rbd_children,
+           allow rwx pool={{ openstack_glance_pool.name }}
        mode: "0600"
      - name: client.cinder
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"  # yamllint disable-line rule:line-length
+         osd: >
+           allow class-read object_prefix rbd_children,
+           allow rwx pool={{ openstack_cinder_pool.name }},
+           allow rwx pool={{ openstack_nova_pool.name }},
+           allow rx pool={{ openstack_glance_pool.name }}
        mode: "0600"
      - name: client.cinder-backup
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
+         osd: >
+           allow class-read object_prefix rbd_children,
+           allow rwx pool={{ openstack_cinder_backup_pool.name }}
        mode: "0600"
      - name: client.gnocchi
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_gnocchi_pool.name }}"
+         osd: >
+           allow class-read object_prefix rbd_children,
+           allow rwx pool={{ openstack_gnocchi_pool.name }}
        mode: "0600"
      - name: client.nova
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_cinder_backup_pool.name }}"  # yamllint disable-line rule:line-length
+         osd: >
+           allow class-read object_prefix rbd_children,
+           allow rwx pool={{ openstack_glance_pool.name }},
+           allow rwx pool={{ openstack_nova_pool.name }},
+           allow rwx pool={{ openstack_cinder_pool.name }},
+           allow rwx pool={{ openstack_cinder_backup_pool.name }}
        mode: "0600"
+
+To define a new pool, add a new dictionary like following:
+
+.. code-block:: yaml
+
+   openstack_SERVICE_pool:
+     name: SERVICE
+     pg_num: 32
+     rule_name: ""
+     application: "rbd"
+
+Add the new pool to ``openstack_pools`` list and define a new key at
+``openstack_keys``. Keys are used by Ceph clients to access the pool.
 
 Custom
 ======
