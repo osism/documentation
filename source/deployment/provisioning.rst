@@ -68,6 +68,12 @@ Manual Installation
 
 * Choose ``No automatic updates``
 * Choose ``OpenSSH server`` as software to install
+
+  .. note::
+
+     Do not install any other software component. Everything you need will be installed
+     later by OSISM. In particular, it is not necessary to install a desktop environment.
+
 * After completion, restart the system
 
 .. note::
