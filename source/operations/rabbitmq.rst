@@ -72,3 +72,22 @@ using an HTTP API client library instead.
 .. code-block:: console
 
    $ curl -o rabbitmqadmin http://INTERNAL_VIP_ADDRESS:15672/cli/rabbitmqadmin
+
+Clusterer status
+================
+
+.. code-block:: console
+
+   $ docker exec -it rabbitmq rabbitmqctl eval 'rabbit_clusterer:status().'
+   Rabbit is running in cluster configuration:
+   [{node_ids,[{rabbit@control23,<<37,76,232,123,245,226,238,39,172,233,48,175,
+                                   28,17,105,112>>},
+               {rabbit@control28,<<191,90,202,73,64,134,189,151,163,239,180,6,
+                                   175,1,176,167>>}]},
+    {gospel,{node,rabbit@control23}},
+    {nodes,[{rabbit@control11,disc},
+            {rabbit@control23,disc},
+            {rabbit@control28,disc}]},
+    {version,2}]
+   Running nodes: [rabbit@control23,rabbit@control28]
+   ok
