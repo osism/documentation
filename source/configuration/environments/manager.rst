@@ -17,8 +17,9 @@ Ansible configuration
 Playbooks
 =========
 
-In the manager environment some playbooks are included. These are needed to perform the initial
-bootstrap of the manager independently of Docker.
+The manager environment ``environments/manager/`` hosts playbooks to perform the
+initial bootstrap of the manager node. The initial bootstrap installs management
+commands and configuration files.
 
 .. note::
 
@@ -28,14 +29,16 @@ bootstrap of the manager independently of Docker.
 Inventory
 =========
 
-The manager environment has its own inventory file as the only environment. Only one host group
-``manager`` is stored in this inventory. All other environments use the global inventory.
+The manager environment has a dedicated inventory file
+``environments/manager/hosts``. Only one host group ``manager`` is part of the
+inventory. All other environments use the global inventory at
+``inventory/hosts``.
 
 Script
 ======
 
-The manager environment includes a ``run.sh`` script. This script is used for the execution of the
-included playbooks.
+The manager environment includes a ``run.sh`` script. This script is used for
+the execution of the included playbooks.
 
 .. note::
 

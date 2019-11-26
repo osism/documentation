@@ -2,23 +2,26 @@
 Synchronisation
 ===============
 
-The configuration repository, created using cookiecutter has to be synchronized
-regularly with https://github.com/osism/cfg-master to obtain any updates.
+The configuration repository, created using *cookiecutter* needs to be
+synchronized regularly with https://github.com/osism/cfg-master to obtain any
+updates.
 
-``cfg-master`` contains in particular ``environments/manager``, which is needed
-to initially build the manager node, and is updated on a regular basis.
+``cfg-master`` contains in particular the directory ``environments/manager``,
+which is needed to initially build the manager node, and is updated on a regular
+basis.
 
-If there are errors when rebuilding an environment, such as a missing Ansible role, you should first
-try synchronizing before time-consuming debugging.
+If there are errors when rebuilding an environment, such as a missing Ansible
+role, you should first try synchronizing before time-consuming debugging.
 
-The value for ``MANAGER_VERSION`` is stored in ``environments/manager/configuration.yml`` in the
-``osism_manager_version`` parameter.
+The value for ``MANAGER_VERSION`` is stored in
+``environments/manager/configuration.yml`` in the ``osism_manager_version``
+parameter.
 
-Synchronization must also be performed when updating to a new version. In this case, ``MANAGER_VERSION``
-is set to the new version accordingly.
+Synchronization has to be performed when updating to a new version. In this
+case, ``MANAGER_VERSION`` will be set to the new version.
 
-The following commands are executed within the root directory of the respective configuration
-repository.
+The following commands are executed within the root directory of the
+configuration repository.
 
 .. code-block:: console
 
@@ -33,7 +36,7 @@ After synchronization, check for changes in the configuration repository.
 
    git status
 
-If there are changes, review and commit them.
+If there are any changes, review and commit them.
 
 .. code-block:: console
 

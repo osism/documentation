@@ -50,6 +50,9 @@ It is recommended to use a virtual environment when installing packages from PyP
 
    virtualenv -p python3 .venv
    source .venv/bin/activate
+
+.. code-block:: console
+
    pip3 install \
      ansible \
      cookiecutter \
@@ -68,7 +71,7 @@ It is recommended to use a virtual environment when installing packages from PyP
 Initialisation
 ==============
 
-When running cookiecutter, infrastructure specific information needs to be
+When running *cookiecutter*, infrastructure specific information needs to be
 provided.
 
 A list with all parameters can be found in the ``cookiecutter.json``
@@ -79,10 +82,11 @@ individual parameters can be found in the README file of the repository.
 
    cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
 
-   with_ceph [1]: 1
-   with_vault [1]: 1
+   with_ceph [1]:
+   with_monitoring [1]:
+   with_vault [1]:
    ceph_fsid [Use a great UUID here]: 1a6b162c-cc15-4569-aa09-db536c93569f
-   ceph_manager_version [2019.3.0]:
+   ceph_manager_version [2019.4.0]:
    ceph_network_backend [192.168.101.0/24]: 10.0.6.0/24
    ceph_network_frontend [192.168.100.0/24]: 10.0.5.0/24
    ceph_version [luminous]:
@@ -98,11 +102,11 @@ individual parameters can be found in the README file of the repository.
    git_version [master]:
    ip_external [192.168.0.200]: 10.0.3.10
    ip_internal [192.168.0.100]: 10.0.1.10
-   kolla_manager_version [2019.3.0]:
+   kolla_manager_version [2019.4.0]:
    openstack_version [rocky]:
-   osism_manager_version [2019.3.0]:
+   osism_manager_version [2019.4.0]:
    project_name [customer]: betacloud
-   repository_version [2019.3.0]:
+   repository_version [2019.4.0]:
    name_servers [default]: { "values": ["8.8.8.8", "4.4.4.4"] }
    ntp_servers [default]: { "values": ["de.pool.ntp.org"] }
 
@@ -125,5 +129,5 @@ Push the repository to a Git server, so it will be available to the manager node
 
 .. figure:: /images/gitlab-initial-commit.png
 
-   Directory structure after the initial commit in the Git repository. The ``secrets`` directory
-   is only stored in the repository for test environments.
+   Directory structure after the initial commit in the Git repository. The
+   ``secrets`` directory is only stored in the repository for test environments.
