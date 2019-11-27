@@ -22,15 +22,11 @@ Generic
 
      containerized_deployment: true
 
-     ceph_origin: repository
-     ceph_repository: community
-     ceph_stable_release: luminous
-
      osd_objectstore: bluestore
      osd_scenario: lvm
 
      generate_fsid: false
-     fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+     fsid: 1a6b162c-cc15-4569-aa09-db536c93569f
 
 * ``environments/configuration.yml``
 
@@ -40,7 +36,7 @@ Generic
      # ceph
 
      ceph_share_directory: /share
-     ceph_cluster_fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+     ceph_cluster_fsid: 1a6b162c-cc15-4569-aa09-db536c93569f
 
 Devices
 =======
@@ -91,8 +87,8 @@ a separate network, which is used by OSDs. The network used by OSDs is called
      ##########################
      # network
 
-     public_network: 10.200.250.0/24
-     cluster_network: 10.200.249.0/24
+     public_network: 10.0.5.0/24
+     cluster_network: 10.0.6.0/24
 
 * ``environments/kolla/configuration.yml``
 
@@ -101,7 +97,7 @@ a separate network, which is used by OSDs. The network used by OSDs is called
      ##########################################################
      # external ceph
 
-     ceph_public_network: 10.200.250.0/24
+     ceph_public_network: 10.0.5.0/24
 
 .. note::
 

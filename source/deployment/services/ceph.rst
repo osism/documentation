@@ -8,13 +8,14 @@ Ceph
 Preparations
 ============
 
-Before the deployment make sure that NTP really works. In case of problems https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
-is a good entry point
+Before the deployment make sure that NTP really works. In case of problems
+https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
+is a good entry point.
 
 .. code-block:: console
 
-   $ osism-ansible generic all -m shell -a 'chronyc sources'
-   $ osism-ansible generic all -m shell -a 'chronyc tracking'
+   osism-ansible generic all -m shell -a 'chronyc sources'
+   osism-ansible generic all -m shell -a 'chronyc tracking'
 
 Management services
 ===================
@@ -23,22 +24,25 @@ Management services
 
   .. code-block:: console
 
-     $ osism-ceph mons
+     osism-ceph mons
 
 * ceph-mgr is the cluster manager daemon for the Ceph distributed file system
 
   .. code-block:: console
 
-     $ osism-ceph mgrs
+     osism-ceph mgrs
 
 Client service
 ==============
 
-* Set the ``ceph.client.admin.keyring`` in the ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file
-  in the configuration repository
+* Set the ``ceph.client.admin.keyring`` in the
+  ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file in
+  the configuration repository
 
-  * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor node
-  * Update the configuration repository on the manager node with ``osism-generic configuration``
+  * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor
+    node
+  * Update the configuration repository on the manager node with
+    ``osism-generic configuration``
 
 * Ensure that ``cephclient_mons`` is set accordingly in the ``environments/infrastructure/configuration.yml`` file
 
@@ -46,7 +50,7 @@ Client service
 
 .. code-block:: console
 
-   $ osism-infrastructure helper --tags cephclient
+   osism-infrastructure helper --tags cephclient
 
 Storage services
 ================
@@ -55,7 +59,7 @@ Storage services
 
   .. code-block:: console
 
-     $ osism-ceph mdss  # only when using cephfs
+     osism-ceph mdss  # only when using cephfs
 
 * ceph-osd is the object storage daemon for the Ceph distributed file system
 
@@ -66,7 +70,7 @@ Storage services
 
      .. code-block:: console
 
-        # wipefs -f -a /dev/sdX
+        sudo wipefs -f -a /dev/sdX
         /dev/sdX: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
         /dev/sdX: 8 bytes were erased at offset 0x2e934855e00 (gpt): 45 46 49 20 50 41 52 54
         /dev/sdX: 2 bytes were erased at offset 0x000001fe (PMBR): 55 aa
@@ -74,7 +78,7 @@ Storage services
 
   .. code-block:: console
 
-     $ osism-ceph osds
+     osism-ceph osds
 
   .. note::
 
@@ -89,7 +93,7 @@ Storage services
 
      .. code-block:: console
 
-        $ sudo cp /opt/cephclient/configuration/*.keyring /etc/ceph
+        sudo cp /opt/cephclient/configuration/*.keyring /etc/ceph
 
 Post-processing
 ===============
@@ -98,7 +102,10 @@ After deploying Ceph, the remaining individual keys must be stored in the config
 
 .. code-block:: console
 
-   $ find . -name 'ceph.client.*.keyring'
+   find . -name 'ceph.client.*.keyring'
+
+.. code-block:: console
+
    ./environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
    ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
    ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
@@ -112,7 +119,10 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
 
 .. code-block:: console
 
-   $ ls -1 /etc/ceph/
+   ls -1 /etc/ceph/
+
+.. code-block:: console
+
    ceph.client.admin.keyring
    ceph.client.cinder-backup.keyring
    ceph.client.cinder.keyring
@@ -122,8 +132,14 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
    ceph.conf
    ceph.mon.keyring
 
-Don't forget to update the configuration repository on the manager afterwards with ``osism-generic configuration``.
+Don't forget to update the configuration repository on the manager afterwards
+using command ``osism-generic configuration``.
 
-After the initial deployment of the Ceph Clusters, the ``openstack_config`` parameter in the
-``environments/ceph/configuration.yml`` can be set to ``false``. It must only be set to ``true`` when new
-pools or keys are added.
+After the initial deployment of the Ceph clusters, the ``openstack_config``
+parameter in the ``environments/ceph/configuration.yml`` can be set to
+``false``. It must only be set to ``true`` when new pools or keys are added.
+
+Testing Ceph
+============
+
+* See :ref:`how to test Ceph <test-ceph>`.
