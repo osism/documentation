@@ -277,9 +277,20 @@ After the first boot depending on the environment it is necessary to create the 
 configuration for the management interface manually, because for example bonding or VLANs
 should be used.
 
-* At the beginning it is sufficient to be able to reach the system via SSH.
-* It is not necessary to create the entire network configuration. The network configuration is created during
-  the bootstrap on the systems.
+The following examples shows how the configuration can be done with ``netplan`` or ``iproute2``.
+
+.. note::
+
+   The examples are not the final network configuration. It is a minimal sample network
+   configuration for initial access to the systems.
+
+   The example configuration differs depending on the environment. The configuration is
+   not a recommendation for the network design. It's just an example configuration.
+
+   It is not necessary to manually create the finale network configuration. The final
+   network configuration of the environment is defined during the creation of the
+   configuration repository. The network final network configuration is depoyed during
+   the bootstrap on the systems.
 
 iproute2
 ~~~~~~~~
