@@ -36,6 +36,14 @@ to write an e-mail to info@betacloud-solutions.de if you have questions or doubt
 The documentation is maintained on Github: https://github.com/osism/documentation.
 There you can open issues for found errors and so on.
 
+.. warning::
+
+   This documentation does not claim to be complete or to be carried out step by step.
+   Unless otherwise noted all configurations listed are examples and are not
+   recommendations or mandatory specifications. Environmentally specific details such
+   as network configuration, system names, partitioning, etc. are always determined
+   during the preparatory work depending on the environment to be built.
+
 .. [#] source: https://docs.openstack.org
 .. [#] source: http://docs.ceph.com
 .. [#] source: http://docs.ansible.com
