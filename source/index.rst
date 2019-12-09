@@ -28,6 +28,7 @@ to write an e-mail to info@betacloud-solutions.de if you have questions or doubt
    configuration
    deployment
    upgrade
+   scaling
    test
    operations
    notes
