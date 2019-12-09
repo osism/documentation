@@ -95,6 +95,8 @@ Partitioning
 
 * The use of a LVM2 is recommended
 
+  * ``system`` is recommended as the name for the volume group
+
   .. note::
 
      Dedicated disks may be provided for ``/var/lib/docker`` on the controller nodes. In this case, do
@@ -102,15 +104,16 @@ Partitioning
 
 * Do not configure devices that are not required for the operating system
 
-The use of own file systems for the following mountpoints is recommended:
+The use of own file systems for the following mountpoints is recommended. The minimum size and a recommended name
+for the logical volume are noted.
 
-  * ``/`` (10 GByte)
-  * ``/home`` (2 GByte)
-  * ``/tmp`` (2 GByte)
-  * ``/var/lib/docker`` (30 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
-  * ``/var/log/audit`` (1 GByte)
-  * ``/var`` (10 GByte)
-  * ``swap`` (min 8 GByte)
+  * ``/`` (10 GByte, logical volume ``root``)
+  * ``/home`` (2 GByte, logical volume ``home``)
+  * ``/tmp`` (2 GByte, logical volume ``tmp``)
+  * ``/var/lib/docker`` (30 GByte, logical volume ``docker``, do not set the ``nosuid`` flag on ``/var/lib/docker``)
+  * ``/var/log/audit`` (1 GByte, logical volume ``audit``)
+  * ``/var`` (10 GByte, logical volume ``var``)
+  * ``swap`` (min 8 GByte, logical volume ``swap``)
 
   .. note::
 
