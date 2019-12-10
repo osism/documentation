@@ -9,5 +9,5 @@ Adding a storage node
 
    $ osism-ceph osds --limit 20-12.betacloud.xyz
 
-Removing a storaeg node
+Removing a storage node
 =======================
