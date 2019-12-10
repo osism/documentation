@@ -189,6 +189,8 @@ Storage Frontend
 The storage frontend network is the connection between ceph nodes and all other
 hosts which need access to storage services.
 
+It is recommended to use an MTU of 9000 in this network.
+
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
 
@@ -233,6 +235,8 @@ Storage Backend
 ===============
 
 The storage backend network is the internal connection between ceph nodes.
+
+It is recommended to use an MTU of 9000 in this network.
 
 .. code-block:: yaml
    :caption: environments/ceph/configuration.yml
