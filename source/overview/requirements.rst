@@ -14,20 +14,28 @@ can be accessed.
 Services & Access
 =================
 
-All nodes:
+The nodes need access to some external services.
 
-* access to DNS and NTP servers
-* access to Dockerhub
-* access to official Ubuntu mirrors
-* access to PyPI
+All nodes
+---------
+
+* DNS and NTP servers
+* Docker Hub
+* Official Ubuntu mirrors
 
 .. note::
 
-   Mirrors can be provided within the environment.
+   * Mirrors for Docker and Ubuntu can be provided within the environment. Then access to
+     Docker Hub and Ubuntu is only required from the manager.
 
-Manager node:
+   * If no direct access to external services is possible, the use of an HTTP proxy is
+     possible.
 
-* access to GitHub or an internal Git repository server (e.g. Gitlab)
+Manager node
+------------
+
+* GitHub or an internal Git repository server (e.g. Gitlab)
+* PyPI
 
 Network
 =======
@@ -37,47 +45,62 @@ VLAN based
 
 .. list-table:: Required VLANs
    :header-rows: 1
-   :widths: 7 10 3 3
+   :widths: 7 10 3 3 3
 
    * - Name
      - Nodes
+     - MTU
      - Optional
      - Routed
-   * - management
+   * - console
      - all nodes
+     - 1500
      - |times|
      - |check|
    * - internal
      - all nodes
+     - 1500
      - |times|
-     - |times|
-   * - monitoring
-     - all nodes
-     - |check|
      - |times|
    * - tunnel
-     - compute & controller nodes
+     - compute & network nodes
+     - 1500
+     - |check|
+     - |times|
+   * - migration
+     - compute nodes
+     - 1500
      - |check|
      - |times|
    * - external api
      - controller nodes
+     - 1500
      - |check|
      - |question|
    * - external
-     - controller nodes
+     - network nodes
+     - 1500
      - |check|
      - |check|
    * - provider
-     - compute & controller nodes
+     - compute & network nodes
+     - 1500
      - |check|
      - |question|
    * - storage frontend
      - all nodes that require access to the storage
+     - 9000
      - |times|
      - |times|
    * - storage backend
      - storage nodes
+     - 9000
      - |times|
+     - |times|
+   * - monitoring
+     - all nodes
+     - 1500
+     - |check|
      - |times|
 
 Hardware
