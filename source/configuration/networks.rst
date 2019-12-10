@@ -78,21 +78,6 @@ Ansible playbooks also use this network to access target hosts.
 
    kolla_internal_vip_address: 10.0.1.10
 
-Monitoring
-==========
-
-The monitoring network normally shares the internal network. A separate network
-for monitoring services related traffic can be configured at
-``environments/monitorning/configuration.yml``.
-
-.. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
-
-   ##########################################################
-   # monitoring
-
-   prometheus_scraper_interface: eth1
-
 Tunnel
 ======
 
@@ -248,3 +233,18 @@ It is recommended to use an MTU of 9000 in this network.
    # network
 
    cluster_network: 10.0.6.0/24
+
+Monitoring
+==========
+
+The monitoring network normally shares the internal network. A separate network
+for monitoring services related traffic can be configured at
+``environments/monitorning/configuration.yml``.
+
+.. code-block:: yaml
+   :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
+   # monitoring
+
+   prometheus_scraper_interface: eth1
