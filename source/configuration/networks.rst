@@ -137,9 +137,6 @@ is reachable by consumers of the cloud services.
    host_additional_entries:
      external-api.betacloud.xyz: 10.0.3.10
 
-.. code-block:: yaml
-   :caption: environments/configuration.yml
-
    ##########################################################
    # kolla
 
@@ -187,9 +184,6 @@ It is recommended to use an MTU of 9000 in this network.
 
    storage_interface: eth5
 
-.. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
-
    ##########################################################
    # ceph
 
@@ -210,14 +204,6 @@ It is recommended to use an MTU of 9000 in this network.
    # network
 
    public_network: 10.0.5.0/24
-
-.. code-block:: yaml
-   :caption: environments/monitoring/configuration.yml
-
-   ##########################################################
-   # exporter
-
-   prometheus_exporter_ceph_public_network: 10.0.5.0/24
 
 Storage Backend
 ===============
@@ -248,3 +234,11 @@ for monitoring services related traffic can be configured at
    # monitoring
 
    prometheus_scraper_interface: eth1
+
+.. code-block:: yaml
+   :caption: environments/monitoring/configuration.yml
+
+   ##########################################################
+   # exporter
+
+   prometheus_exporter_ceph_public_network: 10.0.5.0/24
