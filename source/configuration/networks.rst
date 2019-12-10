@@ -22,10 +22,13 @@ It is also used by some infrastructure and helper services like phpMyAdmin or
 the web interface for ARA.
 
 This network is defined by ``console_interface`` in the host specific variable
-file like so:
+file:
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
+
+   ##########################################################
+   # generic
 
    console_interface: eth0
 
@@ -50,6 +53,11 @@ Ansible playbooks also use this network to access target hosts.
    # kolla
 
    network_interface: eth1
+
+   ##########################################################
+   # cockpit
+
+   cockpit_ssh_interface: eth1
 
 .. code-block:: yaml
    :caption: environments/kolla/configuration.yml
@@ -84,11 +92,6 @@ for monitoring services related traffic can be configured at
    # monitoring
 
    prometheus_scraper_interface: eth1
-
-   ##########################################################
-   # cockpit
-
-   cockpit_ssh_interface: eth1
 
 Tunnel
 ======
