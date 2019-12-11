@@ -43,6 +43,8 @@ Network
 VLAN based
 ----------
 
+.. image:: /images/networks-and-nodes.png
+
 .. list-table:: Required VLANs
    :header-rows: 1
    :widths: 7 10 3 3 3
