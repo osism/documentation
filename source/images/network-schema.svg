@@ -42,9 +42,9 @@
      id="namedview658"
      showgrid="false"
      inkscape:snap-text-baseline="false"
-     inkscape:zoom="1.0106114"
-     inkscape:cx="795.66246"
-     inkscape:cy="570.8629"
+     inkscape:zoom="0.5053057"
+     inkscape:cx="889.40023"
+     inkscape:cy="707.27831"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="0"
@@ -131,7 +131,7 @@
        y1="56.010777"
        x2="-0.70968486"
        y2="930.34252"
-       gradientTransform="scale(0.70453807,1.4193697)"
+       gradientTransform="matrix(0.70453807,0,0,1.4193697,-7.9160002,23.748)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -254,8 +254,8 @@
      rx="92.25"
      height="1240"
      width="615"
-     y="80"
-     x="0" />
+     y="103.748"
+     x="-7.9160004" />
   <rect
      style="fill:#f5f5f5;stroke:#666666;stroke-dasharray:3, 3"
      id="rect36"
@@ -1228,109 +1228,6 @@
       </text>
     </switch>
   </g>
-  <rect
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
-     id="rect256"
-     pointer-events="all"
-     ry="2.6500001"
-     rx="2.6500001"
-     height="19.879999"
-     width="90"
-     y="282.63"
-     x="157" />
-  <rect
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
-     id="rect258"
-     pointer-events="all"
-     ry="2.6500001"
-     rx="2.6500001"
-     height="19.879999"
-     width="90"
-     y="259.44"
-     x="157" />
-  <rect
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
-     id="rect260"
-     pointer-events="all"
-     ry="2.6500001"
-     rx="2.6500001"
-     height="19.879999"
-     width="90"
-     y="236.25"
-     x="157" />
-  <rect
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
-     id="rect262"
-     pointer-events="all"
-     ry="2.6500001"
-     rx="2.6500001"
-     height="19.879999"
-     width="90"
-     y="213.06"
-     x="157" />
-  <rect
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
-     id="rect264"
-     pointer-events="all"
-     ry="2.6500001"
-     rx="2.6500001"
-     height="19.879999"
-     width="90"
-     y="189.88"
-     x="157" />
-  <path
-     style="fill:#cccccc;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
-     inkscape:connector-curvature="0"
-     id="path266"
-     pointer-events="all"
-     stroke-miterlimit="10"
-     d="M 161,187.22 182,170 h 40 l 21,17.22 z" />
-  <ellipse
-     style="fill:#ffffff;stroke:none"
-     id="ellipse268"
-     pointer-events="all"
-     ry="5.3000002"
-     rx="4"
-     cy="292.56"
-     cx="239" />
-  <ellipse
-     style="fill:#ffffff;stroke:none"
-     id="ellipse270"
-     pointer-events="all"
-     ry="5.3000002"
-     rx="4"
-     cy="269.38"
-     cx="238.67" />
-  <ellipse
-     style="fill:#ffffff;stroke:none"
-     id="ellipse272"
-     pointer-events="all"
-     ry="5.3000002"
-     rx="4"
-     cy="246.19"
-     cx="239" />
-  <ellipse
-     style="fill:#ffffff;stroke:none"
-     id="ellipse274"
-     pointer-events="all"
-     ry="5.3000002"
-     rx="4"
-     cy="223"
-     cx="239" />
-  <ellipse
-     style="fill:#ffffff;stroke:none"
-     id="ellipse276"
-     pointer-events="all"
-     ry="5.3000002"
-     rx="4"
-     cy="199.81"
-     cx="239" />
-  <path
-     style="fill:#ffffff;stroke:none"
-     inkscape:connector-curvature="0"
-     id="path278"
-     pointer-events="all"
-     d="m 162,299.85 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 4.5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.18 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z" />
   <circle
      style="fill:#b0e3e6;stroke:#0e8088"
      r="40"
@@ -2772,5 +2669,33 @@
            id="tspan5529-77">bond1</tspan>
       </text>
     </switch>
+  </g>
+  <g
+     id="g10"
+     transform="matrix(2.0054597,0,0,2.0054597,169.91264,179.83075)">
+    <rect
+       style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+       x="1"
+       y="1"
+       width="30"
+       height="60"
+       rx="2"
+       ry="2"
+       pointer-events="all"
+       id="rect4" />
+    <path
+       style="fill:none;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       d="M 1,11 H 31 M 1,31 h 30"
+       stroke-miterlimit="10"
+       pointer-events="all"
+       id="path6" />
+    <circle
+       style="fill:#ffffff;stroke:none"
+       r="2"
+       cx="6"
+       cy="36"
+       pointer-events="all"
+       id="ellipse8" />
   </g>
 </svg>
