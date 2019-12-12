@@ -5,7 +5,7 @@ Node types
 .. contents::
    :local:
 
-.. image:: /images/networks-and-nodes.png
+.. image:: /images/network-schema.png
 
 Seed node
 =========

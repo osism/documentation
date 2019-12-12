@@ -2,7 +2,7 @@
 Networks
 ========
 
-.. image:: /images/networks-and-nodes.png
+.. image:: /images/network-schema.png
 
 .. list-table:: Required networks
    :header-rows: 1
@@ -13,52 +13,52 @@ Networks
      - MTU
      - Optional
      - Routed
-   * - console
+   * - Management
      - all nodes
      - 1500
      - |times|
      - |check|
-   * - internal
+   * - Internal
      - all nodes
      - 1500
      - |times|
      - |times|
-   * - tunnel
+   * - Tunnel
      - compute & network nodes
      - 1500
      - |check|
      - |times|
-   * - migration
+   * - Migration
      - compute nodes
      - 1500
      - |check|
      - |times|
-   * - external api
+   * - External API
      - controller nodes
      - 1500
      - |check|
      - |question|
-   * - external
+   * - External Networks
      - network nodes
      - 1500
      - |check|
      - |check|
-   * - provider
+   * - Provider Networks
      - compute & network nodes
      - 1500
      - |check|
      - |question|
-   * - storage frontend
+   * - Ceph Frontend
      - all nodes that require access to the storage
      - 9000
      - |times|
      - |times|
-   * - storage backend
+   * - Ceph Backend
      - storage nodes
      - 9000
      - |times|
      - |times|
-   * - monitoring
+   * - Monitoring
      - all nodes
      - 1500
      - |check|

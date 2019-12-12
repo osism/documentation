@@ -1,0 +1,2756 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="1601px"
+   height="1321px"
+   viewBox="-0.5 -0.5 1601 1321"
+   id="svg656"
+   sodipodi:docname="network-schema.svg"
+   inkscape:version="0.92.4 (unknown)"
+   inkscape:export-filename="/home/grawert/workspace/osism-documentation/source/images/network-schema.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <metadata
+     id="metadata660">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1832"
+     inkscape:window-height="1136"
+     id="namedview658"
+     showgrid="false"
+     inkscape:snap-text-baseline="false"
+     inkscape:zoom="2.0212228"
+     inkscape:cx="406.45256"
+     inkscape:cy="267.39705"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg656" />
+  <defs
+     id="defs22">
+    <linearGradient
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%"
+       id="mx-gradient-f5f5f5-1-e0e0e0-1-s-0">
+      <stop
+         offset="0%"
+         style="stop-color:#f5f5f5"
+         id="stop2" />
+      <stop
+         offset="100%"
+         style="stop-color:#E0E0E0"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%"
+       id="mx-gradient-e6d0de-1-d5739d-1-s-0">
+      <stop
+         offset="0%"
+         style="stop-color:#e6d0de"
+         id="stop7" />
+      <stop
+         offset="100%"
+         style="stop-color:#d5739d"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%"
+       id="mx-gradient-f8cecc-1-ea6b66-1-s-0">
+      <stop
+         offset="0%"
+         style="stop-color:#f8cecc"
+         id="stop12" />
+      <stop
+         offset="100%"
+         style="stop-color:#ea6b66"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       x1="317.43709"
+       y1="2396.3811"
+       x2="317.43709"
+       y2="2826.638"
+       id="mx-gradient-ffffff-1-e0e0e0-1-s-0"
+       gradientTransform="scale(2.1405816,0.46716276)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         style="stop-color:#ffffff"
+         id="stop17" />
+      <stop
+         offset="100%"
+         style="stop-color:#E0E0E0"
+         id="stop19" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f5f5f5-1-e0e0e0-1-s-0"
+       id="linearGradient5170"
+       x1="708.39695"
+       y1="76.257033"
+       x2="708.39695"
+       y2="1036.4242"
+       gradientTransform="scale(0.95920796,1.0425268)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f5f5f5-1-e0e0e0-1-s-0"
+       id="linearGradient5172"
+       x1="-0.70968486"
+       y1="56.010777"
+       x2="-0.70968486"
+       y2="930.34252"
+       gradientTransform="matrix(0.70453807,0,0,1.4193697,0.0839998,-1.0986328e-6)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-e6d0de-1-d5739d-1-s-0"
+       id="linearGradient5174"
+       x1="1219.5"
+       y1="334.5"
+       x2="1219.5"
+       y2="415.5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-38)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-e6d0de-1-d5739d-1-s-0"
+       id="linearGradient5176"
+       x1="333.75"
+       y1="640.94"
+       x2="333.75"
+       y2="671.94"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-e6d0de-1-d5739d-1-s-0"
+       id="linearGradient5178"
+       x1="333.75"
+       y1="400.94"
+       x2="333.75"
+       y2="431.94"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-e6d0de-1-d5739d-1-s-0"
+       id="linearGradient5180"
+       x1="333.75"
+       y1="880.94"
+       x2="333.75"
+       y2="911.94"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-e6d0de-1-d5739d-1-s-0"
+       id="linearGradient5182"
+       x1="333.75"
+       y1="1120.9399"
+       x2="333.75"
+       y2="1151.9399"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(8.4107502,7.9925782)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5186"
+       x1="1219.5"
+       y1="1179.5"
+       x2="1219.5"
+       y2="1260.5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-38)" />
+    <linearGradient
+       gradientTransform="translate(37.194306,7.9925222)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientTransform="translate(65.977883,7.9926132)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2-3"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientTransform="translate(94.761456,7.9924692)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2-3-2"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect24"
+     pointer-events="all"
+     height="40"
+     width="681"
+     y="0"
+     x="459.5" />
+  <g
+     id="g30"
+     transform="translate(565.5,15.374001)">
+    <switch
+       id="switch28">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="33"
+         width="469"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 24px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; font-weight: bold; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+            <xhtml:font
+               style="font-size: 29px">Openstack Network Configuration</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text26"
+         font-weight="bold"
+         font-size="24px"
+         y="29"
+         x="235">Openstack Network Configuration</text>
+    </switch>
+  </g>
+  <rect
+     style="fill:url(#linearGradient5170);stroke:#666666;stroke-dasharray:1, 4"
+     id="rect32"
+     pointer-events="all"
+     ry="138"
+     rx="138"
+     height="1000"
+     width="920"
+     y="80"
+     x="680" />
+  <rect
+     style="fill:url(#linearGradient5172);stroke:#666666;stroke-dasharray:1, 4"
+     id="rect34"
+     pointer-events="all"
+     ry="92.25"
+     rx="92.25"
+     height="1240"
+     width="615"
+     y="80"
+     x="0.083999634" />
+  <rect
+     style="fill:#f5f5f5;stroke:#666666;stroke-dasharray:3, 3"
+     id="rect36"
+     pointer-events="all"
+     height="118"
+     width="320"
+     y="519"
+     x="820" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect38"
+     pointer-events="all"
+     ry="5.1700001"
+     rx="5.1700001"
+     height="25.860001"
+     width="100"
+     y="549"
+     x="870" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect40"
+     pointer-events="all"
+     height="4.1399999"
+     width="80"
+     y="574.85999"
+     x="880" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse42"
+     pointer-events="all"
+     ry="8.2758617"
+     rx="8"
+     cy="561.92999"
+     cx="958" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse44"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="554.16998"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse46"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="569.69"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse48"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="561.92999"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse50"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="935.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse52"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="927" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse54"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="918.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse56"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="910" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse58"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="901.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse60"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="893" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse62"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="884.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse64"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="876" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path66"
+     pointer-events="all"
+     d="m 873,556.24 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z" />
+  <path
+     style="fill:none;stroke:#6881b3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path68"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 952,558.31 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m 4,-7.24 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m -2,2.07 v -3.1 l -8,-5.18 v -3.1 m 0,11.38 v -3.1 l 8,-5.18 v -3.1" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect70"
+     pointer-events="all"
+     ry="5.1700001"
+     rx="5.1700001"
+     height="25.860001"
+     width="100"
+     y="549"
+     x="990" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect72"
+     pointer-events="all"
+     height="4.1399999"
+     width="80"
+     y="574.85999"
+     x="1000" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse74"
+     pointer-events="all"
+     ry="8.2758617"
+     rx="8"
+     cy="561.92999"
+     cx="1078" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse76"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="554.16998"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse78"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="569.69"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse80"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="561.92999"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse82"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1055.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse84"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1047" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse86"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1038.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse88"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1030" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse90"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1021.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse92"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1013" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse94"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="1004.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse96"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="566.59003"
+     cx="996" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path98"
+     pointer-events="all"
+     d="m 993,556.24 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z" />
+  <path
+     style="fill:none;stroke:#6881b3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path100"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 1072,558.31 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m 4,-7.24 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m -2,2.07 v -3.1 l -8,-5.18 v -3.1 m 0,11.38 v -3.1 l 8,-5.18 v -3.1" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect102"
+     pointer-events="all"
+     height="20"
+     width="240"
+     y="599"
+     x="860" />
+  <g
+     id="g108"
+     transform="translate(909.5,598.5)">
+    <switch
+       id="switch106">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="140"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 141px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">Internal Networks</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text104"
+         font-size="12px"
+         y="16"
+         x="70">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5527"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:29.33333333px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Internal Networks</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect110"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="240"
+     y="839"
+     x="82" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect112"
+     pointer-events="all"
+     height="28.57"
+     width="135"
+     y="853.28998"
+     x="134.5" />
+  <g
+     id="g118"
+     transform="translate(142.5,857.5)">
+    <switch
+       id="switch116">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="119"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 120px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">Storage Nodes<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text114"
+         font-size="12px"
+         y="16"
+         x="60">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5515"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:26.66666667px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Storage Nodes</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect120"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1001.63"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect122"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="978.44"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect124"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="955.25"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect126"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="932.06"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect128"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="908.88"
+     x="157" />
+  <path
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path130"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="M 161,906.22 182,889 h 40 l 21,17.22 z" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse132"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1011.56"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse134"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="988.38"
+     cx="238.67" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse136"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="965.19"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse138"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="942"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse140"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="918.81"
+     cx="239" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path142"
+     pointer-events="all"
+     d="m 162,1018.85 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 4.5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.18 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z" />
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect144"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="240"
+     y="599"
+     x="82" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect146"
+     pointer-events="all"
+     height="28.57"
+     width="135"
+     y="613.28998"
+     x="134.5" />
+  <g
+     id="g152"
+     transform="translate(144.5,617.5)">
+    <switch
+       id="switch150">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="115"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 116px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">Control Nodes<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:18.66666667px;font-family:sans-serif;text-anchor:middle;fill:#000000;-inkscape-font-specification:'sans-serif, Bold';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+         id="text148"
+         font-size="12px"
+         y="16"
+         x="58">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5511"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:26.66666667px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Control Nodes</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect154"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="761.63"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect156"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="738.44"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect158"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="715.25"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect160"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="692.06"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect162"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="668.88"
+     x="157" />
+  <path
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path164"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="M 161,666.22 182,649 h 40 l 21,17.22 z" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse166"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="771.56"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse168"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="748.38"
+     cx="238.67" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse170"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="725.19"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse172"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="702"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse174"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="678.81"
+     cx="239" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path176"
+     pointer-events="all"
+     d="m 162,778.85 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 4.5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.18 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z" />
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect178"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="240"
+     y="359"
+     x="80" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect180"
+     pointer-events="all"
+     height="28.57"
+     width="135"
+     y="373.29001"
+     x="132.5" />
+  <switch
+     id="switch184"
+     transform="translate(134.5,377.5)">
+    <foreignObject
+       style="overflow:visible;"
+       pointer-events="all"
+       width="130"
+       height="20"
+       requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+      <xhtml:div
+         style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 131px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+        <xhtml:div
+           style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+          <xhtml:font
+             style="font-size: 18px">Compute Nodes<xhtml:br />
+</xhtml:font>
+        </xhtml:div>
+      </xhtml:div>
+    </foreignObject>
+    <text
+       x="65"
+       y="16"
+       font-size="12px"
+       id="text182"
+       style="font-size:18.66666667px;font-family:sans-serif;text-anchor:middle;fill:#000000;-inkscape-font-specification:'sans-serif, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">
+      <tspan
+         sodipodi:role="line"
+         id="tspan5507"
+         style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:26.66666667px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Compute Nodes</tspan>
+    </text>
+  </switch>
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect188"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="521.63"
+     x="155" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect190"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="498.44"
+     x="155" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect192"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="475.25"
+     x="155" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect194"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="452.06"
+     x="155" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect196"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="428.88"
+     x="155" />
+  <path
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path198"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="M 159,426.22 180,409 h 40 l 21,17.22 z" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse200"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="531.56"
+     cx="237" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse202"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="508.38"
+     cx="236.67" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse204"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="485.19"
+     cx="237" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse206"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="462"
+     cx="237" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse208"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="438.81"
+     cx="237" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path210"
+     pointer-events="all"
+     d="m 160,538.85 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 4.5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.18 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z" />
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect212"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="240"
+     y="1079"
+     x="82" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect214"
+     pointer-events="all"
+     height="28.57"
+     width="135"
+     y="1093.29"
+     x="134.5" />
+  <g
+     id="g220"
+     transform="translate(140.5,1097.5)">
+    <switch
+       id="switch218">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="123"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 124px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">Network Nodes<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text216"
+         font-size="12px"
+         y="16"
+         x="62">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5519"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:26.66666667px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Network Nodes</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect222"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1241.63"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect224"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1218.4399"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect226"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1195.25"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect228"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1172.0601"
+     x="157" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect230"
+     pointer-events="all"
+     ry="2.6500001"
+     rx="2.6500001"
+     height="19.879999"
+     width="90"
+     y="1148.88"
+     x="157" />
+  <path
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path232"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="M 161,1146.22 182,1129 h 40 l 21,17.22 z" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse234"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1251.5601"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse236"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1228.38"
+     cx="238.67" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse238"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1205.1899"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse240"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1182"
+     cx="239" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse242"
+     pointer-events="all"
+     ry="5.3000002"
+     rx="4"
+     cy="1158.8101"
+     cx="239" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path244"
+     pointer-events="all"
+     d="m 162,1258.85 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 4.5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m -50,-23.18 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m 10,0 5,-14.58 h 5 l -5,14.58 z m -50,-23.19 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z m 10,0 5,-14.57 h 5 l -5,14.57 z" />
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect246"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="240"
+     y="120"
+     x="82" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect248"
+     pointer-events="all"
+     height="28.57"
+     width="135"
+     y="134.28999"
+     x="134.5" />
+  <g
+     id="g254"
+     transform="translate(142.5,138.5)">
+    <switch
+       id="switch252">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="119"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 120px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">Manager Node<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:18.66666667px;font-family:sans-serif;text-anchor:middle;fill:#000000;-inkscape-font-specification:'sans-serif, Bold';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+         id="text250"
+         font-size="12px"
+         y="16"
+         x="60">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5503"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:26.66666667px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Manager Node</tspan>
+      </text>
+    </switch>
+  </g>
+  <circle
+     style="fill:#b0e3e6;stroke:#0e8088"
+     r="40"
+     id="ellipse280"
+     pointer-events="all"
+     cy="883"
+     cx="1222" />
+  <circle
+     r="40"
+     style="fill:url(#linearGradient5174);stroke:#996185"
+     id="ellipse282"
+     pointer-events="all"
+     cy="375"
+     cx="1222" />
+  <circle
+     style="fill:#f8cecc;stroke:#b85450"
+     r="40"
+     id="ellipse284"
+     pointer-events="all"
+     cy="477"
+     cx="1222" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="40"
+     id="ellipse286"
+     pointer-events="all"
+     cy="578"
+     cx="1222" />
+  <circle
+     style="fill:#fad7ac;stroke:#b46504"
+     r="40"
+     id="ellipse288"
+     pointer-events="all"
+     cy="680"
+     cx="1222" />
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="40"
+     id="ellipse290"
+     pointer-events="all"
+     cy="781"
+     cx="1222" />
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="40"
+     id="ellipse292"
+     pointer-events="all"
+     cy="274"
+     cx="1222" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect294"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="264"
+     x="1292" />
+  <g
+     id="g300"
+     transform="translate(1312.3159,262.33594)">
+    <switch
+       id="switch298">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="140"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 141px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Management<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text296"
+         font-size="12px"
+         y="20"
+         x="70">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5657"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           x="70"
+           y="20">Management</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect302"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="365"
+     x="1292" />
+  <g
+     id="g308"
+     transform="translate(1296.2065,366.92969)">
+    <switch
+       id="switch306">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="71"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 72px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Tunnel<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text304"
+         font-size="12px"
+         y="20"
+         x="36">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5659"
+           x="36"
+           y="20">Tunnel</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect310"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="467"
+     x="1292" />
+  <g
+     id="g316"
+     transform="translate(1303.3549,465.82812)">
+    <switch
+       id="switch314">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="98"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 99px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Migration</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text312"
+         font-size="12px"
+         y="20"
+         x="49">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5663"
+           x="49"
+           y="20">Migration</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect318"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="568"
+     x="1292" />
+  <g
+     id="g324"
+     transform="translate(1298.5815,569.92969)">
+    <switch
+       id="switch322">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="80"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 81px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Internal</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text320"
+         font-size="12px"
+         y="20"
+         x="40">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5665"
+           x="40"
+           y="20">Internal</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect326"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="670"
+     x="1292" />
+  <g
+     id="g332"
+     transform="translate(1307.6987,671.92969)">
+    <switch
+       id="switch330">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="132"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 133px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">External API<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text328"
+         font-size="12px"
+         y="20"
+         x="66">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5667"
+           x="66"
+           y="20">External API</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect334"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="771"
+     x="1292" />
+  <g
+     id="g340"
+     transform="translate(1315.269,769.82812)">
+    <switch
+       id="switch338">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="159"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 160px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Ceph Frontend<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text336"
+         font-size="12px"
+         y="20"
+         x="80">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5669"
+           x="80"
+           y="20">Ceph Frontend</tspan>
+      </text>
+    </switch>
+  </g>
+  <rect
+     style="fill:none;stroke:none"
+     id="rect342"
+     pointer-events="all"
+     height="20"
+     width="170"
+     y="873"
+     x="1292" />
+  <g
+     id="g348"
+     transform="translate(1314.0737,871.82812)">
+    <switch
+       id="switch346">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="157"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 158px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">Ceph Backend<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text344"
+         font-size="12px"
+         y="20"
+         x="79">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5671"
+           x="79"
+           y="20">Ceph Backend</tspan>
+      </text>
+    </switch>
+  </g>
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path350"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,634.88398 h 258.10706 v 49.65411 c 0,5.21763 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect352"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="675.31"
+     x="290" />
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="15"
+     id="ellipse360"
+     pointer-events="all"
+     cy="656.44"
+     cx="311.25" />
+  <circle
+     r="15"
+     style="fill:url(#linearGradient5176);stroke:#996185"
+     id="ellipse362"
+     pointer-events="all"
+     cy="656.44"
+     cx="349.25" />
+  <circle
+     style="fill:#f8cecc;stroke:#b85450"
+     r="15"
+     id="ellipse364"
+     pointer-events="all"
+     cy="656.44"
+     cx="387.25" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="15"
+     id="ellipse366"
+     pointer-events="all"
+     cy="656.44"
+     cx="425.25" />
+  <circle
+     style="fill:#fad7ac;stroke:#b46504"
+     r="15"
+     id="ellipse368"
+     pointer-events="all"
+     cy="656.44"
+     cx="463.25" />
+  <circle
+     style="fill:#b0e3e6;stroke:#0e8088"
+     r="15"
+     id="ellipse372"
+     pointer-events="all"
+     cy="656.44"
+     cx="538.75" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path374"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,719.88398 h 258.10706 v 49.65411 c 0,5.21762 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="15"
+     id="ellipse376"
+     pointer-events="all"
+     cy="741.44"
+     cx="501.25" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect378"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="760.31"
+     x="290" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path386"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,155.88398 h 258.10706 v 49.65411 c 0,5.21763 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect388"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="196.31"
+     x="290" />
+  <g
+     id="g394"
+     transform="translate(506.25496,198.45047)">
+    <switch
+       id="switch392">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529">bond0</tspan>
+      </text>
+    </switch>
+  </g>
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="15"
+     id="ellipse396"
+     pointer-events="all"
+     cy="177.44"
+     cx="311.25" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="15"
+     id="ellipse398"
+     pointer-events="all"
+     cy="177.44"
+     cx="425.25" />
+  <circle
+     style="fill:#fad7ac;stroke:#b46504"
+     r="15"
+     id="ellipse400"
+     pointer-events="all"
+     cy="177.44"
+     cx="463.25" />
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="15"
+     id="ellipse402"
+     pointer-events="all"
+     cy="177.44"
+     cx="501.25" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path404"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,394.88398 h 258.10706 v 49.65411 c 0,5.21762 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect406"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="435.31"
+     x="290" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path414"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,479.88398 h 258.10706 v 49.65411 c 0,5.21762 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect416"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="520.31"
+     x="290" />
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="15"
+     id="ellipse424"
+     pointer-events="all"
+     cy="501.44"
+     cx="501.25" />
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="15"
+     id="ellipse426"
+     pointer-events="all"
+     cy="416.44"
+     cx="311.25" />
+  <circle
+     r="15"
+     style="fill:url(#linearGradient5178);stroke:#996185"
+     id="ellipse428"
+     pointer-events="all"
+     cy="416.44"
+     cx="349.25" />
+  <circle
+     style="fill:#f8cecc;stroke:#b85450"
+     r="15"
+     id="ellipse430"
+     pointer-events="all"
+     cy="416.44"
+     cx="387.25" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="15"
+     id="ellipse432"
+     pointer-events="all"
+     cy="416.44"
+     cx="425.25" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path434"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,874.88398 h 258.10706 v 49.65411 c 0,5.21762 -5.37223,9.45793 -12.00498,9.45793 H 289.94398 v -49.65411 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect436"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="915.31"
+     x="290" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path444"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,959.88398 h 258.10706 v 49.65412 c 0,5.2176 -5.37223,9.4579 -12.00498,9.4579 H 289.94398 v -49.65409 c 0,-5.2255 5.37223,-9.45793 12.00498,-9.45793 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect446"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="1000.31"
+     x="290" />
+  <circle
+     style="fill:#b0e3e6;stroke:#0e8088"
+     r="15"
+     id="ellipse454"
+     pointer-events="all"
+     cy="981.44"
+     cx="538.75" />
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="15"
+     id="ellipse456"
+     pointer-events="all"
+     cy="896.44"
+     cx="311.25" />
+  <circle
+     r="15"
+     style="fill:url(#linearGradient5180);stroke:#996185"
+     id="ellipse458"
+     pointer-events="all"
+     cy="896.44"
+     cx="349.25" />
+  <circle
+     style="fill:#f8cecc;stroke:#b85450"
+     r="15"
+     id="ellipse460"
+     pointer-events="all"
+     cy="896.44"
+     cx="387.25" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="15"
+     id="ellipse462"
+     pointer-events="all"
+     cy="896.44"
+     cx="425.25" />
+  <circle
+     style="fill:#fad7ac;stroke:#b46504"
+     r="15"
+     id="ellipse464"
+     pointer-events="all"
+     cy="896.44"
+     cx="463.25" />
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="15"
+     id="ellipse466"
+     pointer-events="all"
+     cy="896.44"
+     cx="501.25" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path468"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 301.94896,1114.884 h 258.10706 v 49.6541 c 0,5.2176 -5.37223,9.4579 -12.00498,9.4579 H 289.94398 v -49.6541 c 0,-5.2255 5.37223,-9.4579 12.00498,-9.4579 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect470"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="1155.3101"
+     x="290" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.88796818;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path478"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 302.00498,1199.9481 h 258.10706 v 49.6541 c 0,5.2176 -5.37223,9.4579 -12.00498,9.4579 H 290 v -49.6541 c 0,-5.2255 5.37223,-9.4579 12.00498,-9.4579 z" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect480"
+     pointer-events="all"
+     height="18.75"
+     width="40"
+     y="1240.3101"
+     x="290" />
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="15"
+     id="ellipse488"
+     pointer-events="all"
+     cy="1136.4399"
+     cx="311.25" />
+  <circle
+     r="15"
+     style="fill:url(#linearGradient5182);stroke:#996185"
+     id="ellipse490"
+     pointer-events="all"
+     cy="1136.4399"
+     cx="349.25" />
+  <circle
+     style="fill:#e1d5e7;stroke:#9673a6"
+     r="15"
+     id="ellipse492"
+     pointer-events="all"
+     cy="1136.4399"
+     cx="425.25" />
+  <circle
+     style="fill:url(#linearGradient5184);stroke:#b85450"
+     id="ellipse494"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="319.91077"
+     r="15" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.05387425;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path496"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.01153,416.62617 q 102.13679,-17.8771 258.77376,132.80601" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.06070137;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path500"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.01498,416.74469 q 43.83568,-27.14438 115.06867,13.92125 71.23298,41.06563 218.31266,87.81885" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.10387754;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path504"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.36459,516.53433 q 123.59685,-0.52056 133.89658,45.02818 10.29974,45.54874 125.40961,61.27193" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.13405728;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path508"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.04495,505.58966 q 86.96301,-64.66292 259.00653,81.01721" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01989722;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path512"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.99803,178.5772 q 175.03818,1.44466 118.40818,97.41844 -56.63,95.97378 311.25906,242.53079" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.11188829;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path516"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.10454,653.41487 q 63.86985,-30.70714 95.80478,-42.32102 31.93493,-11.61389 85.15982,40.6486 53.22489,52.26249 123.35398,-13.08883" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01912689;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path520"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.99829,177.44685 q 257.02941,-0.44449 164.49882,102.0923 -92.53059,102.53679 342.00339,239.08751" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.12378454;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path524"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 560.53059,652.27872 q 71.70649,-20.26784 112.68162,-11.63798 40.97514,8.62986 81.95027,55.47767 40.97515,46.84781 134.78772,-58.09129" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.14798558;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path528"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.53878,761.62303 q 195.6571,-0.5631 241.99694,-14.00064 46.33984,-13.43756 114.66536,-109.7656" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.06328225;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path532"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.02542,745.67026 q 193.64654,31.681 259.89404,3.94902 66.24751,-27.73197 132.31155,-111.94847" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01317418;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path536"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.50762,894.94716 q 170.82389,0.0613 211.01775,-18.58237 40.19385,-18.64366 197.92459,-238.547" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.03378451;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path540"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="M 559.02188,907.62663 Q 738.7988,932.83669 798.72445,895.38542 858.65007,857.93413 989.14814,638.5445" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01279974;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path544"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="M 560.0025,981.43256 Q 912.30179,918.82098 887.13755,883.15357 861.97332,847.48617 1013.7539,638.30195" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.00931704;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path548"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="M 560.00262,979.99383 Q 950.40109,918.93296 910.36022,888.40253 870.31935,857.8721 1039.2818,638.79589" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01369119;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path552"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="M 560.00241,1136.4337 Q 1067.1703,937.43075 980.95176,891.84363 894.73322,846.25651 1084.5662,637.88285" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01099575;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path556"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="M 560.00242,1136.4349 Q 994.27966,937.62867 938.73257,902.20708 883.18548,866.78549 1061.6532,638.32636" />
+  <rect
+     style="fill:url(#mx-gradient-ffffff-1-e0e0e0-1-s-0);stroke:#000000;stroke-dasharray:1, 4"
+     id="rect560"
+     pointer-events="all"
+     ry="30"
+     rx="30"
+     height="200"
+     width="920"
+     y="1120"
+     x="680" />
+  <rect
+     style="fill:#f5f5f5;stroke:#666666;stroke-dasharray:3, 3"
+     id="rect562"
+     pointer-events="all"
+     height="118"
+     width="320"
+     y="1161"
+     x="820" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect564"
+     pointer-events="all"
+     ry="5.1700001"
+     rx="5.1700001"
+     height="25.860001"
+     width="100"
+     y="1191"
+     x="870" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect566"
+     pointer-events="all"
+     height="4.1399999"
+     width="80"
+     y="1216.86"
+     x="880" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse568"
+     pointer-events="all"
+     ry="8.2758617"
+     rx="8"
+     cy="1203.9301"
+     cx="958" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse570"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1196.17"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse572"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1211.6899"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse574"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1203.9301"
+     cx="945" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse576"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="935.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse578"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="927" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse580"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="918.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse582"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="910" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse584"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="901.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse586"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="893" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse588"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="884.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse590"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="876" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path592"
+     pointer-events="all"
+     d="m 873,1198.24 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z" />
+  <path
+     style="fill:none;stroke:#6881b3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path594"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 952,1200.31 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m 4,-7.24 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m -2,2.07 v -3.1 l -8,-5.18 v -3.1 m 0,11.38 v -3.1 l 8,-5.18 v -3.1" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect596"
+     pointer-events="all"
+     ry="5.1700001"
+     rx="5.1700001"
+     height="25.860001"
+     width="100"
+     y="1191"
+     x="990" />
+  <rect
+     style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+     id="rect598"
+     pointer-events="all"
+     height="4.1399999"
+     width="80"
+     y="1216.86"
+     x="1000" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse600"
+     pointer-events="all"
+     ry="8.2758617"
+     rx="8"
+     cy="1203.9301"
+     cx="1078" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse602"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1196.17"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse604"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1211.6899"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse606"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1203.9301"
+     cx="1065" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse608"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1055.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse610"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1047" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse612"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1038.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse614"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1030" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse616"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1021.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse618"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1013" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse620"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="1004.5" />
+  <ellipse
+     style="fill:#ffffff;stroke:none"
+     id="ellipse622"
+     pointer-events="all"
+     ry="2.0689654"
+     rx="2"
+     cy="1208.59"
+     cx="996" />
+  <path
+     style="fill:#ffffff;stroke:none"
+     inkscape:connector-curvature="0"
+     id="path624"
+     pointer-events="all"
+     d="m 993,1198.24 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z m 8.5,0 h 6 v 3.1 h -2 v 1.04 h -2 v -1.04 h -2 z" />
+  <path
+     style="fill:none;stroke:#6881b3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path626"
+     pointer-events="all"
+     stroke-miterlimit="10"
+     d="m 1072,1200.31 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m 4,-7.24 2,-2.07 2,2.07 m -4,7.24 2,2.07 2,-2.07 m -2,2.07 v -3.1 l -8,-5.18 v -3.1 m 0,11.38 v -3.1 l 8,-5.18 v -3.1" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect628"
+     pointer-events="all"
+     height="20"
+     width="240"
+     y="1241"
+     x="860" />
+  <g
+     id="g634"
+     transform="translate(906.5,1240.5)">
+    <switch
+       id="switch632">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="20"
+         width="146"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 147px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 18px">External Networks</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text630"
+         font-size="12px"
+         y="16"
+         x="73">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5523"
+           style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:29.33333333px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">External Networks</tspan>
+      </text>
+    </switch>
+  </g>
+  <circle
+     r="40"
+     style="fill:url(#linearGradient5186);stroke:#b85450"
+     id="ellipse636"
+     pointer-events="all"
+     cy="1220"
+     cx="1222" />
+  <rect
+     style="fill:none;stroke:none"
+     id="rect638"
+     pointer-events="all"
+     height="20"
+     width="230"
+     y="1210"
+     x="1292" />
+  <g
+     id="g644"
+     transform="translate(1325.5268,1206.5)">
+    <switch
+       id="switch642">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="27"
+         width="195"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 196px; white-space: nowrap; overflow-wrap: normal; text-align: left;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">
+            <xhtml:font
+               style="font-size: 24px">External Networks<xhtml:br />
+</xhtml:font>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000"
+         id="text640"
+         font-size="12px"
+         y="20"
+         x="98">
+        <tspan
+           sodipodi:role="line"
+           id="tspan5673"
+           x="98"
+           y="20">External Networks</tspan>
+      </text>
+    </switch>
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01439738;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path646"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.9995,1221.4379 q 56.60341,7.5588 30.87459,-17.4375 -25.72882,-24.9962 228.53372,-2.3996" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.01520371;stroke-linejoin:round;stroke-miterlimit:10;paint-order:normal"
+     inkscape:connector-curvature="0"
+     id="path650"
+     pointer-events="stroke"
+     stroke-miterlimit="10"
+     d="m 559.99988,1221.44 q 92.76159,17.5593 54.11092,-7.4396 -38.65065,-24.9989 204.80729,24.9789" />
+  <g
+     id="g394-4-9"
+     transform="translate(513.95594,677.3145)">
+    <switch
+       id="switch392-3-2">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+    </switch>
+  </g>
+  <g
+     id="g394-8"
+     transform="translate(504.12405,435.79343)">
+    <switch
+       id="switch392-8">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-4"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-3">bond0</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-1"
+     transform="translate(504.12405,521.87994)">
+    <switch
+       id="switch392-4">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-9"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-2">bond1</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-0"
+     transform="translate(504.12405,677.23145)">
+    <switch
+       id="switch392-6">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-8"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-9">bond0</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-2"
+     transform="translate(504.12405,761.33896)">
+    <switch
+       id="switch392-66">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-49"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-5">bond1</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-04"
+     transform="translate(504.12405,917.67996)">
+    <switch
+       id="switch392-87">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-1"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-7">bond0</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-27"
+     transform="translate(504.12405,1002.777)">
+    <switch
+       id="switch392-2">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-2"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-6">bond1</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-10"
+     transform="translate(504.12405,1157.139)">
+    <switch
+       id="switch392-61">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-5"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-94">bond0</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g394-9"
+     transform="translate(504.12405,1241.2465)">
+    <switch
+       id="switch392-0">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="12"
+         width="33"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 34px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">bond0</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
+         id="text390-91"
+         font-size="12px"
+         y="12"
+         x="17">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan5529-77">bond1</tspan>
+      </text>
+    </switch>
+  </g>
+  <g
+     id="g10"
+     transform="matrix(2.0054597,0,0,2.0054597,169.91264,179.83075)">
+    <rect
+       style="fill:#cccccc;stroke:#6881b3;stroke-width:2"
+       x="1"
+       y="1"
+       width="30"
+       height="60"
+       rx="2"
+       ry="2"
+       pointer-events="all"
+       id="rect4" />
+    <path
+       style="fill:none;stroke:#6881b3;stroke-width:2;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       d="M 1,11 H 31 M 1,31 h 30"
+       stroke-miterlimit="10"
+       pointer-events="all"
+       id="path6" />
+    <circle
+       style="fill:#ffffff;stroke:none"
+       r="2"
+       cx="6"
+       cy="36"
+       pointer-events="all"
+       id="ellipse8" />
+  </g>
+  <circle
+     style="fill:url(#linearGradient5184-2);stroke:#b85450"
+     id="ellipse494-9"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="348.69434"
+     r="15" />
+  <circle
+     style="fill:url(#linearGradient5184-2-3);stroke:#b85450"
+     id="ellipse494-9-6"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="377.47791"
+     r="15" />
+  <circle
+     style="fill:url(#linearGradient5184-2-3-2);stroke:#b85450"
+     id="ellipse494-9-6-8"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="406.26147"
+     r="15" />
+</svg>
