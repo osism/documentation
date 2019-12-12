@@ -80,11 +80,27 @@ Creation of the operator user
     ANSIBLE_USER=ubuntu ./run.sh python
 
 * To verify the creation of the operator user, use the private key file
-  ``id_rsa.operator``:
+  ``id_rsa.operator``. Make sure you purge all keys from ssh-agent identity
+  cache using ``ssh-add -D``. You can print the list using ``ssh-add -l``. The
+  list should be empty.
 
   .. code-block::
 
-    ssh -i id_rsa.operator dragon@manager01
+    ssh-add -D
+    ssh -o IdentitiesOnly=yes -i environments/manager/id_rsa.operator dragon@manager01
+
+* If you receive the following error message:
+
+  .. code-block:: console
+
+    ssh: Too many authentication failures
+
+  set ``ANSIBLE_SSH_ARGS`` environment variable to use only the operator ssh key
+  for authentication.
+
+  .. code-block:: console
+
+    export ANSIBLE_SSH_ARGS="-o IdentitiesOnly=yes"
 
 * A typical call to create the *operator user* looks like this:
 
@@ -185,6 +201,17 @@ Deploy the configuration repository on the manager node:
   .. code-block:: console
 
      ./run.sh configuration
+
+If the manager node does not have access to the server hosting the configuration
+repository, it can be copied manually with rsync from the seed node to the
+manager node. First clone the configuration repository, to ensure the repository
+contains no secrets in plain text.
+
+  .. code-block:: console
+
+     git clone cfg-customer cfg-customer.rsync
+     rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@manager01:/opt/configuration/
+
 
 Deploy the manager services:
 
