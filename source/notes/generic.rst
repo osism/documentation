@@ -74,3 +74,24 @@ Deleting all partitions
 .. code-block:: console
 
    $ sudo dd if=/dev/zero of=/dev/sdc bs=512 count=1 conv=notrunc
+
+ssh: Too many authentication failures
+=====================================
+
+Description
+-----------
+
+.. code-block:: console
+
+   $ ssh -i id_rsa.operator dragon@10.11.12.13
+      Received disconnect from 10.11.12.13 port 22:2: Too many authentication failures
+      Authentication failed.
+
+Solution
+--------
+
+Sometimes this is caused by too many files in ``~/.ssh/``. You can use the ``IdentitiesOnly`` option as a workaround.
+
+.. code-block:: console
+
+   $ ssh -o IdentitiesOnly=yes -i id_rsa.operator dragon@10.11.12.13
