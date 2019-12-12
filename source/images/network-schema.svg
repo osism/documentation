@@ -15,7 +15,10 @@
    viewBox="-0.5 -0.5 1601 1321"
    id="svg656"
    sodipodi:docname="network-schema.svg"
-   inkscape:version="0.92.4 (unknown)">
+   inkscape:version="0.92.4 (unknown)"
+   inkscape:export-filename="/home/grawert/workspace/osism-documentation/source/images/network-schema.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <metadata
      id="metadata660">
     <rdf:RDF>
@@ -42,9 +45,9 @@
      id="namedview658"
      showgrid="false"
      inkscape:snap-text-baseline="false"
-     inkscape:zoom="0.5053057"
-     inkscape:cx="889.40023"
-     inkscape:cy="707.27831"
+     inkscape:zoom="2.0212228"
+     inkscape:cx="406.45256"
+     inkscape:cy="267.39705"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="0"
@@ -131,7 +134,7 @@
        y1="56.010777"
        x2="-0.70968486"
        y2="930.34252"
-       gradientTransform="matrix(0.70453807,0,0,1.4193697,-7.9160002,23.748)"
+       gradientTransform="matrix(0.70453807,0,0,1.4193697,0.0839998,-1.0986328e-6)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -187,7 +190,8 @@
        y1="1206"
        x2="296"
        y2="1237"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(8.4107502,7.9925782)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
@@ -198,6 +202,36 @@
        y2="1260.5"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-38)" />
+    <linearGradient
+       gradientTransform="translate(37.194306,7.9925222)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientTransform="translate(65.977883,7.9926132)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2-3"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientTransform="translate(94.761456,7.9924692)"
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-f8cecc-1-ea6b66-1-s-0"
+       id="linearGradient5184-2-3-2"
+       x1="296"
+       y1="1206"
+       x2="296"
+       y2="1237"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <rect
      style="fill:none;stroke:none"
@@ -254,8 +288,8 @@
      rx="92.25"
      height="1240"
      width="615"
-     y="103.748"
-     x="-7.9160004" />
+     y="80"
+     x="0.083999634" />
   <rect
      style="fill:#f5f5f5;stroke:#666666;stroke-dasharray:3, 3"
      id="rect36"
@@ -1924,12 +1958,12 @@
      cy="1136.4399"
      cx="425.25" />
   <circle
-     r="15"
      style="fill:url(#linearGradient5184);stroke:#b85450"
      id="ellipse494"
      pointer-events="all"
-     cy="1221.5"
-     cx="311.5" />
+     cy="1229.4927"
+     cx="319.91077"
+     r="15" />
   <path
      style="fill:none;stroke:#000000;stroke-width:1.05387425;stroke-miterlimit:10"
      inkscape:connector-curvature="0"
@@ -2698,4 +2732,25 @@
        pointer-events="all"
        id="ellipse8" />
   </g>
+  <circle
+     style="fill:url(#linearGradient5184-2);stroke:#b85450"
+     id="ellipse494-9"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="348.69434"
+     r="15" />
+  <circle
+     style="fill:url(#linearGradient5184-2-3);stroke:#b85450"
+     id="ellipse494-9-6"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="377.47791"
+     r="15" />
+  <circle
+     style="fill:url(#linearGradient5184-2-3-2);stroke:#b85450"
+     id="ellipse494-9-6-8"
+     pointer-events="all"
+     cy="1229.4927"
+     cx="406.26147"
+     r="15" />
 </svg>
