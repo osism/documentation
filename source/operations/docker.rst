@@ -111,26 +111,27 @@ Do not use ``restart``. ``restart`` will not solve the issue.
 Cleanup
 =======
 
-Images
-------
+.. warning::
 
-* Manual
+   Never use ``docker system prune`` on any of the nodes to free storage. This removes stopped containers.
 
-  .. code-block:: console
+Images that are no longer needed can be removed at any time to release storage.
 
-     $ docker image prune --all
-     WARNING! This will remove all images without at least one container associated to them.
-     Are you sure you want to continue? [y/N] y
-     Deleted Images:
-     untagged: osism/openvswitch-vswitchd:pike-20180807-0
-     untagged: osism/keepalived:pike-latest
-     untagged: osism/keepalived@sha256:59b611a3a84060f38b97dbbd68ab51a52c503a81309ed86c46a92fd0227b09e1
+.. code-block:: console
 
-     [...]
-     Total reclaimed space: 9.681GB
+   $ docker image prune --all
+   WARNING! This will remove all images without at least one container associated to them.
+   Are you sure you want to continue? [y/N] y
+   Deleted Images:
+   untagged: osism/openvswitch-vswitchd:pike-20180807-0
+   untagged: osism/keepalived:pike-latest
+   untagged: osism/keepalived@sha256:59b611a3a84060f38b97dbbd68ab51a52c503a81309ed86c46a92fd0227b09e1
 
-* Ansible
+   [...]
+   Total reclaimed space: 9.681GB
 
-  .. code-block:: console
+This can also be done on all systems by Ansible (included since 2020.01).
 
-     $ osism-generic cleanup-docker --tags images
+.. code-block:: console
+
+   $ osism-generic cleanup-docker-images
