@@ -13,6 +13,13 @@ Inventory
 
 If the default inventory is used it is sufficient to add the new node to the ``control`` group.
 
+Kibana
+------
+
+.. code-block:: console
+
+   osism-kolla deploy kibana -l NEW-CONTROLLER
+
 HAProxy
 -------
 
