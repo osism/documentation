@@ -13,6 +13,10 @@ Inventory
 
 If the default inventory is used it is sufficient to add the new node to the ``control`` group.
 
+.. warning::
+
+   Always add the new controller as the last host in the group.
+
 Kibana
 ------
 
