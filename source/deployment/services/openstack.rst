@@ -41,7 +41,7 @@ Infrastructure
 * memcached
 * mariadb
 * rabbitmq
-* redis (required by Mistral & Gnocchi)
+* redis
 
 Networking
 ==========
