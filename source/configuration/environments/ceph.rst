@@ -177,42 +177,27 @@ Pools & Keys
      - name: client.glance
        caps:
          mon: "allow r"
-         osd: >
-           allow class-read object_prefix rbd_children,
-           allow rwx pool={{ openstack_glance_pool.name }}
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}"
        mode: "0600"
      - name: client.cinder
        caps:
          mon: "allow r"
-         osd: >
-           allow class-read object_prefix rbd_children,
-           allow rwx pool={{ openstack_cinder_pool.name }},
-           allow rwx pool={{ openstack_nova_pool.name }},
-           allow rx pool={{ openstack_glance_pool.name }}
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"
        mode: "0600"
      - name: client.cinder-backup
        caps:
          mon: "allow r"
-         osd: >
-           allow class-read object_prefix rbd_children,
-           allow rwx pool={{ openstack_cinder_backup_pool.name }}
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
        mode: "0600"
      - name: client.gnocchi
        caps:
          mon: "allow r"
-         osd: >
-           allow class-read object_prefix rbd_children,
-           allow rwx pool={{ openstack_gnocchi_pool.name }}
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_gnocchi_pool.name }}"
        mode: "0600"
      - name: client.nova
        caps:
          mon: "allow r"
-         osd: >
-           allow class-read object_prefix rbd_children,
-           allow rwx pool={{ openstack_glance_pool.name }},
-           allow rwx pool={{ openstack_nova_pool.name }},
-           allow rwx pool={{ openstack_cinder_pool.name }},
-           allow rwx pool={{ openstack_cinder_backup_pool.name }}
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
        mode: "0600"
 
 To define a new pool, add a new dictionary like following:
