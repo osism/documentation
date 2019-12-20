@@ -8,9 +8,12 @@ Ceph
 Preparations
 ============
 
-Before the deployment make sure that NTP really works. In case of problems
+Prior to the deployment make sure NTP works correctly. In case of problems
 https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
 is a good entry point.
+
+Execute the following commands to verify NTP is using the configured
+ntp servers.
 
 .. code-block:: console
 
@@ -35,16 +38,21 @@ Management services
 Client service
 ==============
 
-* Set the ``ceph.client.admin.keyring`` in the
-  ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file in
-  the configuration repository
+* Copy the keyring file ``/etc/ceph/ceph.client.admin.keyring`` to
+  ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` in the
+  configuration repository. The keyring file is located on the first Ceph
+  monitor node.
 
-  * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor
-    node
-  * Update the configuration repository on the manager node with
-    ``osism-generic configuration``
+  After committing the change to the configuration repository, update the
+  configuration repository on the manager node:
 
-* Ensure that ``cephclient_mons`` is set accordingly in the ``environments/infrastructure/configuration.yml`` file
+    .. code-block:: console
+
+       osism-generic configuration
+
+* Ensure ``cephclient_mons`` in
+  ``environments/infrastructure/configuration.yml`` is set to the list of IP
+  addresses of the Ceph monitor nodes in the OS-Storage (Ceph frontend) network.
 
 * Deploy the cephclient service
 
@@ -98,31 +106,13 @@ Storage services
 Post-processing
 ===============
 
-After deploying Ceph, the remaining individual keys must be stored in the configuration repository.
-
-.. code-block:: console
-
-   find . -name 'ceph.client.*.keyring'
-
-.. code-block:: console
-
-   ./environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
-   ./environments/kolla/files/overlays/gnocchi/ceph.client.gnocchi.keyring
-   ./environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/nova/ceph.client.nova.keyring
-   ./environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
-   ./environments/infrastructure/files/ceph/ceph.client.admin.keyring
-
-The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor nodes.
+After successfull Ceph deployment, additional service keys must be stored in
+the configuration repository. The keyring files can be found in at ``/etc/ceph``
+on the Ceph monitor nodes.
 
 .. code-block:: console
 
    ls -1 /etc/ceph/
-
-.. code-block:: console
-
    ceph.client.admin.keyring
    ceph.client.cinder-backup.keyring
    ceph.client.cinder.keyring
@@ -132,10 +122,24 @@ The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor 
    ceph.conf
    ceph.mon.keyring
 
-Don't forget to update the configuration repository on the manager afterwards
-using command ``osism-generic configuration``.
+Copy all keyring files to their respective destination in the configuration
+repository.
 
-After the initial deployment of the Ceph clusters, the ``openstack_config``
+.. code-block:: console
+
+   environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
+   environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
+   environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
+   environments/kolla/files/overlays/gnocchi/ceph.client.gnocchi.keyring
+   environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
+   environments/kolla/files/overlays/nova/ceph.client.nova.keyring
+   environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
+   environments/infrastructure/files/ceph/ceph.client.admin.keyring
+
+Update the configuration repository on the manager after committing the changes
+by using command ``osism-generic configuration`` on the manager node.
+
+After the initial deployment of the Ceph cluster, the ``openstack_config``
 parameter in the ``environments/ceph/configuration.yml`` can be set to
 ``false``. It must only be set to ``true`` when new pools or keys are added.
 
