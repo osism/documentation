@@ -8,8 +8,11 @@ OpenStack
 Preparations
 ============
 
-For the verification of the OpenStack services it is necessary to prepare the OpenStack enviornment in the configuration repository.
-The ``clouds.yml`` file should be adapted accordingly.
+For the verification of the OpenStack services it is necessary to change to the
+directory ``/opt/configuration/environments/openstack`` on the manager node.
+
+The *openstack-client* will use ``clouds.yml`` and ``secure.yml`` to read the
+project information and credentials.
 
 .. code-block:: yaml
 
@@ -25,9 +28,8 @@ The ``clouds.yml`` file should be adapted accordingly.
       identity_api_version: 3
       verify: false
 
-It is not recommended to store passwords in plain text in the confiugration repository. The password should be stored in a ``secure.yml`` file and encrypted.
-
-* https://docs.openstack.org/os-client-config/latest/user/configuration.html#splitting-secrets
+Create the file ``secure.yml`` and set the ``keystone_admin_password`` from
+``environments/kolla/secrets.yml`` as ``password``.
 
 .. code-block:: yaml
 
@@ -36,6 +38,11 @@ It is not recommended to store passwords in plain text in the confiugration repo
      admin:
        auth:
          password: password
+
+It is not recommended to store passwords in plain text in the confiugration
+repository.
+
+* https://docs.openstack.org/os-client-config/latest/user/configuration.html#splitting-secrets
 
 Keystone
 ========
