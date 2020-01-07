@@ -204,7 +204,9 @@ Fluentd
 Redis
 =====
 
-The password for Redis is stored in the ``environments/kolla/secrets.yml`` file in the ``redis_master_password`` parameter.
+The password for Redis is stored in the ``environments/kolla/secrets.yml`` file
+in the ``redis_master_password`` variable. Use the IP address from the internal
+network of the control node where Redis is running to connect to Redis.
 
 .. code-block:: console
 
