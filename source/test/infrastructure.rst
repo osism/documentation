@@ -125,7 +125,11 @@ RabbitMQ
     {partitions,[]},
     {alarms,[{'rabbit@20-12',[]},{'rabbit@20-11',[]},{'rabbit@20-10',[]}]}]
 
-Alternatively, log in to the web interface and check the status of the nodes there.
+Alternatively, log in to the web interface and check the status of the nodes.
+The web interface can be accessed via the internal API address
+``http://internal-api.betacloud.xyz:15672/``. The username is ``openstack`` and
+the password can be found at ``environments/kolla/secrects.yml`` in the variable
+``rabbitmq_password``.
 
 .. image:: /images/rabbitmq-nodes.png
 
