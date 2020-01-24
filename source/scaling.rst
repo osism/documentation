@@ -14,6 +14,6 @@ The steps described in :ref:`scaling_generic` are executed for each node regardl
 
    scaling/generic
    scaling/compute
-   scaling/controller
+   scaling/control
    scaling/network
    scaling/storage
