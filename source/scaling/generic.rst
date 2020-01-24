@@ -17,19 +17,19 @@ Add the node definition to the ``cobbler_systems`` list parameter in ``infrastru
 
    cobbler_systems:
    [...]
-     - name: 20-12
+     - name: testbed-node-2
        params:
-         power_address: 172.16.20.12
+         power_address: 192.168.30.12
          power_pass: password
          power_type: ipmilan
          power_user: openstack
-         profile: ubuntu-server-xenial-controller
+         profile: ubuntu-server-xenial
          interfaces:
-           ip_address-enp5s0f0: 172.16.21.12
-           mac_address-enp5s0f0: aa:bb:cc:dd:ee:ff
-           management-enp5s0f0: true
+           ip_address-ens3: 192.168.40.12
+           mac_address-ens3: aa:bb:cc:dd:ee:ff
+           management-ens3: true
          kernel_options:
-           "netcfg/choose_interface": enp5s0f0
+           "netcfg/choose_interface": ens3
 
 You have to update the cobbler configuration.
 
@@ -58,7 +58,7 @@ Inventory
 
     [cobbler]
     [...]
-    20-12.betacloud.xyz ansible_host=172.16.21.12
+    testbed-node-2.osism.local ansible_host=192.168.40.12
 
  .. note::
 
@@ -73,9 +73,9 @@ Inventory
 
     [control]
     [...]
-    20-12.betacloud.xyz ansible_host=172.17.20.12
+    testbed-node-2.osism.local ansible_host=192.168.40.12
 
-* Add the network configuration to the node vars file ``inventory/host_vars/20-12.betacloud.xyz.yml``.
+* Add the network configuration to the node vars file ``inventory/host_vars/testbed-node-2.osism.local.yml``.
 
 Initialization
 ==============
@@ -106,7 +106,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic python \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -u root \
          --key-file /ansible/secrets/id_rsa.cobbler \
          -i /opt/configuration/inventory/hosts.installation
@@ -116,7 +116,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic python \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -u ubuntu \
          --ask-pass \
          --ask-become-pass
@@ -128,7 +128,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic operator \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -u root \
          --key-file /ansible/secrets/id_rsa.cobbler \
          -i /opt/configuration/inventory/hosts.installation
@@ -138,7 +138,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic operator \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -u ubuntu \
          --ask-pass \
          --ask-become-pass
@@ -150,7 +150,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic network \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -i /opt/configuration/inventory/hosts.installation
 
   When not using Cobbler:
@@ -158,7 +158,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic network \
-         --limit 20-12.betacloud.xyz
+         --limit testbed-node-2.osism.local
 
   * The network configuration already present on a system should be saved before this step.
   * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
@@ -181,7 +181,7 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic reboot \
-         --limit 20-12.betacloud.xyz \
+         --limit testbed-node-2.osism.local \
          -i /opt/configuration/inventory/hosts.installation
 
   When not using Cobbler:
@@ -189,13 +189,13 @@ and will reboot the system to change the network configuration.
   .. code-block:: console
 
      $ osism-generic reboot \
-         --limit 20-12.betacloud.xyz
+         --limit testbed-node-2.osism.local
 
 * Check if system is reachable
 
   .. code-block:: console
 
-     $ osism-generic ping --limit 20-12.betacloud.xyz
+     $ osism-generic ping --limit testbed-node-2.osism.local
 
 * Refresh facts.
 
@@ -207,13 +207,13 @@ and will reboot the system to change the network configuration.
 
   .. code-block:: console
 
-     $ osism-generic bootstrap --limit 20-12.betacloud.xyz
+     $ osism-generic bootstrap --limit testbed-node-2.osism.local
 
 * Further reboot of the node
 
   .. code-block:: console
 
-     $ osism-generic reboot --limit 20-12.betacloud.xyz
+     $ osism-generic reboot --limit testbed-node-2.osism.local
 
 Update hosts file
 =================
@@ -240,4 +240,4 @@ Deploy common services
 
   .. code-block:: console
 
-     $ osism-kolla deploy common --limit 20-12.betacloud.xyz
+     $ osism-kolla deploy common --limit testbed-node-2.osism.local
