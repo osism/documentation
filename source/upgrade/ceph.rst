@@ -2,6 +2,10 @@
 Ceph
 ====
 
+.. note::
+
+   At least 3 monitor services are required to perform an upgrade.
+
 Luminous -> Luminous
 ====================
 
