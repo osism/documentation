@@ -114,5 +114,12 @@ Grafana
 
    osism-kolla deploy grafana -l testbed-node-2.osism.local
 
+OpenStack
+---------
+
+.. code-block:: console
+
+   osism-kolla deploy SERVICE -l control
+
 Removing a control node
 =======================
