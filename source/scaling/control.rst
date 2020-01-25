@@ -76,6 +76,11 @@ with each change.
 MariaDB
 -------
 
+* When adding a new node to the MariaDB Galera cluster, the new node is fully synchronized.
+  Depending on the size of the database this may take some time.
+* When adding the new node, the existing nodes are restarted. There may be a short
+  interruption in availability during this time.
+
 .. code-block:: console
 
    osism-kolla deploy mariadb
