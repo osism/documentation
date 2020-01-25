@@ -241,3 +241,25 @@ network of the control node where Redis is running to connect to Redis.
    repl_backlog_size:1048576
    repl_backlog_first_byte_offset:1
    repl_backlog_histlen:101675
+
+.. code-block:: console
+
+   nc testbed-node-0 6379
+   auth QHNA1SZRlOKzLADhUd5ZDgpHfQe6dNfr3bwEdY24
+   +OK
+   ping
+   +PONG
+   info replication
+   $392
+   # Replication
+   role:master
+   connected_slaves:1
+   slave0:ip=192.168.50.11,port=6379,state=online,offset=234561,lag=0
+   master_replid:edf4914fb012c616077ad198919dbfba0ffd08e7
+   master_replid2:0000000000000000000000000000000000000000
+   master_repl_offset:234561
+   second_repl_offset:-1
+   repl_backlog_active:1
+   repl_backlog_size:1048576
+   repl_backlog_first_byte_offset:1
+   repl_backlog_histlen:234561
