@@ -90,7 +90,7 @@ Grafana
 
 .. code-block:: console
 
-   osism-kolla upgrade grafana -l testbed-node-2.osism.local
+   osism-kolla deploy grafana -l testbed-node-2.osism.local
 
 Removing a control node
 =======================
