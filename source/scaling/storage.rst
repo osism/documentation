@@ -1,6 +1,6 @@
-=============
-Storage nodes
-=============
+============
+Storage node
+============
 
 .. contents::
    :local:

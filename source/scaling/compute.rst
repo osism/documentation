@@ -1,6 +1,6 @@
-=============
-Compute nodes
-=============
+============
+Compute node
+============
 
 .. contents::
    :local:

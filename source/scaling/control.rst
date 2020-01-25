@@ -1,6 +1,6 @@
-=============
-Control nodes
-=============
+============
+Control node
+============
 
 .. contents::
    :local:

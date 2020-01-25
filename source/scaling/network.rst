@@ -1,6 +1,6 @@
-=============
-Network nodes
-=============
+============
+Network node
+============
 
 Adding a network node
 =====================
