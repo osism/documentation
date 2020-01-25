@@ -73,6 +73,23 @@ with each change.
 
    osism-kolla deploy rabbitmq
 
+After deployment, the following commands are executed on the new node.
+
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl stop_app
+   Stopping rabbit application on node 'rabbit@testbed-node-2'
+
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl reset
+   Resetting node 'rabbit@testbed-node-2'
+
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl start_app
+   Starting node 'rabbit@testbed-node-2'
+
 MariaDB
 -------
 
