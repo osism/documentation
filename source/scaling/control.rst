@@ -93,6 +93,8 @@ After deployment, the following commands are executed on the new node.
 MariaDB
 -------
 
+* A backup should be created prior to execution.
+* It is recommended that you first clean up the individual databases before you start.
 * When adding a new node to the MariaDB Galera cluster, the new node is fully synchronized.
   Depending on the size of the database this may take some time.
 * When adding the new node, the existing nodes are restarted. There may be a short
