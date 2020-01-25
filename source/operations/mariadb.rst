@@ -338,16 +338,20 @@ Large Horizon table for django_session
 Backup
 ======
 
+>= Stein
+--------
+
+<= Rocky
+--------
+
 The MariaDB images contain ``xtrabackup`` from Percona. To use the MariaDB configuration must first be prepared.
 
-Create / extend the file ``environments/kolla/files/overlays/galera.cnf`` with the following content. Maybe you have to reconfigure MariaDB.
+Create/extend the file ``environments/kolla/files/overlays/galera.cnf`` with the following content. Maybe you have to reconfigure MariaDB.
 
 .. code-block:: ini
 
    [xtrabackup]
-   host = {{ kolla_internal_fqdn }}
    password = {{ database_password }}
-   port = {{ database_port }}
    user = root
 
 To create a backup, the command ``innobackupex`` is now executed on one of the database nodes.
