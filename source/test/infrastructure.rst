@@ -15,13 +15,13 @@ Jumbo frames
 
 .. code-block:: console
 
-   $ ping -M do -s 8972 -c 3 10.30.50.11
-   PING 10.30.50.11 (10.30.50.11) 8972(9000) bytes of data.
-   8980 bytes from 10.30.50.11: icmp_seq=1 ttl=64 time=0.255 ms
-   8980 bytes from 10.30.50.11: icmp_seq=2 ttl=64 time=0.206 ms
-   8980 bytes from 10.30.50.11: icmp_seq=3 ttl=64 time=0.191 ms
+   ping -M do -s 8972 -c 3 192.168.70.11
+   PING 192.168.70.11 (192.168.70.11) 8972(9000) bytes of data.
+   8980 bytes from 192.168.70.11: icmp_seq=1 ttl=64 time=0.255 ms
+   8980 bytes from 192.168.70.11: icmp_seq=2 ttl=64 time=0.206 ms
+   8980 bytes from 192.168.70.11: icmp_seq=3 ttl=64 time=0.191 ms
 
-   --- 10.30.50.11 ping statistics ---
+   --- 192.168.70.11 ping statistics ---
    3 packets transmitted, 3 received, 0% packet loss, time 2003ms
    rtt min/avg/max/mdev = 0.191/0.217/0.255/0.029 ms
 
@@ -30,7 +30,7 @@ Libvirtd
 
 .. code-block:: console
 
-   $ docker exec -it nova_libvirt virsh nodeinfo
+   docker exec -it nova_libvirt virsh nodeinfo
    CPU model:           x86_64
    CPU(s):              32
    CPU frequency:       800 MHz
@@ -42,7 +42,7 @@ Libvirtd
 
 .. code-block:: console
 
-   $ docker exec -it nova_libvirt virsh sysinfo
+   docker exec -it nova_libvirt virsh sysinfo
    <sysinfo type='smbios'>
      <bios>
        <entry name='vendor'>American Megatrends Inc.</entry>
@@ -56,7 +56,7 @@ Libvirtd
 
 .. code-block:: console
 
-   $ docker exec -it nova_libvirt virsh capabilities
+   docker exec -it nova_libvirt virsh capabilities
    <capabilities>
 
      <host>
@@ -72,7 +72,7 @@ Memcached
 
 .. code-block:: console
 
-   $ echo stats | nc 10.49.20.10 11211
+   echo stats | nc 192.168.50.10 11211
    STAT pid 7
    STAT uptime 2524
    STAT time 1528967802
@@ -92,7 +92,7 @@ Open vSwitch
 
 .. code-block:: console
 
-   $ docker exec -it openvswitch_vswitchd ovs-vsctl -V
+   docker exec -it openvswitch_vswitchd ovs-vsctl -V
    ovs-vsctl (Open vSwitch) 2.8.1
    DB Schema 7.15.0
 
@@ -101,7 +101,7 @@ the service, a ``br-ex`` exists with the external interfaces.
 
 .. code-block:: console
 
-   $ docker exec -it openvswitch_vswitchd ovs-vsctl show
+   docker exec -it openvswitch_vswitchd ovs-vsctl show
    a2f9dbad-519e-4873-aea4-0719abcd9e2a
        Bridge br-ex
            Port br-ex
@@ -117,17 +117,17 @@ RabbitMQ
 
 .. code-block:: console
 
-   dragon@20-10:~$ docker exec -it rabbitmq rabbitmqctl cluster_status
-   Cluster status of node 'rabbit@20-10'
-   [{nodes,[{disc,['rabbit@20-10','rabbit@20-11','rabbit@20-12']}]},
-    {running_nodes,['rabbit@20-12','rabbit@20-11','rabbit@20-10']},
-    {cluster_name,<<"rabbit@20-10.betacloud.xyz">>},
+   docker exec -it rabbitmq rabbitmqctl cluster_status
+   Cluster status of node 'rabbit@testbed-node-0'
+   [{nodes,[{disc,['rabbit@testbed-node-0','rabbit@testbed-node-1']}]},
+    {running_nodes,['rabbit@testbed-node-1','rabbit@testbed-node-0']},
+    {cluster_name,<<"rabbit@testbed-node-0.osism.local">>},
     {partitions,[]},
-    {alarms,[{'rabbit@20-12',[]},{'rabbit@20-11',[]},{'rabbit@20-10',[]}]}]
+    {alarms,[{'rabbit@testbed-node-1',[]},{'rabbit@testbed-node-0',[]}]}]
 
 Alternatively, log in to the web interface and check the status of the nodes.
 The web interface can be accessed via the internal API address
-``http://internal-api.betacloud.xyz:15672/``. The username is ``openstack`` and
+``http://api-int.osism.local:15672/``. The username is ``openstack`` and
 the password can be found at ``environments/kolla/secrects.yml`` in the variable
 ``rabbitmq_password``.
 
@@ -147,20 +147,30 @@ The password for MariaDB can be found in the file ``environments/kolla/secrets.y
 
 .. code-block:: console
 
+   docker exec -it mariadb mysql -u root -p
+   Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
+   Welcome to the MariaDB monitor.  Commands end with ; or \g.
+   Your MariaDB connection id is 10324
+   Server version: 10.1.43-MariaDB-0ubuntu0.18.04.1 Ubuntu 18.04
+
+   Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
    MariaDB [(none)]> SHOW GLOBAL STATUS LIKE 'wsrep_%';
-   +------------------------------+----------------------------------------------------+
-   | Variable_name                | Value                                              |
-   +------------------------------+----------------------------------------------------+
+   +------------------------------+---------------------------------------+
+   | Variable_name                | Value                                 |
+   +------------------------------+---------------------------------------+
    [...]
-   | wsrep_local_state_comment    | Synced                                             |
-   | wsrep_incoming_addresses     | 10.49.20.10:3306,10.49.20.11:3306,10.49.20.12:3306 |
-   | wsrep_evs_state              | OPERATIONAL                                        |
-   | wsrep_cluster_size           | 3                                                  |
-   | wsrep_cluster_status         | Primary                                            |
-   | wsrep_connected              | ON                                                 |
-   | wsrep_ready                  | ON                                                 |
+   | wsrep_local_state_comment    | Synced                                |
+   | wsrep_incoming_addresses     | 192.168.50.11:3306,192.168.50.10:3306 |
+   | wsrep_evs_state              | OPERATIONAL                           |
+   | wsrep_cluster_size           | 2                                     |
+   | wsrep_cluster_status         | Primary                               |
+   | wsrep_connected              | ON                                    |
+   | wsrep_ready                  | ON                                    |
    [...]
-   +------------------------------+----------------------------------------------------+
+   +------------------------------+---------------------------------------+
 
 Elasticsearch
 =============
@@ -171,17 +181,17 @@ Elasticsearch
 
 .. code-block:: console
 
-   $ curl -s http://10.49.0.100:9200/_cluster/health | python -m json.tool
+   curl -s http://api-int.osism.local:9200/_cluster/health | python -m json.tool
    {
-       "active_primary_shards": 321,
-       "active_shards": 642,
+       "active_primary_shards": 75,
+       "active_shards": 150,
        "active_shards_percent_as_number": 100.0,
        "cluster_name": "kolla_logging",
        "delayed_unassigned_shards": 0,
        "initializing_shards": 0,
-       "number_of_data_nodes": 3,
+       "number_of_data_nodes": 2,
        "number_of_in_flight_fetch": 0,
-       "number_of_nodes": 3,
+       "number_of_nodes": 2,
        "number_of_pending_tasks": 0,
        "relocating_shards": 0,
        "status": "green",
@@ -199,11 +209,10 @@ Fluentd
 
 .. code-block:: console
 
-   $ docker logs fluentd
+   docker logs fluentd
    [...]
-   2018-06-14 08:15:52 +0000 [info]: #0 listening syslog socket on 10.49.10.11:5140 with udp
+   2020-01-25 15:26:07 +0000 [info]: #0 listening syslog socket on 192.168.50.10:5140 with udp
    [...]
-   2018-06-14 08:27:05 +0000 [info]: #0 Connection opened to Elasticsearch cluster => {:host=>"10.49.0.100", :port=>9200, :scheme=>"http"}
 
 Redis
 =====
@@ -214,28 +223,21 @@ network of the control node where Redis is running to connect to Redis.
 
 .. code-block:: console
 
-   $ docker exec -it redis redis-cli -h 10.49.20.10
-   10.49.20.10:6379> auth password
+   docker exec -it redis redis-cli -h testbed-node-0
+   testbed-node-0:6379> auth QHNA1SZRlOKzLADhUd5ZDgpHfQe6dNfr3bwEdY24
    OK
-   10.49.20.10:6379> ping
+   testbed-node-0:6379> ping
    PONG
-   10.49.20.10:6379> info replication
+   testbed-node-0:6379> info replication
    # Replication
-   role:slave
-   master_host:10.49.20.10
-   master_port:6379
-   master_link_status:up
-   master_last_io_seconds_ago:0
-   master_sync_in_progress:0
-   slave_repl_offset:62561
-   slave_priority:100
-   slave_read_only:1
-   connected_slaves:0
-   master_replid:899e93628c8c8864efb0b80c9896ab2a9c6b4b4e
+   role:master
+   connected_slaves:1
+   slave0:ip=192.168.50.11,port=6379,state=online,offset=101675,lag=0
+   master_replid:346a919c213428671d3295b02585494591c6fa4a
    master_replid2:0000000000000000000000000000000000000000
-   master_repl_offset:62561
+   master_repl_offset:101675
    second_repl_offset:-1
    repl_backlog_active:1
    repl_backlog_size:1048576
    repl_backlog_first_byte_offset:1
-   repl_backlog_histlen:62561
+   repl_backlog_histlen:101675
