@@ -17,7 +17,7 @@ Stop the ``rabbitmq`` container on all controller nodes (one by one) and note th
 
 .. code-block:: console
 
-   $ docker stop rabbitmq
+   docker stop rabbitmq
 
 Start
 -----
@@ -26,20 +26,20 @@ Successively start the ``rabbitmq`` container on all controller nodes (one by on
 
 .. code-block:: console
 
-   $ docker start rabbitmq
+   docker start rabbitmq
 
 Check
 -----
 
 .. code-block:: console
 
-   $ docker exec -it rabbitmq rabbitmqctl cluster_status
-   Cluster status of node 'rabbit@20-10'
-   [{nodes,[{disc,['rabbit@20-10','rabbit@20-11','rabbit@20-12']}]},
-    {running_nodes,['rabbit@20-12','rabbit@20-11','rabbit@20-10']},
-    {cluster_name,<<"rabbit@20-10.betacloud.xyz">>},
+   docker exec -it rabbitmq rabbitmqctl cluster_status
+   Cluster status of node 'rabbit@testbed-node-1'
+   [{nodes,[{disc,['rabbit@testbed-node-0','rabbit@testbed-node-1']}]},
+    {running_nodes,['rabbit@testbed-node-0','rabbit@testbed-node-1']},
+    {cluster_name,<<"rabbit@testbed-node-0.osism.local">>},
     {partitions,[]},
-    {alarms,[{'rabbit@20-12',[]},{'rabbit@20-11',[]},{'rabbit@20-10',[]}]}]
+    {alarms,[{'rabbit@testbed-node-0',[]},{'rabbit@testbed-node-1',[]}]}]
 
 Emptying the notification queues
 ================================
@@ -48,14 +48,16 @@ If notifications of individual services are activated and these notifications ar
 for example by Panko, over the course of time many unprocessed messages accumulate on the
 individual notification queues.
 
-.. code-block:: shell
+.. code-block:: console
 
-   $ docker exec -it rabbitmq rabbitmqctl list_queues | grep -v $'\t0'
+   docker exec -it rabbitmq rabbitmqctl list_queues | grep -v $'\t0'
    Listing queues
    versioned_notifications.info    2983
    versioned_notifications.error   29
 
-   $ docker exec -it rabbitmq rabbitmqctl purge_queue versioned_notifications.info
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl purge_queue versioned_notifications.info
    Purging queue 'versioned_notifications.info' in vhost '/'
 
 rabbitmqadmin
@@ -71,23 +73,21 @@ using an HTTP API client library instead.
 
 .. code-block:: console
 
-   $ curl -o rabbitmqadmin http://INTERNAL_VIP_ADDRESS:15672/cli/rabbitmqadmin
+   curl -o rabbitmqadmin http://api-int.osism.local:15672/cli/rabbitmqadmin
 
 Clusterer status
 ================
 
 .. code-block:: console
 
-   $ docker exec -it rabbitmq rabbitmqctl eval 'rabbit_clusterer:status().'
+   docker exec -it rabbitmq rabbitmqctl eval 'rabbit_clusterer:status().'
    Rabbit is running in cluster configuration:
-   [{node_ids,[{rabbit@control23,<<37,76,232,123,245,226,238,39,172,233,48,175,
-                                   28,17,105,112>>},
-               {rabbit@control28,<<191,90,202,73,64,134,189,151,163,239,180,6,
-                                   175,1,176,167>>}]},
-    {gospel,{node,rabbit@control23}},
-    {nodes,[{rabbit@control11,disc},
-            {rabbit@control23,disc},
-            {rabbit@control28,disc}]},
-    {version,2}]
-   Running nodes: [rabbit@control23,rabbit@control28]
+   [{node_ids,[{'rabbit@testbed-node-0',<<33,223,136,84,52,55,149,250,118,202,
+                                          103,22,88,214,60,236>>},
+               {'rabbit@testbed-node-1',<<186,47,70,175,150,251,92,174,244,196,
+                                          192,37,25,113,247,124>>}]},
+    {gospel,{node,'rabbit@testbed-node-0'}},
+    {nodes,[{'rabbit@testbed-node-0',disc},{'rabbit@testbed-node-1',disc}]},
+    {version,1}]
+   Running nodes: ['rabbit@testbed-node-0','rabbit@testbed-node-1']
    ok
