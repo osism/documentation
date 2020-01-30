@@ -103,7 +103,7 @@ Configuration
 Notes
 -----
 
-* Ceilometer: After the upgrade remove the ``ceilometer_api`` container & image from all controller nodes and remove the configuration directory ``/etc/koll/ceilometer-api``
+* Ceilometer: After the upgrade remove the ``ceilometer_api`` container & image from all controller nodes and remove the configuration directory ``/etc/kolla/ceilometer-api``
 
 Pike -> Queens
 ==============
