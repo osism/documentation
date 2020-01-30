@@ -96,9 +96,9 @@ Inventory
 Configuration
 -------------
 
-* Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with ``enable_redis: "yes"``, add ``redis_master_password`` to ``environments/kolla/secrets.yml``)
+* Mistral: Redis is now required by default, enabled & deploy it (add ``redis`` host group to inventory, enable deployment with ``enable_redis: "yes"`` in ``environments/kolla/configuration.yml``, add ``redis_master_password`` to ``environments/kolla/secrets.yml``)
 
-* Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone and remove the ``ceilometer-api`` host group from the inventory
+* Ceilometer: The Ceilometer API was dropped. Remove all ``ceilometer / metering`` endpoints from Keystone (openstack endpoint list) and remove the ``ceilometer-api`` host group from the inventory
 
 Notes
 -----
