@@ -162,3 +162,13 @@ Kibana
 
 You might have to delete (or update) the `.kibana` index in Elasticsearch after the
 Upgrade. You will loose dashboards and saved searches in Kibana, if you delete the index.
+
+Rocky -> Stein
+==============
+
+Glance
+------
+
+* the location of the ``ceph.client.glance.keyring`` changed, move
+  ``environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring``
+  to ``environments/kolla/files/overlays/glance/ceph.client.glance.keyring``
