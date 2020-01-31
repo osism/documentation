@@ -8,6 +8,14 @@ Aptly
 Manual usage
 ============
 
+This have to be done for the following repositories.
+
+* docker https://download.docker.com/linux/ubuntu/ bionic stable
+* bionic http://de.archive.ubuntu.com/ubuntu/ bionic main
+* bionic-backports http://de.archive.ubuntu.com/ubuntu/ bionic-backports main
+* bionic-security http://de.archive.ubuntu.com/ubuntu/ bionic-security main
+* bionic-updates http://de.archive.ubuntu.com/ubuntu/ bionic-updates main
+
 The manual use of Aptly is described below using the example of the Docker repository.
 
 Execute the subsequent commands within the Aptly container on the mirror system.
@@ -57,7 +65,7 @@ Publish snapshot
 
 .. code-block:: console
 
-# aptly publish snapshot -passphrase=$GPG_PASSWORD -batch=true -distribution=bionic-docker bionic-docker-YYYYMMDD ubuntu
+   # aptly publish snapshot -passphrase=$GPG_PASSWORD -batch=true -distribution=bionic-docker bionic-docker-YYYYMMDD ubuntu
 
 If this takes too long, you can use the `-skip-contents` parameter.
 
