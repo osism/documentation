@@ -178,6 +178,7 @@ Glance
 HAProxy
 -------
 
+* add ``kolla_enable_tls_internal: "no"`` to ``environments/kolla/configuration.yml``
 * ``environments/kolla/files/overlays/haproxy/haproxy.cfg`` is no longer used
 * create ``environments/kolla/files/overlays/haproxy/haproxy_main.cfg`` and add
   custom parameters if necessary
