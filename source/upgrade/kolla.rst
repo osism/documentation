@@ -176,6 +176,21 @@ Inventory
    [neutron-metering-agent:children]
    neutron
 
+MariaDB
+-------
+
+* backups are possible with >= Stein
+
+  .. code-block:: yaml
+     :caption: enviornments/kolla/configuration.yml
+
+     enable_mariabackup: "yes"
+
+  .. code-block:: yaml
+     :caption: enviornments/kolla/secrets.yml
+
+     mariadb_backup_database_password: password
+
 Glance
 ------
 
