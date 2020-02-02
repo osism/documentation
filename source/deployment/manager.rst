@@ -87,7 +87,7 @@ Creation of the operator user
   .. code-block::
 
     ssh-add -D
-    ssh -o IdentitiesOnly=yes -i environments/manager/id_rsa.operator dragon@manager01
+    ssh -o IdentitiesOnly=yes -i environments/manager/id_rsa.operator dragon@testbed-manager
 
 * If you receive the following error message:
 
@@ -210,7 +210,7 @@ contains no secrets in plain text.
   .. code-block:: console
 
      git clone cfg-customer cfg-customer.rsync
-     rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@manager01:/opt/configuration/
+     rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@testbed-manager:/opt/configuration/
 
 
 Deploy the manager services:
