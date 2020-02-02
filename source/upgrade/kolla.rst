@@ -28,7 +28,7 @@ Notes
 
   .. code-block:: console
 
-     curl -X PUT "http://KOLLA_INTERNAL_VIP_ADDRESS:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+     curl -X PUT "http://api-int.osism.local:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
      {
        "persistent": {
          "cluster.routing.allocation.enable": null
