@@ -5,7 +5,9 @@ Kolla
 Preparations
 ============
 
-* HAProxy: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.RELEASE
+* HAProxy: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.RELEASE (for version <= Rocky)
+
+* HAProxy: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy_main.cfg.RELEASE (for version <= Stein)
 
 * Horizon: for versions < Rocky: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/local_settings.j2.RELEASE
 
@@ -172,3 +174,81 @@ Glance
 * the location of the ``ceph.client.glance.keyring`` changed, move
   ``environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring``
   to ``environments/kolla/files/overlays/glance/ceph.client.glance.keyring``
+
+HAProxy
+-------
+
+* ``environments/kolla/files/overlays/haproxy/haproxy.cfg`` is no longer used
+* create ``environments/kolla/files/overlays/haproxy/haproxy_main.cfg`` and add
+  custom parameters if necessary
+
+  .. code-block:: none
+
+     #jinja2: lstrip_blocks: True
+     global
+	 chroot /var/lib/haproxy
+	 user haproxy
+	 group haproxy
+	 daemon
+	 log {{ syslog_server }}:{{ syslog_udp_port }} {{ syslog_haproxy_facility }}
+	 maxconn {{ haproxy_max_connections }}
+	 nbproc {{ haproxy_processes }}
+	 {% if (haproxy_processes | int > 1) and (haproxy_process_cpu_map | bool) %}
+	     {% for cpu_idx in range(0, haproxy_processes) %}
+	 cpu-map {{ cpu_idx + 1 }} {{ cpu_idx }}
+	     {% endfor %}
+	 {% endif %}
+	 stats socket /var/lib/kolla/haproxy/haproxy.sock group kolla mode 660
+	 {% if kolla_enable_tls_external | bool or kolla_enable_tls_internal | bool %}
+	 ssl-default-bind-ciphers DEFAULT:!MEDIUM:!3DES
+	 ssl-default-bind-options no-sslv3 no-tlsv10 no-tlsv11
+	 tune.ssl.default-dh-param 4096
+	 {% endif %}
+
+     defaults
+	 log global
+	 option redispatch
+	 retries 3
+	 timeout http-request {{ haproxy_http_request_timeout }}
+	 timeout queue {{ haproxy_queue_timeout }}
+	 timeout connect {{ haproxy_connect_timeout }}
+	 timeout client {{ haproxy_client_timeout }}
+	 timeout server {{ haproxy_server_timeout }}
+	 timeout check {{ haproxy_check_timeout }}
+	 balance {{ haproxy_defaults_balance }}
+	 maxconn {{ haproxy_defaults_max_connections }}
+
+     listen stats
+	bind {{ api_interface_address }}:{{ haproxy_stats_port }}
+	mode http
+	stats enable
+	stats uri /
+	stats refresh 15s
+	stats realm Haproxy\ Stats
+	stats auth {{ haproxy_user }}:{{ haproxy_password }}
+
+     frontend status
+	 bind {{ api_interface_address }}:{{ haproxy_monitor_port }}
+	 {% if api_interface_address != kolla_internal_vip_address %}
+	 bind {{ kolla_internal_vip_address }}:{{ haproxy_monitor_port }}
+	 {% endif %}
+	 mode http
+	 monitor-uri /
+
+     # OSISM specific configuration
+
+     listen ceph_dashboard
+       option httpchk
+       http-check expect status 200
+       bind {{ kolla_internal_vip_address }}:8140
+     {% for host in groups['ceph-mgr'] %}
+       server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}:7000 check inter 2000 rise 2 fall 5
+     {% endfor %}
+
+     listen ceph_prometheus
+       bind {{ kolla_internal_vip_address }}:9283
+     {% for host in groups['ceph-mgr'] %}
+       server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}:9283 check inter 2000 rise 2 fall 5
+     {% endfor %}
+
+     # customer specific configuration
