@@ -168,6 +168,14 @@ Upgrade. You will loose dashboards and saved searches in Kibana, if you delete t
 Rocky -> Stein
 ==============
 
+Inventory
+---------
+
+.. code-block:: ini
+
+   [neutron-metering-agent:children]
+   neutron
+
 Glance
 ------
 
