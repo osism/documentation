@@ -15,7 +15,7 @@ The following networks are used:
    :local:
 
 Management / Console
-===================
+====================
 
 The ``management`` or ``console`` network is used to access all nodes via SSH.
 It is also used by some infrastructure and helper services like phpMyAdmin or
