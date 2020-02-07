@@ -11,6 +11,8 @@ Preparations
 
 * Horizon: for versions < Rocky: when using an overlay configuration file sync it with the new version from https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/local_settings.j2.RELEASE
 
+  * if you upgrade to >= Rocky, this file is removed from the repository
+
 * Horizon: for versions >= Rocky: when using an overlay configuration file environments/kolla/files/overlays/horizon/local_settings.j2 , replace it by https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/custom_local_settings
 
 * gather facts with ``osism-generic facts`` before the upgrade
