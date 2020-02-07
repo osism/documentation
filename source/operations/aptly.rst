@@ -11,10 +11,10 @@ Manual usage
 This have to be done for the following repositories.
 
 * docker https://download.docker.com/linux/ubuntu/ bionic stable
-* bionic http://de.archive.ubuntu.com/ubuntu/ bionic main
-* bionic-backports http://de.archive.ubuntu.com/ubuntu/ bionic-backports main
-* bionic-security http://de.archive.ubuntu.com/ubuntu/ bionic-security main
-* bionic-updates http://de.archive.ubuntu.com/ubuntu/ bionic-updates main
+* bionic http://de.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
+* bionic-backports http://de.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+* bionic-security http://de.archive.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
+* bionic-updates http://de.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
 
 The manual use of Aptly is described below using the example of the Docker repository.
 
