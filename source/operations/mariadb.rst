@@ -146,7 +146,7 @@ Now start an temporary mariadb container and attach the volumes of the stopped m
 
 .. code::
 
-   $ docker run --volumes-from mariadb -it de-1-master-1.betacloud.xyz:4000/betacloud/ubuntu-source-mariadb:2.0.2 /bin/bash
+   $ docker run --volumes-from mariadb -it osism/mariadb:rocky-latest /bin/bash
 
 Inside the container run the command ``mysqld --tc-heuristic-recover=ROLLBACK`` to rollback the transactions.
 
@@ -195,7 +195,7 @@ Afterwards exit the temporary container and start the mariadb container with ``d
    Running command: '/usr/bin/mysqld_safe --wsrep-new-cluster'
    160601 09:08:16 mysqld_safe Logging to '/var/log/kolla/mariadb/mariadb.log'.
    160601 09:08:16 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql/
-   160601 09:08:16 mysqld_safe WSREP: Running position recovery with --log_error='/var/lib/mysql//wsrep_recovery.rNhhQs' --pid-file='/var/lib/mysql//de-1-controller-1-recover.pid'
+   160601 09:08:16 mysqld_safe WSREP: Running position recovery with --log_error='/var/lib/mysql//wsrep_recovery.rNhhQs' --pid-file='/var/lib/mysql//testbed-node-0-recover.pid'
    160601 09:08:19 mysqld_safe WSREP: Recovered position d3027acb-2775-11e6-ad39-32cbcdbfec35:7557
 
 Attach a shell to the mariadb container and login to the MariaDB server to check the status of the node.
@@ -203,7 +203,7 @@ Attach a shell to the mariadb container and login to the MariaDB server to check
 .. code-block:: console
 
    # docker exec -it mariadb bash
-   (mariadb)[mysql@de-1-controller-1 /]$ mysql -u root -p 
+   (mariadb)[mysql@testbed-node-0 /]$ mysql -u root -p
    Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
    Welcome to the MariaDB monitor.  Commands end with ; or \g.
    Your MariaDB connection id is 1171
@@ -398,7 +398,7 @@ You can also use the integrated Ansible playbook.
 
 .. code-block:: console
 
-   $ osism-generic backup-mariadb -l 20-10.betacloud.xyz
+   $ osism-generic backup-mariadb -l testbed-node-1.osism.local
 
 Optimize database
 =================
