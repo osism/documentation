@@ -25,7 +25,7 @@ Carry out the following steps on all controller nodes (one by one).
    .. code-block:: console
 
       $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
-      Enter password:
+      Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
       +---------------------------+--------+
       | Variable_name             | Value  |
       +---------------------------+--------+
@@ -53,7 +53,7 @@ Check
 .. code-block:: console
 
    $ docker exec -it mariadb mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_%'"
-   Enter password:
+   Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
    +------------------------------+----------------------------------------------------+
    | Variable_name                | Value                                              |
    +------------------------------+----------------------------------------------------+
@@ -204,7 +204,7 @@ Attach a shell to the mariadb container and login to the MariaDB server to check
 
    # docker exec -it mariadb bash
    (mariadb)[mysql@de-1-controller-1 /]$ mysql -u root -p 
-   Enter password:
+   Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
    Welcome to the MariaDB monitor.  Commands end with ; or \g.
    Your MariaDB connection id is 1171
    Server version: 10.0.25-MariaDB-1~trusty-wsrep
@@ -370,3 +370,41 @@ You can also use the integrated Ansible playbook.
 .. code-block:: console
 
    $ osism-generic backup-mariadb -l 20-10.betacloud.xyz
+
+Optimize database
+=================
+
+.. note::
+
+   Depending on the database/table, this process may take some time and
+   generate a high load on the database.
+
+The following example optimizes the database ``heat``. All tables are optimized one
+after the other.
+
+A single table (e.g. ``engine``) in the database ``heat`` can be optimized with
+``heat engine`` instead of ``heat``.
+
+Individual tables can be optimized with ``heat engine`` instead of ``heat``.
+
+.. code-block:: console
+
+   du -h /var/lib/docker/volumes/mariadb/_data/heat
+   97M     /var/lib/docker/volumes/mariadb/_data/heat
+
+.. code-block:: console
+
+   docker exec -it mariadb mysqlcheck -u root -p --optimize --skip-write-binlog du
+   Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
+   heat.event
+   note     : Table does not support optimize, doing recreate + analyze instead
+   status   : OK
+   heat.migrate_version
+   note     : Table does not support optimize, doing recreate + analyze instead
+   status   : OK
+   [...]
+
+.. code-block:: console
+
+   du -h /var/lib/docker/volumes/mariadb/_data/heat
+   7.1M    /var/lib/docker/volumes/mariadb/_data/heat
