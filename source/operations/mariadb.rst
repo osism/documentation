@@ -338,6 +338,35 @@ Note that the password is visible.
 
    docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i --galera-info /tmp
 
+At the end of the backup process a short status change of the node takes place.
+
+.. code-blone:: none
+
+   SYNCED -> DONOR/DESYNCED -> JOINED -> SYNCED
+
+The following entry can be found in ``/var/log/kolla/mariadb/mariadb.log`` on the node where the backup is created.
+
+.. code-block:: none
+
+   2020-02-10 22:55:00 140591107139328 [Note] WSREP: Member 0.0 (testbed-node-1) desyncs itself from group
+   2020-02-10 22:55:00 140591107139328 [Note] WSREP: Shifting SYNCED -> DONOR/DESYNCED (TO: 1182)
+   2020-02-10 22:55:00 140591322765056 [Note] WSREP: Provider paused at f0bbc6d1-4b81-11ea-acfb-5a3837714e6a:1182 (1565)
+   2020-02-10 22:55:02 140591322765056 [Note] WSREP: resuming provider at 1565
+   2020-02-10 22:55:02 140591322765056 [Note] WSREP: Provider resumed.
+   2020-02-10 22:55:02 140591107139328 [Note] WSREP: Member 0.0 (testbed-node-1) resyncs itself to group
+   2020-02-10 22:55:02 140591107139328 [Note] WSREP: Shifting DONOR/DESYNCED -> JOINED (TO: 1182)
+   2020-02-10 22:55:02 140591107139328 [Note] WSREP: Member 0.0 (testbed-node-1) synced with group.
+   2020-02-10 22:55:02 140591107139328 [Note] WSREP: Shifting JOINED -> SYNCED (TO: 1182)
+   2020-02-10 22:55:02 140591391913728 [Note] WSREP: Synchronized with group, ready for connections
+
+On the other nodes there is the following entry.
+
+.. code-block:: none
+
+   2020-02-10 22:55:00 139785272289024 [Note] WSREP: Member 0.0 (testbed-node-1) desyncs itself from group
+   2020-02-10 22:55:02 139785272289024 [Note] WSREP: Member 0.0 (testbed-node-1) resyncs itself to group
+   2020-02-10 22:55:02 139785272289024 [Note] WSREP: Member 0.0 (testbed-node-1) synced with group.
+
 The backup is then prepared.
 
 .. code-block:: console
