@@ -378,6 +378,14 @@ Note that the password is visible.
 
    docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i /tmp
 
+The backup is then prepared.
+
+.. code-block:: console
+
+   docke exec -it mariadb innobackup --apply-log /tmp/2018-01-11_09-44-20/
+   [...]
+   200210 09:38:36 completed OK!
+
 The backup is stored on the data volume of the ``mariadb`` container. It can be picked up from there with the following call.
 
 .. code-block:: console
