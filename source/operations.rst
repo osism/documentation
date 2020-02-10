@@ -22,5 +22,6 @@ Operations
    operations/neutron
    operations/nova
    operations/openvswitch
+   operations/panko
    operations/prometheus
    operations/rabbitmq
