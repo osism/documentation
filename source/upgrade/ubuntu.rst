@@ -74,4 +74,4 @@ Upgrade
 Ocata
 -----
 
-* change $(command -v mkdir) to /bin/mkdir in ``/etc/systemd/system/multi-user.target.wants/ceph-mon@ceph01.service``
+* change ``$(command -v mkdir)`` to ``/bin/mkdir`` in ``/etc/systemd/system/multi-user.target.wants/ceph-mon@ceph01.service``
