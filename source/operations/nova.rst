@@ -33,6 +33,22 @@ Archive deleted rows
    | virtual_interfaces       | 8389                    |
    +--------------------------+-------------------------+
 
+Purge rows from the shadow tables
+=================================
+
+.. code-block:: console
+
+   docker exec nova_api nova-manage db purge --verbose --before "2018-01-01"
+   DB: Deleted 105 rows from shadow_block_device_mapping based on timestamp column deleted_at
+   DB: Deleted 197 rows from shadow_instance_actions based on timestamp column created_at
+   DB: Deleted 195 rows from shadow_instance_actions_events based on timestamp column created_at
+   DB: Deleted 104 rows from shadow_instance_extra based on timestamp column deleted_at
+   DB: Deleted 104 rows from shadow_instance_info_caches based on timestamp column deleted_at
+   DB: Deleted 1366 rows from shadow_instance_system_metadata based on timestamp column deleted_at
+   DB: Deleted 104 rows from shadow_instances based on timestamp column deleted_at
+   DB: Deleted 475 rows from shadow_reservations based on timestamp column deleted_at
+   DB: Deleted 103 rows from shadow_virtual_interfaces based on timestamp column deleted_at
+
 Compute service delete
 ======================
 
