@@ -318,7 +318,7 @@ To create a backup, the command ``innobackupex`` is now executed on one of the d
 
 .. code-block:: console
 
-   $ docker exec -it mariadb innobackupex /tmp
+   $ docker exec -it mariadb innobackupex --galera-info /tmp
    [...]
    180111 09:45:40 Executing UNLOCK TABLES
    180111 09:45:40 All tables unlocked
@@ -336,7 +336,7 @@ Note that the password is visible.
 
 .. code-block:: console
 
-   docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i /tmp
+   docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i --galera-info /tmp
 
 The backup is then prepared.
 
