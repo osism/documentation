@@ -71,3 +71,7 @@ Upgrade
    # osism-generic check-reboot (-l 20-10.betacloud.xyz)
    # osism-generic reboot (-l 20-10.betacloud.xyz)
 
+Ocata
+-----
+
+* change $(command -v mkdir) to /bin/mkdir in ``/etc/systemd/system/multi-user.target.wants/ceph-mon@ceph01.service``
