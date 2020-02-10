@@ -371,6 +371,13 @@ To create a backup, the command ``innobackupex`` is now executed on one of the d
    xtrabackup: Transaction log of lsn (10823062052) to (10823256961) was copied.
    180111 09:45:40 completed OK!
 
+Instead of adjusting the configuration, user name and password can also be specified by parameter.
+Note that the password is visible.
+
+.. code-block:: console
+
+   docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i /tmp
+
 The backup is stored on the data volume of the ``mariadb`` container. It can be picked up from there with the following call.
 
 .. code-block:: console
