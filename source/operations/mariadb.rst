@@ -336,7 +336,20 @@ Note that the password is visible.
 
 .. code-block:: console
 
-   docker exec -it mariadb innobackupex -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i --galera-info /tmp
+   docker exec -it mariadb innobackupex \
+     -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i \
+     --galera-info /tmp
+
+It is also possible to backup only certain databases. The parameter ``--databases``
+is used for this purpose. The format is ``databasename[.tablename]``. Multiple entries
+are separated by a space.
+
+.. code-block:: console
+
+   docker exec -it mariadb innobackupex \
+     -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i \
+     --galera-info \
+     --databases "panko" /tmp
 
 At the end of the backup process a short status change of the node takes place.
 
