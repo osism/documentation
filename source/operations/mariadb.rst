@@ -304,6 +304,9 @@ Backup
 <= Rocky
 --------
 
+innobackupex
+~~~~~~~~~~~~
+
 The MariaDB images contain ``xtrabackup`` from Percona. To use the MariaDB configuration must first be prepared.
 
 Create/extend the file ``environments/kolla/files/overlays/galera.cnf`` with the following content. Maybe you have to reconfigure MariaDB.
@@ -412,6 +415,32 @@ You can also use the integrated Ansible playbook.
 .. code-block:: console
 
    $ osism-generic backup-mariadb -l testbed-node-1.osism.local
+
+mariabackup
+~~~~~~~~~~~
+
+From Stein on, ``mariabackup`` is used in Kolla-Ansible.
+
+.. code-block:: console
+
+    mariabackup \
+        --defaults-file=/etc/mysql/my.cnf \
+        --backup \
+        --stream=xbstream \
+        --history=$(date +%d-%m-%Y) | gzip > \
+        /tmp/mysqlbackup-$(date +%d-%m-%Y-%s).qp.xbc.xbs.gz
+
+User name and password can also be specified by parameter. Note that the password is visible.
+
+.. code-block:: console
+
+    mariabackup \
+        --defaults-file=/etc/mysql/my.cnf \
+        -u root -p qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i \
+        --backup \
+        --stream=xbstream \
+        --history=$(date +%d-%m-%Y) | gzip > \
+        /tmp/mysqlbackup-$(date +%d-%m-%Y-%s).qp.xbc.xbs.gz
 
 Optimize database
 =================
