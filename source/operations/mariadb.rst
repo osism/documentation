@@ -387,7 +387,7 @@ The backup is then prepared.
 
 .. code-block:: console
 
-   docke exec -it mariadb innobackupex --apply-log /tmp/2018-01-11_09-44-20/
+   docker exec -it mariadb innobackupex --apply-log /tmp/2018-01-11_09-44-20/
    [...]
    200210 09:38:36 completed OK!
 
