@@ -26,7 +26,7 @@ Configuration repository
 
 .. code-block:: console
 
-   $ git clone ssh://git@git.betacloud-solutions.de:10022/customers/xxx/cfg-yyy.git
+   $ git clone ssh://git@github.com:ORGANIZATION/cfg-ENVIRONMENT.git
 
 If necessary, the configuration SSH key can be used for the initial transfer of the
 repository.
@@ -36,8 +36,8 @@ stored in ``~/.ssh/id_rsa.configuration``.
 
 .. code-block:: none
 
-   Host git.betacloud-solutions.de
-     HostName git.betacloud-solutions.de
+   Host github.com
+     HostName github.com
      User git
      Port 10022
      IdentityFile ~/.ssh/id_rsa.configuration

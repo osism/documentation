@@ -26,12 +26,12 @@ Git
    configuration_directory: /opt/configuration
    configuration_type: git
 
-   configuration_git_host: git.betacloud-solutions.de
-   configuration_git_port: 10022
+   configuration_git_host: github.com
+   configuration_git_port: 22
 
    configuration_git_private_key_file: ~/.ssh/id_rsa.configuration
    configuration_git_protocol: ssh
-   configuration_git_repository: customers/CUSTOMER/cfg-NAME.git
+   configuration_git_repository: ORGANIZATION/cfg-ENVIRONMENT.git
    configuration_git_username: git
    configuration_git_version: master
 
