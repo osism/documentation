@@ -39,5 +39,5 @@ stored in ``~/.ssh/id_rsa.configuration``.
    Host github.com
      HostName github.com
      User git
-     Port 10022
+     Port 22
      IdentityFile ~/.ssh/id_rsa.configuration
