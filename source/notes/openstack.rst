@@ -149,8 +149,8 @@ Output before and after removing old disabled `nova-compute` services:
    ...
    nova-consoleauth.log: 13:43:15.488 7 INFO nova.compute.rpcapi [req-48feeaab-63f0-44a7-b2fe-90134ec61d82 - - - - -] Automatically selected compute RPC version 5.0 from minimum service version 35
 
-Solution1
----------
+Solution 1
+----------
 
 * You have to upgrade all your registered Nova services. They are allowed to differ one release,
   but not more.
