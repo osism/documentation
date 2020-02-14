@@ -149,8 +149,8 @@ Output before and after removing old disabled `nova-compute` services:
    ...
    nova-consoleauth.log: 13:43:15.488 7 INFO nova.compute.rpcapi [req-48feeaab-63f0-44a7-b2fe-90134ec61d82 - - - - -] Automatically selected compute RPC version 5.0 from minimum service version 35
 
-Solution
---------
+Solution 1
+----------
 
 * You have to upgrade all your registered Nova services. They are allowed to differ one release,
   but not more.
@@ -160,3 +160,18 @@ Solution
 
    $ openstack compute service list
    $ openstack compute service delete ...
+
+Solution 2
+----------
+
+To verify your problem, take a look inside the `nova` database at the `services` table.
+You can find the service version in the `version` column. If this `version` numbers are the same, please restart `nova_compute` on hypervisors.
+
+.. code-block:: console
+
+   $ docker restart nova_compute
+
+* order of upgrade nova
+
+  * first the hypervisors, after restart the old RPC version number is used, because the controller are on old version
+  * after upgrade of controller, the new RPC version number is choosen by controller, but computes are on the old RPC version number
