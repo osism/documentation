@@ -149,8 +149,8 @@ Output before and after removing old disabled `nova-compute` services:
    ...
    nova-consoleauth.log: 13:43:15.488 7 INFO nova.compute.rpcapi [req-48feeaab-63f0-44a7-b2fe-90134ec61d82 - - - - -] Automatically selected compute RPC version 5.0 from minimum service version 35
 
-Solution1
----------
+Solution 1
+----------
 
 * You have to upgrade all your registered Nova services. They are allowed to differ one release,
   but not more.
@@ -263,3 +263,6 @@ you can fix this with the following workflow
         -H "X-Auth-Token: $OS_TOKEN" \
         "$PLACEMENT_ENDPOINT/allocations/44c356ef-edd0-43a3-bd46-17aed65ea1a6" \
         -X DELETE
+=======
+  * after upgrade of controller, the new RPC version number is choosen by controller, but computes are on the old RPC version number
+>>>>>>> c34ef7dd02d6cf38ed1069b95131429f618ecae1
