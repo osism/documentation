@@ -263,6 +263,3 @@ you can fix this with the following workflow
         -H "X-Auth-Token: $OS_TOKEN" \
         "$PLACEMENT_ENDPOINT/allocations/44c356ef-edd0-43a3-bd46-17aed65ea1a6" \
         -X DELETE
-=======
-  * after upgrade of controller, the new RPC version number is choosen by controller, but computes are on the old RPC version number
->>>>>>> c34ef7dd02d6cf38ed1069b95131429f618ecae1
