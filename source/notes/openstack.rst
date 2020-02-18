@@ -160,3 +160,91 @@ Solution
 
    $ openstack compute service list
    $ openstack compute service delete ...
+
+Instance Allocation
+===================
+
+If you see a similar message in ``nova-compute.log``
+
+.. code-block:: console
+
+   hostA
+   Instance 44c356ef-edd0-43a3-bd46-17aed65ea1a6 has allocations against this compute host
+   but is not found in the database.
+
+you can fix this with the following workflow
+
+* first export some variables (Placement Endpoint and Token
+
+.. code-block:: console
+
+   openstack --os-cloud admin endpoint list --service placement
+   | 959ce6527fe742e49c5a6e76f40a04c3 | availability-zone | placement  | placement  | True  | admin     | http://api01:8780   |
+   | bf471ab6830f4e8faeffbc74e6173c2a | availability-zone | placement  | placement  | True  | public    | https://api02:8780  |
+   | de3778d38b674c2c824a9b7a02340c03 | availability-zone | placement  | placement  | True  | internal  | http://api01:8780   |
+
+   export PLACEMENT_ENDPOINT=$(openstack --os-cloud admin endpoint list --service placement | grep internal | awk -F"|" '{ print $8 }')
+
+   openstack --os-cloud admin token issue
+   +------------+----------------------------------+
+   | Field      | Value                            |
+   +------------+----------------------------------+
+   | expires    | 2020-02-18T15:19:47+0000         |
+   | id         | token                            |
+   | project_id | a3a35b63df1941ba9133897f0e89eb5b |
+   | user_id    | ddac12227a2540ea97fa4e1db5a651da |
+   +------------+----------------------------------+
+
+   export OS_TOKEN=$(openstack --os-cloud admin token issue | grep " id " | awk -F"|" '{ print $3 }')
+
+* search for the UUID of the hypervisor
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/resource_providers" \
+        | python -m json.tool | grep hostA -A3
+            "name": "hostA",
+            "parent_provider_uuid": null,
+            "root_provider_uuid": "a411305a-6472-454b-a593-06bfa21e84e0",
+            "uuid": "a411305a-6472-454b-a593-06bfa21e84e0"
+
+* find allocations of hypervisor
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/resource_providers/a411305a-6472-454b-a593-06bfa21e84e0/allocations" \
+        | python -m json.tool
+        {
+            "allocations": {
+               "44c356ef-edd0-43a3-bd46-17aed65ea1a6": {
+                  "resources": {
+                     "DISK_GB": 10,
+                     "MEMORY_MB": 1024,
+                     "VCPU": 1
+                  }
+               }
+            },
+            "resource_provider_generation": 30
+         }
+
+* delete the allocation
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/allocations/44c356ef-edd0-43a3-bd46-17aed65ea1a6" \
+        -X DELETE
