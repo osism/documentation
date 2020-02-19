@@ -6,6 +6,7 @@ Operations
    :maxdepth: 2
 
    operations/aptly
+   operations/ara
    operations/ceph
    operations/cinder
    operations/cobbler
