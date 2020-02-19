@@ -25,6 +25,8 @@ HAProxy
 
    $ osism-kolla deploy haproxy
 
+.. _kibana_index_delete:
+
 Logging
 =======
 

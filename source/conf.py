@@ -1,7 +1,11 @@
 def setup(app):
     app.add_stylesheet('css/custom.css')
 
-extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome']
+
+extensions = [
+  'sphinx.ext.autosectionlabel', 'sphinxcontrib.blockdiag',
+  'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome'
+  ]
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'OSISM'
