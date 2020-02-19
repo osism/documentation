@@ -6,7 +6,7 @@ The Open Source Infrastructure & Service Manager (OSISM) is an Ansible &
 Docker based deployment framework for managing OpenStack, Ceph, and necessary
 services.
 
-Further details about OSISM can be found on https://osism.io. Do not hesitate
+Further details about OSISM can be found on https://osism.de. Do not hesitate
 to write an e-mail to info@betacloud-solutions.de if you have questions or doubts.
 
 * **OpenStack** is a cloud operating system that controls large pools of
