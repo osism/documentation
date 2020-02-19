@@ -465,7 +465,7 @@ Individual tables can be optimized with ``heat engine`` instead of ``heat``.
 
 .. code-block:: console
 
-   docker exec -it mariadb mysqlcheck -u root -p --optimize --skip-write-binlog du
+   docker exec -it mariadb mysqlcheck -u root -p --optimize --skip-write-binlog heat
    Enter password: qNpdZmkKuUKBK3D5nZ08KMZ5MnYrGEe2hzH6XC0i
    heat.event
    note     : Table does not support optimize, doing recreate + analyze instead
