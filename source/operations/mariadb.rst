@@ -15,7 +15,7 @@ Stop
 
 Ensure that any services using MariaDB are stopped.
 
-Carry out the following steps on all controller nodes (one by one).
+Carry out the following steps on all control nodes (one by one).
 
 1. Ensure that ``wsrep_local_state_comment`` is ``synced``
 
@@ -73,7 +73,7 @@ Cluster recovery
 
 http://galeracluster.com/2016/11/introducing-the-safe-to-bootstrap-feature-in-galera-cluster/
 
-On the controller nodes stop the ``mariadb`` containers.
+On the control nodes stop the ``mariadb`` containers.
 
 .. code-block:: console
 
@@ -85,7 +85,7 @@ On the manager node run the recovery process.
 
    $ osism-kolla deploy mariadb_recovery
 
-If this does not work check the grastate.dat file on all controller nodes.
+If this does not work check the grastate.dat file on all control nodes.
 
 .. code-block:: console
 
@@ -304,8 +304,8 @@ Backup
 <= Rocky
 --------
 
-innobackupex
-~~~~~~~~~~~~
+innobackupex (backup)
+~~~~~~~~~~~~~~~~~~~~~
 
 The MariaDB images contain ``xtrabackup`` from Percona. To use the MariaDB configuration must first be prepared.
 
@@ -325,7 +325,7 @@ To create a backup, the command ``innobackupex`` is now executed on one of the d
    [...]
    180111 09:45:40 Executing UNLOCK TABLES
    180111 09:45:40 All tables unlocked
-   180111 09:45:40 Backup created in directory '/tmp/2018-01-11_09-44-20/'
+   180111 09:45:40 Backup created in directory '/tmp/2020-02-20_22-21-12/'
    MySQL binlog position: filename 'mysql-bin.000080', position '242412060', GTID of the last change '0-1-9072431'
    180111 09:45:40 [00] Writing backup-my.cnf
    180111 09:45:40 [00]        ...done
@@ -387,7 +387,7 @@ The backup is then prepared.
 
 .. code-block:: console
 
-   docker exec -it mariadb innobackupex --apply-log /tmp/2018-01-11_09-44-20/
+   docker exec -it mariadb innobackupex --apply-log /tmp/2020-02-20_22-21-12/
    [...]
    200210 09:38:36 completed OK!
 
@@ -396,19 +396,19 @@ The backup is stored on the data volume of the ``mariadb`` container. It can be 
 .. code-block:: console
 
    $ sudo mkdir -p /opt/xtrabackup && sudo chown dragon: /opt/xtrabackup
-   $ docker cp mariadb:/tmp/2018-01-11_09-44-20 /opt/xtrabackup
+   $ docker cp mariadb:/tmp/2020-02-20_22-21-12 /opt/xtrabackup
 
-The directory ``/tmp/2018-01-11_09-44-20`` to be copied is output at the end of the execution of ``innobackupex``.
+The directory ``/tmp/2020-02-20_22-21-12`` to be copied is output at the end of the execution of ``innobackupex``.
 
 .. code-block:: none
 
-   180111 09:45:40 Backup created in directory '/tmp/2018-01-11_09-44-20/'
+   180111 09:45:40 Backup created in directory '/tmp/2020-02-20_22-21-12/'
 
 Then the backup can be removed from the container.
 
 .. code-block:: console
 
-   $ docker exec -it mariadb rm -rf /tmp/2018-01-11_09-44-20
+   $ docker exec -it mariadb rm -rf /tmp/2020-02-20_22-21-12
 
 You can also use the integrated Ansible playbook.
 
@@ -416,8 +416,100 @@ You can also use the integrated Ansible playbook.
 
    $ osism-generic backup-mariadb -l testbed-node-1.osism.local
 
-mariabackup
-~~~~~~~~~~~
+After the backup is complete, make sure that the file ``xtrabackup_galera_info`` is present in the backup directory.
+
+innobackupex (restore)
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+   When the restore is performed, all data of an existing cluster is deleted.
+   Make sure in advance that the existing backups are in good condition.
+
+   To be on the safe side, make a backup after stopping the containers from
+   the ``mariadb`` volumes.
+
+   The database cannot be used during the restore.
+
+Run the following steps on all nodes of the cluster.
+
+First stop all running ``mariadb`` containers.
+
+.. code-block:: console
+
+   $ docker stop mariadb
+
+Now all files in ``/var/lib/mysql`` are deleted.
+
+.. code-block:: console
+
+   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --rm -it quay.io/osism/mariadb:rocky-latest
+   ()[mysql@9287f94e9316 /]$ rm -rf /var/lib/mysql/*
+
+It is important that no more files are present in ``/var/lib/mysql``. Since ``/var/lib/mysql``
+is also the home directory of the ``mysql`` user it is important not to create a ``.bash_history``
+when exiting the container.
+
+.. code-block:: console
+
+   ()[mysql@9287f94e9316 /]$ cat /dev/null > ~/.bash_history && history -c && rm -f ~/.bash_history && exit
+
+Run the following steps on the first node of the cluster.
+
+First, a new ``grastate.dat`` is prepared based on the state of the backup.
+
+.. code-block:: console
+
+   $ cat /opt/xtrabackup/2020-02-20_22-21-12/xtrabackup_galera_info
+   ef563b61-5416-11ea-aff3-cf4d8fa91baa:3224
+
+The format is as follows: ``<uuid>:<seqno>``.
+
+.. code-block:: console
+
+   $ tee /opt/xtrabackup/2020-02-20_22-21-12/grastate.dat <<EOF
+   # GALERA saved state
+   version: 2.1
+   uuid:    ef563b61-5416-11ea-aff3-cf4d8fa91baa
+   seqno:   3224
+   safe_to_bootstrap: 0
+   EOF
+
+Afterwards ``/var/lib/mysql`` is restored. Because of permissions this requires
+a few intermediate steps.
+
+.. code-block:: console
+
+   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --name mariadb-restore --rm -it quay.io/osism/mariadb:rocky-latest
+   ()[mysql@9d16427f7d67 /]$
+
+.. code-block:: console
+
+   $ docker cp /opt/xtrabackup/2020-02-20_22-21-12 mariadb-restore:/tmp
+
+.. code-block:: console
+
+   $ docker exec -u root -it mariadb-restore chown -R mysql /tmp/2020-02-20_22-21-12
+
+.. code-block:: console
+
+   ()[mysql@9d16427f7d67 /]$ innobackupex --copy-back /tmp/2020-02-20_22-21-12
+
+When the message ``Original data directory /var/lib/mysql is not empty!`` appears,
+delete ``/var/lib/mysql/.bash_history``. Then execute the command again.
+
+.. code-block:: console
+
+   ()[mysql@9d16427f7d67 /]$ cat /dev/null > ~/.bash_history && history -c && rm -f ~/.bash_history && exit
+
+Finally, a recovery of the database is started via the manager.
+
+.. code-block:: console
+
+   $ osism-kolla deploy mariadb_recovery
+
+mariabackup (backup)
+~~~~~~~~~~~~~~~~~~~~
 
 From Stein on, ``mariabackup`` is used in Kolla-Ansible.
 
