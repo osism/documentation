@@ -71,6 +71,8 @@ Enable service
 * enable the service in ``environments/kolla/configuration.yml``
   (e.g. ``enable_freezer: "yes"`` to activate the service Freezer)
 
+.. _haproxy-self-signed-cert:
+
 HAProxy
 =======
 

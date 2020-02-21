@@ -21,6 +21,8 @@ The common role includes the following services:
 HAProxy
 =======
 
+Please read certificate configuration :ref:`haproxy-self-signed-cert`
+
 .. code-block:: console
 
    $ osism-kolla deploy haproxy
