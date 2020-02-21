@@ -27,6 +27,8 @@ Please read certificate configuration :ref:`haproxy-self-signed-cert`
 
    $ osism-kolla deploy haproxy
 
+.. _kibana_index_delete:
+
 Logging
 =======
 

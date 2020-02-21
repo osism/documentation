@@ -2,13 +2,16 @@
 Manager
 =======
 
+Before starting the upgrade, the configuration repository on the manager node
+need to be prepared and updated.
+
 .. contents::
    :local:
 
-The following parameters are adjusted accordingly in the configuration repository.
+The *OSISM* version need to be set to the new version:
 
 .. code-block:: yaml
-   :caption: environments/manager/configuration.yml
+   :caption: /opt/configuration/environments/manager/configuration.yml
 
    ##########################
    # versions
@@ -17,15 +20,43 @@ The following parameters are adjusted accordingly in the configuration repositor
    kolla_manager_version: 2019.4.0
    osism_manager_version: 2919.4.0
 
-Afterwards ``environments/manager`` is synchronized with the master configuration
-repository.
+Make sure, the file ``requirements.txt`` in the root directory of the
+configuration repository contains the following python modules:
+
+.. code-block:: none
+   :caption: /opt/configuration/requirements.txt
+
+   Jinja2
+   PyYAML
+   python-gilt
+   requests
+   ruamel.yaml
+
+Update the Python modules:
+
+.. code-block:: console
+
+   pip install -r requirements.txt
+
+Next the configuration repository need to be synchronized with the master
+configuration repository. Run the following command from the root directory
+of the configuration repository at ``/opt/configuration/``:
 
 .. code-block:: console
 
    MANAGER_VERSION=2019.4.0 gilt overlay
 
-The directories ``environments/manager/roles`` and ``environments/manager/.venv`` are
-deleted on the manager.
+Review the changes made to the configuration repository and commit the changes:
+
+.. code-block:: console
+
+   git diff
+   git add .
+   git commit -m "Upgrade MANAGER_VERSION=2019.4.0"
+   git push
+
+The directories ``environments/manager/roles`` and
+``environments/manager/.venv`` need to be deleted on the manager node.
 
 .. code-block:: console
 
@@ -38,6 +69,18 @@ After updating the configuration repository, the manager is now updated.
 
    osism-generic configuration
    osism-manager manager
+
+.. note::
+   If encountering the following error message, while running ``osism-manager``
+
+   ``ERROR! Attempting to decrypt but no vault secrets found``
+
+   Place the vault password of the configuration repository into file in
+   the users home folder and export the following environment variable:
+
+.. code-block:: console
+
+   export ANSIBLE_VAULT_PASSWORD_FILE=$HOME/vaultpass
 
 Notes
 =====
