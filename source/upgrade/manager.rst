@@ -2,6 +2,9 @@
 Manager
 =======
 
+Preparations
+------------
+
 Before starting the upgrade, the configuration repository on the manager node
 need to be prepared and updated.
 
@@ -57,64 +60,54 @@ Review the changes made to the configuration repository and commit the changes:
 
 The directories ``environments/manager/roles`` and
 ``environments/manager/.venv`` need to be deleted on the manager node.
+They will be recreated and populated automatically.
 
 .. code-block:: console
 
    rm -rf /opt/configuration/environments/manager/roles
    rm -rf /opt/configuration/environments/manager/.venv
 
-After updating the configuration repository, the manager is now updated.
+Upgrading to Manager version 2019.4.0
+-------------------------------------
 
-.. code-block:: console
+ARA Ansible log server
+~~~~~~~~~~~~~~~~~~~~~~
 
-   osism-generic configuration
-   osism-manager manager
+The ARA 1.x introduced in 2019.4.0 is unfortunately not downward compatible to
+ARA 0.x. Hence, when upgrading to 2019.4.0, the ARA database must be reset.
 
-.. note::
-   If encountering the following error message, while running ``osism-manager``
-
-   ``ERROR! Attempting to decrypt but no vault secrets found``
-
-   Place the vault password of the configuration repository into file in
-   the users home folder and export the following environment variable:
-
-.. code-block:: console
-
-   export ANSIBLE_VAULT_PASSWORD_FILE=$HOME/vaultpass
-
-Notes
-=====
-
-2019.4.0
---------
-
-The ARA 1.x introduced in 2019.4.0 is unfortunately not downward compatible to ARA 0.x.
-
-Therefore, when upgrading the manager to 2019.4.0, the ARA database must be reset.
-
-The following steps must be performed before upgrading the manager.
+The ara backend database need to be deleted:
 
 .. code-block:: console
 
    docker rm -f manager_database_1
    docker volume rm manager_mariadb
 
-The ARA configuration parameters must be removed from all ``ansible.cfg`` files.
-These are no longer necessary. Usually these parameters are only available in
-``environments/ansible.cfg``.
+The following ARA configuration block has become obsolete and need to be removed
+from ``environments/ansible.cfg``.
 
 .. code-block:: ini
+   :caption: environments/ansible.cfg
 
    [ara]
    database = mysql+pymysql://ara:password@database/ara
 
-The new secret ``ara_password`` is added to the ``environments/secrets.yml`` file.
+The new variable ``ara_password`` need to be added to the file
+``environments/secrets.yml``:
+
+.. code-block:: console
+
+   pwgen -1 32
+   iMeebi0cofu3eiChoothahdoshi7Ohm7
+   ansible-vault edit environments/secrets.yml
 
 .. code-block:: yaml
 
    # manager
+   ara_password: iMeebi0cofu3eiChoothahdoshi7Ohm7
 
-   ara_password: password
+Ceph
+~~~~
 
 When using Ceph, the following groups must be added to the inventory. Insert after the ``ceph-osd`` group.
 
@@ -141,3 +134,23 @@ When using Ceph, the following groups must be added to the inventory. Insert aft
 
    The environment ``monitoring`` is deprecated. The associated Ansible roles and Docker images
    (Prometheus and Prometheus exporters) will be removed in a future release.
+
+Running the upgrade
+===================
+
+.. code-block:: console
+
+   osism-generic configuration
+   osism-manager manager
+
+.. note::
+   If encountering the following error message, while running ``osism-manager``
+
+   ``ERROR! Attempting to decrypt but no vault secrets found``
+
+   Place the vault password of the configuration repository into file in
+   the users home folder and export the following environment variable:
+
+.. code-block:: console
+
+   export ANSIBLE_VAULT_PASSWORD_FILE=$HOME/vaultpass

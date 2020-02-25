@@ -232,14 +232,14 @@ https://www.percona.com/blog/2018/03/28/safely-purging-binary-logs-from-master/
    [mysqld]
    expire_logs_days = 14
 
-with restart of galera cluster
+With restart of Galera cluster
 ------------------------------
 
 .. code-block:: console
 
    $ osism-kolla reconfigure mariadb
 
-without restart of galera cluster
+Without restart of Galera cluster
 ---------------------------------
 
 * set in ``/etc/kolla/mariadb/galera.cnf`` on each galera cluster node
@@ -295,8 +295,8 @@ without restart of galera cluster
    +------------------+------------+
    18 rows in set (0.00 sec)
 
-Backup
-======
+MariaDB backup
+==============
 
 >= Stein
 --------
@@ -534,8 +534,8 @@ User name and password can also be specified by parameter. Note that the passwor
         --history=$(date +%d-%m-%Y) | gzip > \
         /tmp/mysqlbackup-$(date +%d-%m-%Y-%s).qp.xbc.xbs.gz
 
-Optimize database
-=================
+Optimizing the database
+=======================
 
 .. note::
 

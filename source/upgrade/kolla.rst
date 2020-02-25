@@ -34,13 +34,10 @@ Horizon
 
 .. _custom_local_settings: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/custom_local_settings
 
-* Gather facts with before the upgrade
+Backup MariaDB
+--------------
 
-.. code-block:: console
-
-   osism-generic facts
-
-* Backup MariaDB databases before the upgrade on one of the control nodes:
+Backup MariaDB databases before the upgrade on one of the control nodes:
 
 The password for MariaDB can be found in the file ``environments/kolla/secrets.yml`` in the variable
 ``database_password``.
@@ -50,11 +47,9 @@ The password for MariaDB can be found in the file ``environments/kolla/secrets.y
    docker exec -t mariadb innobackupex -u root -p DATABASE_PASSWORD /tmp/mariadb
    docker cp mariadb:/tmp/mariadb $PWD/mariadb
 
-See `MariaDB Backup`_ for further details.
+See :ref:`MariaDB Backup` for further details.
 
-.. _MariaDB Backup: http://docs.osism.io/operations/mariadb.html#backup
-
-Upgrading From Ocata to Pike
+Upgrading from Ocata to Pike
 ============================
 
 * https://docs.openstack.org/releasenotes/kolla/pike.html
@@ -74,11 +69,7 @@ Upgrading Docker
 
    fatal: [20-10.betacloud.xyz]: FAILED! => {"changed": true, "failed": true, "msg": "'Traceback (most recent call last):\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 804, in main\\n    dw = DockerWorker(module)\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 218, in __init__\\n    self.dc = get_docker_client()(**options)\\n  File \"/tmp/ansible_Lrxpgg/ansible_module_kolla_docker.py\", line 201, in get_docker_client\\n    return docker.APIClient\\nAttributeError: \\'module\\' object has no attribute \\'APIClient\\'\\n'"}
 
-Run the following command on the manager node to upgrade Docker version:
-
-.. code-block:: console
-
-   osism-generic docker
+See :ref:`Docker` on how to upgrade Docker.
 
 Inventory
 ---------
@@ -143,7 +134,7 @@ Notes
   need to be removed from all control nodes, as well as the configuration
   directory ``/etc/kolla/ceilometer-api``.
 
-Upgrading From Pike to Queens
+Upgrading from Pike to Queens
 =============================
 
 * https://docs.openstack.org/releasenotes/kolla/queens.html
@@ -167,7 +158,7 @@ Configuration
 
    rabbitmq_monitoring_password: we7oey4wifeilieK9ii1uighiraJoWoo
 
-Upgrading From Queens to Rocky
+Upgrading from Queens to Rocky
 ==============================
 
 * https://docs.openstack.org/releasenotes/kolla/rocky.html
@@ -221,7 +212,7 @@ The Elasticsearch index ``.kibana`` might have to be deleted (or updated) after
 the Upgrade. See :ref:`kibana_index_delete`.
 Dashboards and saved searches in Kibana, will be lost after deleting the index.
 
-Upgrading From Rocky to Stein
+Upgrading from Rocky to Stein
 =============================
 
 Inventory
@@ -345,6 +336,13 @@ HAProxy
 
 Running the upgrade
 ===================
+
+Gathering Ansible facts
+-----------------------
+
+.. code-block:: console
+
+   osism-generic facts
 
 Common
 ------
