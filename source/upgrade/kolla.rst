@@ -337,6 +337,12 @@ HAProxy
 Running the upgrade
 ===================
 
+When using the ``osism-kolla upgrade`` command, the currently running container
+is shut down. Next the Docker image for the upgraded version is pulled, and
+finally the new container is started. It might be advisable to first pull the
+Docker image and then run ``osism-kolla upgrade``. See
+:ref:`Deploying Openstack Services` for how to use ``osism-kolla pull``.
+
 Gathering Ansible facts
 -----------------------
 

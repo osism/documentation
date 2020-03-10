@@ -35,11 +35,21 @@ configuration repository contains the following python modules:
    requests
    ruamel.yaml
 
+Create temporary Python virtual environment for executing ``gilt``:
+
+.. code-block:: console
+
+   sudo apt-get install python3-venv
+   python3 -m venv --prompt osism-upgrade .venv
+   source .venv/bin/activate
+   pip3 install wheel
+   pip3 install python-gilt
+
 Update the Python modules:
 
 .. code-block:: console
 
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
 
 Next the configuration repository need to be synchronized with the master
 configuration repository. Run the following command from the root directory
