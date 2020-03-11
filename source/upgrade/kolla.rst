@@ -195,6 +195,11 @@ Configuration
 * The ``glance_registry`` containers on the control nodes can be removed,
   the service was deprecated in *Queens* and will be removed in *Stein* release.
 
+  .. code-block:: console
+
+     docker stop glance_registry
+     docker rm glance_registry
+
 Elasticsearch
 -------------
 
