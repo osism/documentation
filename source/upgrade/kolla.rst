@@ -459,3 +459,18 @@ Elasticsearch
      }
    }
    '
+
+Remove old Docker images
+========================
+
+Verify none of the old images is running anymore.
+
+.. code-block:: console
+
+   docker ps --filter=label=io.osism.openstack=queens
+
+Remove old version images.
+
+.. code-block:: console
+
+   docker rmi $(docker image ls --quiet --filter=label=io.osism.openstack=queens)
