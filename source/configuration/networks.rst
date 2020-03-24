@@ -14,15 +14,16 @@ The following networks are used:
 .. contents::
    :local:
 
-Management / Console
-====================
+Console
+=======
 
-The ``management`` or ``console`` network is used to access all nodes via SSH.
-It is also used by some infrastructure and helper services like phpMyAdmin or
-the web interface for ARA.
+The ``console`` network is used to access all nodes via SSH for operations
+purposes. It is also used by some infrastructure and helper services like
+phpMyAdmin or the web interface for ARA.
 
 This network is defined by ``console_interface`` in the host specific variable
-file:
+file. The ip address belonging to this interface is defined by
+``internal_address`` and for central logging by ``fluentd_host`` variables.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -32,12 +33,18 @@ file:
 
    console_interface: eth0
 
-Internal
-========
+   internal_address: 10.0.1.2
+   fluentd_host: 10.0.1.2
 
-The internal network is used for communication between services located on
-different hosts. It is also used for traffic that has no dedicated network.
-Ansible playbooks also use this network to access target hosts.
+Management (Internal)
+=====================
+
+The ``management`` or *internal* network is used for communication between
+OpenStack services located on different hosts. It is also used for traffic
+without a dedicated network. Ansible playbooks also use this network to access
+target hosts. The interface is defined by ``management_interface``.
+Additionally the interface need to be defined for *kolla-ansible* by
+``network_interface`` and for *Cockpit* by ``cockpit_ssh_interface`` variables.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
@@ -46,8 +53,6 @@ Ansible playbooks also use this network to access target hosts.
    # generic
 
    management_interface: eth1
-   internal_address: 10.0.1.2
-   fluentd_host: 10.0.1.2
 
    ##########################################################
    # kolla
@@ -58,6 +63,10 @@ Ansible playbooks also use this network to access target hosts.
    # cockpit
 
    cockpit_ssh_interface: eth1
+
+The DNS name for the internal OpenStack API enpoints is defined by
+``kolla_internal_fqdn``. The corresponding ip address for
+this DNS name is defined by ``kolla_internal_vip_address``.
 
 .. code-block:: yaml
    :caption: environments/kolla/configuration.yml
@@ -109,8 +118,9 @@ Live migration of instances is performed over this network.
 External API
 ============
 
-External API endpoints are accessible on the external API network. This network
-is reachable by consumers of the cloud services.
+External API endpoints are accessible on the external API network, exposing the
+OpenStack API endpoints. This network is reachable by consumers of the cloud
+services.
 
 .. code-block:: yaml
    :caption: inventory/host_vars/<hostname>.yml
