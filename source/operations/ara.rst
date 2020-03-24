@@ -2,6 +2,14 @@
 ARA
 ===
 
+ARA records Ansible playbooks and makes them discoverable via web interface.
+
+The ARA web interface can be reached via the ``console`` network, running on the
+manager node on port ``8120``. The username is ``ara`` and the password can be
+found in the file ``environments/secrets.yml`` at variable ``ara_password``.
+
+Open the URL pointing to your manager node like: ``http://mananger01:8120/``
+
 Delete old playbooks
 ====================
 
