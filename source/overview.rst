@@ -10,3 +10,4 @@ Overview
    overview/node-types
    overview/networks
    overview/requirements
+   overview/cli-reference
