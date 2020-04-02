@@ -2,6 +2,25 @@
 Nova
 ====
 
+.. contents::
+   :local:
+
+Local LVM2 storage
+==================
+
+* A volume group with the name ``nova`` is created first
+
+.. code-block:: ini
+   :caption: environments/kolla/files/overlays/nova-compute.conf
+
+   [libvirt]
+   images_type = lvm
+   images_volume_group = nova
+   volume_clear = none
+   volume_clear_size = 0
+   sparse_logical_volumes = False
+   disk_cachemodes = "file=directsync,block=directsync,network=directsync"
+
 Virtual GPUs
 ============
 
