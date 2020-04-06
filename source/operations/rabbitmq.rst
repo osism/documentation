@@ -91,3 +91,12 @@ Clusterer status
     {version,1}]
    Running nodes: ['rabbit@testbed-node-0','rabbit@testbed-node-1']
    ok
+
+
+
+
+
+2020-03-20 17:24:44.846 6 ERROR oslo_service.service MessageDeliveryFailure: Unable to connect to AMQP server on 10.49.20.11:5672 after None tries: Queue.declare: (404) NOT_FOUND - failed to perform operation on queue 'dhcp_agent.30-02' in vhost '/' due to timeout
+
+
+Broken queue. Stop the service, delete the queue and start the service.

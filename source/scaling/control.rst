@@ -74,16 +74,6 @@ RabbitMQ
    OSISM manager version 2020.1 is necessary for the scaling of RabbitMQ.
    Support only from Rocky on.
 
-By default, ``rabbitmq_cluster_version`` is set to ``1``. This value must be incremented
-with each change. This configuration change is only necessary for Rocky.
-
-.. code-block:: yaml
-   :caption: environments/kolla/configuration.yml
-
-   # rabbitmq
-
-   rabbitmq_cluster_version: 2
-
 .. code-block:: console
 
    osism-kolla deploy rabbitmq

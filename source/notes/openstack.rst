@@ -15,6 +15,7 @@ AMD
    sudo modprobe kvm_amd
    cat /sys/module/kvm_amd/parameters/nested
    Y
+   docker restart nova_libvirt
 
 Intel
 -----
@@ -26,6 +27,7 @@ Intel
    sudo modprobe kvm_intel
    cat /sys/module/kvm_intel/parameters/nested
    Y
+   docker restart nova_libvirt
 
 References
 ----------
