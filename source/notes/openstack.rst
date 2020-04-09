@@ -2,6 +2,27 @@
 OpenStack
 =========
 
+Debugging services
+==================
+
+Sometimes OpenStack services are hard to debug, when there is important logging
+information missing. If a service is not running as expected, but no useful
+logging information is produced by the service, attaching via ``strace`` to the
+process of the service might reveal, what the process is doing.
+
+Find the process id of the OpenStack service in question.
+
+.. code-block:: console
+
+   pgrep -a cinder-volume
+   2814
+
+Attach with strace to the process.
+
+.. code-block:: console
+
+   strace -p 2814
+
 Nested virtualisation
 =====================
 
