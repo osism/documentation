@@ -5,6 +5,14 @@ Kibana
 .. contents::
    :local:
 
+Web Interface
+=============
+
+The Kibana web interface can be found on the internal network API address at
+port ``5601``.
+
+* Example: http://api-int.osism.local:5601/
+
 Search / Discover
 =================
 
