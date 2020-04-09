@@ -220,7 +220,8 @@ Prepare Ubuntu Server ISO
 
    Please use console, ALT+F4, for debugging
 
-* Download prepared ISO files (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
+* `Download <https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF>`_ prepared
+  ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 
 Post-processing
