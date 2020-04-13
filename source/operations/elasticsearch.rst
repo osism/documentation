@@ -181,3 +181,55 @@ Place this file in ``/usr/share/elasticsearch/delete-indices-older-than-30-days.
    2018-02-28 14:13:43,037 INFO      ---deleting index flog-2018.02.13
    2018-02-28 14:13:51,145 INFO      Action ID: 1, "delete_indices" completed.
    2018-02-28 14:13:51,145 INFO      Job completed.
+
+Removing a node
+===============
+
+* Set the exclusion rule to the IP address of the node
+
+  .. code-block:: console
+
+     $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
+     '{
+       "transient" :{
+	   "cluster.routing.allocation.exclude._ip" : "192.168.50.12"
+	}
+     }'
+
+* Check the number of ``relocating_shards```, it has to be ``0``
+
+  .. code-block:: console
+
+     $ curl http://api-int.osism.local:9200>/_cluster/health?pretty
+     {
+       "cluster_name" : "kolla_logging",
+       "status" : "green",
+     [...]
+       "relocating_shards" : 0,
+     [...]
+     }
+
+* Stop the ``elasticsearch`` container
+
+.. code-block:: console
+
+   $ docker stop elasticsearch
+
+* Remove the node from the ``elasticsearch`` group from the inventory
+
+* Set the exclusion rule to empty
+
+  .. code-block:: console
+
+     $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
+     '{
+       "transient" :{
+	   "cluster.routing.allocation.exclude._ip" : ""
+	}
+     }'
+
+* Refresh the cluster configuration
+
+  .. code-block:: console
+
+     $ osism-kolla deploy elasticsearch -e kolla_serial=1
