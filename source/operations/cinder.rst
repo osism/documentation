@@ -15,3 +15,14 @@ Remove service
 
    $ docker exec -it cinder_api cinder-manage service remove cinder-volume 50-10@rbd-volumes
    Service cinder-volume on host 50-10@rbd-volumes removed.
+
+Purge deleted rows
+==================
+
+.. note::
+
+   This command is executed on a controller node.
+
+.. code-block:: console
+
+   $ docker exec -it cinder_api cinder-manage db purge 90
