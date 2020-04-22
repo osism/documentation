@@ -75,8 +75,8 @@ using an HTTP API client library instead.
 
    curl -o rabbitmqadmin http://api-int.osism.local:15672/cli/rabbitmqadmin
 
-Clusterer status
-================
+Cluster status
+==============
 
 .. code-block:: console
 
@@ -92,11 +92,28 @@ Clusterer status
    Running nodes: ['rabbit@testbed-node-0','rabbit@testbed-node-1']
    ok
 
+Broken queue
+============
 
+.. code-block:: console
 
+   2020-03-20 17:24:44.846 6 ERROR oslo_service.service MessageDeliveryFailure: Unable to connect to AMQP server on 10.49.20.11:5672 after None tries: Queue.declare: (404) NOT_FOUND - failed to perform operation on queue 'dhcp_agent.30-02' in vhost '/' due to timeout
 
+Stop the service, delete the queue and start the service.
 
-2020-03-20 17:24:44.846 6 ERROR oslo_service.service MessageDeliveryFailure: Unable to connect to AMQP server on 10.49.20.11:5672 after None tries: Queue.declare: (404) NOT_FOUND - failed to perform operation on queue 'dhcp_agent.30-02' in vhost '/' due to timeout
+Set number of Erlang schedulers
+===============================
 
+Schedulers in the runtime assign work to kernel threads that perform it. By
+default the runtime will start one scheduler for one CPU core it detects. This
+can lead to permanent high CPU utilisation. Setting the number of schedulers to
+a lower value, will decrease CPU utilisation considerably.
 
-Broken queue. Stop the service, delete the queue and start the service.
+.. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
+
+   rabbitmq_server_additional_erl_args: "+S 1:1"
+
+See `RabbitMQ documentation <https://www.rabbitmq.com/runtime.html>`_ for more
+details.
+
