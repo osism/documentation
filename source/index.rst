@@ -37,6 +37,7 @@ supported.
    test
    operations
    notes
+   development
    appendix
 
 The documentation is maintained on Github: https://github.com/osism/documentation.
