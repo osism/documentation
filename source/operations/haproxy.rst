@@ -26,3 +26,15 @@ Change certificate
 
 * Update the certificate in the file ``environments/kolla/secrets.yml`` (``kolla_external_fqdn_cert``)
 * Reconfigure HAProxy with ``osism-kolla reconfigure haproxy``
+
+Validate configuration
+======================
+
+.. code-block:: console
+
+   $ osism-kolla config haproxy
+
+.. code-block:: console
+
+   $ docker exec -it haproxy haproxy -c -V -f /etc/haproxy/haproxy.cfg
+   Configuration file is valid

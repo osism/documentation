@@ -13,4 +13,5 @@ of the individual services.
    services/infrastructure
    services/ceph
    services/openstack
+   services/loadbalancer
    services/custom

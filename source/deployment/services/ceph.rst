@@ -8,122 +8,147 @@ Ceph
 Preparations
 ============
 
-Before the deployment make sure that NTP really works. In case of problems https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
-is a good entry point
+Prior to the deployment make sure NTP works correctly. In case of problems
+https://chrony.tuxfamily.org/faq.html#_computer_is_not_synchronising
+is a good entry point.
+
+Execute the following commands to verify NTP is using the configured
+ntp servers.
 
 .. code-block:: console
 
-   $ osism-ansible generic all -m shell -a 'chronyc sources'
-   $ osism-ansible generic all -m shell -a 'chronyc tracking'
+   osism-ansible generic all -m shell -a 'chronyc sources'
+   osism-ansible generic all -m shell -a 'chronyc tracking'
 
 Management services
 ===================
 
-* ceph-mon is the cluster monitor daemon for the Ceph distributed file system
+Execute the following commands on the manager node.
 
-  .. code-block:: console
+ceph-mon is the cluster monitor daemon for the Ceph distributed file system
 
-     $ osism-ceph mons
+.. code-block:: console
 
-* ceph-mgr is the cluster manager daemon for the Ceph distributed file system
+   osism-ceph mons
 
-  .. code-block:: console
+ceph-mgr is the cluster manager daemon for the Ceph distributed file system
 
-     $ osism-ceph mgrs
+.. code-block:: console
+
+   osism-ceph mgrs
 
 Client service
 ==============
 
-* Set the ``ceph.client.admin.keyring`` in the ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` file
-  in the configuration repository
+Copy the keyring file ``/etc/ceph/ceph.client.admin.keyring`` located on the
+first Ceph monitor node to
+``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` in the
+configuration repository.
 
-  * Key can be found in the directory ``/etc/ceph`` on the first Ceph monitor node
-  * Update the configuration repository on the manager node with ``osism-generic configuration``
-
-* Ensure that ``cephclient_mons`` is set accordingly in the ``environments/infrastructure/configuration.yml`` file
-
-* Deploy the cephclient service
+After committing the change to the configuration repository, update the
+configuration repository on the manager node.
 
 .. code-block:: console
 
-   $ osism-infrastructure helper --tags cephclient
+   osism-generic configuration
+
+Ensure ``cephclient_mons`` in
+``environments/infrastructure/configuration.yml`` is set to the list of IP
+addresses of the Ceph monitor nodes in the OS-Storage (Ceph frontend) network.
+
+Deploy the cephclient service by executing the following command on the manager
+node.
+
+.. code-block:: console
+
+   osism-infrastructure helper --tags cephclient
 
 Storage services
 ================
 
-* ceph-mds is the metadata server daemon for the Ceph distributed file system
+Execute the following commands on the manager node.
 
-  .. code-block:: console
+ceph-mds is the metadata server daemon for the Ceph distributed file system.
 
-     $ osism-ceph mdss  # only when using cephfs
+.. code-block:: console
 
-* ceph-osd is the object storage daemon for the Ceph distributed file system
+   osism-ceph mdss  # only when using cephfs
 
-  .. note::
+ceph-osd is the object storage daemon for the Ceph distributed file system.
 
-     Block devices must be raw and not have any GPT, FS, or RAID signatures. Existing signatures can
-     be removed with ``wipefs``.
+.. note::
 
-     .. code-block:: console
+   Block devices must be raw and not have any GPT, FS, or RAID signatures. Existing signatures can
+   be removed with ``wipefs``.
 
-        # wipefs -f -a /dev/sdX
-        /dev/sdX: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
-        /dev/sdX: 8 bytes were erased at offset 0x2e934855e00 (gpt): 45 46 49 20 50 41 52 54
-        /dev/sdX: 2 bytes were erased at offset 0x000001fe (PMBR): 55 aa
-        /dev/sdX: calling ioctl to re-read partition table: Success
+   .. code-block:: console
 
-  .. code-block:: console
+      sudo wipefs -f -a /dev/sdX
+      /dev/sdX: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
+      /dev/sdX: 8 bytes were erased at offset 0x2e934855e00 (gpt): 45 46 49 20 50 41 52 54
+      /dev/sdX: 2 bytes were erased at offset 0x000001fe (PMBR): 55 aa
+      /dev/sdX: calling ioctl to re-read partition table: Success
 
-     $ osism-ceph osds
+.. code-block:: console
 
-  .. note::
-
-     This workaround is only necessary when using OSISM <= 2019.3.0 (ceph-ansible 3.1.x). In newer
-     versions (OSISM >= 2019.4.0, ceph-ansible >= 3.2.x) this problem has been fixed.
-
-     Due to a bug the distribution of the Ceph keys fails in the first run. The following intermediate
-     step is currently required.
-
-     Execute the following command on the first Ceph monitor node. Then ``osism-ceph osds`` must be
-     executed again.
-
-     .. code-block:: console
-
-        $ sudo cp /opt/cephclient/configuration/*.keyring /etc/ceph
+   osism-ceph osds
 
 Post-processing
 ===============
 
-After deploying Ceph, the remaining individual keys must be stored in the configuration repository.
+After successfull Ceph deployment, additional service keys need to be stored in
+the configuration repository. The keyring files are stored at ``/etc/ceph`` on
+the Ceph monitor nodes.
 
-.. code-block:: console
+* Copy from ``/etc/ceph/ceph.client.admin.keyring`` to
 
-   $ find . -name 'ceph.client.*.keyring'
-   ./environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
-   ./environments/kolla/files/overlays/gnocchi/ceph.client.gnocchi.keyring
-   ./environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
-   ./environments/kolla/files/overlays/nova/ceph.client.nova.keyring
-   ./environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
-   ./environments/infrastructure/files/ceph/ceph.client.admin.keyring
+  .. code-block:: console
 
-The keys can be found in the directory ``/etc/ceph`` on one of the Ceph monitor nodes.
+     environments/infrastructure/files/ceph/ceph.client.admin.keyring
 
-.. code-block:: console
+* Copy from ``/etc/ceph/ceph.client.cinder-backup.keyring`` to
 
-   $ ls -1 /etc/ceph/
-   ceph.client.admin.keyring
-   ceph.client.cinder-backup.keyring
-   ceph.client.cinder.keyring
-   ceph.client.glance.keyring
-   ceph.client.gnocchi.keyring
-   ceph.client.nova.keyring
-   ceph.conf
-   ceph.mon.keyring
+  .. code-block:: console
 
-Don't forget to update the configuration repository on the manager afterwards with ``osism-generic configuration``.
+     environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
 
-After the initial deployment of the Ceph Clusters, the ``openstack_config`` parameter in the
-``environments/ceph/configuration.yml`` can be set to ``false``. It must only be set to ``true`` when new
-pools or keys are added.
+* Copy from ``etc/ceph/ceph.client.cinder.keyring`` to
+
+  .. code-block:: console
+
+     environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder.keyring
+     environments/kolla/files/overlays/cinder/cinder-volume/ceph.client.cinder.keyring
+     environments/kolla/files/overlays/nova/ceph.client.cinder.keyring
+
+
+* Copy from ``/etc/ceph/ceph.client.glance.keyring`` to
+
+  .. code-block:: console
+
+     environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
+
+
+* Copy from ``/etc/ceph/ceph.client.gnocchi.keyring`` to
+
+  .. code-block:: console
+
+     environments/kolla/files/overlays/gnocchi/ceph.client.gnocchi.keyring
+
+
+* Copy from ``/etc/ceph/ceph.client.nova.keyring`` to
+
+  .. code-block:: console
+
+     environments/kolla/files/overlays/nova/ceph.client.nova.keyring
+
+Update the configuration repository on the manager after committing the changes
+by using command ``osism-generic configuration`` on the manager node.
+
+After the initial deployment of the Ceph cluster, the ``openstack_config``
+parameter in the ``environments/ceph/configuration.yml`` can be set to
+``false``. It must only be set to ``true`` when new pools or keys are added.
+
+Testing Ceph
+============
+
+* See :ref:`how to test Ceph <test-ceph>`.

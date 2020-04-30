@@ -6,7 +6,8 @@ OpenStack
 
 Base directory: ``environments/kolla``
 
-The documentation for ``kolla-ansible`` can be found on https://docs.openstack.org/kolla-ansible/latest/.
+The documentation for ``kolla-ansible`` can be found at
+https://docs.openstack.org/kolla-ansible/latest/.
 
 .. toctree::
    :maxdepth: 2
@@ -67,7 +68,10 @@ Enable service
 
 * make sure the necessary inventory groups are available in ``inventory/hosts``
 * make sure the desired service is supported
-* enable the service in ``environments/kolla/configuration.yml`` (e.g. ``enable_freezer: "yes"`` to activate the service Freezer)
+* enable the service in ``environments/kolla/configuration.yml``
+  (e.g. ``enable_freezer: "yes"`` to activate the service Freezer)
+
+.. _haproxy-self-signed-cert:
 
 HAProxy
 =======
@@ -77,27 +81,42 @@ Set the ``kolla_internal_fqdn`` in ``environments/kolla/configuration.yml``.
 Existing certificates
 ---------------------
 
-Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.yml`` and add the
-content of the existing signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
+Set ``kolla_enable_tls_external: "yes"`` in
+``environments/kolla/configuration.yml`` and add the content of the existing
+signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
 ``environments/kolla/secrets.yml`` file.
 
-The order is important. If this is not followed, an error occurs when starting HAProxy:
-``inconsistencies between private key and certificate loaded from PEM file '/etc/haproxy/haproxy.pem'``.
+.. code-block:: yaml
+
+   kolla_external_fqdn_cert: |
+     -----BEGIN CERTIFICATE-----
+     [...]
+     -----END CERTIFICATE-----
+     -----BEGIN RSA PRIVATE KEY-----
+     [...]
+     -----END RSA PRIVATE KEY-----
+
+Key and certificates in PEM format are stored consecutively in the following
+order:
 
 * server certificate
 * server private key (without any password)
 * intermediate certificates
+
+If the order is not followed, an error occurs when starting HAProxy:
+``inconsistencies between private key and certificate loaded from PEM file '/etc/haproxy/haproxy.pem'``.
 
 .. _generation-of-self-signed-certificate:
 
 Generate self-signed certificates
 ---------------------------------
 
-Run this command on the manager node.
+If no certificate has been created yet, use ``osism-kolla _ certificates``
+command to generate a self signed certifacte on the manager node.
 
 .. code-block:: console
 
-   $ osism-kolla _ certificates
+   osism-kolla _ certificates
    PLAY [Apply role certificates] *************************************************
 
    TASK [certificates : Ensuring config directories exist] ************************
@@ -121,33 +140,25 @@ Run this command on the manager node.
    PLAY RECAP *********************************************************************
    localhost        : ok=6    changed=0    unreachable=0    failed=0
 
-On the manager node the self-signed certificate is located in ``/etc/kolla/certificates/haproxy.pem``
-inside the ``manager_kolla-ansible_1`` container.
+The self-signed certificate is located at
+``/etc/kolla/certificates/haproxy.pem`` inside the ``manager_kolla-ansible_1``
+container on the manager node.
 
 .. code-block:: console
 
-   $ docker exec -it manager_kolla-ansible_1 bash
+   docker exec -u root -ti manager_kolla-ansible_1 sh -c 'cat /etc/kolla/certificates/private/haproxy.*'
 
-If the ``pem`` file is not created correctly that is not a problem. Then just use the output of
-``cat /etc/kolla/certificates/private/haproxy.*``.
+Add the content of the output from the command above to
+``kolla_external_fqdn_cert`` parameter at ``environments/kolla/secrets.yml``
+of the configuration repository.
 
-Set ``kolla_enable_tls_external: "yes"`` in ``environments/kolla/configuration.yml`` and add the
-content of the self-signed certificate to the ``kolla_external_fqdn_cert`` parameter in the
-``environments/kolla/secrets.yml`` file.
+Set ``kolla_enable_tls_external: "yes"`` at
+``environments/kolla/configuration.yml`` of the configuration repository.
 
 * https://www.meshcloud.io/en/2017/04/18/pem-file-layout-for-haproxy/
 
-.. code-block:: yaml
-
-   kolla_external_fqdn_cert: |
-     -----BEGIN CERTIFICATE-----
-     [...]
-     -----END CERTIFICATE-----
-     -----BEGIN RSA PRIVATE KEY-----
-     [...]
-     -----END RSA PRIVATE KEY-----
-
-You should also add the self-signed certificate to the list of trusted certifcates on every computer
-that uses the external API. The workflow is different for different Linux distributions.
-Many programs, such as ``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as
-a temporary solution.
+You should also add the self-signed certificate to the list of trusted
+certifcates on every computer that uses the external API. The workflow is
+different for different Linux distributions. Many programs, such as
+``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as a
+temporary solution.

@@ -2,11 +2,6 @@
 Cookiecutter
 ============
 
-.. note::
-
-   To gain access to the configuration repository for your customer specific
-   infrastructure, please send a request to info@betacloud-solutions.de.
-
 Preparations
 ============
 
@@ -50,6 +45,9 @@ It is recommended to use a virtual environment when installing packages from PyP
 
    virtualenv -p python3 .venv
    source .venv/bin/activate
+
+.. code-block:: console
+
    pip3 install \
      ansible \
      cookiecutter \
@@ -68,7 +66,7 @@ It is recommended to use a virtual environment when installing packages from PyP
 Initialisation
 ==============
 
-When running cookiecutter, infrastructure specific information needs to be
+When running *cookiecutter*, infrastructure specific information needs to be
 provided.
 
 A list with all parameters can be found in the ``cookiecutter.json``
@@ -77,41 +75,41 @@ individual parameters can be found in the README file of the repository.
 
 .. code-block:: console
 
-   cookiecutter https://git.betacloud-solutions.de/generic/cookiecutter.git
+   cookiecutter https://github.com/osism/cfg-cookiecutter
 
-   with_ceph [1]: 1
-   with_vault [1]: 1
+   with_ceph [1]:
+   with_vault [1]:
    ceph_fsid [Use a great UUID here]: 1a6b162c-cc15-4569-aa09-db536c93569f
-   ceph_manager_version [2019.3.0]:
-   ceph_network_backend [192.168.101.0/24]: 10.0.6.0/24
-   ceph_network_frontend [192.168.100.0/24]: 10.0.5.0/24
+   ceph_manager_version [latest]:
+   ceph_network_backend [193.168.80.0/24]:
+   ceph_network_frontend [192.168.70.0/24]:
    ceph_version [luminous]:
    docker_registry [index.docker.io]:
-   docker_version [5:18.09.5]:
-   domain [osism.io]: betacloud.io
-   fqdn_external [api-1.osism.io]: external-api.betacloud.io
-   fqdn_internal [api-1.osism.xyz]: internal-api.betacloud.xyz
-   git_host [git.betacloud-solutions.de]:
+   docker_version [5:19.03.5]:
+   domain [osism.local]:
+   fqdn_external [api.osism.local]:
+   fqdn_internal [api-int.osism.local]:
+   git_host [github]:
    git_port [22]:
-   git_repository [generic/cookiecutter]:
+   git_repository [osism/cfg-cookiecutter]:
    git_username [git]:
    git_version [master]:
-   ip_external [192.168.0.200]: 10.0.3.10
-   ip_internal [192.168.0.100]: 10.0.1.10
-   kolla_manager_version [2019.3.0]:
+   ip_external [192.168.90.200]:
+   ip_internal [192.168.50.100]:
+   kolla_manager_version [latest]:
    openstack_version [rocky]:
-   osism_manager_version [2019.3.0]:
-   project_name [customer]: betacloud
-   repository_version [2019.3.0]:
-   name_servers [default]: { "values": ["8.8.8.8", "4.4.4.4"] }
-   ntp_servers [default]: { "values": ["de.pool.ntp.org"] }
+   osism_manager_version [latest]:
+   project_name [customer]: osism
+   repository_version [latest]:
+   name_servers [default]: { "values": ["9.9.9.9", "149.112.112.112"] }
+   ntp_servers [default]:
 
-Create a Git repository inside the newly created ``cfg-customer`` directory.
+Create a Git repository inside the newly created ``cfg-osism`` directory.
 Be careful not to forget dotfiles like ``.gitignore``.
 
 .. code-block:: console
 
-    cd cfg-customer
+    cd cfg-osism
     git init
     git add .
     git commit -m "Initial commit"
@@ -120,10 +118,10 @@ Push the repository to a Git server, so it will be available to the manager node
 
 .. code-block:: console
 
-    git remote add origin <your-git-server>/cfg-customer
+    git remote add origin <your-git-server>/cfg-osism
     git push --set-upstream origin master
 
 .. figure:: /images/gitlab-initial-commit.png
 
-   Directory structure after the initial commit in the Git repository. The ``secrets`` directory
-   is only stored in the repository for test environments.
+   Directory structure after the initial commit in the Git repository. The
+   ``secrets`` directory is only stored in the repository for test environments.

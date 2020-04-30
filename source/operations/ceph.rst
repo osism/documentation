@@ -235,6 +235,76 @@ Add new OSD
 
 * Execute ``osism-ceph osds -l HOST`` on the manager node
 
+Remove OSD
+==========
+
+* Determine the OSD ID for the OSD to be removed
+
+  .. code-block:: console
+
+     ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
+     -1       0.03918 root default
+     -3       0.01959     host testbed-node-0
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
+      3   hdd 0.00980         osd.3               up  1.00000 1.00000
+     -5       0.01959     host testbed-node-1
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
+
+* Determine the block device serverd by the OSD
+
+  .. code-block:: console
+
+     $ docker exec -it ceph-osd-3 ls -la /var/lib/ceph/osd/ceph-3/block
+     lrwxrwxrwx 1 ceph ceph 92 Apr  2 15:10 /var/lib/ceph/osd/ceph-3/block -> /dev/ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec/osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ sudo lvs -o +devices
+       LV                                            VG                                        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
+       osd-data-c5c106dd-7461-40ad-b5cc-28137fb639fc ceph-01de26c3-61fb-4f6c-9fb9-1f3cdfcba444 -wi-ao---- <10.00g                                                     /dev/sdb(0)
+       osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec -wi-ao---- <10.00g                                                     /dev/sdc(0)
+
+* Remove the device from the ``devices`` list in the inventory of the corresponding host
+
+* Mark the OSD as out
+
+  .. code-block:: console
+
+     dragon@testbed-manager:~$ ceph osd out osd.3
+     marked out osd.3.
+
+* Stop the ceph-osd service with ``sudo systemctl stop ceph-osd@3``
+
+* Purge the OSD
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ ceph osd purge osd.3 --yes-i-really-mean-it
+     purged osd.3
+
+* Verify the OSD is removed from the node in the CRUSH map
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ ceph osd tree
+     ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
+     -1       0.02939 root default
+     -3       0.00980     host testbed-node-0
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
+     -5       0.01959     host testbed-node-1
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
+
+* Zap the block device
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ sudo sgdisk --zap-all /dev/sdc
+     Creating new GPT entries.
+     GPT data structures destroyed! You may now partition the disk using fdisk or
+     other utilities.
+
 Replace defect OSD
 ==================
 

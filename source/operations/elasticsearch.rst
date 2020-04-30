@@ -17,7 +17,7 @@ Stop
 
    .. code-block:: none
 
-      $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+      $ curl -X PUT "http://api-int.osism.local:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
       {
         "persistent": {
           "cluster.routing.allocation.enable": "none"
@@ -29,7 +29,7 @@ Stop
 
    .. code-block:: console
 
-      $ curl -X POST "http://INTERNAL_VIP_ADDRESS:9200/_flush/synced"
+      $ curl -X POST "http://api-int.osism.local:9200/_flush/synced"
 
 3. Stop the ``elasticsearch`` containers on all controller nodes (one by one)
 
@@ -50,13 +50,13 @@ Start
 
    .. code-block:: console
 
-      $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/health"
+      $ curl -X GET "http://api-int.osism.local:9200/_cat/health"
 
 3. Reenable allocation
 
    .. code-block:: none
 
-      $ curl -X PUT "http://INTERNAL_VIP_ADDRESS:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
+      $ curl -X PUT "http://api-int.osism.local:9200/_cluster/settings" -H 'Content-Type: application/json' -d'
       {
         "persistent": {
           "cluster.routing.allocation.enable": null
@@ -69,9 +69,9 @@ Check
 
 .. code-block:: console
 
-   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/health"
-   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/recovery"
-   $ curl -X GET "http://INTERNAL_VIP_ADDRESS:9200/_cat/nodes"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/health"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/recovery"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/nodes"
 
 Delete old indices
 ==================
@@ -83,7 +83,7 @@ Manual
 
 .. code-block:: console
 
-   $ curl -s http://INTERNAL_VIP_ADDRESS:9200/_cat/indices?v | sort
+   $ curl -s http://api-int.osism.local:9200/_cat/indices?v | sort
    green  open   flog-2018.02.14 tqkXs5DSQQa7SUGALPCqYA   5   1      15694            0     22.4mb         11.3mb
    green  open   flog-2018.02.15 mFR46PEJQjW3bebsDJuHSg   5   1    8283538            0      7.3gb          3.6gb
    [...]
@@ -96,7 +96,7 @@ Manual
 
 .. code-block:: console
 
-   $ curl -s -X DELETE http://INTERNAL_VIP_ADDRESS:9200/flog-2018.02.14
+   $ curl -s -X DELETE http://api-int.osism.local:9200/flog-2018.02.14
    {"acknowledged":true}
 
 With curator
@@ -138,7 +138,7 @@ Place this file in ``/usr/share/elasticsearch/.curator/curator.yml``.
    $ docker exec -it elasticsearch bash
    (elasticsearch)[elasticsearch@20-10 /]$ export LC_ALL=C.UTF-8
    (elasticsearch)[elasticsearch@20-10 /]$ export LANG=C.UTF-8
-   (elasticsearch)[elasticsearch@20-10 /]$ curator_cli --host INTERNAL_VIP_ADDRESS show_indices
+   (elasticsearch)[elasticsearch@20-10 /]$ curator_cli --host api-int.osism.local show_indices
    flog-2018.02.09
    flog-2018.02.10
    flog-2018.02.11
@@ -181,3 +181,55 @@ Place this file in ``/usr/share/elasticsearch/delete-indices-older-than-30-days.
    2018-02-28 14:13:43,037 INFO      ---deleting index flog-2018.02.13
    2018-02-28 14:13:51,145 INFO      Action ID: 1, "delete_indices" completed.
    2018-02-28 14:13:51,145 INFO      Job completed.
+
+Removing a node
+===============
+
+* Set the exclusion rule to the IP address of the node
+
+  .. code-block:: console
+
+     $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
+     '{
+       "transient" :{
+	   "cluster.routing.allocation.exclude._ip" : "192.168.50.12"
+	}
+     }'
+
+* Check the number of ``relocating_shards```, it has to be ``0``
+
+  .. code-block:: console
+
+     $ curl http://api-int.osism.local:9200>/_cluster/health?pretty
+     {
+       "cluster_name" : "kolla_logging",
+       "status" : "green",
+     [...]
+       "relocating_shards" : 0,
+     [...]
+     }
+
+* Stop the ``elasticsearch`` container
+
+.. code-block:: console
+
+   $ docker stop elasticsearch
+
+* Remove the node from the ``elasticsearch`` group from the inventory
+
+* Set the exclusion rule to empty
+
+  .. code-block:: console
+
+     $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
+     '{
+       "transient" :{
+	   "cluster.routing.allocation.exclude._ip" : ""
+	}
+     }'
+
+* Refresh the cluster configuration
+
+  .. code-block:: console
+
+     $ osism-kolla deploy elasticsearch -e kolla_serial=1

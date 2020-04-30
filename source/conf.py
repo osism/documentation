@@ -1,11 +1,15 @@
 def setup(app):
     app.add_stylesheet('css/custom.css')
 
-extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome']
+
+extensions = [
+  'sphinx.ext.autosectionlabel', 'sphinxcontrib.blockdiag',
+  'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome'
+  ]
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'OSISM'
-copyright = u'2017-2019, Betacloud Solutions GmbH'
+copyright = u'2017-2020, Betacloud Solutions GmbH'
 author = u'Betacloud Solutions GmbH'
 version = u''
 release = u''
@@ -20,7 +24,7 @@ html_show_copyright = True
 htmlhelp_basename = 'documentation'
 html_theme_options = {
     'display_version': False,
-    'canonical_url': 'https://docs.osism.io/',
+    'canonical_url': 'https://docs.osism.de/',
     'style_external_links': True,
     'logo_only': True,
     'prev_next_buttons_location': None

@@ -5,6 +5,14 @@ Kibana
 .. contents::
    :local:
 
+Web Interface
+=============
+
+The Kibana web interface can be found on the internal network API address at
+port ``5601``.
+
+* Example: http://api-int.osism.local:5601/
+
 Search / Discover
 =================
 
@@ -27,7 +35,7 @@ In this case the ``.kibana`` index must be removed manually.
 
 .. code-block:: console
 
-   $ curl -X DELETE http://KOLLA_INTERNAL_VIP_ADDRESS:9200/.kibana
+   $ curl -X DELETE http://api-int.osism.local:9200/.kibana
    {"acknowledged":true}
 
 Then reload the Kibana application in the browser and create a new index

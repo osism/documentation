@@ -1,13 +1,19 @@
+.. _test-ceph:
+
 ====
 Ceph
 ====
 
-* Output after deployment of mon services
+Login to one of the Ceph *monitor* nodes and execute the following commands:
 
   .. code-block:: console
 
-     $ docker exec -it ceph-mon-HOSTNAME bash
-     $ ceph -s
+     sudo docker exec -it ceph-mon-HOSTNAME ceph -s
+
+* Output after deployment of mon services:
+
+  .. code-block:: console
+
      cluster:
        id:     d950d67e-fd17-47c2-8620-cbc30d55ec0c
        health: HEALTH_OK
@@ -24,12 +30,11 @@ Ceph
        usage:   0 kB used, 0 kB / 0 kB avail
        pgs:
 
-* Output after deployment of mon and mgr services
+
+* Output after deployment of mon and mgr services:
 
   .. code-block:: console
 
-     $ docker exec -it ceph-mon-HOSTNAME bash
-     $ ceph -s
      cluster:
        id:     d950d67e-fd17-47c2-8620-cbc30d55ec0c
        health: HEALTH_WARN
@@ -51,7 +56,6 @@ Ceph
 
   .. code-block:: console
 
-     $ ceph -s
      cluster:
        id:     d950d67e-fd17-47c2-8620-cbc30d55ec0c
        health: HEALTH_OK

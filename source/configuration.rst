@@ -47,6 +47,6 @@ environments have the same structure and share the same inventory.
 * ``playbook-*.yml``: Playbook files for Ansible.
 * ``environments/ansible.cfg``: Ansible configuration file.
 * ``environments/*/ansible.cfg``: Ansible configuration file.
-* ``inventory/hosts``
-* ``inventory/host_vars/*.yml``
-* ``inventory/group_vars/*.yml``
+* ``inventory/hosts``: Ansible inventory file.
+* ``inventory/host_vars/*.yml``: Ansible host variables.
+* ``inventory/group_vars/*.yml``: Ansible group variables.

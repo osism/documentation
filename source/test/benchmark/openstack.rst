@@ -6,4 +6,3 @@ OpenStack
    :maxdepth: 2
 
    rally
-   shaker

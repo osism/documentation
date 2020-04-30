@@ -2,36 +2,53 @@
 OpenStack
 =========
 
+Debugging services
+==================
+
+Sometimes OpenStack services are hard to debug, when there is important logging
+information missing. If a service is not running as expected, but no useful
+logging information is produced by the service, attaching via ``strace`` to the
+process of the service might reveal, what the process is doing.
+
+Find the process id of the OpenStack service in question.
+
+.. code-block:: console
+
+   pgrep -a cinder-volume
+   2814
+
+Attach with strace to the process.
+
+.. code-block:: console
+
+   strace -p 2814
+
 Nested virtualisation
 =====================
-
-.. note:: The activation of nested virtualization will be enabled automatically in the future.
-          Until then carry out subsequent manual steps.
 
 AMD
 ---
 
 .. code-block:: console
 
-   $ echo "options kvm-amd nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
-
-.. code-block:: console
-
-   $ cat /sys/module/kvm_amd/parameters/nested
+   echo "options kvm-amd nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
+   sudo modprobe -r kvm_amd
+   sudo modprobe kvm_amd
+   cat /sys/module/kvm_amd/parameters/nested
    Y
+   docker restart nova_libvirt
 
 Intel
 -----
 
-
 .. code-block:: console
 
-   $ echo "options kvm-intel nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
-
-.. code-block:: console
-
-   $ cat /sys/module/kvm_intel/parameters/nested
+   echo "options kvm-intel nested=y" | sudo tee /etc/modprobe.d/kvm-nested-virtualization.conf
+   sudo modprobe -r kvm_intel
+   sudo modprobe kvm_intel
+   cat /sys/module/kvm_intel/parameters/nested
    Y
+   docker restart nova_libvirt
 
 References
 ----------
@@ -149,8 +166,8 @@ Output before and after removing old disabled `nova-compute` services:
    ...
    nova-consoleauth.log: 13:43:15.488 7 INFO nova.compute.rpcapi [req-48feeaab-63f0-44a7-b2fe-90134ec61d82 - - - - -] Automatically selected compute RPC version 5.0 from minimum service version 35
 
-Solution
---------
+Solution 1
+----------
 
 * You have to upgrade all your registered Nova services. They are allowed to differ one release,
   but not more.
@@ -160,3 +177,106 @@ Solution
 
    $ openstack compute service list
    $ openstack compute service delete ...
+
+Solution 2
+----------
+
+To verify your problem, take a look inside the `nova` database at the `services` table.
+You can find the service version in the `version` column. If this `version` numbers are the same, please restart `nova_compute` on hypervisors.
+
+.. code-block:: console
+
+   $ docker restart nova_compute
+
+* order of upgrade nova
+
+  * first the hypervisors, after restart the old RPC version number is used, because the controller are on old version
+  * after upgrade of controller, the new RPC version number is choosen by controller, but computes are on the old RPC version number
+
+Instance Allocation
+===================
+
+If you see a similar message in ``nova-compute.log``
+
+.. code-block:: console
+
+   hostA
+   Instance 44c356ef-edd0-43a3-bd46-17aed65ea1a6 has allocations against this compute host
+   but is not found in the database.
+
+you can fix this with the following workflow
+
+* first export some variables (Placement Endpoint and Token
+
+.. code-block:: console
+
+   openstack --os-cloud admin endpoint list --service placement
+   | 959ce6527fe742e49c5a6e76f40a04c3 | availability-zone | placement  | placement  | True  | admin     | http://api01:8780   |
+   | bf471ab6830f4e8faeffbc74e6173c2a | availability-zone | placement  | placement  | True  | public    | https://api02:8780  |
+   | de3778d38b674c2c824a9b7a02340c03 | availability-zone | placement  | placement  | True  | internal  | http://api01:8780   |
+
+   export PLACEMENT_ENDPOINT=$(openstack --os-cloud admin endpoint list --service placement | grep internal | awk -F"|" '{ print $8 }')
+
+   openstack --os-cloud admin token issue
+   +------------+----------------------------------+
+   | Field      | Value                            |
+   +------------+----------------------------------+
+   | expires    | 2020-02-18T15:19:47+0000         |
+   | id         | token                            |
+   | project_id | a3a35b63df1941ba9133897f0e89eb5b |
+   | user_id    | ddac12227a2540ea97fa4e1db5a651da |
+   +------------+----------------------------------+
+
+   export OS_TOKEN=$(openstack --os-cloud admin token issue | grep " id " | awk -F"|" '{ print $3 }')
+
+* search for the UUID of the hypervisor
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/resource_providers" \
+        | python -m json.tool | grep hostA -A3
+            "name": "hostA",
+            "parent_provider_uuid": null,
+            "root_provider_uuid": "a411305a-6472-454b-a593-06bfa21e84e0",
+            "uuid": "a411305a-6472-454b-a593-06bfa21e84e0"
+
+* find allocations of hypervisor
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/resource_providers/a411305a-6472-454b-a593-06bfa21e84e0/allocations" \
+        | python -m json.tool
+        {
+            "allocations": {
+               "44c356ef-edd0-43a3-bd46-17aed65ea1a6": {
+                  "resources": {
+                     "DISK_GB": 10,
+                     "MEMORY_MB": 1024,
+                     "VCPU": 1
+                  }
+               }
+            },
+            "resource_provider_generation": 30
+         }
+
+* delete the allocation
+
+.. code-block:: console
+
+   curl -s \
+        -H "accept: application/json" \
+        -H "User-Agent: nova-scheduler keystoneauth1/3.4.0 python-requests/2.14.2 CPython/2.7.5" \
+        -H "OpenStack-API-Version: placement 1.17" \
+        -H "X-Auth-Token: $OS_TOKEN" \
+        "$PLACEMENT_ENDPOINT/allocations/44c356ef-edd0-43a3-bd46-17aed65ea1a6" \
+        -X DELETE

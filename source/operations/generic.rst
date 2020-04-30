@@ -8,10 +8,10 @@ Run commands
 .. code-block:: console
 
    $ osism-ansible generic all -m shell -a date
-   20-10.betacloud.xyz | SUCCESS | rc=0 >>
+   testbed-node-0.osism.local | SUCCESS | rc=0 >>
    Sun Dec  2 10:28:42 UTC 2018
 
-   10-11.betacloud.xyz | SUCCESS | rc=0 >>
+   testbed-node-1.osism.local | SUCCESS | rc=0 >>
    Sun Dec  2 10:28:42 UTC 2018
    [...]
 
@@ -39,17 +39,17 @@ Check if reboot required
    PLAY [Check if system reboot is required] **************************************
 
    TASK [Check if /var/run/reboot-required exist] *********************************
-   ok: [10-11.betacloud.xyz]
+   ok: [testbed-manager.osism.local]
    [...]
 
    TASK [Print message if /var/run/reboot-required exist] *************************
-   ok: [10-11.betacloud.xyz] => {
-       "msg": "Reboot of 10-11.betacloud.xyz required"
+   ok: [testbed-manager.osism.local] => {
+       "msg": "Reboot of testbed-manager.osism.local required"
    }
    [...]
 
    PLAY RECAP *********************************************************************
-   10-11.betacloud.xyz        : ok=2    changed=0    unreachable=0    failed=0
+   testbed-manager.osism.local        : ok=2    changed=0    unreachable=0    failed=0
    [...]
 
 Reboot a system
@@ -59,15 +59,15 @@ Reboot a system
 
 .. code-block:: console
 
-   $ osism-generic reboot --limit 20-12.betacloud.xyz
+   $ osism-generic reboot --limit testbed-node-0.osism.local
 
    PLAY [Reboot systems] **********************************************************
 
    TASK [Reboot system] ***********************************************************
-   changed: [20-12.betacloud.xyz]
+   changed: [testbed-node-0.osism.local]
 
    PLAY RECAP *********************************************************************
-   20-12.betacloud.xyz        : ok=1    changed=1    unreachable=0    failed=0
+   testbed-node-0.osism.local        : ok=1    changed=1    unreachable=0    failed=0
 
 Upgrade packages
 ================
@@ -80,20 +80,20 @@ Upgrade packages
    PLAY [Upgrade packages] ********************************************************
 
    TASK [Update package cache] ****************************************************
-   ok: [10-11.betacloud.xyz]
+   ok: [testbed-node-0.osism.local]
 
    TASK [Upgrade packages] ********************************************************
-   ok: [10-11.betacloud.xyz]
+   ok: [1testbed-node-0.osism.local]
 
    TASK [Remove useless packages from the cache] **********************************
-   ok: [10-11.betacloud.xyz]
+   ok: [testbed-node-0.osism.local]
 
    TASK [Remove dependencies that are no longer required] *************************
-   ok: [10-11.betacloud.xyz]
+   ok: [testbed-node-0.osism.local]
    [...]
 
    PLAY RECAP *********************************************************************
-   10-11.betacloud.xyz        : ok=4    changed=0    unreachable=0    failed=0
+   testbed-node-0.osism.local        : ok=4    changed=0    unreachable=0    failed=0
    [...]
 
 Cronjobs

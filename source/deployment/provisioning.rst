@@ -29,6 +29,14 @@ Preparations
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal via UEFI (recommended) server from this USB stick/CD
 
+  .. note::
+
+     We prefer the use of software RAIDs to make us less dependent on hardware. But there is nothing against
+     using hardware RAIDs.
+
+* Boot bare-metal server from this USB stick/CD
+
+
 Manual Installation
 ===================
 
@@ -63,6 +71,12 @@ Manual Installation
 
 * Choose ``No automatic updates``
 * Choose ``OpenSSH server`` as software to install
+
+  .. note::
+
+     Do not install any other software component. Everything you need will be installed
+     later by OSISM. In particular, it is not necessary to install a desktop environment.
+
 * After completion, restart the system
 
 .. note::
@@ -76,16 +90,33 @@ Partitioning
 
 * The use of a UEFI is recommended
 * The use of a RAID is recommended
-* The use of a LVM2 is recommended
-* The use of own file systems for the following mountpoints is recommended
 
-  * ``/`` (10 GByte)
-  * ``/home`` (2 GByte)
-  * ``/tmp`` (2 GByte)
-  * ``/var/lib/docker`` (30 GByte, do not set the ``nosuid`` flag on ``/var/lib/docker``)
-  * ``/var/log/audit`` (1 GByte)
-  * ``/var`` (10 GByte)
-  * ``swap`` (min 8 GByte)
+  .. note::
+
+     We prefer the use of software RAIDs to make us less dependent on hardware. But there is nothing against
+     using hardware RAIDs.
+
+* The use of a LVM2 is recommended
+
+  * ``system`` is recommended as the name for the volume group
+
+  .. note::
+
+     Dedicated disks may be provided for ``/var/lib/docker`` on the controller nodes. In this case, do
+     not use an LV for ``/var/lib/docker`` but the devices provided for it.
+
+* Do not configure devices that are not required for the operating system
+
+The use of own file systems for the following mountpoints is recommended. The minimum size and a recommended name
+for the logical volume are noted.
+
+  * ``/`` (10 GByte, logical volume ``root``)
+  * ``/home`` (2 GByte, logical volume ``home``)
+  * ``/tmp`` (2 GByte, logical volume ``tmp``)
+  * ``/var/lib/docker`` (30 GByte, logical volume ``docker``, do not set the ``nosuid`` flag on ``/var/lib/docker``)
+  * ``/var/log/audit`` (1 GByte, logical volume ``audit``)
+  * ``/var`` (10 GByte, logical volume ``var``)
+  * ``swap`` (min 8 GByte, logical volume ``swap``)
 
   .. note::
 
@@ -100,6 +131,8 @@ Partitioning
         # lvextend -L +10G /dev/mapper/system-docker
         # resize2fs -p /dev/mapper/system-docker
 
+The following is a sample view from the Ubuntu installer. This view may vary depending on the environment.
+
 .. image:: /images/installation-partition-disks.png
 
 .. note::
@@ -107,7 +140,6 @@ Partitioning
    When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
    without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
 
-   * https://linuxer.pro/2017/03/what-is-d_type-and-why-docker-overlayfs-need-it/
    * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 
@@ -190,7 +222,8 @@ Prepare Ubuntu Server ISO
 
    Please use console, ALT+F4, for debugging
 
-* Download prepared ISO files (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
+* `Download <https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF>`_ prepared
+  ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 .. note::
 
@@ -258,9 +291,20 @@ After the first boot depending on the environment it is necessary to create the 
 configuration for the management interface manually, because for example bonding or VLANs
 should be used.
 
-* At the beginning it is sufficient to be able to reach the system via SSH.
-* It is not necessary to create the entire network configuration. The network configuration is created during
-  the bootstrap on the systems.
+The following examples shows how the configuration can be done with ``netplan`` or ``iproute2``.
+
+.. note::
+
+   The examples are not the final network configuration. It is a minimal sample network
+   configuration for initial access to the systems.
+
+   The example configuration differs depending on the environment. The configuration is
+   not a recommendation for the network design. It's just an example configuration.
+
+   It is not necessary to manually create the finale network configuration. The final
+   network configuration of the environment is defined during the creation of the
+   configuration repository. The network final network configuration is depoyed during
+   the bootstrap on the systems.
 
 iproute2
 ~~~~~~~~
