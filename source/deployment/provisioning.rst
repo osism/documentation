@@ -381,3 +381,5 @@ If you see this messages in ``dmesg``, logs or ``journal``
    ACPI Exception: AE_AML_BUFFER_LIMIT, Evaluating _PMM (20150930/power_meter-338)
 
 blacklist and unload kernel module ``acpi_power_meter``.
+
+* https://access.redhat.com/solutions/48109
