@@ -126,3 +126,32 @@ Compute service delete
   | 2018-11-22 19:48:37 |    73 | nova-compute01.fqdn.de   |
   | 2019-03-25 11:44:47 | 20864 | nova-compute01.fqdn.de   |
   +---------------------+-------+--------------------------+
+
+Copy/Move Instance images manual to another hypervisor
+======================================================
+
+* login to hypervisorA
+
+.. code-block:: console
+
+  manager$ ssh hypervisorA
+  hypervisorA$
+
+* jump in ``nova_ssh`` container as user ``nova``
+
+.. code-block:: console
+
+  hypervisorA$ docker exec -it -u nova nova_ssh
+  ()[nova@hypervisorA ~]$
+
+* you can jump to ``my_ip`` of ``nova.conf`` of hypervisorB
+
+.. code-block:: console
+
+  ()[nova@hypervisorA ~]$ ssh <hypervisorB-my_ip>
+
+* or copy/move instance images
+
+.. code-block:: console
+
+  ()[nova@hypervisorA ~]$ scp /var/lib/nova/instances/<UUID>/disk <hypervisorB-my_ip>:/var/lib/nova/instances/<UUID>/disk
