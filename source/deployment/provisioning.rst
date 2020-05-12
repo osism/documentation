@@ -382,6 +382,21 @@ Netplan
 
 .. _osism-ubuntu-preseed:
 
+ACPI Error
+----------
+
+If you see this messages in ``dmesg``, logs or ``journal``
+
+.. code-block:: console
+
+   ACPI Error: SMBus/IPMI/GenericSerialBus write requires Buffer of length 66, found length 32 (20150930/exfield-418)
+   ACPI Error: Method parse/execution failed [\_SB.PMI0._PMM] (Node ffff8807ff5bd438), AE_AML_BUFFER_LIMIT (20150930/psparse-542)
+   ACPI Exception: AE_AML_BUFFER_LIMIT, Evaluating _PMM (20150930/power_meter-338)
+
+blacklist and unload kernel module ``acpi_power_meter``.
+
+* https://access.redhat.com/solutions/48109
+
 Preseed file
 ============
 
