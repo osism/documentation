@@ -380,8 +380,6 @@ Netplan
 
    # netplan apply
 
-.. _osism-ubuntu-preseed:
-
 ACPI Error
 ----------
 
@@ -396,6 +394,8 @@ If you see this messages in ``dmesg``, logs or ``journal``
 blacklist and unload kernel module ``acpi_power_meter``.
 
 * https://access.redhat.com/solutions/48109
+
+.. _osism-ubuntu-preseed:
 
 Preseed file
 ============
