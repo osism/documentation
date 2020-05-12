@@ -31,14 +31,16 @@ Import GPG key
 
 .. code-block:: console
 
-   # wget -O - https://download.docker.com/linux/ubuntu/gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
+   # wget -O - https://download.docker.com/linux/ubuntu/gpg | \
+          gpg --no-default-keyring --keyring trustedkeys.gpg --import
 
 Add repository
 --------------
 
 .. code-block:: console
 
-   # aptly mirror create -architectures=amd64 bionic-docker https://download.docker.com/linux/ubuntu bionic stable
+   # aptly mirror create -architectures=amd64 bionic-docker \
+           https://download.docker.com/linux/ubuntu bionic stable
 
 .. code-block:: console
 
@@ -67,7 +69,11 @@ Publish snapshot
 
 .. code-block:: console
 
-   # aptly publish snapshot -passphrase=$GPG_PASSWORD -batch=true -distribution=bionic-docker bionic-docker-YYYYMMDD ubuntu
+   # aptly publish snapshot -passphrase=$GPG_PASSWORD \
+                            -batch=true \
+                            -distribution=bionic-docker \
+                            bionic-docker-YYYYMMDD \
+                            ubuntu
 
 If this takes too long, you can use the `-skip-contents` parameter.
 
@@ -76,7 +82,11 @@ Switch snapshot
 
 .. code-block:: console
 
-   # aptly publish switch -passphrase=$GPG_PASSWORD -batch=true bionic-docker ubuntu bionic-docker-YYYYMMDD
+   # aptly publish switch -passphrase=$GPG_PASSWORD \
+                          -batch=true \
+                          bionic-docker \
+                          ubuntu \
+                          bionic-docker-YYYYMMDD
 
 If this takes too long, you can use the `-skip-contents` parameter.
 
