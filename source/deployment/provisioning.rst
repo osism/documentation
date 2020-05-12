@@ -27,7 +27,7 @@ Preparations
 * Or use the preseed ISO, (https://share.b1-systems.de/index.php/s/scJLAXPXpG7R0TF)
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
-* Boot bare-metal via UEFI (recommended) server from this USB stick/CD
+* Boot bare-metal server via UEFI (recommended) from this USB stick/CD
 
   .. note::
 
