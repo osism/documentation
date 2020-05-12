@@ -137,14 +137,14 @@ Copy/Move Instance images manual to another hypervisor
   manager$ ssh hypervisorA
   hypervisorA$
 
-* jump in nova_ssh container as user nova
+* jump in ``nova_ssh`` container as user ``nova``
 
 .. code-block:: console
 
   hypervisorA$ docker exec -it -u nova nova_ssh
   ()[nova@hypervisorA ~]$
 
-* you can jump to my_ip of hypervisorB
+* you can jump to ``my_ip`` of ``nova.conf`` of hypervisorB
 
 .. code-block:: console
 
