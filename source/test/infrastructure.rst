@@ -263,3 +263,13 @@ network of the control node where Redis is running to connect to Redis.
    repl_backlog_size:1048576
    repl_backlog_first_byte_offset:1
    repl_backlog_histlen:234561
+
+Etcd
+====
+
+.. code-block:: console
+
+   docker exec -it etcd etcdctl --endpoints http://testbed-node-0:2379  cluster-health
+   member ac5b67ea9df5c86e is healthy: got healthy result from http://192.168.50.11:2379
+   member f4befbb7afd08dda is healthy: got healthy result from http://192.168.50.10:2379
+   cluster is healthy
