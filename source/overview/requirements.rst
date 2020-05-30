@@ -20,13 +20,13 @@ All nodes
 ---------
 
 * DNS and NTP servers
-* Docker Hub
+* Docker Hub / Quay.io
 * Official Ubuntu mirrors
 
 .. note::
 
    * Mirrors for Docker and Ubuntu can be provided within the environment. Then access to
-     Docker Hub and Ubuntu is only required from the manager.
+     Docker Hub / Quay.io and Ubuntu mirrors is only required from the manager.
 
    * If no direct access to external services is possible, the use of an HTTP proxy is
      possible.
