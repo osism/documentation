@@ -2,6 +2,18 @@
 Requirements
 ============
 
+Operating system
+================
+
+Deployment is supported on Ubuntu 16.04 and 18.04. Support for Ubuntu 20.04 is in preparation.
+
+The manager node must be at least an Ubuntu 18.04 as of the 2020.2 release. Managers with
+Ubuntu 16.04 are no longer supported.
+
+The use of Ubuntu 16.04 is no longer recommended and will not be supported in the future
+
+Other distributions are currently not supported.
+
 Deployment
 ==========
 
