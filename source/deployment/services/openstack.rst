@@ -61,6 +61,7 @@ OpenStack
 * horizon
 * glance
 * cinder
+* placement (``>= Stein``)
 * nova
 * neutron
 * heat
