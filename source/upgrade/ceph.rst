@@ -21,7 +21,7 @@ Luminous -> Luminous
 
    ceph_manager_version: 20180807-0
 
-* update the manager with ``osism-manager manager``
+* update the manager with ``osism-manager``
 
 * check versions
 

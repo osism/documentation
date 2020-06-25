@@ -151,7 +151,7 @@ Running the upgrade
 .. code-block:: console
 
    osism-generic configuration
-   osism-manager manager
+   osism-manager
 
 .. note::
    If encountering the following error message, while running ``osism-manager``
