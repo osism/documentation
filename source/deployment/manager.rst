@@ -77,7 +77,7 @@ Creation of the operator user
 
   .. code-block::
 
-    ANSIBLE_USER=ubuntu ./run.sh python
+    ANSIBLE_USER=ubuntu ./run.sh python3
 
 * To verify the creation of the operator user, use the private key file
   ``id_rsa.operator``. Make sure you purge all keys from ssh-agent identity
