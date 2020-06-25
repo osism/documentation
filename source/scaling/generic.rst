@@ -105,7 +105,7 @@ and will reboot the system to change the network configuration.
 
   .. code-block:: console
 
-     $ osism-generic python \
+     $ osism-generic python3 \
          --limit testbed-node-2.osism.local \
          -u root \
          --key-file /ansible/secrets/id_rsa.cobbler \
@@ -115,7 +115,7 @@ and will reboot the system to change the network configuration.
 
   .. code-block:: console
 
-     $ osism-generic python \
+     $ osism-generic python3 \
          --limit testbed-node-2.osism.local \
          -u ubuntu \
          --ask-pass \
