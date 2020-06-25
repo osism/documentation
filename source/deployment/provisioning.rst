@@ -78,7 +78,7 @@ Manual Installation
 
 .. note::
 
-   ``python-minimal`` must be installed on the systems.
+   ``python3-minimal`` must be installed on the systems.
 
 .. _partitioning:
 
