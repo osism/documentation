@@ -13,7 +13,6 @@ osism/docker-ara-web                     https://github.com/osism/docker-ara-web
 osism/docker-ceph-ansible                https://github.com/osism/docker-ceph-ansible                 osism/ceph-ansible
 osism/docker-ceph-container              https://github.com/osism/docker-ceph-container               osism/ceph-container
 osism/docker-cephclient                  https://github.com/osism/docker-cephclient                   osism/cephclient
-osism/docker-cobbler                     https://github.com/osism/docker-cobbler                      osism/cobbler
 osism/docker-installer                   https://github.com/osism/docker-installer                    osism/installer
 osism/docker-kolla-ansible               https://github.com/osism/docker-kolla-ansible                osism/kolla-ansible
 osism/docker-openstackclient             https://github.com/osism/docker-openstackclient              osism/openstackclient

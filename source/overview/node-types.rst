@@ -31,7 +31,7 @@ In small environments, services such as mirror and monitoring are usually placed
 In larger environments it may be makes sense to introduce dedicated infrastructure nodes for the
 mirror and monitoring services.
 
-The bare-metal provisioning service (Cobbler) can also be placed on a dedicated node.
+The bare-metal provisioning service can also be placed on a dedicated node.
 
 Controller node
 ===============

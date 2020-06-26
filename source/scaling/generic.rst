@@ -9,63 +9,10 @@ The steps described in this section are performed for each node regardless of it
 Provisioning
 ============
 
-.. note:: This step is optional and only necessary when using Cobbler.
-
-Add the node definition to the ``cobbler_systems`` list parameter in ``infrastructure/configuration.yml``.
-
-.. code-block:: yaml
-
-   cobbler_systems:
-   [...]
-     - name: testbed-node-2
-       params:
-         power_address: 192.168.30.12
-         power_pass: password
-         power_type: ipmilan
-         power_user: openstack
-         profile: ubuntu-server-xenial
-         interfaces:
-           ip_address-ens3: 192.168.40.12
-           mac_address-ens3: aa:bb:cc:dd:ee:ff
-           management-ens3: true
-         kernel_options:
-           "netcfg/choose_interface": ens3
-
-You have to update the cobbler configuration.
-
-.. code-block:: console
-
-   $ osism-infrastructure cobbler
-
-Then the new node can be started. The provisioning then starts automatically via PXE.
-
-If the PXE boot does not start, this may be because of an error in the MAC address.
-You might find some useful logs from dhcpd in the Cobbler container.
-
-.. code-block:: console
-
-   $ docker exec -it cobbler bash
-   # service rsyslog start
-   # tail -f /var/log/syslog
+The system is provisioned with the tool of choice.
 
 Inventory
 =========
-
-* Add the node to the ``inventory/hosts.installation`` inventory file. As ``ansible_host`` use
- the installation IP address.
-
- .. code-block:: ini
-
-    [cobbler]
-    [...]
-    testbed-node-2.osism.local ansible_host=192.168.40.12
-
- .. note::
-
-    The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
-    management interface differs from the IP address to be used later after the initial provisioning.
-
-    This is usually the case when using Cobbler for provisioning.
 
 * Add the node to the ``hosts`` inventory file. As ``ansible_host`` use the management IP address.
 
@@ -79,13 +26,6 @@ Inventory
 
 Initialization
 ==============
-
-.. note::
-
-   The use of the inventory ``hosts.installation`` is only necessary if the IP address of the
-   management interface differs from the IP address to be used later after the initial provisioning.
-
-   This is usually the case when using Cobbler for provisioning.
 
 Prepare the node for the bootstrap. This will add a operator user, will prepare the network configuration,
 and will reboot the system to change the network configuration.
@@ -101,18 +41,6 @@ and will reboot the system to change the network configuration.
 
      ``apt`` must be usable accordingly. Alternatively install Python already during the provisioning of the node.
 
-  When using Cobbler:
-
-  .. code-block:: console
-
-     $ osism-generic python3 \
-         --limit testbed-node-2.osism.local \
-         -u root \
-         --key-file /ansible/secrets/id_rsa.cobbler \
-         -i /opt/configuration/inventory/hosts.installation
-
-  When not using Cobbler:
-
   .. code-block:: console
 
      $ osism-generic python3 \
@@ -123,18 +51,6 @@ and will reboot the system to change the network configuration.
 
 * Creation of the necessary operator user
 
-  When using Cobbler:
-
-  .. code-block:: console
-
-     $ osism-generic operator \
-         --limit testbed-node-2.osism.local \
-         -u root \
-         --key-file /ansible/secrets/id_rsa.cobbler \
-         -i /opt/configuration/inventory/hosts.installation
-
-  When not using Cobbler:
-
   .. code-block:: console
 
      $ osism-generic operator \
@@ -144,16 +60,6 @@ and will reboot the system to change the network configuration.
          --ask-become-pass
 
 * Configuration of the network
-
-  When using Cobbler:
-
-  .. code-block:: console
-
-     $ osism-generic network \
-         --limit testbed-node-2.osism.local \
-         -i /opt/configuration/inventory/hosts.installation
-
-  When not using Cobbler:
 
   .. code-block:: console
 
@@ -175,16 +81,6 @@ and will reboot the system to change the network configuration.
 
 * A reboot is performed to activate and test the network configuration.
   The reboot must be performed before the bootstrap is performed.
-
-  When using Cobbler:
-
-  .. code-block:: console
-
-     $ osism-generic reboot \
-         --limit testbed-node-2.osism.local \
-         -i /opt/configuration/inventory/hosts.installation
-
-  When not using Cobbler:
 
   .. code-block:: console
 

@@ -225,22 +225,6 @@ Optional infrastructure services
 The deployment of these infrastructure services is optional. They are only
 deployed if they are to be used.
 
-Cobbler
--------
-
-Cobbler is a Linux installation server that allows for rapid setup of network
-installation environments. It glues together and automates many associated Linux
-tasks so you do not have to hop between lots of various commands and
-applications when rolling out new systems, and, in some cases, changing existing
-ones. It can help with installation, DNS, DHCP, package updates, power
-management, configuration management orchestration, and much more. [#]_
-
-On the manager node execute the following command:
-
-.. code-block:: console
-
-  osism-infrastructure cobbler
-
 Mirror
 ------
 
@@ -258,5 +242,3 @@ Depending on the bandwidth, this process will take several hours.
 
   osism-mirror images
   osism-mirror packages
-
-.. [#] source: https://github.com/cobbler/cobbler/blob/master/README.md
