@@ -130,7 +130,7 @@ PCI passthrough
      options vfio-pci ids=10de:1b38[,10de:1038]
      options vfio-pci disable_vga=1
 
-* enable modul after reboot in ``/etc/modules``
+* enable module after reboot in ``/etc/modules``
 
   .. code-block:: console
 
@@ -148,7 +148,7 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ lspci -nn -s 84:00.0
+     $ lspci -kk -s 84:00.0
      84:00.0 VGA compatible controller [0300]: NVIDIA Corporation GV102 [10de:1e07] (rev a1)
              Subsystem: Gigabyte Technology Co., Ltd Device [1458:37a9]
              Kernel driver in use: vfio-pci
