@@ -9,7 +9,6 @@ Name                                     Repository                             
 ======================================== ============================================================ ==========================================================
 osism/ansible-cephclient                 https://github.com/osism/ansible-cephclient                  osism.cephclient
 osism/ansible-chrony                     https://github.com/osism/ansible-chrony                      osism.chrony
-osism/ansible-cobbler                    https://github.com/osism/ansible-cobbler                     osism.cobbler
 osism/ansible-cockpit                    https://github.com/osism/ansible-cockpit                     osism.cockpit
 osism/ansible-common                     https://github.com/osism/ansible-common                      osism.common
 osism/ansible-configuration              https://github.com/osism/ansible-configuration               osism.configuration

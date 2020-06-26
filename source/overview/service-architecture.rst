@@ -9,7 +9,6 @@ Infrastructure
 
 * ARA -- records Ansible playbook runs
 * Aptly -- repository management tool
-* Cobbler -- Linux installation server
 * Dokuwiki -- simple to use Wiki software
 * Netbox -- IP address management (IPAM) and data center infrastructure management (DCIM) tool
 * OSISM -- Open Source Infrastructure & Service Manager

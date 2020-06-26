@@ -9,7 +9,6 @@ Operations
    operations/ara
    operations/ceph
    operations/cinder
-   operations/cobbler
    operations/cockpit
    operations/docker
    operations/elasticsearch
