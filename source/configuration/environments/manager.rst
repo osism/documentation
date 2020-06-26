@@ -75,3 +75,10 @@ JSON file
    fact_caching = jsonfile
    fact_caching_timeout = 86400
    fact_caching_connection = /share/facts
+
+.. warning::
+
+   ``jsonfile`` fact caching can cause a huge performance impact for compute nodes, due to the
+   large number of virtual network interfaces. Cases of 50MB and above for a single node have
+   been seen. Depending on the number of compute nodes this slows down Ansible quite a lot. If
+   you have issues with that, switch to Redis fact caching.
