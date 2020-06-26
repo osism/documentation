@@ -9,7 +9,8 @@ services.
 Further details about OSISM can be found on https://www.osism.de. Do not hesitate
 to write an e-mail to info@betacloud-solutions.de if you have questions or doubts.
 
-A testbed of OSISM is available under https://github.com/osism/testbed. This
+A testbed of OSISM is available under https://github.com/osism/testbed.
+Documentation is available at https://docs.osism.de/testbed. This
 allows you to deploy a small environment with four nodes on a public cloud like our
 `Betacloud <https://www.betacloud.de>`_. Other providers like Citycloud are also
 supported.
