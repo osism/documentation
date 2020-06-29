@@ -10,5 +10,6 @@ Tables
    tables/networks
    tables/node-types
    tables/releases
+   tables/service-networks
    tables/services
    tables/webinterfaces
