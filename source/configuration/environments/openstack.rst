@@ -78,8 +78,8 @@ HAProxy
 
 Set the ``kolla_internal_fqdn`` in ``environments/kolla/configuration.yml``.
 
-Existing certificates
----------------------
+Existing certificates (<= Train)
+--------------------------------
 
 Set ``kolla_enable_tls_external: "yes"`` in
 ``environments/kolla/configuration.yml`` and add the content of the existing
@@ -108,8 +108,8 @@ If the order is not followed, an error occurs when starting HAProxy:
 
 .. _generation-of-self-signed-certificate:
 
-Generate self-signed certificates
----------------------------------
+Generate self-signed certificates (<= Train)
+--------------------------------------------
 
 If no certificate has been created yet, use ``osism-kolla _ certificates``
 command to generate a self signed certifacte on the manager node.
@@ -117,36 +117,36 @@ command to generate a self signed certifacte on the manager node.
 .. code-block:: console
 
    osism-kolla _ certificates
-   PLAY [Apply role certificates] *************************************************
 
-   TASK [certificates : Ensuring config directories exist] ************************
-   ok: [localhost] => (item=certificates/private)
+   PLAY [Apply role certificates] ***********************************************************************************
 
-   TASK [certificates : Creating SSL configuration file] **************************
-   ok: [localhost] => (item=openssl-kolla.cnf)
+   TASK [certificates : include_tasks] ******************************************************************************
+   included: /ansible/roles/certificates/tasks/generate.yml for localhost
 
-   TASK [certificates : Creating Key] *********************************************
-   ok: [localhost] => (item=/etc/kolla//certificates/private/haproxy.key)
+   TASK [certificates : Ensuring config directories exist] **********************************************************
+   changed: [localhost]
 
-   TASK [certificates : Creating Server Certificate] ******************************
-   ok: [localhost] => (item=/etc/kolla//certificates/private/haproxy.crt)
+   TASK [certificates : Creating SSL configuration file] ************************************************************
+   changed: [localhost] => (item=openssl-kolla.cnf)
 
-   TASK [certificates : Creating CA Certificate File] *****************************
+   TASK [certificates : Creating Key] *******************************************************************************
+   changed: [localhost] => (item=/share/certificates/private/haproxy.key)
+
+   TASK [certificates : Setting permissions on key] *****************************************************************
    ok: [localhost]
 
-   TASK [certificates : Creating Server PEM File] *********************************
-   ok: [localhost]
+   TASK [certificates : Creating Server Certificate] ****************************************************************
+   changed: [localhost] => (item=/share/certificates/private/haproxy.crt)
 
-   PLAY RECAP *********************************************************************
-   localhost        : ok=6    changed=0    unreachable=0    failed=0
+   PLAY RECAP *******************************************************************************************************
+   localhost                  : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
-The self-signed certificate is located at
-``/etc/kolla/certificates/haproxy.pem`` inside the ``manager_kolla-ansible_1``
+The self-signed certificate is located at ``/share/certificates/haproxy.pem`` inside the ``manager_kolla-ansible_1``
 container on the manager node.
 
 .. code-block:: console
 
-   docker exec -u root -ti manager_kolla-ansible_1 sh -c 'cat /etc/kolla/certificates/private/haproxy.*'
+   docker exec -u root -ti manager_kolla-ansible_1 sh -c 'cat /share/certificates/private/haproxy.*'
 
 Add the content of the output from the command above to
 ``kolla_external_fqdn_cert`` parameter at ``environments/kolla/secrets.yml``
