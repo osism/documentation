@@ -232,7 +232,7 @@ Custom
 Dashboard
 =========
 
-* http://docs.ceph.com/docs/luminous/mgr/dashboard/
+* https://docs.ceph.com/docs/master/mgr/dashboard/
 
 * manual activation
 

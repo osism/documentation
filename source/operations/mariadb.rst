@@ -146,7 +146,7 @@ Now start an temporary mariadb container and attach the volumes of the stopped m
 
 .. code::
 
-   $ docker run --volumes-from mariadb -it osism/mariadb:rocky-latest /bin/bash
+   $ docker run --volumes-from mariadb -it osism/mariadb:train-latest /bin/bash
 
 Inside the container run the command ``mysqld --tc-heuristic-recover=ROLLBACK`` to rollback the transactions.
 
@@ -443,7 +443,7 @@ Now all files in ``/var/lib/mysql`` are deleted.
 
 .. code-block:: console
 
-   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --rm -it quay.io/osism/mariadb:rocky-latest
+   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --rm -it quay.io/osism/mariadb:train-latest
    ()[mysql@9287f94e9316 /]$ rm -rf /var/lib/mysql/*
 
 It is important that no more files are present in ``/var/lib/mysql``. Since ``/var/lib/mysql``
@@ -480,7 +480,7 @@ a few intermediate steps.
 
 .. code-block:: console
 
-   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --name mariadb-restore --rm -it quay.io/osism/mariadb:rocky-latest
+   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --name mariadb-restore --rm -it quay.io/osism/mariadb:train-latest
    ()[mysql@9d16427f7d67 /]$
 
 .. code-block:: console
