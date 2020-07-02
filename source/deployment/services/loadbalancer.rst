@@ -78,7 +78,7 @@ Create the amphora disk image.
    virtualenv --prompt "dib " .venv
    source .venv/bin/activate
    pip install -r diskimage-create/requirements.txt
-   ./diskimage-create/diskimage-create.sh -t raw -o /opt/configuration/environments/openstack/amphora-x64-haproxy -g stable/rocky
+   ./diskimage-create/diskimage-create.sh -t raw -o /opt/configuration/environments/openstack/amphora-x64-haproxy -g stable/train
 
 .. note::
 

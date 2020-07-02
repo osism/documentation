@@ -162,8 +162,8 @@ To mirror the images, execute ``osism-mirror images`` after deployment.
    ##########################
    # versions
 
-   ceph_version: luminous
-   openstack_version: rocky
+   ceph_version: nautilus
+   openstack_version: train
    repository_version: 2019.4.0
 
    ceph_manager_version: 2019.4.0

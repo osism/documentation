@@ -83,7 +83,7 @@ individual parameters can be found in the README file of the repository.
    ceph_manager_version [latest]:
    ceph_network_backend [193.168.80.0/24]:
    ceph_network_frontend [192.168.70.0/24]:
-   ceph_version [luminous]:
+   ceph_version [nautilus]:
    docker_registry [index.docker.io]:
    docker_version [5:19.03.5]:
    domain [osism.local]:
@@ -97,7 +97,7 @@ individual parameters can be found in the README file of the repository.
    ip_external [192.168.90.200]:
    ip_internal [192.168.50.100]:
    kolla_manager_version [latest]:
-   openstack_version [rocky]:
+   openstack_version [train]:
    osism_manager_version [latest]:
    project_name [customer]: osism
    repository_version [latest]:

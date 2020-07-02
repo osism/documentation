@@ -456,7 +456,7 @@ Repair PGs
 Rebalance the cluster
 =====================
 
-* https://docs.ceph.com/docs/luminous/rados/operations/control/
+* https://docs.ceph.com/docs/master/rados/operations/control/
 
 1. Test what OSDs would be affected by teh reweight
 
