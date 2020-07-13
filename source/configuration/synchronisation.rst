@@ -3,10 +3,10 @@ Synchronisation
 ===============
 
 The configuration repository, created using *cookiecutter* needs to be
-synchronized regularly with https://github.com/osism/cfg-master to obtain any
+synchronized regularly with https://github.com/osism/cfg-generics to obtain any
 updates.
 
-``cfg-master`` contains in particular the directory ``environments/manager``,
+``cfg-generics`` contains in particular the directory ``environments/manager``,
 which is needed to initially build the manager node, and is updated on a regular
 basis.
 
