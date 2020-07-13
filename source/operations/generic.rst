@@ -27,6 +27,38 @@ Force NTP sync
    200 OK
    200 OK
 
+you can use osism custom, ``environments/custom/playbook-force-timesync.yml``
+
+.. code-block:: console
+
+   ---
+   - name: Force NTP time sync with chronyc
+     hosts: all
+     gather_facts: no
+
+     vars:
+       chronyc_options:
+         - burst 4/4
+         - makestep
+
+     tasks:
+       - name: Execute chronyc
+         command: "/usr/bin/chronyc -a '{{ item }}'"
+         with_items: "{{ chronyc_options }}"
+         run_once: true
+         become: yes
+
+       - name: Sync hardware clock
+         command: "/sbin/hwclock --systohc --utc"
+         run_once: true
+         become: yes
+
+and execute with command
+
+.. code-block:: console
+
+   osism-run custom force-timesync -l <inventoryname>
+
 Check if reboot required
 ========================
 
