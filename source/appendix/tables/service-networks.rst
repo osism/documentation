@@ -14,6 +14,7 @@ phpMyAdmin          osism.helper              ``172.31.100.32/28``
 Rally               osism.helper              ``172.31.100.48/28``
 Adminer             osism.helper              ``172.31.100.64/28``
 Patchman            osism.patchman            ``172.31.100.80/28``
+Pulp                osism.pulp                ``172.31.100.96/28``
 Manager             osism.manager             ``172.31.101.0/28``
 =================== ========================= ====================
 
