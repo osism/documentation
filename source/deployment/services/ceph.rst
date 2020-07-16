@@ -112,7 +112,7 @@ the Ceph monitor nodes.
 
      environments/kolla/files/overlays/cinder/cinder-backup/ceph.client.cinder-backup.keyring
 
-* Copy from ``etc/ceph/ceph.client.cinder.keyring`` to
+* Copy from ``/etc/ceph/ceph.client.cinder.keyring`` to
 
   .. code-block:: console
 
