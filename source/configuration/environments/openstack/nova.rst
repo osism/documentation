@@ -169,6 +169,8 @@ PCI passthrough
      alias = { "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
      alias = { "vendor_id": "10de", "product_id":"1adf", "device_type":"type-PCI", "name":"nvidiap40" }
 
+Look into ``nova-compute.log`` on GPU-hypervisor for ``device_type``. Possible values are ``type-PCI``, ``type-PF`` or ``type-VF``.
+
 * whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
   .. code-block:: ini
