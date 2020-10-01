@@ -149,7 +149,7 @@ PCI passthrough
      options vfio-pci ids=10de:1b38[,10de:1038]
      options vfio-pci disable_vga=1
 
-* enable modul after reboot in ``/etc/modules``
+* enable module after reboot in ``/etc/modules``
 
   .. code-block:: console
 
@@ -167,7 +167,7 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ lspci -nn -s 84:00.0
+     $ lspci -nnk -s 84:00.0
      84:00.0 VGA compatible controller [0300]: NVIDIA Corporation GV102 [10de:1e07] (rev a1)
              Subsystem: Gigabyte Technology Co., Ltd Device [1458:37a9]
              Kernel driver in use: vfio-pci
@@ -187,6 +187,8 @@ PCI passthrough
      [pci]
      alias = { "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
      alias = { "vendor_id": "10de", "product_id":"1adf", "device_type":"type-PCI", "name":"nvidiap40" }
+
+Look into ``nova-compute.log`` on GPU-hypervisor for ``device_type``. Possible values are ``type-PCI``, ``type-PF`` or ``type-VF``.
 
 * whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
