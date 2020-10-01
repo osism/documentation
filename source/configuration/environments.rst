@@ -10,5 +10,4 @@ Environments
    environments/infrastructure
    environments/openstack
    environments/ceph
-   environments/monitoring
    environments/custom

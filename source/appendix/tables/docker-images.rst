@@ -9,11 +9,10 @@ Name                                     Repository                             
 ======================================== ============================================================ ===============================
 osism/docker-aptly                       https://github.com/osism/docker-aptly                        osism/aptly
 osism/docker-ara-server                  https://github.com/osism/docker-ara-server                   osism/ara-server
+osism/docker-ara-web                     https://github.com/osism/docker-ara-web                      osism/ara-web
 osism/docker-ceph-ansible                https://github.com/osism/docker-ceph-ansible                 osism/ceph-ansible
+osism/docker-ceph-container              https://github.com/osism/docker-ceph-container               osism/ceph-container
 osism/docker-cephclient                  https://github.com/osism/docker-cephclient                   osism/cephclient
-osism/docker-cobbler                     https://github.com/osism/docker-cobbler                      osism/cobbler
-osism/docker-devpi                       https://github.com/osism/docker-devpi                        osism/devpi
-osism/docker-esrally                     https://github.com/osism/docker-esrally                      osism/esrally
 osism/docker-installer                   https://github.com/osism/docker-installer                    osism/installer
 osism/docker-kolla-ansible               https://github.com/osism/docker-kolla-ansible                osism/kolla-ansible
 osism/docker-openstackclient             https://github.com/osism/docker-openstackclient              osism/openstackclient

@@ -8,7 +8,7 @@ Base directory: ``environments/ceph``
 
 .. note ::
 
-   The documentation for ``ceph-ansible`` can be found on http://docs.ceph.com/ceph-ansible/master/.
+   The documentation for ``ceph-ansible`` can be found at http://docs.ceph.com/ceph-ansible/master/.
 
 Generic
 =======
@@ -26,7 +26,7 @@ Generic
      osd_scenario: lvm
 
      generate_fsid: false
-     fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+     fsid: 1a6b162c-cc15-4569-aa09-db536c93569f
 
 * ``environments/configuration.yml``
 
@@ -36,7 +36,7 @@ Generic
      # ceph
 
      ceph_share_directory: /share
-     ceph_cluster_fsid: 3e9d257e-aaf7-4471-ad41-aa97a81c736f
+     ceph_cluster_fsid: 1a6b162c-cc15-4569-aa09-db536c93569f
 
 Devices
 =======
@@ -75,6 +75,11 @@ is used.
 Network
 =======
 
+Ceph uses a ``public_network`` which needs to be reachable by Ceph clients and
+a separate network, which is used by OSDs. The network used by OSDs is called
+``cluster_network``. When omitting the ``cluster_network`` variable, the
+``public_network`` is used by OSDs as well.
+
 * ``environments/ceph/configuration.yml``
 
   .. code-block:: yaml
@@ -82,8 +87,8 @@ Network
      ##########################
      # network
 
-     public_network: 10.200.250.0/24
-     # cluster_network:
+     public_network: 10.0.5.0/24
+     cluster_network: 10.0.6.0/24
 
 * ``environments/kolla/configuration.yml``
 
@@ -92,7 +97,7 @@ Network
      ##########################################################
      # external ceph
 
-     ceph_public_network: 10.200.250.0/24
+     ceph_public_network: 10.0.5.0/24
 
 .. note::
 
@@ -114,7 +119,7 @@ Pools & Keys
 
 .. note::
 
-   Remove unneeded pools & keys accordingly.
+   Add or remove unneeded pools & keys accordingly.
 
 .. note::
 
@@ -131,9 +136,9 @@ Pools & Keys
 
    # NOTE: After the initial deployment of the Ceph Clusters, the following parameter can be
    #       set to false. It must only be set to true again when new pools or keys are added.
-
    openstack_config: true
 
+   # Define pools for Openstack services
    openstack_cinder_backup_pool:
      name: backups
      pg_num: 32
@@ -160,7 +165,6 @@ Pools & Keys
      rule_name: ""
      application: "rbd"
 
-
    openstack_pools:
      - "{{ openstack_cinder_backup_pool }}"
      - "{{ openstack_cinder_pool }}"
@@ -168,6 +172,7 @@ Pools & Keys
      - "{{ openstack_gnocchi_pool }}"
      - "{{ openstack_nova_pool }}"
 
+   # Define keys for Ceph clients
    openstack_keys:
      - name: client.glance
        caps:
@@ -177,7 +182,7 @@ Pools & Keys
      - name: client.cinder
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"  # yamllint disable-line rule:line-length
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rx pool={{ openstack_glance_pool.name }}"
        mode: "0600"
      - name: client.cinder-backup
        caps:
@@ -192,8 +197,21 @@ Pools & Keys
      - name: client.nova
        caps:
          mon: "allow r"
-         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_cinder_backup_pool.name }}"  # yamllint disable-line rule:line-length
+         osd: "allow class-read object_prefix rbd_children, allow rwx pool={{ openstack_glance_pool.name }}, allow rwx pool={{ openstack_nova_pool.name }}, allow rwx pool={{ openstack_cinder_pool.name }}, allow rwx pool={{ openstack_cinder_backup_pool.name }}"
        mode: "0600"
+
+To define a new pool, add a new dictionary like following:
+
+.. code-block:: yaml
+
+   openstack_SERVICE_pool:
+     name: SERVICE
+     pg_num: 32
+     rule_name: ""
+     application: "rbd"
+
+Add the new pool to ``openstack_pools`` list and define a new key at
+``openstack_keys``. Keys are used by Ceph clients to access the pool.
 
 Custom
 ======
@@ -214,7 +232,7 @@ Custom
 Dashboard
 =========
 
-* http://docs.ceph.com/docs/luminous/mgr/dashboard/
+* https://docs.ceph.com/docs/master/mgr/dashboard/
 
 * manual activation
 

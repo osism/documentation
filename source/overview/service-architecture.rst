@@ -2,23 +2,22 @@
 Service architecture
 ====================
 
-The following sections describe the services that the framework deploys.
+The following sections describe the services which are deployed by the framework.
 
 Infrastructure
 ==============
 
 * ARA -- records Ansible playbook runs
 * Aptly -- repository management tool
-* Cobbler -- linux installation server
-* Dokuwiki -- simple to use wiki software
+* Dokuwiki -- simple to use Wiki software
 * Netbox -- IP address management (IPAM) and data center infrastructure management (DCIM) tool
 * OSISM -- Open Source Infrastructure & Service Manager
-* Registry - docker registry server
+* Registry - Docker registry server
 * phpMyAdmin -- administration tool for MySQL and MariaDB
 
 .. note::
 
-   It is possible to integrate other services. The support of an other service on request (info@betacloud-solutions.de).
+   It is possible to integrate other services. Support for additional services on request (info@betacloud-solutions.de).
 
 Logging & Monitoring
 ====================
@@ -33,7 +32,7 @@ Logging & Monitoring
 
 .. note::
 
-   The integration into an existing monitoring is also possible.
+   The integration into existing monitoring systems is possible.
 
 .. note::
 
@@ -50,7 +49,7 @@ Shared services
 
 .. note::
 
-   Clustered services can also be run as a single instance.
+   Clustered services can also be run as single instance.
 
 Controller
 ==========
@@ -74,7 +73,7 @@ Controller
 
 .. note::
 
-   It is possible to integrate other OpenStack services. The support of an other OpenStack service on request (info@betacloud-solutions.de).
+   It is possible to integrate other services. Support for additional services on request (info@betacloud-solutions.de).
 
 Resources
 =========
@@ -87,9 +86,9 @@ Compute
 
 .. note::
 
-   It is possible to integrate other hypervisors. The support of an other hypervisor on request (info@betacloud-solutions.de).
+   It is possible to integrate other hypervisors. Support for other hypervisors on request (info@betacloud-solutions.de).
 
-   A list of possible hypervisors can be found on https://docs.openstack.org/nova/queens/admin/configuration/hypervisors.html.
+   A list of supported hypervisors can be found at https://docs.openstack.org/nova/queens/admin/configuration/hypervisors.html.
 
 Network
 -------
@@ -100,9 +99,9 @@ Network
 
 .. note::
 
-   It is possible to integrate other network backends. The support of an other network backend on request (info@betacloud-solutions.de).
+   It is possible to integrate other network backends. Support for other network backends on request (info@betacloud-solutions.de).
 
-   A list of possible network drivers can be found on https://github.com/openstack?q=networking.
+   A list of supported network drivers can be found at https://github.com/openstack?q=networking.
 
 Storage
 -------
@@ -112,6 +111,6 @@ Storage
 
 .. note::
 
-   It is possible to integrate other storage backends. The support of an other storage backend on request (info@betacloud-solutions.de).
+   It is possible to integrate other storage backends. Support for other storage backends on request (info@betacloud-solutions.de).
 
-   A list of possible storage drivers can be found on https://docs.openstack.org/cinder/queens/configuration/block-storage/volume-drivers.html.
+   A list of possible storage drivers can be found at https://docs.openstack.org/cinder/queens/configuration/block-storage/volume-drivers.html.

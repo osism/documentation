@@ -235,6 +235,76 @@ Add new OSD
 
 * Execute ``osism-ceph osds -l HOST`` on the manager node
 
+Remove OSD
+==========
+
+* Determine the OSD ID for the OSD to be removed
+
+  .. code-block:: console
+
+     ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
+     -1       0.03918 root default
+     -3       0.01959     host testbed-node-0
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
+      3   hdd 0.00980         osd.3               up  1.00000 1.00000
+     -5       0.01959     host testbed-node-1
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
+
+* Determine the block device serverd by the OSD
+
+  .. code-block:: console
+
+     $ docker exec -it ceph-osd-3 ls -la /var/lib/ceph/osd/ceph-3/block
+     lrwxrwxrwx 1 ceph ceph 92 Apr  2 15:10 /var/lib/ceph/osd/ceph-3/block -> /dev/ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec/osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ sudo lvs -o +devices
+       LV                                            VG                                        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
+       osd-data-c5c106dd-7461-40ad-b5cc-28137fb639fc ceph-01de26c3-61fb-4f6c-9fb9-1f3cdfcba444 -wi-ao---- <10.00g                                                     /dev/sdb(0)
+       osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec -wi-ao---- <10.00g                                                     /dev/sdc(0)
+
+* Remove the device from the ``devices`` list in the inventory of the corresponding host
+
+* Mark the OSD as out
+
+  .. code-block:: console
+
+     dragon@testbed-manager:~$ ceph osd out osd.3
+     marked out osd.3.
+
+* Stop the ceph-osd service with ``sudo systemctl stop ceph-osd@3``
+
+* Purge the OSD
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ ceph osd purge osd.3 --yes-i-really-mean-it
+     purged osd.3
+
+* Verify the OSD is removed from the node in the CRUSH map
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ ceph osd tree
+     ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
+     -1       0.02939 root default
+     -3       0.00980     host testbed-node-0
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
+     -5       0.01959     host testbed-node-1
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
+
+* Zap the block device
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ sudo sgdisk --zap-all /dev/sdc
+     Creating new GPT entries.
+     GPT data structures destroyed! You may now partition the disk using fdisk or
+     other utilities.
+
 Replace defect OSD
 ==================
 
@@ -382,3 +452,54 @@ Repair PGs
      cluster:
        id:     0155072f-6a71-4f5c-8967-f86e5307033f
        health: HEALTH_OK
+       
+Rebalance the cluster
+=====================
+
+* https://docs.ceph.com/docs/master/rados/operations/control/
+
+1. Test what OSDs would be affected by teh reweight
+
+.. code-block:: console
+
+    $ sudo ceph osd test-reweight-by-utilization
+    no change
+    moved 6 / 4352 (0.137868%)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
+    min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
+    
+    oload 120
+    max_change 0.05
+    max_change_osds 4
+    average_utilization 0.4187
+    overload_utilization 0.5025
+    osd.14 weight 0.9500 -> 0.9000
+    osd.27 weight 0.9500 -> 0.9000
+    osd.37 weight 0.9500 -> 0.9000
+    osd.29 weight 1.0000 -> 0.9500
+    
+2. If the OSDs match your "fullest" OSDs execute the reweight
+
+.. code-block:: console
+
+    $ sudo ceph osd reweight-by-utilization
+    no change
+    moved 6 / 4352 (0.137868%)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
+    min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
+    
+    oload 120
+    max_change 0.05
+    max_change_osds 4
+    average_utilization 0.4187
+    overload_utilization 0.5025
+    osd.14 weight 0.9500 -> 0.9000
+    osd.27 weight 0.9500 -> 0.9000
+    osd.37 weight 0.9500 -> 0.9000
+    osd.29 weight 1.0000 -> 0.9500
+    
+3. Wait for the cluster to rebalance itself and check disk usage again. Repeat above if necessary

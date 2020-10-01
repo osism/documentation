@@ -11,11 +11,13 @@ A deployment consists of 3 largely independent areas:
 Provisioning & deployment
 =========================
 
-The deployment and administration of all services is centrally managed via this node.
+The deployment and administration of all services is centrally managed on a
+separate administaion node. In smaller environments, the manager node can be
+virtualized. The use of a bare-metal system is recommended.
 
-Optional infrastructure services (registry, installation, repository) are provided here as well.
+Optional infrastructure services (registry, installation, repository) are
+provided here as well.
 
-In smaller environments, this node can be virtualized. The use of a bare-metal system is recommended.
 
 Controller
 ==========

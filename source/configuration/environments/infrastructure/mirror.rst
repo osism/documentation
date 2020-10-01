@@ -13,20 +13,168 @@ Mirror
    * - **Documentation**
      - ---
 
-APT repository
-==============
+.. contents::
+   :local:
 
-Docker registry
-===============
+It is recommended to deploy the mirror services on a dedicated system.
 
-If the registry is started on one of the controller nodes, the registry port must
-be adjusted from 5000 to 5001. Otherwise there will be a conflict with the Keystone
-service.
+APT repository mirror
+=====================
+
+Service configuration
+---------------------
+
+For the activation of the deployment of the aptly service, the parameter ``configure_aptly``
+is set to ``yes``.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   configure_aptly: yes
+
+GPG details are set via the ``aptly_configuration`` parameter.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   aptly_configuration:
+     full_name: Betacloud Solutions GmbH
+     email_address: info@betacloud-solutions.de
+     gpg_password: "{{ aptly_gpg_password }}"
+
+The used password ``aptly_gpg_password`` is set in the corresponding secrets file.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/secrets.yml
+
+   aptly_gpg_password: password
+
+By default the aptly service listens on the IPv4 address of the management interface.
+This can be changed with the ``aptly_nginx_host`` parameter.
+
+The following entry is stored by default in the configuration repository.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   aptly_nginx_host: "{{ hostvars[inventory_hostname]['ansible_' + management_interface]['ipv4']['address'] }}"
+
+It is also possible to bind the aptly service to more than one address port pair.
+Additional pairs can be added to the ``aptly_nginx_ports`` parameter. Below is the default
+of the role.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   aptly_nginx_ports:
+     - "{{ aptly_nginx_host }}:{{ aptly_nginx_port }}:80"
+
+Mirrored repositories
+---------------------
+
+The repositories to be mirrored are specified in the ``configuration.yml`` file in
+the ``infrastructure`` environment.
+
+To mirror the repositories, execute ``osism-mirror packages`` after deployment.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   aptly_repository_keys:
+     - https://download.docker.com/linux/ubuntu/gpg
+
+   aptly_repositories:
+     - name: "{{ ansible_distribution_release }}-docker"
+       architecture: amd64
+       distribution: "{{ ansible_distribution_release }}"
+       repository: "https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+     - name: "{{ ansible_distribution_release }}"
+       architecture: amd64
+       distribution: "{{ ansible_distribution_release }}"
+       repository: "http://de.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} main restricted universe multiverse"
+     - name: "{{ ansible_distribution_release }}-backports"
+       architecture: amd64
+       distribution: "{{ ansible_distribution_release }}"
+       repository: "http://de.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-backports main restricted universe multiverse"
+     - name: "{{ ansible_distribution_release }}-security"
+       architecture: amd64
+       distribution: "{{ ansible_distribution_release }}"
+       repository: "http://de.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-security main restricted universe multiverse"
+     - name: "{{ ansible_distribution_release }}-updates"
+       architecture: amd64
+       distribution: "{{ ansible_distribution_release }}"
+       repository: "http://de.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates main restricted universe multiverse"
+
+Docker registry mirror
+======================
+
+Service configuration
+---------------------
+
+For the activation of the deployment of the registry service, the parameter ``configure_registry``
+is set to ``yes``.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   configure_registry: yes
+
+If the registry service is started on one of the controller nodes, the registry service port
+must be adjusted from ``5000`` to e.g. ``5001``. Otherwise there will be a port conflict with
+the OpenStack Keystone service.
 
 .. code-block:: yaml
    :caption: environments/infrastructure/configuration.yml
 
    registry_port: 5001
 
-Files
-=====
+By default the registry service listens on the IPv4 address of the management interface.
+This can be changed with the ``registry_host`` parameter.
+
+The following entry is stored by default in the configuration repository.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   registry_host: "{{ hostvars[inventory_hostname]['ansible_' + management_interface]['ipv4']['address'] }}"
+
+It is also possible to bind the registry service to more than one address port pair.
+Additional pairs can be added to the ``registry_ports`` parameter. Below is the default
+of the role.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration.yml
+
+   registry_ports:
+     - "{{ registry_host }}:{{ registry_port }}:5000"
+
+Mirrored images
+---------------
+
+The images to be mirrored are specified in the ``configuration-mirror-images.yml`` file.
+
+To mirror the images, execute ``osism-mirror images`` after deployment.
+
+.. code-block:: yaml
+   :caption: environments/infrastructure/configuration-mirror-images.yml
+
+   ---
+   ##########################
+   # versions
+
+   ceph_version: nautilus
+   openstack_version: train
+   repository_version: 2019.4.0
+
+   ceph_manager_version: 2019.4.0
+   kolla_manager_version: 2019.4.0
+   osism_manager_version: 2019.4.0
+
+   ##########################
+   # mirror-images
+
+   docker_registry_external: index.docker.io
+   docker_registry_internal: registry.local
+   docker_namespace: osism
+
+   remove_local_docker_images: false

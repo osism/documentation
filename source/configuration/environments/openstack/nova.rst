@@ -2,6 +2,25 @@
 Nova
 ====
 
+.. contents::
+   :local:
+
+Local LVM2 storage
+==================
+
+* A volume group with the name ``nova`` is created first
+
+.. code-block:: ini
+   :caption: environments/kolla/files/overlays/nova-compute.conf
+
+   [libvirt]
+   images_type = lvm
+   images_volume_group = nova
+   volume_clear = none
+   volume_clear_size = 0
+   sparse_logical_volumes = False
+   disk_cachemodes = "file=directsync,block=directsync,network=directsync"
+
 Virtual GPUs
 ============
 
@@ -148,7 +167,7 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ lspci -kk -s 84:00.0
+     $ lspci -nnk -s 84:00.0
      84:00.0 VGA compatible controller [0300]: NVIDIA Corporation GV102 [10de:1e07] (rev a1)
              Subsystem: Gigabyte Technology Co., Ltd Device [1458:37a9]
              Kernel driver in use: vfio-pci

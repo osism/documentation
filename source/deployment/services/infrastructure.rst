@@ -21,9 +21,13 @@ The common role includes the following services:
 HAProxy
 =======
 
+Please read certificate configuration :ref:`haproxy-self-signed-cert`
+
 .. code-block:: console
 
    $ osism-kolla deploy haproxy
+
+.. _kibana_index_delete:
 
 Logging
 =======
@@ -42,7 +46,7 @@ In this case the ``.kibana`` index must be removed manually.
 
 .. code-block:: console
 
-   $ curl -X DELETE http://KOLLA_INTERNAL_VIP_ADDRESS:9200/.kibana
+   $ curl -X DELETE http://api-int.osism.local:9200/.kibana
    {"acknowledged":true}
 
 If the Kibana webinterface is not callable after the first deployment (``503 Service Unavailable``) and a

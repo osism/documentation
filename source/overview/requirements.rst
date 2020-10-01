@@ -2,6 +2,18 @@
 Requirements
 ============
 
+Operating system
+================
+
+Deployment is supported on Ubuntu 16.04 and 18.04. Support for Ubuntu 20.04 is in preparation.
+
+The manager node must be at least an Ubuntu 18.04 as of the 2020.2 release. Managers with
+Ubuntu 16.04 are no longer supported.
+
+The use of Ubuntu 16.04 is no longer recommended and will not be supported in the future
+
+Other distributions are currently not supported.
+
 Deployment
 ==========
 
@@ -14,71 +26,28 @@ can be accessed.
 Services & Access
 =================
 
-All nodes:
+The nodes need access to some external services.
 
-* access to DNS and NTP servers
-* access to Dockerhub
-* access to official Ubuntu mirrors
-* access to PyPI
+All nodes
+---------
+
+* DNS and NTP servers
+* Docker Hub / Quay.io
+* Official Ubuntu mirrors
 
 .. note::
 
-   Mirrors can be provided within the environment.
+   * Mirrors for Docker and Ubuntu can be provided within the environment. Then access to
+     Docker Hub / Quay.io and Ubuntu mirrors is only required from the manager.
 
-Manager node:
+   * If no direct access to external services is possible, the use of an HTTP proxy is
+     possible.
 
-* access to GitHub or an internal Git repository server (e.g. Gitlab)
+Manager node
+------------
 
-Network
-=======
-
-VLAN based
-----------
-
-.. list-table:: Required VLANs
-   :header-rows: 1
-   :widths: 7 10 3 3
-
-   * - Name
-     - Nodes
-     - Optional
-     - Routed
-   * - management
-     - all nodes
-     - |times|
-     - |check|
-   * - internal
-     - all nodes
-     - |times|
-     - |times|
-   * - monitoring
-     - all nodes
-     - |check|
-     - |times|
-   * - tunnel
-     - compute & controller nodes
-     - |check|
-     - |times|
-   * - external api
-     - controller nodes
-     - |check|
-     - |question|
-   * - external
-     - controller nodes
-     - |check|
-     - |check|
-   * - provider
-     - compute & controller nodes
-     - |check|
-     - |question|
-   * - storage frontend
-     - all nodes that require access to the storage
-     - |times|
-     - |times|
-   * - storage backend
-     - storage nodes
-     - |times|
-     - |times|
+* GitHub or an internal Git repository server (e.g. Gitlab)
+* PyPI
 
 Hardware
 ========
