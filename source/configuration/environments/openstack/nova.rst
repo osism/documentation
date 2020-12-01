@@ -131,16 +131,10 @@ PCI passthrough
 * disable nouveau in ``/etc/modprobe.d/blacklist-nvidia-nouveau.conf``
 
   .. code-block:: console
-    
+
      blacklist nouveau
+     blacklist snd_hda_intel # consumer gpu
      options nouveau modeset=0
-
-* rebuild the initramfs and reboot
-
-  .. code-block:: console
-
-     $ sudo update-initramfs -u
-     $ sudo reboot
 
 * get vendor and product IDs
 
@@ -151,9 +145,33 @@ PCI passthrough
 * enable PCI passthrough module in ``/etc/modprobe.d/vfio.conf``
 
   .. code-block:: console
- 
-     options vfio-pci ids=10de:1b38
+
+     options vfio-pci ids=10de:1b38[,10de:1038]
      options vfio-pci disable_vga=1
+
+* enable module after reboot in ``/etc/modules``
+
+  .. code-block:: console
+
+     ...
+     vfio-pci
+
+* rebuild the initramfs and reboot
+
+  .. code-block:: console
+
+     $ sudo update-initramfs -u
+     $ sudo reboot
+
+* check if ``vfio`` is used for ID
+
+  .. code-block:: console
+
+     $ lspci -nnk -s 84:00.0
+     84:00.0 VGA compatible controller [0300]: NVIDIA Corporation GV102 [10de:1e07] (rev a1)
+             Subsystem: Gigabyte Technology Co., Ltd Device [1458:37a9]
+             Kernel driver in use: vfio-pci
+             Kernel modules: nvidiafb, nouveau
 
 * enable the ``PciPassthroughFilter`` scheduler in ``environments/kolla/files/overlays/nova/nova-scheduler.conf``
 
@@ -168,20 +186,25 @@ PCI passthrough
 
      [pci]
      alias = { "vendor_id": "10de", "product_id":"1b38", "device_type":"type-PCI", "name":"nvidiap40" }
+     alias = { "vendor_id": "10de", "product_id":"1adf", "device_type":"type-PCI", "name":"nvidiap40" }
+
+Look into ``nova-compute.log`` on GPU-hypervisor for ``device_type``. Possible values are ``type-PCI``, ``type-PF`` or ``type-VF``.
 
 * whitelist PCI devices in ``environments/kolla/files/overlays/nova/nova-compute.conf``
 
   .. code-block:: ini
 
      [pci]
-     passthrough_whitelist = { "address": "0000:41:00.0" }
+     passthrough_whitelist = { "address": "0000:41:00.0" },
+                             { "address": "0000:84:00.0" }
 
   or
 
   .. code-block:: ini
 
      [pci]
-     passthrough_whitelist = { "vendor_id": "10de", "product_id": "1b38" }
+     passthrough_whitelist = { "vendor_id": "10de", "product_id": "1b38" },
+                             { "vendor_id": "10de", "product_id": "1adf" }
 
 .. note::
 
@@ -198,7 +221,20 @@ PCI passthrough
 
   .. code-block:: console
 
-     $ openstack --os-cloud service flavor set 1C-1G-1GB-10GB --property "pci_passthrough:alias"="nvidiap40:1"
+     for one device
+     $ openstack flavor set --property "pci_passthrough:alias"="nvidiap40:1" 1C-1G-1GB-10GB-GPU
+
+     for more devices, the last digit is for the amount of devices
+     $ openstack flavor set --property "pci_passthrough:alias"="nvidiap40:2" 1C-1G-1GB-10GB-GPU
+
+Hidden KVM for Nvidia GPU
+=========================
+
+* set hidden feature in flavor
+
+  .. code-block:: console
+
+     $ openstack flavor set --property hide_hypervisor_id=true 1C-1G-1GB-10GB-GPU
 
 Resource isolation
 ==================
