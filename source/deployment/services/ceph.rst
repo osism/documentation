@@ -125,7 +125,7 @@ the Ceph monitor nodes.
 
   .. code-block:: console
 
-     environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring
+     environments/kolla/files/overlays/glance/ceph.client.glance.keyring
 
 
 * Copy from ``/etc/ceph/ceph.client.gnocchi.keyring`` to
