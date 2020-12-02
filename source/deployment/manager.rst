@@ -242,3 +242,24 @@ Depending on the bandwidth, this process will take several hours.
 
   osism-mirror images
   osism-mirror packages
+
+import nodes from MAAS to netbox
+------
+
+If you are using netbox as your inventory and if you use canonical's MAAS for deploying your hosts,
+there is a possibility to import your nodes from MAAS as source to netbox
+
+.. code-block:: console
+
+  osism-manager maas2netbox
+
+At the moment the hosts are imported together with the network interfaces and the primary IPv4 will be assigned.
+
+
+You have to add the credentials for accessing MAAS to ``environments/manager/secrets.yml``
+
+.. code-block:: yaml
+
+  maas_login_profile: '<user>'
+  maas_login_url: 'http://<maas_host>:5240/MAAS/'
+  maas_api_key: '<maas_api_key>'
