@@ -1,4 +1,4 @@
-PyGitHub==1.54
+PyGitHub==1.54.1
 Sphinx==3.4.0
 sphinx-rtd-theme==0.5.0
 sphinx_fontawesome==0.0.6
