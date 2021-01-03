@@ -50,3 +50,27 @@ the lock can be deleted manually.
 .. code-block:: console
 
    $ rbd lock rm -p volumes volume-604dfc80-7626-4e6b-b7fd-5c90de36015a "auto 140588574332144" client.118718703
+
+There are still untyped volumes unmigrated
+==========================================
+
+* http://heiterbiswolkig.blogs.nde.ag/2020/08/28/openstack-ha-upgrade-part-ii/
+
+.. code-block:: none
+
+   Error during database migration: Migration cannot continue until all volumes have been migrated
+   to the `__DEFAULT__` volume type. Please run `cinder-manage db online_data_migrations`.
+   There are still untyped volumes unmigrated.
+
+Get the ID of the ``__DEFAULT__`` volume type:
+
+.. code-block:: sql
+
+   SELETE id, name from volume_types WHERE deleted=0
+
+Set the ``volume_type_id`` where the ``volume_type_id`` is not set:
+
+.. code_block:: sql
+
+   UPDATE cinder.snapshots SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
+   UPDATE cinder.volumes SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
