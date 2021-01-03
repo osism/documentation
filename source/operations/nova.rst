@@ -155,3 +155,23 @@ Copy/Move Instance images manual to another hypervisor
 .. code-block:: console
 
   ()[nova@hypervisorA ~]$ scp /var/lib/nova/instances/<UUID>/disk <hypervisorB-my_ip>:/var/lib/nova/instances/<UUID>/disk
+
+Row size too large
+==================
+
+.. code-block:: none
+
+   Row size too large. The maximum row size for the used table type, not counting BLOBs,
+   is 8126. This includes storage overhead, check the manual. You have to change some
+   columns to TEXT or BLOBs
+
+.. code-block:: sql
+
+   SELECT NAME, ROW_FORMAT
+   FROM information_schema.INNODB_SYS_TABLES
+   WHERE ROW_FORMAT IN('Redundant', 'Compact')
+   AND NAME NOT IN('SYS_DATAFILES', 'SYS_FOREIGN', 'SYS_FOREIGN_COLS', 'SYS_TABLESPACES', 'SYS_VIRTUAL', 'SYS_ZIP_DICT', 'SYS_ZIP_DICT_COLS');
+
+.. code-block:: sql
+
+   ALTER TABLE <TABLE> ROW_FORMAT=DYNAMIC;
