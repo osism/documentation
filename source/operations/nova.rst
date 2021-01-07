@@ -175,3 +175,11 @@ Row size too large
 .. code-block:: sql
 
    ALTER TABLE <TABLE> ROW_FORMAT=DYNAMIC;
+
+Host '<hostname>' is not mapped to any cell
+===========================================
+
+.. code-block:: console
+
+   docker exec -it nova_conductor nova-manage cell_v2 list_cells --verbose
+   docker exec -it nova_conductor nova-manage cell_v2 discover_hosts --by-service --cell_uuid <uuid>
