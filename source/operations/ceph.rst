@@ -503,3 +503,16 @@ Rebalance the cluster
     osd.29 weight 1.0000 -> 0.9500
     
 3. Wait for the cluster to rebalance itself and check disk usage again. Repeat above if necessary
+
+HEALTH_WARN application not enabled on 1 pool(s)
+================================================
+
+.. code-block:: console
+
+   $ ceph health detail
+   HEALTH_WARN application not enabled on 1 pool(s)
+   POOL_APP_NOT_ENABLED application not enabled on 1 pool(s)
+       application not enabled on pool 'default.rgw.log'
+       use 'ceph osd pool application enable <pool-name> <app-name>', where <app-name> is 'cephfs', 'rbd', 'rgw', or freeform for custom applications.
+   $ ceph osd pool application enable default.rgw.log rgw
+   enabled application 'rgw' on pool 'default.rgw.log'
