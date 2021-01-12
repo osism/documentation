@@ -516,3 +516,17 @@ HEALTH_WARN application not enabled on 1 pool(s)
        use 'ceph osd pool application enable <pool-name> <app-name>', where <app-name> is 'cephfs', 'rbd', 'rgw', or freeform for custom applications.
    $ ceph osd pool application enable default.rgw.log rgw
    enabled application 'rgw' on pool 'default.rgw.log'
+
+3 monitors have not enabled msgr2
+=================================
+
+Normal during upgrade from Luminous to Nautilus.
+
+* https://docs.ceph.com/en/latest/rados/configuration/msgr2/
+
+.. code-block:: none
+
+   cluster:
+     id:     11111111-1111-1111-1111-111111111111
+     health: HEALTH_WARN
+             3 monitors have not enabled msgr2
