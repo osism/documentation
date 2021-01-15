@@ -26,3 +26,4 @@ Operations
    operations/panko
    operations/prometheus
    operations/rabbitmq
+   operations/ubuntu
