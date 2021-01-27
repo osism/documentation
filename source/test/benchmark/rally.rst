@@ -14,7 +14,7 @@ Configuration
 =============
 
 Set ``configure_rally: yes`` in ``environments/infrastructure/configuration.yml`` and deploy Rally with
-``osism-infrastructure helper --tags rally``.
+~~``osism-infrastructure helper --tags rally``~~ FIXME.
 
 Initialisation
 ==============

@@ -11,14 +11,14 @@ Clients
 
   .. code-block:: console
 
-     $ osism-infrastructure helper --tags openstackclient
+     $ osism-infrastructure openstackclient
 
 * phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over
   the Web.
 
   .. code-block:: console
 
-     $ osism-infrastructure helper --tags phpmyadmin
+     $ osism-infrastructure phpmyadmin
 .. contents::
    :local:
 
