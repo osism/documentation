@@ -20,6 +20,49 @@ ntp servers.
    osism-ansible generic all -m shell -a 'chronyc sources'
    osism-ansible generic all -m shell -a 'chronyc tracking'
 
+If ``multipath`` devices are in use, please preparate the following.
+
+* Change ``lvm filter`` to your device name, e.g.
+
+.. code-block:: console
+
+   grep filter /etc/lvm/lvm/conf
+               filter = [ "a|/dev/mapper/mpatha-part3|", "r|.*|" ]
+
+* Comment/delete the unnecessary bindings in ``/etc/multipath/bindings``, e.g.
+
+.. code-block:: console
+
+   cat /etc/multipath/bindings
+   mpatha 35000c...
+   #mpathb 35000c...
+
+* How to get ``wwids`` of device, e.g.
+
+.. code-block:: console
+
+   /usr/lib/udev/scsi_id -g -u /dev/mapper/mpathb
+   35000c...
+
+* Add ``wwids`` to blacklist of ``multipath``
+
+.. code-block:: console
+
+   cat /etc/multipath.conf
+   ...
+   blacklist {
+       wwid 35000c...
+       wwid 35000c...
+       ...
+   }
+
+* Delete present devices via ``dmsetup`` during run time, so ceph can use the ``sdX`` devices for ``OSDs``
+
+.. code-block:: console
+
+   dmsetup status
+   dmsetup remove mpathb
+
 Management services
 ===================
 
