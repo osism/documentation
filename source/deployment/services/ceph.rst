@@ -104,7 +104,7 @@ node.
 
 .. code-block:: console
 
-   osism-infrastructure helper --tags cephclient
+   osism-infrastructure cephclient
 
 Storage services
 ================
