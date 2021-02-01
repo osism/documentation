@@ -157,6 +157,7 @@ Check services
 .. code-block:: console
 
    $ openstack --os-cloud admin volume service list
+   $ openstack --os-cloud admin availability zone list --volume (--long)
 
 Empty volume
 ------------
@@ -257,7 +258,7 @@ Volume from image
          block_name_prefix: rbd_data.116a9daf632
          format: 2
          features: layering, exclusive-lock, object-map, fast-diff, deep-flatten
-         flags: 
+         flags:
          create_timestamp: Thu Jun 14 12:02:20 2018
          parent: images/c65f20fb-e693-444f-926c-6c5b7861639c@snap
          overlap: 102400 kB
@@ -275,6 +276,8 @@ Check services
 .. code-block:: console
 
    $ openstack --os-cloud admin network agent list
+   $ openstack --os-cloud admin router list
+   $ openstack --os-cloud admin availability zone list --network --long
 
 Open vSwitch agent
 ------------------
@@ -337,6 +340,8 @@ Check services
 .. code-block:: console
 
    $ openstack --os-cloud admin compute service list
+   $ openstack --os-cloud admin hypervisor list
+   $ openstack --os-cloud admin availability zone list --compute --long
 
 Check Ceph connection
 ---------------------
@@ -344,6 +349,40 @@ Check Ceph connection
 .. code-block:: console
 
    $ docker exec -ti nova_compute ceph -k /etc/ceph/ceph.client.nova.keyring -n client.nova -s
+
+Create instances
+----------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin server create --image c65f20fb-e693-444f-926c-6c5b7861639c --flavor 4C-R8G-D10G --min 50 --max 100 test
+   $ openstack --os-cloud admin server list (--long) (--all-projects)
+
+Check libvirt
+-------------
+
+.. code-block:: console
+
+   com1$ docker exec -it nova_libvirt virsh list (--all)
+
+Flavor
+======
+
+Create flavor
+-------------
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin flavor create --ram 8096 --disk 10 --vcpus 4 --public 4C-R8G-D10G
+
+.. code-block:: console
+
+   $ openstack --os-cloud admin flavor list (--long)
+   +-----------+-------------+------+------+-----------+-------+-----------+------+-------------+------------+
+   | ID        | Name        |  RAM | Disk | Ephemeral | VCPUs | Is Public | Swap | RXTX Factor | Properties |
+   +-----------+-------------+------+------+-----------+-------+-----------+------+-------------+------------+
+   | 46b1[...] | 4C-R8G-D10G | 8096 |   10 |         0 |     4 | False     |      |      1.0    |            |
+   +-----------+-------------+------+------+-----------+-------+-----------+------+-------------+------------+
 
 Heat
 ====
