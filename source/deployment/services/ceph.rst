@@ -115,6 +115,10 @@ first Ceph monitor node to
 ``environments/infrastructure/files/ceph/ceph.client.admin.keyring`` in the
 configuration repository.
 
+.. note::
+
+   Please be careful to add a newline at the end of the keyring file.
+
 After committing the change to the configuration repository, update the
 configuration repository on the manager node.
 
@@ -169,6 +173,10 @@ Post-processing
 After successfull Ceph deployment, additional service keys need to be stored in
 the configuration repository. The keyring files are stored at ``/etc/ceph`` on
 the Ceph monitor nodes.
+
+.. note::
+
+   Please be careful to add a newline at the end of the keyring file.
 
 * Copy from ``/etc/ceph/ceph.client.admin.keyring`` to
 
