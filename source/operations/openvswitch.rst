@@ -150,6 +150,14 @@ Orphaned ports - without tag
    ...
 
 .. code-block:: console
+   :caption: Those ports drop many packages, this costs CPU time
+
+   # docker exec -it openvswitch_vswitchd ovs-ofctl dump-ports br-int
+   ...
+     port "tap7f14056f-61": rx pkts=, bytes=, drop=123456789, errs=, frame=, over=, crc=
+           tx pkts=, bytes=, drop=123456789, errs=, coll=
+
+.. code-block:: console
    :caption: Port in ``OpenStack``
 
    # openstack --os-cloud admin port list | grep 7f14056f-61
