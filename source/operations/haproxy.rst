@@ -25,10 +25,17 @@ Change certificate
 ==================
 
 * Update the certificate in the file ``environments/kolla/secrets.yml`` (``kolla_external_fqdn_cert``)
+  The order of certificates is important:
+
+  - Add server private key
+  - Add server public key
+  - Add intermediate CA certificates (if any)
+  - Add CA root certificate
+
 * Reconfigure HAProxy with ``osism-kolla reconfigure haproxy``
 
 Validate configuration
-======================
+----------------------
 
 .. code-block:: console
 
@@ -38,3 +45,10 @@ Validate configuration
 
    $ docker exec -it haproxy haproxy -c -V -f /etc/haproxy/haproxy.cfg
    Configuration file is valid
+
+Restart HAProxy to load new certificate
+---------------------------------------
+
+.. code-block:: console
+
+   osism-ansible generic all -m shell -a 'docker restart haproxy' -l control
