@@ -2,8 +2,65 @@
 Octavia Loadbalancer
 ====================
 
+Prepare configuration repository
+================================
+
+Make sure Octavia is enabled in the configuration repository.
+
+.. code-block:: yaml
+   :caption: /opt/configuration/environments/kolla/configuration.yml
+
+   enable_octavia: "yes"
+
+If you have dedicated network nodes configured, the Octavia health-manager
+and housekeeping should run on the network nodes to be able to access the
+openvswitch integration bridge *br-int*.
+
+.. code-block:: yaml
+   :caption: /opt/configuration/inventory/hosts
+
+   [octavia-api:children]
+   control
+
+   [octavia-health-manager:children]
+   network
+
+   [octavia-housekeeping:children]
+   network
+
+   [octavia-worker:children]
+   network
+
+Run Octavia deployment
+======================
+
+Run Octavia deployment to create the API endpoints and *octavia* user. The
+deployment may not run successfully at this point. It will be run after
+preparation again to finish the deployment successfully.
+
+.. code-block:: console
+
+   osism-kolla deploy octavia
+
 Populate Octavia project
 ========================
+
+Add *octavia* entry to `clouds.yml`. The following openstack cli commands will
+use the *octavia* authentication configuration.
+
+.. code-block:: yaml
+   :caption: /opt/configuration/environments/openstack/clouds.yml
+
+   ---
+   octavia:
+     auth:
+       username: octavia
+       project_name: octavia
+       auth_url: https://api.osism.local:5000/v3
+       project_domain_name: default
+       user_domain_name: default
+     identity_api_version: 3
+     verify: false
 
 For authentication with openstack-client set the octavia keystone password. The
 password can be found in file
@@ -17,14 +74,17 @@ password can be found in file
    clouds:
      octavia:
        auth:
-         password: OCTAVIA_PASS
+         password: OCTAVIA_KEYSTONE_PASSWORD
 
 Create Octavia project
 ----------------------
 
+We will create a dedicated project where Octavia management network and amphora
+instances are going to be created.
+
 .. code-block:: console
 
-   openstack --os-cloud admin project create octavia
+   openstack --os-cloud admin project create --description 'Octavia Loadbalancer Service Project' octavia
 
 Assign admin role to Octavia user in octavia project
 ----------------------------------------------------
@@ -78,23 +138,13 @@ Create the amphora disk image.
    virtualenv --prompt "dib " .venv
    source .venv/bin/activate
    pip install -r diskimage-create/requirements.txt
-   ./diskimage-create/diskimage-create.sh -t raw -o /opt/configuration/environments/openstack/amphora-x64-haproxy -g stable/train
-
-.. note::
-
-   When building image from branch ``stable/rocky`` and before, the environment
-   variable ``DIB_REPOLOCATION_upper_constraints`` needs to be set to ``stein``
-   or higher release because of a bug in the python package ``MarkupSafe==1.0``.
-
-.. code-block:: shell
-
-   export DIB_REPOLOCATION_upper_constraints="https://opendev.org/openstack/requirements/raw/branch/stable/stein/upper-constraints.txt"
+   ./diskimage-create/diskimage-create.sh -t raw -o /opt/configuration/environments/openstack/amphora-x64-haproxy.raw -g stable/train
 
 Create amphora image.
 
 .. code-block:: console
 
-   openstack --os-cloud octavia image create --container-format bare --disk-format raw --private --file /configuration/amphora-x64-haproxy.raw --tag amphora amphora
+   openstack --os-cloud octavia image create --container-format bare --disk-format raw --private --file /configuration/amphora-x64-haproxy.raw --tag amphora amphora-x64-haproxy
 
 Cleanup.
 
@@ -114,53 +164,48 @@ Create Octavia management network
 Create Octavia management subnet
 --------------------------------
 
-For each load balancer there will be at least one amphora instance in the
-Octavia management network created. If the load balancer is configured as
-``ACTIVE_STANDBY`` there will be two amphora instances for each load balancer.
-Therefore the network should allow enough host addresses. If you expect more
-than 100 load balancers to be configured on your cloud, use a ``/16`` network.
-
 .. code-block:: console
 
-   openstack --os-cloud octavia subnet create --subnet-range 10.1.250.1/24 --allocation-pool start=10.1.250.20,end=10.1.250.254 --network lb-mgmt lb-mgmt
+   openstack --os-cloud octavia subnet create --subnet-range 10.250.0.0/16 --allocation-pool start=10.250.1.10,end=10.250.255.254 --network lb-mgmt lb-mgmt
 
 Create Neutron ports for health manager access
 ----------------------------------------------
 
-For each control node, create a Neutron port which will be the access port
-for the health manager, residing on the control node.
+For each network node, create a Neutron port which will be the access port
+for the health manager, residing on the network node.
 
 .. code-block:: console
 
    openstack --os-cloud octavia port create \
      --device-owner octavia:health-mgr \
      --security-group lb-health-mgr-sec-grp \
-     --fixed-ip subnet=lb-mgmt,ip-address=10.1.250.10 \
+     --fixed-ip subnet=lb-mgmt,ip-address=10.250.0.10 \
      --network lb-mgmt \
-     --host control1 \
-     lb-mgmt-control1
+     --host network1 \
+     lb-mgmt-network1
 
-Create interfaces for health manager on control nodes
+Create interfaces for health manager on network nodes
 -----------------------------------------------------
 
-For each control node, note the port id and the mac address from the ports list.
+For each network node, note the port id and the mac address from the ports list.
 
 .. code-block:: console
 
    openstack --os-cloud octavia port list --device-owner octavia:health-mgr -c Name -c "MAC Address" -c ID
 
-Create virtual ethernet device on each control node, by running the following
-command on each control node, using the port id and mac address from the ports
+Create virtual ethernet device on each network node, by running the following
+command on each network node, using the port id and mac address from the ports
 list.
 
 .. code-block:: console
 
-   docker exec -u root -ti openvswitch_vswitchd ovs-vsctl add-port br-int ohm0 \
-     -- set Interface ohm0 external-ids:iface-status=active \
-     -- set Interface ohm0 external-ids:skip_cleanup=true \
-     -- set Interface ohm0 type=internal \
-     -- set Interface ohm0 external-ids:attached-mac=PORT_MAC_ADDRESS \
-     -- set Interface ohm0 external-ids:iface-id=PORT_ID
+   docker exec -u root -ti openvswitch_vswitchd ovs-vsctl add-port br-int o-hm0 \
+     -- set Interface o-hm0 mtu_request=1500 \
+     -- set Interface o-hm0 external-ids:iface-status=active \
+     -- set Interface o-hm0 external-ids:skip_cleanup=true \
+     -- set Interface o-hm0 type=internal \
+     -- set Interface o-hm0 external-ids:attached-mac=PORT_MAC_ADDRESS \
+     -- set Interface o-hm0 external-ids:iface-id=PORT_ID
 
 Verify the port status as ``ACTIVE`` from the ports list.
 
@@ -172,32 +217,32 @@ Add health manager interface configuration to config repository
 ---------------------------------------------------------------
 
 Add the network device configuration for the newly created interfaces on each
-control node in configuration repository.
+network node in configuration repository.
 
 .. code-block:: yaml
-   :caption: /opt/configuration/inventory/host_vars/control1.yml
+   :caption: /opt/configuration/inventory/host_vars/network1.yml
 
-   - device: ohm0
+   - device: o-hm0
      method: static
      address: 10.1.250.10
-     netmask: 255.255.255.0
+     netmask: 255.255.0.0
      up:
-       - ip link set dev ohm0 address PORT_MAC_ADDRESS
-       - iptables -I INPUT -i ohm0 -p udp --dport 5555 -j ACCEPT
+       - ip link set dev o-hm0 address PORT_MAC_ADDRESS
+       - iptables -I INPUT -i o-hm0 -p udp --dport 5555 -j ACCEPT
 
 Run network configuration
 -------------------------
 
-Deploy the network configuration to the control nodes.
+Deploy the network configuration to the network nodes.
 
 .. code-block:: console
 
-   osism-generic network -l 'control'
+   osism-generic network -l network
 
-Restart networking on control nodes
+Restart networking on network nodes
 -----------------------------------
 
-Restart networking on the control nodes to enable the network device
+Restart networking on the network nodes to enable the network device
 configuration for the health manager interface.
 
 
@@ -205,7 +250,7 @@ configuration for the health manager interface.
 
    sudo systemctl restart networking
 
-Configure ansible-kolla
+Configure kolla-ansible
 =======================
 
 Note network id of the load balancer management network ``lb-mgmt``
@@ -253,24 +298,44 @@ Configure global parts for *octavia.conf*.
    
    [service_auth]
    insecure = true
-   
-   [service_auth]
    project_name = octavia
 
-Configure control node specific parts for *octavia.conf* for each control node.
+Configure network node specific parts for *octavia.conf* for each network node.
 
 .. code-block:: ini
-   :caption: /opt/configuration/environments/kolla/files/overlays/octavia/control1/octavia.conf
+   :caption: /opt/configuration/environments/kolla/files/overlays/octavia/network1/octavia.conf
 
    [health_manager]
-   bind_ip = 10.1.250.10
-   controller_ip_port_list = 10.1.250.10:5555
+   bind_ip = 10.250.0.10
+   controller_ip_port_list = 10.250.0.10:5555
+
+Create x509 certificates
+------------------------
 
 Add x509 certificates to configuration repository.
+`See Octavia Certificate Configuration Guide <https://docs.openstack.org/octavia/train/admin/guides/certificates.html>`_
 
-- The CA certificate ``/opt/configuration/environments/kolla/files/overlays/octavia/ca_01.pem``
-- The CA private key ``/opt/configuration/environments/kolla/files/overlays/octavia/cakey.pem``
-- The HAProxy client certificate ``/opt/configuration/environments/kolla/files/overlays/octavia/client.pem``
+The password for the CA private key is located at
+``environments/kolla/secrets.yml`` in the configuration repository at variable
+``octavia_ca_password``. You need to encrypt the CA private key with
+this password. The password will be passed to the `octavia.conf` file and
+Octavia expects the CA private key to be encrypted with this password.
+
+Add the generated files to the following locations in the configuration
+repository.
+
+- ``/opt/configuration/environments/kolla/files/overlays/octavia/client.cert-and-key.pem``
+- ``/opt/configuration/environments/kolla/files/overlays/octavia/client_ca.cert.pem``
+- ``/opt/configuration/environments/kolla/files/overlays/octavia/server_ca.cert.pem``
+- ``/opt/configuration/environments/kolla/files/overlays/octavia/server_ca.key.pem``
+
+For releases prior to *Train* refer to the
+`Octavia Certificate Configuration Guide <https://docs.openstack.org/octavia/stein/contributor/guides/dev-quick-start.html#create-octavia-keys-and-certificates>`_
+and add the certificates to the configuration repository.
+
+* ``/opt/configuration/environments/kolla/files/overlays/octavia/ca_01.pem``
+* ``/opt/configuration/environments/kolla/files/overlays/octavia/cakey.pem``
+* ``/opt/configuration/environments/kolla/files/overlays/octavia/client.pem``
 
 Run octavia deployment
 ======================
@@ -278,3 +343,17 @@ Run octavia deployment
 .. code-block:: console
 
    osism-kolla deploy octavia
+
+Run haproxy deployment for endpoint creation
+============================================
+
+.. code-block:: console
+
+   osism-kolla deploy haproxy
+
+Enable loadbalancer menu in Horizon dashboard
+=============================================
+
+.. code-block:: console
+
+   osism-kolla deploy horizon
