@@ -416,7 +416,7 @@ Nova
 
 .. code-block:: console
 
-   osism-kolla upgrade nova -l controller
+   osism-kolla upgrade nova -l control
 
 * Upgrade nova on the compute nodes:
 
