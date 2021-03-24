@@ -72,7 +72,7 @@ VLAN interfaces as flat provider networks
 .. code-block:: yaml
 
    neutron_bridge_name: [...],br-vlan100,br-vlan200
-   neutron_external_interface: [...],br-vlan100,br-vlan200
+   neutron_external_interface: [...],vlan100,vlan200
 
 .. warning::
 
