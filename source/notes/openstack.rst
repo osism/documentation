@@ -206,6 +206,36 @@ If you see a similar message in ``nova-compute.log``
 
 you can fix this with the following workflow
 
+openstack placement client
+--------------------------
+
+* search for the UUID of the hypervisor
+
+.. code-block:: console
+
+   openstack --os-cloud admin resource provider list | grep hostA
+   | a411305a-6472-454b-a593-06bfa21e84e0 | hostA            |          2 |
+
+* find allocations of hypervisor
+
+.. code-block:: console
+
+   openstack --os-cloud admin resource provider allocation show a411305a-6472-454b-a593-06bfa21e84e0
+   +--------------------------------------+------------+-----------------------------------------------+
+   | resource_provider                    | generation | resources                                     |
+   +--------------------------------------+------------+-----------------------------------------------+
+   | 44c356ef-edd0-43a3-bd46-17aed65ea1a6 |         30 | {'DISK_GB': 10, 'MEMORY_MB': 1024, 'VCPU': 1} |
+   +--------------------------------------+------------+-----------------------------------------------+
+
+* delete the allocation
+
+.. code-block:: console
+
+   openstack --os-cloud admin resource provider allocation delete 44c356ef-edd0-43a3-bd46-17aed65ea1a6
+
+curl
+----
+
 * first export some variables (Placement Endpoint and Token
 
 .. code-block:: console
