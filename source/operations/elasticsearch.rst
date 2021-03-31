@@ -50,7 +50,7 @@ Start
 
    .. code-block:: console
 
-      $ curl -X GET "http://api-int.osism.local:9200/_cat/health"
+      $ curl -X GET "http://api-int.osism.local:9200/_cat/health?v"
 
 3. Reenable allocation
 
@@ -69,9 +69,9 @@ Check
 
 .. code-block:: console
 
-   $ curl -X GET "http://api-int.osism.local:9200/_cat/health"
-   $ curl -X GET "http://api-int.osism.local:9200/_cat/recovery"
-   $ curl -X GET "http://api-int.osism.local:9200/_cat/nodes"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/health?v"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/recovery?v"
+   $ curl -X GET "http://api-int.osism.local:9200/_cat/nodes?v"
 
 Delete old indices
 ==================
