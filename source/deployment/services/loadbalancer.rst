@@ -224,7 +224,7 @@ network node in configuration repository.
 
    - device: o-hm0
      method: static
-     address: 10.1.250.10
+     address: 10.250.0.10
      netmask: 255.255.0.0
      up:
        - ip link set dev o-hm0 address PORT_MAC_ADDRESS
