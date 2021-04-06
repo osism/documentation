@@ -29,6 +29,8 @@ osism-ceph
 
 container manager_ceph-ansible_1
 
+configuration directory environments/kolla/ceph
+
 .. code-block:: console
 
    osism-ceph
@@ -51,44 +53,68 @@ osism-generic
 
 container manager_osism-ansible_1
 
+configuration directory environments/
+
 .. code-block:: console
 
    osism-generic
+       [backup-mariadb]
+       [bootstrap]
+       [check-reboot]
+       [cleanup-backup-mariadb]
        [configuration]
-       [hosts]
+       [docker]
        [facts]
-       [ping]
+       [hardening]
+       [hosts]
+       [network]
        [operator]
+       [ping]
+       [reboot]
+       [repository]
+       [resolvconf]
+       [upgrade-packages]
        [--user USER | -u USER]
        [--key-file /path/to/id_rsa]
        [--ask-pass]
        [--ask-become-pass]
        [--become]
-       [bootstrap]
-       [repository]
-       [docker]
-       [network]
-       [backup-mariadb]
-       [cleanup-backup-mariadb]
-       [upgrade-packages]
-       [check-reboot]
-       [reboot]
-       [resolvconf]
-       [hardening]
        [--limit ANSIBLE_INVENTORY_NAME | -l ANSIBLE_INVENTORY_NAME]
 
+   backup-mariadb, cleanup-backup-mariadb
+       mariadb backup and cleanup backups
+   bootstrap
+       bootstrap
+   check-reboot
+       check if reboot is necessary
+   cleanup-backup-mariadb
+       cleanup mariadb backups
    configuration
        get the latest git data for osism
-   hosts
-       update /etc/hosts
+   docker
+       install/update/configure docker daemon
    facts
        update the facts
-   ping
-       connection test via ansible
+   hardening
+       hardening role
+   hosts
+       update /etc/hosts
+   network
+       configure network
    operator
        login via key and configure dragon user
        in combination with --user, --key-file and --limit or
        --ask-pass, --ask-become-pass and --become
+   ping
+       connection test via ansible
+   reboot
+       reboot, the playbook asks are you sure
+   repository
+       add repositories
+   resolvconf
+       update DNS
+   upgrade-packages
+       upgrade the repository packages, the playbook asks are you sure
    --user USER
        argument for remote user
    --key-file /path/to/id_rsa
@@ -99,46 +125,30 @@ container manager_osism-ansible_1
        argument for asking the become pass
    --become
        argument for using the become method, e.g. sudo
-   bootstrap
-       bootstrap
-   repository
-       add repositories
-   docker
-       install/update/configure docker daemon
-   network
-       configure network
-   backup-mariadb, cleanup-backup-mariadb
-       mariadb backup and cleanup backups
-   upgrade-packages
-       upgrade the repository packages, the playbook asks are you sure
-   check-reboot
-       check if reboot is necessary
-   reboot
-       reboot, the playbook asks are you sure
-   resolvconf
-       update DNS
-   hardening
-       hardening role
+   --limit ANSIBLE_INVENTORY_NAME
+      limits the actions to ANSIBLE_INVENTORY_NAME
 
 osism-infrastucture
 ===================
 
 container manager_osism-ansible_1
 
+configuration directory environments/infrastructure
+
 .. code-block:: console
 
    osism-infrastructure
-       [helper]
        [cobbler]
+       [helper]
        [mirror]
        [mirror-images]
        [mirror-packages]
        [--tags HELPER_TAG]
 
-   helper
-       deploy helper like cephclient, openstackclient, phpmyadmin, rally, sshconfig, adminer
    cobbler
        deploy/configure/update cobbler
+   helper
+       deploy helper like cephclient, openstackclient, phpmyadmin, rally, sshconfig, adminer
    mirror
        deploy aptly, nexus, registry
    mirror-images
@@ -150,6 +160,8 @@ osism-kolla
 ===========
 
 container manager_kolla-ansible_1
+
+configuration directory environments/kolla
 
 .. code-block:: console
 
@@ -171,7 +183,9 @@ container manager_kolla-ansible_1
 osism-manager
 =============
 
-script using environment /opt/configuration/environments/manager/
+container manager_osism-ansible_1
+
+configuration directory environments/manager/
 
 .. code-block:: console
 
@@ -181,51 +195,91 @@ script using environment /opt/configuration/environments/manager/
    manager
        deploy/update manager, twice vault pw
    prefix
-       please use environment variables for Ansible configuration like ANSIBLE_ASK_VAULT_PASS=True,
-       e.g. ANSIBLE_ASK_VAULT_PASS=True osism-manager manager
+       please use environment variables for Ansible configuration like
+       ANSIBLE_ASK_VAULT_PASS=True, e.g.
+       ANSIBLE_ASK_VAULT_PASS=True osism-manager manager
 
 osism-mirror
 ============
 
-script using environment /opt/configuration/environments/infrastructure
+container manager_osism-ansible_1
+
+configuration directory environments/infrastructure
+
 .. code-block:: console
 
-   osism-mirror images, packages
-       # synchronize images and packages
+   osism-mirror
+       [images]
+       [packages]
+
+   images
+       synchronize images
+   packages
+       synchronize packages
 
 osism-monitoring
 ================
 
+container manager_osism-ansible_1
+
+configuration directory environments/monitoring
+
 .. code-block:: console
 
-   osism-monitoring prometheus-exporter, prometheus, monitoring
-       # deploy prometheus, grafana and configuration
+   osism-monitoring
+       [monitoring]
+       [prometheus]
+       [prometheus-exporter]
+
+   monitoring
+       deploy monitoring, e.g. netdata, zabbix
+   prometheus
+       deploy prometheus, only in older version of OSISM
+   prometheus-exporter
+       deploy prometheus-exporter, only in older version of OSISM
 
 osism-openstack
 ===============
 
+container manager_osism-ansible_1
+
+configuration directory environments/openstack
+
 .. code-block:: console
 
-   osism-openstack nova-aggregates
-   osism-openstack nova-flavors
-   osism-openstack glance-images
+   osism-openstack
+       [nova-aggregates]
+       [nova-flavors]
+       [glance-images]
+
+   nova-aggregates
+       configure nova aggregates, for older version of OSISM
+   nova-flavors
+       configure nova flavors, for older version of OSISM
+   glance-images
+       configure glance images, for older version of OSISM
 
 osism-run
 =========
 
-osism-run is for all additional plays/playbooks
+osism-run is for all additional roles, not included in OSISM
+
+container manager_osism-ansible_1
+
+configuration directory environments/custom , environments/proxmox
 
 .. code-block:: console
 
-   osism-run proxmox create
-       # create proxmox VM
-   osism-run custom force-timesync
-       # force NTP sync via chrony http://docs.osism.io/operations/generic.html#run-commands
-   osism-run-without-secrets ...
-       # runs the following command without asking for password and without all secrets,
-         e.g. for cronjobs
-   osism-run custom personalized-accounts
-       # runs playbook for configuring personalized accounts
+   osism-run
+       [custom]
+       [proxmox]
+
+   proxmox
+       manage proxmox role
+   custom force-timesync
+       force NTP sync via chrony http://docs.osism.io/operations/generic.html#run-commands
+   custom personalized-accounts
+       runs playbook for configuring personalized accounts
 
 osism-run-without-secrets
 =========================
