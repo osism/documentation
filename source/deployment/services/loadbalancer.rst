@@ -116,7 +116,7 @@ Create keypair for starting amphora instances
 
 .. code-block:: console
 
-   openstack --os-cloud octavia keypair create octavia
+   openstack --os-cloud octavia keypair create octavia_ssh_key
 
 Create flavor for amphora instances
 -----------------------------------
