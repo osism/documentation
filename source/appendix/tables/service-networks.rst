@@ -18,6 +18,7 @@ Pulp                osism.pulp                ``172.31.100.96/28``
 Zabbix              osism.zabbix              ``172.31.100.112/28``
 UCS                 osism.ucs                 ``172.31.100.128/28``
 Keycloak            osism.keycloak            ``172.31.100.144/28``
+Netbox              osism.netbox              ``172.31.100.160/28``
 Manager             osism.manager             ``172.31.101.0/28``
 =================== ========================= =====================
 
