@@ -52,7 +52,7 @@ Compute node
 
 The compute nodes are used for the virtual systems.
 
-Compute nodes and storage nodes are combined in a hyperconvergedinfrastructure. They are then
+Compute nodes and storage nodes are combined in a hyper-converged infrastructure. They are then
 referred to as resource node.
 
 Storage node
@@ -60,5 +60,5 @@ Storage node
 
 The storage nodes are used for Ceph.
 
-Compute nodes and storage nodes are combined in a hyperconvergedinfrastructure. They are then
+Compute nodes and storage nodes are combined in a hyper-converged infrastructure. They are then
 referred to as resource node.
