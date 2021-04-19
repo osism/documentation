@@ -13,13 +13,13 @@ The manual node installation is completely possible without network connectivity
 Preparations
 ============
 
-* Download the latest ISO image for Ubuntu 18.04 from http://cdimage.ubuntu.com/releases/18.04/release/
+* Download the latest ISO image for Ubuntu 20.04 from http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/
 
-  * Use the ``ubuntu-18.04.2-server-amd64.iso`` image
-  * Do not use the ``ubuntu-18.04.2-live-server-amd64.iso`` image
-  * The version number may be different, always use the latest available version of 18.04 LTS
+  * Use the ``ubuntu-20.04.1-legacy-server-amd64.iso`` image
+  * Do not use the ``ubuntu-20.04-live-server-amd64.iso`` image
+  * The version number may be different, always use the latest available version of 20.04 LTS
 
-* Or use the preseed ISO, (https://share.b1-systems.de/index.php/s/V5qYiMeTpCyZpgU)
+* Or use the preseed ISO, (https://images.osism.io/minio/isos/ubuntu20-04/)
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server via UEFI (recommended) from this USB stick/CD
@@ -149,7 +149,7 @@ Prepare Ubuntu Server ISO
 .. code-block:: console
 
    $ mkdir /dev/shm/ubuntu-seed
-   $ sudo mount -o loop,ro ubuntu-18.04.3-server-amd64.iso /mnt/
+   $ sudo mount -o loop,ro ubuntu-20.04-legacy-server-amd64.iso /mnt/
    $ cp -rT /mnt /dev/shm/ubuntu-seed
 
 * Edit in both files the first entry as ``root``
@@ -217,7 +217,7 @@ Prepare Ubuntu Server ISO
 
    Please use console, ALT+F4, for debugging
 
-* `Download <https://share.b1-systems.de/index.php/s/V5qYiMeTpCyZpgU>`_ prepared
+* `Download <https://images.osism.io/minio/isos/ubuntu20-04/>`_ prepared
   ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 .. note::
