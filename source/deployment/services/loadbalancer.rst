@@ -265,10 +265,16 @@ Add both network id and security group id to the configuration repository.
 
 .. code-block:: yaml
    :caption: /opt/configuration/environments/kolla/configuration.yml
+
+   octavia_service_auth_project: "octavia"
+   octavia_loadbalancer_topology: "ACTIVE_STANDBY"
+   octavia_network_type: "tenant"
+   octavia_auto_configure: false
    
    octavia_amp_boot_network_list: OCTAVIA_MGMT_NETWORK_ID
    octavia_amp_secgroup_list: OCTAVIA_MGMT_SECURITY_GROUP_ID
    octavia_amp_flavor_id: octavia
+   octavia_amp_image_tag: amphora
 
 Configure global parts for *octavia.conf*.
 
