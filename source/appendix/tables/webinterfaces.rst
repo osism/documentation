@@ -18,9 +18,10 @@ Horizon           80     ``kolla_internal_vip`` network/controller admin        
 Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        ``keystone_admin_password``
 Kibana          5601     ``kolla_external_vip`` network/controller kibana       ``kibana_password``
 Kibana          5601     ``kolla_internal_vip`` network/controller kibana       ``kibana_password``
-phpMyAdmin      8110     ``console_interface``  manager            root         ``database_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
 Rally           8090     ``console_interface``  manager            n/a          n/a
+Rundeck         4440     ``console_interface``  manager            n/a          n/a
+phpMyAdmin      8110     ``console_interface``  manager            root         ``database_password``
 =============== ======== ====================== ================== ============ ===========================
 
 ``operator_password`` can be found in file ``environments/secrets.yml``. All other passwords can be found
