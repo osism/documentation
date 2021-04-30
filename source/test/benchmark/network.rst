@@ -63,6 +63,12 @@ iPerf
 * https://iperf.fr
 * https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/
 
+.. note::
+
+   iperf3 is single threaded - therefore it might be limited by CPU and not actual network speed.
+   If you expect more than approx. 20 GBit/s either start multiple iperf3 instances on different
+   ports or you might consider using the older but multi-threaded iperf 2
+
 .. code-block:: console
 
    $ sudo apt install iperf3
