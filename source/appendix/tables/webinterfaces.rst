@@ -18,6 +18,7 @@ Horizon           80     ``kolla_internal_vip`` network/controller admin        
 Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        ``keystone_admin_password``
 Kibana          5601     ``kolla_external_vip`` network/controller kibana       ``kibana_password``
 Kibana          5601     ``kolla_internal_vip`` network/controller kibana       ``kibana_password``
+Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
 Rally           8090     ``console_interface``  manager            n/a          n/a
 Rundeck         4440     ``console_interface``  manager            n/a          n/a
