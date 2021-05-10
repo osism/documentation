@@ -1,7 +1,3 @@
-def setup(app):
-    app.add_stylesheet('css/custom.css')
-
-
 extensions = [
   'sphinx.ext.autosectionlabel', 'sphinxcontrib.blockdiag',
   'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome'
