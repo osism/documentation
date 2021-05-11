@@ -15,7 +15,9 @@ Grafana         3000     ``kolla_internal_vip`` network/controller grafana      
 Heimdall        8080     ``console_interface``  manager            n/a          n/a
 Horizon           80     ``kolla_internal_vip`` network/controller admin        ``keystone_admin_password``
 Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        ``keystone_admin_password``
+Jenkins         4441     ``console_interface``  manager            jenkins      ``jenkins_password``
 Kibana          5601     ``kolla_internal_vip`` network/controller kibana       ``kibana_password``
+Netbox          8121     ``console_interface``  manager            netbox       ``netbox_superuser_password``
 Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
 Rally           8090     ``console_interface``  manager            n/a          n/a

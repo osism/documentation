@@ -22,6 +22,7 @@ Health Monitor      osism.openstack_health_monitor ``172.31.100.160/28``
 Netbox              osism.netbox                   ``172.31.100.176/28``
 Rundeck             osism.rundeck                  ``172.31.100.192/28``
 Heimdall            osism.heimdall                 ``172.31.100.208/28``
+Jenkins             osism.jenkins                  ``172.31.100.224/28``
 Manager             osism.manager                  ``172.31.101.0/28``
 =================== ============================== =====================
 
