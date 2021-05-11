@@ -11,35 +11,35 @@ https://docs.openstack.org/doc-contrib-guide/docs-builds.html#install-dependenci
 * On Ubuntu or Debian:
 
   ```
-  # apt-get install python-pip
-  # pip install tox
+  # apt-get install python3-pip
+  # pip3 install tox
   ```
 
 * On RHEL or CentOS (replace yum with dnf on Fedora):
 
   ```
-  # yum install python-pip
-  # pip install tox
+  # yum install python3-pip
+  # pip3 install tox
   ```
 
 * On openSUSE or SUSE Linux Enterprise:
 
   ```
-  # zypper in python-pip
-  # pip install tox
+  # zypper in python3-pip
+  # pip3 install tox
   ```
 
 * On MacOS:
 
   ```
-  $ brew install python
-  $ pip install tox
+  $ brew install python3
+  $ pip3 install tox
   ```
 
 * On Windows:
 
   ```
-  $ pip install tox
+  $ pip3 install tox
   ```
 
 ## Building
@@ -63,11 +63,12 @@ $ tox -e push
 
 ## Generated files
 
-Some documentation files are generated using tools. These files include a `do not edit` header
-and should not be modified by hand.
+Some documentation files are generated using tools. These files include a `do not edit`
+header and should not be modified by hand.
 
 ## License
 
-This documentation was created by [Betacloud Solutions GmbH](https://betacloud.io) and is licensed under a [Creative Commons Attribution 4.0 International Licence (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
+This documentation was created by [Betacloud Solutions GmbH](https://betacloud-solutions.de)
+and is licensed under a [Creative Commons Attribution 4.0 International Licence (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
 
 [![Creative Commons Attribution-ShareAlike 4.0 International](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
