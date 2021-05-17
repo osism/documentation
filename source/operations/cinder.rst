@@ -74,3 +74,21 @@ Set the ``volume_type_id`` where the ``volume_type_id`` is not set:
 
    UPDATE cinder.snapshots SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
    UPDATE cinder.volumes SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
+
+Cinder and Redis
+================
+
+.. code:: console
+
+   INFO cinder.service [-] Starting cinder-volume node (version 17.1.1)
+   ERROR oslo_service.service [-] Error starting thread.: tooz.coordination.ToozConnectionError: No master found for 'kolla'
+   ERROR oslo_service.service Traceback (most recent call last):
+   ...
+   ERROR oslo_service.service     raise MasterNotFoundError("No master found for %r" % (service_name,))
+   ERROR oslo_service.service redis.sentinel.MasterNotFoundError: No master found for 'kolla'
+   ERROR oslo_service.service The above exception was the direct cause of the following exception:
+   ERROR oslo_service.service Traceback (most recent call last):
+   ...
+   ERROR oslo_service.service tooz.coordination.ToozConnectionError: No master found for 'kolla'
+
+Make sure Redis is installed (:ref:`deploymentservicesopenstackinfrastructure`), up and running (:ref:`testinfrastructureredis`).
