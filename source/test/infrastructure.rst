@@ -214,6 +214,8 @@ Fluentd
    2020-01-25 15:26:07 +0000 [info]: #0 listening syslog socket on 192.168.50.10:5140 with udp
    [...]
 
+.. _testinfrastructureredis:
+
 Redis
 =====
 
