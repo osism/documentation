@@ -56,3 +56,13 @@ be removed manually.
 
 Then reload the Kibana application in the browser and create a new index
 pattern (index pattern: ``flog-*``, time filter field name: ``@timestamp``).
+
+Openstack-Client
+================
+
+.. code-block:: console
+
+   $ osism-infrastructure openstackclient
+
+You can if needed deploy the Openstackclient. 
+For configuration of the client see :ref:`how to test Openstack-Client <test-openstack>`.
