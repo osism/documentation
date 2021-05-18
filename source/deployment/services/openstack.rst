@@ -35,6 +35,9 @@ The deployment of a single Openstack service is done using Kolla via the
 
 Depending on the available bandwidth, it may be a good idea to pull the Docker
 images in advance prior to deployment. This can be done with ``osism-kolla pull SERVICE``.
+Please also note, that you might encounter session timeouts as the system hardening role
+enforces these. To prevent logouts push SPACE sometimes or use a multiplexer like
+``screen`` or ``tmux``.
 
 .. _deploymentservicesopenstackinfrastructure:
 

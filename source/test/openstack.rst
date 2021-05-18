@@ -1,3 +1,5 @@
+.. _test-openstack:
+
 =========
 OpenStack
 =========
@@ -8,11 +10,13 @@ OpenStack
 OpenStack Client Preparations
 =============================
 
+If you have not installed the Openstack Client, skip this check.
 For the verification of the OpenStack services it is necessary to change to the
 directory ``/opt/configuration/environments/openstack`` on the manager node.
 
 The ``openstack-client`` will use ``clouds.yml`` and ``secure.yml`` to read the
-project information and credentials.
+project information and credentials. You'll find a ``secure.yml.sample`` which
+you can copy.
 
 .. code-block:: yaml
 
