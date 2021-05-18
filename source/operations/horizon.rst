@@ -3,7 +3,7 @@ Horizon
 =======
 
 .. contents::
-   :local:
+   :depth: 2
 
 Disable "Consistency Groups"  and "Consistency Group Snapshots" dashboards
 ==========================================================================

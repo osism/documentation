@@ -3,7 +3,7 @@ RefStack
 ========
 
 .. contents::
-   :local:
+   :depth: 2
 
 RefStack is a source of tools for OpenStack interoperability testing.
 

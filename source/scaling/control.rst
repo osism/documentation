@@ -3,7 +3,7 @@ Control node
 ============
 
 .. contents::
-   :local:
+   :depth: 2
 
 Adding a control node
 =====================

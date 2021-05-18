@@ -19,8 +19,9 @@ Clients
   .. code-block:: console
 
      $ osism-infrastructure phpmyadmin
+
 .. contents::
-   :local:
+   :depth: 2
 
 Deploying Openstack Services
 ============================
@@ -56,8 +57,8 @@ Storage
 * iscsi (optional)
 * multipath (optional)
 
-OpenStack
-=========
+Deploy OpenStack Services
+=========================
 
 * keystone
 * horizon

@@ -3,7 +3,7 @@ RabbitMQ
 ========
 
 .. contents::
-   :local:
+   :depth: 2
 
 Cluster start and stop
 ======================
@@ -68,7 +68,7 @@ https://www.rabbitmq.com/management-cli.html
 The management plugin ships with a command line tool rabbitmqadmin which can perform
 some of the same actions as the Web-based UI, and which may be more convenient for
 automation tasks. Note that rabbitmqadmin is just a specialised HTTP client; if you
-are contemplating invoking rabbitmqadmin from your own program you may want to 
+are contemplating invoking rabbitmqadmin from your own program you may want to
 consider using an HTTP API client library instead.
 
 .. code-block:: console
@@ -109,8 +109,9 @@ default the runtime will start one scheduler for one CPU core it detects. This
 can lead to permanent high CPU utilisation. Setting the number of schedulers to
 a lower value, will decrease CPU utilisation considerably.
 
+* ``environments/kolla/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/kolla/configuration.yml
 
    rabbitmq_server_additional_erl_args: "+S 1:1"
 
@@ -126,10 +127,10 @@ unsynchronized queues. To verify this open the web console for RabbitMQ via
 nodes column you see the master node for that queue as well as the number of
 synchronized (and if the case in red) the unsynchronized mirrors for that
 queue. If you happen to have unsynchronized queues, click on the queue and you
-should see a button to force synchronization. After that you should see the 
+should see a button to force synchronization. After that you should see the
 same number of synchronized mirrors for all queues.
 
-To check via CLI you can use this command and check that ``slave_pids`` and 
+To check via CLI you can use this command and check that ``slave_pids`` and
 ``synchronized_slave_pids`` are identical and also contain ``cluster_size - 1``
 number of entries.
 
@@ -143,7 +144,7 @@ Queues missing mirrors
 
 From time to time (especially after provisioning new RabbitMQ nodes or after
 reboots of RabbitMQ nodes) that the number of synchronized mirrors matches the
-number of RabbitMQ nodes in your cluster. To do so, check the RabbitMQ web 
+number of RabbitMQ nodes in your cluster. To do so, check the RabbitMQ web
 console at `<https://api-int.osism.local:15672>`_ in the queues tab. The number
 of synchronized mirror (blue icon with a +<number>) should match the number of
 RabbitMQ nodes minus one (the master for that queue). So on a three node

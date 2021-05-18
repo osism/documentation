@@ -3,7 +3,7 @@ Seed node
 =========
 
 .. contents::
-   :local:
+   :depth: 2
 
 .. note:: Execute the following commands on the seed node.
 

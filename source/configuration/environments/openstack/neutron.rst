@@ -69,7 +69,7 @@ VLAN interfaces as flat provider networks
 
 * ``environments/kolla/configuration.yml`` or ``inventory/host_vars/<hostname>.yml``
 
-.. code-block:: yaml
+.. code-block:: console
 
    neutron_bridge_name: [...],br-vlan100,br-vlan200
    neutron_external_interface: [...],vlan100,vlan200
@@ -85,7 +85,7 @@ VLAN interfaces as flat provider networks
 
    .. code-block:: console
 
-      $ docker exec -it openvswitch_vswitchd ovs-vsctl get Bridge br-vlan100 datapath-id                                     
+      $ docker exec -it openvswitch_vswitchd ovs-vsctl get Bridge br-vlan100 datapath-id
       $ docker exec -it openvswitch_vswitchd ovs-vsctl get Bridge br-vlan200 datapath-id
 
    * Eleminate duplicate datapath ids

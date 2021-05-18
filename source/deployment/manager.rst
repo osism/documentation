@@ -1,9 +1,9 @@
-============
-Manager node
-============
+=======================
+Manager Node Deployment
+=======================
 
 .. contents::
-   :local:
+   :depth: 2
 
 .. note::
 
@@ -43,8 +43,8 @@ Various Ansible configurations can be adjusted via environment variables.
 An overview with all parameters can be found at
 http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
 
-Initialization
-==============
+Manager Node Initialization
+===========================
 
 .. note::
 
@@ -244,7 +244,7 @@ Depending on the bandwidth, this process will take several hours.
   osism-mirror packages
 
 import nodes from MAAS to netbox
-------
+--------------------------------
 
 If you are using netbox as your inventory and if you use canonical's MAAS for deploying your hosts,
 there is a possibility to import your nodes from MAAS as source to netbox

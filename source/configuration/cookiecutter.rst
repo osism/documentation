@@ -2,8 +2,8 @@
 Cookiecutter
 ============
 
-Preparations
-============
+Cookiecutter Preparations
+=========================
 
 A Git repository is required to store the configuration for your specific
 infrastructure. The manager node needs to have access to this repository.
@@ -29,8 +29,8 @@ Usually the configuration repository is prepared on your workstation. After
 the repository creation, it needs to be pushed to a central Git server, to make
 it available to the manager node.
 
-Installation
-============
+Dependency Installation
+=======================
 
 Installation of *gcc*, *python-development* and *git* packages is a
 prerequisite to install required Python packages.
@@ -63,8 +63,8 @@ It is recommended to use a virtual environment when installing packages from PyP
      ruamel.yaml \
      yamllint
 
-Initialisation
-==============
+Cookiecutter Initialisation
+===========================
 
 When running *cookiecutter*, infrastructure specific information needs to be
 provided.

@@ -14,7 +14,7 @@ Mirror
      - ---
 
 .. contents::
-   :local:
+   :depth: 2
 
 It is recommended to deploy the mirror services on a dedicated system.
 
@@ -25,46 +25,41 @@ Service configuration
 ---------------------
 
 For the activation of the deployment of the aptly service, the parameter ``configure_aptly``
-is set to ``yes``.
+is set to ``yes`` in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    configure_aptly: yes
 
-GPG details are set via the ``aptly_configuration`` parameter.
+GPG details are set via the ``aptly_configuration`` parameter in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    aptly_configuration:
      full_name: Betacloud Solutions GmbH
      email_address: info@betacloud-solutions.de
      gpg_password: "{{ aptly_gpg_password }}"
 
-The used password ``aptly_gpg_password`` is set in the corresponding secrets file.
+The used password ``aptly_gpg_password`` is set in ``environments/infrastructure/secrets.yml`` file.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/secrets.yml
 
    aptly_gpg_password: password
 
 By default the aptly service listens on the IPv4 address of the management interface.
 This can be changed with the ``aptly_nginx_host`` parameter.
 
-The following entry is stored by default in the configuration repository.
+The following entry is stored by default in the configuration repository in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    aptly_nginx_host: "{{ hostvars[inventory_hostname]['ansible_' + management_interface]['ipv4']['address'] }}"
 
 It is also possible to bind the aptly service to more than one address port pair.
 Additional pairs can be added to the ``aptly_nginx_ports`` parameter. Below is the default
-of the role.
+of the role in file ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    aptly_nginx_ports:
      - "{{ aptly_nginx_host }}:{{ aptly_nginx_port }}:80"
@@ -75,10 +70,9 @@ Mirrored repositories
 The repositories to be mirrored are specified in the ``configuration.yml`` file in
 the ``infrastructure`` environment.
 
-To mirror the repositories, execute ``osism-mirror packages`` after deployment.
+To mirror the repositories, execute ``osism-mirror packages`` after deployment, configured in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    aptly_repository_keys:
      - https://download.docker.com/linux/ubuntu/gpg
@@ -112,38 +106,34 @@ Service configuration
 ---------------------
 
 For the activation of the deployment of the registry service, the parameter ``configure_registry``
-is set to ``yes``.
+is set to ``yes`` in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    configure_registry: yes
 
 If the registry service is started on one of the controller nodes, the registry service port
 must be adjusted from ``5000`` to e.g. ``5001``. Otherwise there will be a port conflict with
-the OpenStack Keystone service.
+the OpenStack Keystone service. Configure  in ``environments/infrastructure/configuration.yml``
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    registry_port: 5001
 
 By default the registry service listens on the IPv4 address of the management interface.
 This can be changed with the ``registry_host`` parameter.
 
-The following entry is stored by default in the configuration repository.
+The following entry is stored by default in the configuration repository in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    registry_host: "{{ hostvars[inventory_hostname]['ansible_' + management_interface]['ipv4']['address'] }}"
 
 It is also possible to bind the registry service to more than one address port pair.
 Additional pairs can be added to the ``registry_ports`` parameter. Below is the default
-of the role.
+of the role in ``environments/infrastructure/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration.yml
 
    registry_ports:
      - "{{ registry_host }}:{{ registry_port }}:5000"
@@ -153,10 +143,9 @@ Mirrored images
 
 The images to be mirrored are specified in the ``configuration-mirror-images.yml`` file.
 
-To mirror the images, execute ``osism-mirror images`` after deployment.
+To mirror the images, execute ``osism-mirror images`` after deployment, configured in ``environments/infrastructure/configuration-mirror-images.yml``.
 
 .. code-block:: yaml
-   :caption: environments/infrastructure/configuration-mirror-images.yml
 
    ---
    ##########################

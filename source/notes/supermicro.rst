@@ -3,7 +3,7 @@ SuperMicro
 ==========
 
 .. contents::
-   :local:
+   :depth: 2
 
 For the public cloud "Betacloud" we use hardware from SuperMicro. Therefore there is
 this chapter with hints about SuperMicro.

@@ -3,7 +3,7 @@ Generic
 =======
 
 .. contents::
-   :local:
+   :depth: 2
 
 DNS
 ===
