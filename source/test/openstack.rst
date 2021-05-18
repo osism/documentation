@@ -5,13 +5,13 @@ OpenStack
 .. contents::
    :local:
 
-Preparations
-============
+OpenStack Client Preparations
+=============================
 
 For the verification of the OpenStack services it is necessary to change to the
 directory ``/opt/configuration/environments/openstack`` on the manager node.
 
-The *openstack-client* will use ``clouds.yml`` and ``secure.yml`` to read the
+The ``openstack-client`` will use ``clouds.yml`` and ``secure.yml`` to read the
 project information and credentials.
 
 .. code-block:: yaml
@@ -44,8 +44,8 @@ repository.
 
 * https://docs.openstack.org/os-client-config/latest/user/configuration.html#splitting-secrets
 
-Keystone
-========
+Keystone Test
+=============
 
 .. code-block:: console
 
@@ -66,8 +66,8 @@ Other tests are the following commands.
 * ``openstack --os-cloud admin domain list``
 * ``openstack --os-cloud admin user list --domain default``
 
-Glance
-======
+Glance Test
+===========
 
 .. code-block:: console
 
@@ -141,8 +141,8 @@ Glance
 
    $ openstack --os-cloud admin image delete random
 
-Cinder
-======
+Cinder Test
+===========
 
 Check Ceph connection
 ---------------------
@@ -267,11 +267,11 @@ Volume from image
 
    $ openstack --os-cloud admin volume delete testing-glance
 
-Neutron
-=======
+Neutron Test
+============
 
-Check services
---------------
+Check Neutron Services
+----------------------
 
 .. code-block:: console
 
@@ -331,11 +331,11 @@ the ``neutron-openvswitch-agent`` service.
            Port "enp24s0f1"
                Interface "enp24s0f1"
 
-Nova
-====
+Nova Test
+=========
 
-Check services
---------------
+Check Nova Services
+-------------------
 
 .. code-block:: console
 
@@ -343,8 +343,8 @@ Check services
    $ openstack --os-cloud admin hypervisor list
    $ openstack --os-cloud admin availability zone list --compute --long
 
-Check Ceph connection
----------------------
+Check Ceph connectivity
+-----------------------
 
 .. code-block:: console
 
@@ -387,8 +387,8 @@ Create flavor
 Heat
 ====
 
-Check services
---------------
+Check Heat Services
+-------------------
 
 .. code-block:: console
 

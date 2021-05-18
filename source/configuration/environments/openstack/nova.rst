@@ -8,10 +8,9 @@ Nova
 Local LVM2 storage
 ==================
 
-* A volume group with the name ``nova`` is created first
+* A volume group with the name ``nova`` is created first with file ``environments/kolla/files/overlays/nova-compute.conf``.
 
 .. code-block:: ini
-   :caption: environments/kolla/files/overlays/nova-compute.conf
 
    [libvirt]
    images_type = lvm
@@ -240,9 +239,9 @@ Resource isolation
 ==================
 
 * https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/hyper-converged_red_hat_openstack_platform_10_and_red_hat_ceph_storage_2/tuning
+* https://github.com/RHsyseng/hci/blob/master/scripts/nova_mem_cpu_calc.py
 
 .. code-block:: console
-   :caption: https://github.com/RHsyseng/hci/blob/master/scripts/nova_mem_cpu_calc.py
 
    $ python nova_mem_cpu_calc.py HOST_MEMORY_GBYTE OSDS_PER_SERVER GUEST_AVG_MEMORY_GBYTE GUEST_AVG_CPU_UTIL
    $ python nova_mem_cpu_calc.py 256 56 6 8 0.1
@@ -259,10 +258,9 @@ Resource isolation
    - nova.conf reserved_host_memory = 32000 MB
    - nova.conf cpu_allocation_ratio = 8.928571
 
-Compare "guest vCPUs allowed" to "guests allowed based on memory" for actual guest count
+Compare "guest vCPUs allowed" to "guests allowed based on memory" for actual guest count in ``environments/kolla/files/overlays/nova.conf``.
 
 .. code-block:: ini
-   :caption: environments/kolla/files/overlays/nova.conf
 
    [DEFAULT]
    reserved_host_cpus = 4

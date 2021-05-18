@@ -1,8 +1,8 @@
 .. _configuration-environment-ceph:
 
-====
-Ceph
-====
+==================
+Ceph Configuration
+==================
 
 Base directory: ``environments/ceph``
 
@@ -10,8 +10,8 @@ Base directory: ``environments/ceph``
 
    The documentation for ``ceph-ansible`` can be found at http://docs.ceph.com/ceph-ansible/master/.
 
-Generic
-=======
+Generic Ceph Configuration
+==========================
 
 * ``environments/ceph/configuration.yml``
 
@@ -38,8 +38,8 @@ Generic
      ceph_share_directory: /share
      ceph_cluster_fsid: 1a6b162c-cc15-4569-aa09-db536c93569f
 
-Devices
-=======
+Devices for Ceph OSDs
+=====================
 
 .. note::
 
@@ -49,8 +49,9 @@ Unlike other ``by-id`` links, WWNs (`World Wide Name <https://en.wikipedia.org/w
 fully persistent and will not change depending on the used subsystem. For more details see
 https://wiki.archlinux.org/index.php/Persistent_block_device_naming.
 
+* Configuration in ``inventory/host_vars/<storagenodes>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ##########################################################
    # ceph
@@ -63,7 +64,6 @@ When using NVMe devices, the EUI-64 (`64-Bit Extended Unique Identifier <https:/
 is used.
 
 .. code-block:: yaml
-   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ##########################################################
    # ceph
@@ -72,8 +72,8 @@ is used.
      - /dev/disk/by-id/nvme-eui.343338304d1002630025384600000001
      - /dev/disk/by-id/nvme-eui.343338304d1002450025384600000001
 
-Network
-=======
+Ceph Network
+============
 
 Ceph uses a ``public_network`` which needs to be reachable by Ceph clients and
 a separate network, which is used by OSDs. The network used by OSDs is called
@@ -103,8 +103,9 @@ a separate network, which is used by OSDs. The network used by OSDs is called
 
    It is recommended to place the configuration of the network interfaces in the inventory.
 
+* ``inventory/host_vars/<storagenodes>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ##########################################################
    # ceph
@@ -213,8 +214,8 @@ To define a new pool, add a new dictionary like following:
 Add the new pool to ``openstack_pools`` list and define a new key at
 ``openstack_keys``. Keys are used by Ceph clients to access the pool.
 
-Custom
-======
+Custom Ceph Configuration
+=========================
 
 * https://github.com/ceph/ceph-ansible#configuring-ceph
 
@@ -268,8 +269,9 @@ NUMA
    $ cat /sys/class/net/ens2f0/device/numa_node
    0
 
+* ``inventory/host_vars/<storagenodes>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/STORAGE_NODE.yml
 
    ceph_osd_docker_cpuset_cpus: "0-13"
    ceph_osd_docker_cpuset_mems: "0"

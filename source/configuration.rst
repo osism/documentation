@@ -32,7 +32,6 @@ in this chapter.
 * :ref:`configuration-environment-infrastructure`
 * :ref:`configuration-environment-openstack`
 * :ref:`configuration-environment-ceph`
-* :ref:`configuration-environment-monitoring`
 * :ref:`configuration-environment-custom`
 
 With the exception of a special environment for the manager, all

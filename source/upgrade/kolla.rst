@@ -2,16 +2,16 @@
 Kolla
 =====
 
-Preparations
-============
+Kolla Preparations
+==================
 
 When using overlay configuration files at ``environments/kolla/files/overlays``,
 the following overlay files need to be synchronized. Customer specific changes
 to the current files need to be copied manually to the new overlay configuration
 files.
 
-HAProxy
--------
+HAProxy Preparations
+--------------------
 
 * When updating to *Rocky* - Synchronize `haproxy.cfg`_ to
   ``environments/kolla/files/overlays/haproxy/haproxy.cfg``.
@@ -23,8 +23,8 @@ HAProxy
 .. _haproxy.cfg: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.rocky
 .. _haproxy_main.cfg: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy_main.cfg.stein
 
-Horizon
--------
+Horizon Preparations
+--------------------
 
 * The file ``environments/kolla/files/overlays/horizon/local_settings.j2`` need
   to be removed.
@@ -77,19 +77,18 @@ Inventory
 * New host groups need to be added to file ``inventory/hosts``:
 
 .. code-block:: ini
-   :caption: inventory/hosts
 
    ##########################################################
    # environment: kolla
-   
+
    [redis:children]
    control
-   
+
    # neutron
-   
+
    [neutron-bgp-dragent:children]
    network
-   
+
    [openvswitch:children]
    network
    compute
@@ -103,7 +102,6 @@ Configuration
   enabled by adding parameter ``enable_redis: "yes"``.
 
   .. code-block:: yaml
-     :caption: enviornments/kolla/configuration.yml
 
      enable_redis: yes
 
@@ -111,15 +109,14 @@ Configuration
   ``redis_master_password`` need to be set.
 
   .. code-block:: console
-  
+
      pwgen -1 32
      aevooVaeceeh2aisaeRah2ufieHee7oh
      ansible-vault edit environments/kolla/secrets.yml
-  
-  
+
+
   .. code-block:: yaml
-     :caption: enviornments/kolla/secrets.yml
-  
+
      redis_master_password: aevooVaeceeh2aisaeRah2ufieHee7oh
 
 * Ceilometer: The Ceilometer API was dropped.
@@ -140,8 +137,8 @@ Upgrading from Pike to Queens
 * https://docs.openstack.org/releasenotes/kolla/queens.html
 * https://docs.openstack.org/releasenotes/kolla-ansible/queens.html
 
-Configuration
--------------
+RabbitMQ Configuration
+----------------------
 
 * RabbitMQ: New parameter ``rabbitmq_monitoring_password`` need to be added
   to ``environments/kolla/secrets.yml``
@@ -154,7 +151,6 @@ Configuration
 
 
 .. code-block:: yaml
-   :caption: enviornments/kolla/secrets.yml
 
    rabbitmq_monitoring_password: we7oey4wifeilieK9ii1uighiraJoWoo
 
@@ -164,13 +160,12 @@ Upgrading from Queens to Rocky
 * https://docs.openstack.org/releasenotes/kolla/rocky.html
 * https://docs.openstack.org/releasenotes/kolla-ansible/rocky.html
 
-Inventory
----------
+Upgrade Queens to Rocky Inventory
+---------------------------------
 
 * New host groups need to be added to file ``inventory/hosts``:
 
 .. code-block:: ini
-   :caption: inventory/hosts
 
    ##########################################################
    # environment: kolla
@@ -183,8 +178,8 @@ Inventory
    [ironic-neutron-agent:children]
    network
 
-Configuration
--------------
+Upgrade Configuration
+---------------------
 
 * In file ``environments/kolla/configuration.yml``, if set, change ``serial`` to
   ``kolla_serial``.
@@ -220,44 +215,44 @@ Dashboards and saved searches in Kibana, will be lost after deleting the index.
 Upgrading from Rocky to Stein
 =============================
 
-Inventory
----------
+Upgarde Rocky to Stein Inventory
+--------------------------------
 
 * New host group need to be added to file ``inventory/hosts``:
 
 .. code-block:: ini
-   :caption: inventory/hosts
 
    # neutron
 
    [neutron-metering-agent:children]
    neutron
 
-MariaDB
--------
+MariaDB (Upgrade R2S)
+---------------------
 
 * Backups are possible beginning with *Stein* release
+* configure MariaDB Backup in ``enviornments/kolla/configuration.yml``
 
 .. code-block:: yaml
-   :caption: enviornments/kolla/configuration.yml
 
    enable_mariabackup: "yes"
 
+* set MariaDB Backup Password in ``enviornments/kolla/secrets.yml``
+
 .. code-block:: yaml
-   :caption: enviornments/kolla/secrets.yml
 
    mariadb_backup_database_password: password
 
-Glance
-------
+Glance (Upgrade R2S)
+--------------------
 
 * The location of file
   ``environments/kolla/files/overlays/glance-api/ceph.client.glance.keyring``
   has moved to
   ``environments/kolla/files/overlays/glance/ceph.client.glance.keyring``.
 
-HAProxy
--------
+HAProxy (Upgrade R2S)
+---------------------
 
 * In file ``environments/kolla/configuration.yml`` set
   ``kolla_enable_tls_internal: "no"``.
@@ -355,30 +350,30 @@ Gathering Ansible facts
 
    osism-generic facts
 
-Common
-------
+Upgrade Common
+--------------
 
 .. code-block:: console
 
    osism-kolla upgrade common
 
-HAProxy
--------
+Upgrade HAProxy
+---------------
 
 .. code-block:: console
 
    osism-kolla upgrade haproxy
 
-Logging
--------
+Upgrade Logging
+---------------
 
 .. code-block:: console
 
    osism-kolla upgrade elasticsearch
    osism-kolla upgrade kibana
 
-Infrastructure
---------------
+Upgrade Infrastructure
+----------------------
 
 .. code-block:: console
 
@@ -388,16 +383,16 @@ Infrastructure
    osism-kolla upgrade redis
    osism-kolla upgrade openvswitch
 
-Storage (optional)
-------------------
+Upgrade Storage (optional)
+--------------------------
 
 .. code-block:: console
 
    osism-kolla upgrade iscsi
    osism-kolla upgrade multipath
 
-OpenStack services
-------------------
+Upgrade OpenStack Services
+--------------------------
 
 .. code-block:: console
 
@@ -409,8 +404,8 @@ OpenStack services
    osism-kolla upgrade heat
    osism-kolla upgrade placement # beginning from Stein release
 
-Nova
-----
+Upgrade Nova
+------------
 
 * Upgrade nova on the control nodes first:
 
@@ -434,8 +429,8 @@ upgrade for those services as well:
 After the upgrade
 =================
 
-Horizon
--------
+Fix Horizon
+-----------
 
 * After the upgrade the cache need to be cleaned and regenerated. Run the
   following command on all control nodes:
@@ -445,8 +440,8 @@ Horizon
    docker exec -it horizon rm /var/lib/kolla/.local_settings.md5sum.txt
    docker restart horizon
 
-Elasticsearch
--------------
+Fix Elasticsearch
+-----------------
 
 * After the ugprade of Elasticsearch, the shard allocation need to be enabled.
 

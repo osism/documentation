@@ -3,7 +3,7 @@ Hardware
 ========
 
 .. contents::
-   :local:
+   :depth: 2
 
 The test of new hardware is generally not necessary, the failure rate of today's components is pretty low.
 
@@ -71,8 +71,9 @@ fio
 
    # apt-get install fio
 
+* ``ssd.fio``
+
 .. code-block:: ini
-   :caption: ssd.fio
 
    [global]
    bs=4k
@@ -100,8 +101,9 @@ fio
    rw=randwrite
    stonewall
 
+* ``nvme-rnd.fio``
+
 .. code-block:: ini
-   :caption: nvme-rnd.fio
 
    [global]
    bs=4k
@@ -122,8 +124,9 @@ fio
    rw=randwrite
    stonewall
 
+* ``nvme-seq.fio``
+
 .. code-block:: ini
-   :caption: nvme-seq.fio
 
    [global]
    bs=128k

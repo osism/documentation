@@ -1,8 +1,8 @@
 .. _configuration-environment-custom:
 
-======
-Custom
-======
+================
+Configure Custom
+================
 
 Base directory: ``environments/custom``
 
@@ -13,8 +13,8 @@ The custom environment is used to store any additional playbooks and services.
    Where possible, playbooks are integrated into ``osism-ansible``.
    Additional services are implemented in a separate role as needed.
 
-Playbooks
-=========
+Custom Playbooks
+================
 
 * Playbooks are provided with the prefix ``playbook-`` and the file extension ``.yml``, completely so then ``playbook-NAME.yml``
 * Playbooks can be executed via ``osism-run custom NAME``
@@ -50,8 +50,8 @@ It is executed with ``osism-run custom cronjobs``.
          user: "{{ operator_user }}"
        become: true
 
-Services
-========
+Custom Services
+===============
 
 * Services are provided with the prefix ``playbook-service-`` and the file extension ``.yml``, completely so then ``playbook-service-NAME.yml``
 * Playbooks can be executed via ``osism-run custom service-NAME``
@@ -60,8 +60,8 @@ Services
 * Define required image parameters in the ``images.yml`` file.
 * Define required secret parameters in the ``secrets.yml`` file.
 
-Netbox
-------
+Custom Netbox
+-------------
 
 Service ``netbox`` that starts a Netbox service for IPA & inventory management on the manager node.
 
@@ -219,8 +219,8 @@ It is executed with ``osism-run custom service-netbox``.
    custom_netbox_configuration_directory: /opt/custom-netbox/configuration
    custom_netbox_docker_compose_directory: /opt/custom-netbox
 
-Grafana
--------
+Configuration Custom Grafana
+----------------------------
 
 Service ``grafana`` that starts a Grafana service on the manager node.
 

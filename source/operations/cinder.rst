@@ -1,6 +1,6 @@
-======
-Cinder
-======
+=================
+Cinder Operations
+=================
 
 * https://docs.openstack.org/cinder/latest/man/cinder-manage.html
 
@@ -70,7 +70,7 @@ Get the ID of the ``__DEFAULT__`` volume type:
 
 Set the ``volume_type_id`` where the ``volume_type_id`` is not set:
 
-.. code_block:: sql
+.. code-block:: sql
 
    UPDATE cinder.snapshots SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
    UPDATE cinder.volumes SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;

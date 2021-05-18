@@ -17,9 +17,9 @@ Use of local NTP server
 =======================
 
 * Remove ``security_ntp_servers`` and ``security_allowed_ntp_subnets`` from ``environments/configuration.yml``
+* host_vars file of a system providing a local NTP server
 
 .. code-block:: yaml
-   :caption: host_vars file of a system providing a local NTP server
 
    ##########################################################
    # hardening
@@ -34,8 +34,9 @@ Use of local NTP server
      - 192.168.102.0/24
    security_ntp_bind_local_interfaces_only: no
 
+* host_vars file of a system using a local NTP server
+
 .. code-block:: yaml
-   :caption: host_vars file of a system using a local NTP server
 
    ##########################################################
    # hardening

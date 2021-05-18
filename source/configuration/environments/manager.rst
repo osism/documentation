@@ -50,8 +50,9 @@ Caching
 Redis
 -----
 
+* ``environments/ansible.cfg``
+
 .. code-block:: ini
-   :caption: environments/ansible.cfg
 
    # Fact caching
    gathering = smart
@@ -62,13 +63,15 @@ Redis
 JSON file
 ---------
 
+* ``environments/manager/configuration.yml``
+
 .. code-block:: ini
-   :caption: environments/manager/configuration.yml
 
    redis_enable: false
 
+* ``environments/ansible.cfg``
+
 .. code-block:: ini
-   :caption: environments/ansible.cfg
 
    # Fact caching
    gathering = smart

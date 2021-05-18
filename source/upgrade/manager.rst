@@ -13,8 +13,9 @@ need to be prepared and updated.
 
 The *OSISM* version need to be set to the new version:
 
+* configure version in ``environments/manager/configuration.yml``
+
 .. code-block:: yaml
-   :caption: /opt/configuration/environments/manager/configuration.yml
 
    ##########################
    # versions
@@ -26,8 +27,9 @@ The *OSISM* version need to be set to the new version:
 Make sure, the file ``requirements.txt`` in the root directory of the
 configuration repository contains the following python modules:
 
+* check ``requirements.txt``
+
 .. code-block:: none
-   :caption: /opt/configuration/requirements.txt
 
    Jinja2
    PyYAML
@@ -97,7 +99,6 @@ The following ARA configuration block has become obsolete and need to be removed
 from ``environments/ansible.cfg``.
 
 .. code-block:: ini
-   :caption: environments/ansible.cfg
 
    [ara]
    database = mysql+pymysql://ara:password@database/ara

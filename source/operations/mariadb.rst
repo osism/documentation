@@ -1,17 +1,17 @@
-=======
-MariaDB
-=======
+==================
+MariaDB Operations
+==================
 
 .. contents::
-   :local:
+   :depth: 2
 
-Cluster start and stop
-======================
+MariaDB Cluster start and stop
+==============================
 
 http://galeracluster.com/documentation-webpages/restartingcluster.html
 
-Stop
-----
+MariaDB Cluster Stop
+--------------------
 
 Ensure that any services using MariaDB are stopped.
 
@@ -38,8 +38,8 @@ Carry out the following steps on all control nodes (one by one).
 
       $ docker stop mariadb
 
-Start
------
+Start MariaDB Recovery
+----------------------
 
 On the manager node run the recovery process.
 
@@ -47,8 +47,8 @@ On the manager node run the recovery process.
 
    $ osism-kolla deploy mariadb_recovery
 
-Check
------
+Check MariaDB/Galera Status
+---------------------------
 
 .. code-block:: console
 
@@ -68,8 +68,8 @@ Check
    [...]
    +------------------------------+----------------------------------------------------+
 
-Cluster recovery
-================
+MariaDB/Galera Cluster recovery
+===============================
 
 http://galeracluster.com/2016/11/introducing-the-safe-to-bootstrap-feature-in-galera-cluster/
 
@@ -226,8 +226,9 @@ Change binary logs days
 
 https://www.percona.com/blog/2018/03/28/safely-purging-binary-logs-from-master/
 
+* configure MariaDB log house-keeping ``environments/kolla/files/overlays/galera.cnf``
+
 .. code-block:: ini
-   :caption: environments/kolla/files/overlays/galera.cnf
 
    [mysqld]
    expire_logs_days = 14
@@ -356,7 +357,7 @@ are separated by a space.
 
 At the end of the backup process a short status change of the node takes place.
 
-.. code-blone:: none
+.. code-block:: none
 
    SYNCED -> DONOR/DESYNCED -> JOINED -> SYNCED
 

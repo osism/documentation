@@ -8,10 +8,9 @@ LDAP integration
 * https://docs.openstack.org/keystone/latest/admin/configuration.html#integrate-identity-with-ldap
 
 The configuration of a domain is stored in an overlay configuration file of Kolla. The name of
-the domain is stored in the file name.
+the domain is stored in the file named ``environments/kolla/files/overlays/keystone/domains/keystone.DOMAIN.conf``.
 
 .. code-block:: ini
-   :caption: ``environments/kolla/files/overlays/keystone/domains/keystone.DOMAIN.conf``
 
    [identity]
    driver = ldap

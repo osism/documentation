@@ -23,10 +23,9 @@ phpMyAdmin or the web interface for ARA.
 
 This network is defined by ``console_interface`` in the host specific variable
 file. The ip address belonging to this interface is defined by
-``internal_address`` and for central logging by ``fluentd_host`` variables.
+``internal_address`` and for central logging by ``fluentd_host`` variables in ``inventory/host_vars/<hostname>.yml``.
 
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # generic
@@ -44,10 +43,9 @@ OpenStack services located on different hosts. It is also used for traffic
 without a dedicated network. Ansible playbooks also use this network to access
 target hosts. The interface is defined by ``management_interface``.
 Additionally the interface need to be defined for *kolla-ansible* by
-``network_interface`` and for *Cockpit* by ``cockpit_ssh_interface`` variables.
+``network_interface`` and for *Cockpit* by ``cockpit_ssh_interface`` variables in ``inventory/host_vars/<hostname>.yml``.
 
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # generic
@@ -66,10 +64,9 @@ Additionally the interface need to be defined for *kolla-ansible* by
 
 The DNS name for the internal OpenStack API enpoints is defined by
 ``kolla_internal_fqdn``. The corresponding ip address for
-this DNS name is defined by ``kolla_internal_vip_address``.
+this DNS name is defined by ``kolla_internal_vip_address`` in ``environments/kolla/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: environments/kolla/configuration.yml
 
    ##########################################################
    # haproxy
@@ -92,10 +89,9 @@ Tunnel
 
 Traffic between guest virtual machines on different compute nodes or between
 layer 3 networking components such as virtual routers are usually routed through
-VXLAN or GRE tunnels on the tunnel network.
+VXLAN or GRE tunnels on the tunnel network in ``inventory/host_vars/<hostname>.yml``.
 
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -105,10 +101,9 @@ VXLAN or GRE tunnels on the tunnel network.
 Migration
 =========
 
-Live migration of instances is performed over this network.
+Live migration of instances is performed over this network, configured in ``inventory/host_vars/<hostname>.yml``.
 
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -122,24 +117,27 @@ External API endpoints are accessible on the external API network, exposing the
 OpenStack API endpoints. This network is reachable by consumers of the cloud
 services.
 
+* ``inventory/host_vars/<hostname>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
 
    kolla_external_vip_interface: eth3
 
+* ``environments/kolla/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/kolla/configuration.yml
 
    ##########################################################
    # haproxy
 
    kolla_external_fqdn: external-api.betacloud.xyz
 
+* ``environments/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/configuration.yml
 
    ##########################################################
    # hosts
@@ -157,8 +155,9 @@ External
 
 The external network connects virtual machines to the outside world.
 
+* ``inventory/host_vars/<hostname>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -170,8 +169,9 @@ Loadbalancer
 
 This network is used for accessing Loadbalancer as a Service public endpoints.
 
+* ``inventory/host_vars/<hostname>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -186,8 +186,9 @@ hosts which need access to storage services.
 
 It is recommended to use an MTU of 9000 in this network.
 
+* ``inventory/host_vars/<hostname>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # kolla
@@ -199,16 +200,18 @@ It is recommended to use an MTU of 9000 in this network.
 
    monitor_interface: eth5
 
+* ``environments/kolla/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/kolla/configuration.yml
 
    ##########################################################
    # external ceph
 
    ceph_public_network: 10.0.5.0/24
 
+* ``environments/ceph/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/ceph/configuration.yml
 
    ##########################################################
    # network
@@ -222,8 +225,9 @@ The storage backend network is the internal connection between ceph nodes.
 
 It is recommended to use an MTU of 9000 in this network.
 
+* ``environments/ceph/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/ceph/configuration.yml
 
    ##########################################################
    # network
@@ -237,16 +241,18 @@ The monitoring network normally shares the internal network. A separate network
 for monitoring services related traffic can be configured at
 ``environments/monitorning/configuration.yml``.
 
+* ``inventory/host_vars/<hostname>.yml``
+
 .. code-block:: yaml
-   :caption: inventory/host_vars/<hostname>.yml
 
    ##########################################################
    # monitoring
 
    prometheus_scraper_interface: eth1
 
+* ``environments/monitoring/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/monitoring/configuration.yml
 
    ##########################################################
    # exporter

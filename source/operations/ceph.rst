@@ -72,7 +72,7 @@ Ensure that any services/clients using Ceph are stopped and that the cluster is 
         [...]
           health: HEALTH_WARN
                   pauserd,pausewr,nodown,noout,nobackfill,norebalance,norecover flag(s) set
- 
+
         services:
         [...]
           osd: x osds: y up, z in
@@ -138,13 +138,13 @@ Check
      cluster:
        id:     x
        health: HEALTH_OK
- 
+
      services:
        mon: 3 daemons, quorum A,B,C
        mgr: A(active), standbys: B, C
-       mds: cephfs-0/0/1 up 
+       mds: cephfs-0/0/1 up
        osd: x osds: y up, z in
- 
+
      data:
        pools:   7 pools, 176 pgs
        objects: 2816 objects, 18856 MB
@@ -201,8 +201,9 @@ The new number of PGs should also be updated in ``environments/ceph/configuratio
 
      $ sudo systemctl restart ceph-mgr\*.service
 
+* ``environments/ceph/configuration.yml``
+
 .. code-block:: yaml
-   :caption: environments/ceph/configuration.yml
 
    ##########################
    # custom
@@ -445,14 +446,14 @@ Repair PGs
 
 .. code-block:: console
 
-   $ sudo ceph health detail 
+   $ sudo ceph health detail
    HEALTH_OK
 
    $ sudo ceph status
      cluster:
        id:     0155072f-6a71-4f5c-8967-f86e5307033f
        health: HEALTH_OK
-       
+
 Rebalance the cluster
 =====================
 
@@ -469,7 +470,7 @@ Rebalance the cluster
     stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
     min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
     max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
-    
+
     oload 120
     max_change 0.05
     max_change_osds 4
@@ -479,7 +480,7 @@ Rebalance the cluster
     osd.27 weight 0.9500 -> 0.9000
     osd.37 weight 0.9500 -> 0.9000
     osd.29 weight 1.0000 -> 0.9500
-    
+
 2. If the OSDs match your "fullest" OSDs execute the reweight
 
 .. code-block:: console
@@ -491,7 +492,7 @@ Rebalance the cluster
     stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
     min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
     max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
-    
+
     oload 120
     max_change 0.05
     max_change_osds 4
@@ -501,7 +502,7 @@ Rebalance the cluster
     osd.27 weight 0.9500 -> 0.9000
     osd.37 weight 0.9500 -> 0.9000
     osd.29 weight 1.0000 -> 0.9500
-    
+
 3. Wait for the cluster to rebalance itself and check disk usage again. Repeat above if necessary
 
 HEALTH_WARN application not enabled on 1 pool(s)

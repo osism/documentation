@@ -7,17 +7,17 @@ Prepare configuration repository
 
 Make sure Octavia is enabled in the configuration repository.
 
+* enable Octavia in ``environments/kolla/configuration.yml``
+
 .. code-block:: yaml
-   :caption: /opt/configuration/environments/kolla/configuration.yml
 
    enable_octavia: "yes"
 
-If you have dedicated network nodes configured, the Octavia health-manager
-and housekeeping should run on the network nodes to be able to access the
-openvswitch integration bridge *br-int*.
+If you have dedicated network nodes configured, the Octavia health-manager and housekeeping should run on the network nodes to be able to access the openvswitch integration bridge ``br-int``.
+
+* configure Octavia to Control and Network Nodes in ``inventory/hosts`` or ``inventory/20-roles``
 
 .. code-block:: yaml
-   :caption: /opt/configuration/inventory/hosts
 
    [octavia-api:children]
    control
@@ -34,9 +34,7 @@ openvswitch integration bridge *br-int*.
 Run Octavia deployment
 ======================
 
-Run Octavia deployment to create the API endpoints and *octavia* user. The
-deployment may not run successfully at this point. It will be run after
-preparation again to finish the deployment successfully.
+Run Octavia deployment to create the API endpoints and ``octavia`` user. The deployment may not run successfully at this point. It will be run after preparation again to finish the deployment successfully.
 
 .. code-block:: console
 
@@ -45,11 +43,9 @@ preparation again to finish the deployment successfully.
 Populate Octavia project
 ========================
 
-Add *octavia* entry to `clouds.yml`. The following openstack cli commands will
-use the *octavia* authentication configuration.
+Add *octavia* entry to `environments/openstack/clouds.yml`. The following openstack cli commands will use the ``octavia`` authentication configuration.
 
 .. code-block:: yaml
-   :caption: /opt/configuration/environments/openstack/clouds.yml
 
    ---
    octavia:
@@ -62,13 +58,9 @@ use the *octavia* authentication configuration.
      identity_api_version: 3
      verify: false
 
-For authentication with openstack-client set the octavia keystone password. The
-password can be found in file
-``/opt/configuration/environments/kolla/secrets.yml`` at
-``octavia_keystone_password``.
+For authentication with openstack-client set the octavia keystone password in ``environments/openstack/secure.yml``. The password can be found in file ``environments/kolla/secrets.yml`` at ``octavia_keystone_password``.
 
 .. code-block:: yaml
-   :caption: /opt/configuration/environments/openstack/secure.yml
 
    ---
    clouds:
@@ -138,7 +130,7 @@ Create the amphora disk image.
    virtualenv --prompt "dib " .venv
    source .venv/bin/activate
    pip install -r diskimage-create/requirements.txt
-   ./diskimage-create/diskimage-create.sh -t raw -o /opt/configuration/environments/openstack/amphora-x64-haproxy.raw -g stable/train
+   ./diskimage-create/diskimage-create.sh -t raw -o environments/openstack/amphora-x64-haproxy.raw -g stable/train
 
 Create amphora image.
 
@@ -152,7 +144,7 @@ Cleanup.
 
    cd ..
    rm -rf octavia
-   rm -rf /opt/configuration/environments/openstack/amphora-x64-haproxy*
+   rm -rf environments/openstack/amphora-x64-haproxy*
 
 Create Octavia management network
 ---------------------------------
@@ -171,8 +163,7 @@ Create Octavia management subnet
 Create Neutron ports for health manager access
 ----------------------------------------------
 
-For each network node, create a Neutron port which will be the access port
-for the health manager, residing on the network node.
+For each network node, create a Neutron port which will be the access port for the health manager, residing on the network node.
 
 .. code-block:: console
 
@@ -193,9 +184,7 @@ For each network node, note the port id and the mac address from the ports list.
 
    openstack --os-cloud octavia port list --device-owner octavia:health-mgr -c Name -c "MAC Address" -c ID
 
-Create virtual ethernet device on each network node, by running the following
-command on each network node, using the port id and mac address from the ports
-list.
+Create virtual ethernet device on each network node, by running the following command on each network node, using the port id and mac address from the ports list.
 
 .. code-block:: console
 
@@ -216,11 +205,9 @@ Verify the port status as ``ACTIVE`` from the ports list.
 Add health manager interface configuration to config repository
 ---------------------------------------------------------------
 
-Add the network device configuration for the newly created interfaces on each
-network node in configuration repository.
+Add the network device configuration for the newly created interfaces on each Network Node in ``inventory/host_vars/<networknodes>.yml``.
 
 .. code-block:: yaml
-   :caption: /opt/configuration/inventory/host_vars/network1.yml
 
    - device: o-hm0
      method: static
@@ -242,8 +229,7 @@ Deploy the network configuration to the network nodes.
 Restart networking on network nodes
 -----------------------------------
 
-Restart networking on the network nodes to enable the network device
-configuration for the health manager interface.
+Restart networking on the network nodes to enable the network device configuration for the health manager interface.
 
 
 .. code-block:: console
@@ -253,63 +239,59 @@ configuration for the health manager interface.
 Configure kolla-ansible
 =======================
 
-Note network id of the load balancer management network ``lb-mgmt``
-and the id of the security group ``lb-mgmt-sec-grp``.
+Note network id of the load balancer management network ``lb-mgmt`` and the id of the security group ``lb-mgmt-sec-grp``.
 
 .. code-block:: console
 
    openstack --os-cloud octavia network show -f value -c id lb-mgmt
    openstack --os-cloud octavia security group show  -f value -c id lb-mgmt-sec-grp
 
-Add both network id and security group id to the configuration repository.
+Add both network id and security group id to the file ``environments/kolla/configuration.yml``.
 
 .. code-block:: yaml
-   :caption: /opt/configuration/environments/kolla/configuration.yml
 
    octavia_service_auth_project: "octavia"
    octavia_loadbalancer_topology: "ACTIVE_STANDBY"
    octavia_network_type: "tenant"
    octavia_auto_configure: false
-   
+
    octavia_amp_boot_network_list: OCTAVIA_MGMT_NETWORK_ID
    octavia_amp_secgroup_list: OCTAVIA_MGMT_SECURITY_GROUP_ID
    octavia_amp_flavor_id: octavia
    octavia_amp_image_tag: amphora
 
-Configure global parts for *octavia.conf*.
+Configure global parts for ``environments/kolla/files/overlays/octavia.conf``.
 
 .. code-block:: ini
-   :caption: /opt/configuration/environments/kolla/files/overlays/octavia.conf
 
    [controller_worker]
    amp_ssh_key_name = octavia
-   
+
    [certificates]
    insecure = true
-   
+
    [glance]
    insecure = true
-   
+
    [keystone_authtoken]
    insecure = true
-   
+
    [neutron]
    insecure = true
-   
+
    [nova]
    insecure = true
    enable_anti_affinity = true
    anti_affinity_policy = anti-affinity
    availability_zone = ZONE_WHERE_AMPHORA_IMAGES_WILL_START
-   
+
    [service_auth]
    insecure = true
    project_name = octavia
 
-Configure network node specific parts for *octavia.conf* for each network node.
+Configure network node specific parts for ``environments/kolla/files/overlays/octavia/<networknodes>/octavia.conf``.
 
 .. code-block:: ini
-   :caption: /opt/configuration/environments/kolla/files/overlays/octavia/network1/octavia.conf
 
    [health_manager]
    bind_ip = 10.250.0.10
@@ -321,27 +303,22 @@ Create x509 certificates
 Add x509 certificates to configuration repository.
 `See Octavia Certificate Configuration Guide <https://docs.openstack.org/octavia/train/admin/guides/certificates.html>`_
 
-The password for the CA private key is located at
-``environments/kolla/secrets.yml`` in the configuration repository at variable
-``octavia_ca_password``. You need to encrypt the CA private key with
-this password. The password will be passed to the `octavia.conf` file and
-Octavia expects the CA private key to be encrypted with this password.
+The password for the CA private key is located at ``environments/kolla/secrets.yml`` in the configuration repository at variable ``octavia_ca_password``. You need to encrypt the CA private key with this password. The password will be passed to the `octavia.conf` file and Octavia expects the CA private key to be encrypted with this password.
 
-Add the generated files to the following locations in the configuration
-repository.
+Add the generated files to the following locations in the configuration repository.
 
-- ``/opt/configuration/environments/kolla/files/overlays/octavia/client.cert-and-key.pem``
-- ``/opt/configuration/environments/kolla/files/overlays/octavia/client_ca.cert.pem``
-- ``/opt/configuration/environments/kolla/files/overlays/octavia/server_ca.cert.pem``
-- ``/opt/configuration/environments/kolla/files/overlays/octavia/server_ca.key.pem``
+- ``environments/kolla/files/overlays/octavia/client.cert-and-key.pem``
+- ``environments/kolla/files/overlays/octavia/client_ca.cert.pem``
+- ``environments/kolla/files/overlays/octavia/server_ca.cert.pem``
+- ``environments/kolla/files/overlays/octavia/server_ca.key.pem``
 
 For releases prior to *Train* refer to the
 `Octavia Certificate Configuration Guide <https://docs.openstack.org/octavia/stein/contributor/guides/dev-quick-start.html#create-octavia-keys-and-certificates>`_
 and add the certificates to the configuration repository.
 
-* ``/opt/configuration/environments/kolla/files/overlays/octavia/ca_01.pem``
-* ``/opt/configuration/environments/kolla/files/overlays/octavia/cakey.pem``
-* ``/opt/configuration/environments/kolla/files/overlays/octavia/client.pem``
+* ``environments/kolla/files/overlays/octavia/ca_01.pem``
+* ``environments/kolla/files/overlays/octavia/cakey.pem``
+* ``environments/kolla/files/overlays/octavia/client.pem``
 
 Run octavia deployment
 ======================

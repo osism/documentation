@@ -80,8 +80,8 @@ Manual Installation
 
 .. _partitioning:
 
-Partitioning
-------------
+Node Partitioning
+-----------------
 
 * The use of a UEFI is recommended
 * The use of a RAID is recommended
@@ -336,9 +336,9 @@ Netplan
 ~~~~~~~
 
 * https://netplan.io/examples
+* configure ``/etc/netplan/01-netcfg.yaml``
 
 .. code-block:: yaml
-   :caption: /etc/netplan/01-netcfg.yaml
 
    ---
    network:
@@ -395,7 +395,7 @@ blacklist and unload kernel module ``acpi_power_meter``.
 Preseed file
 ============
 
-.. code-block:: console
+.. code-block::
 
    ### Localization
 

@@ -21,7 +21,7 @@ repository.
    osism-generic configuration
 
 Alternatively, Git itself can be used on the manager node to update the
-repository.
+repository. Therefore the deploy key have to have write permissions.
 
 .. code-block:: console
 

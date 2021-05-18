@@ -55,8 +55,9 @@ wakeup due to [POLLIN] on fd 38 (unknown anon_inode:[eventpoll]) at ../lib/dpif-
 OVS ports
 =========
 
+* Port with OVS tag ``32``
+
 .. code-block:: console
-   :caption: Port with OVS tag ``32``
 
    docker exec -it openvswitch_vswitchd ovs-vsctl show
    ...
@@ -70,9 +71,9 @@ Ports with tag 4095 - mard "dead"
 =================================
 
 * https://www.suse.com/support/kb/doc/?id=000018712
+* Port with OVS tag ``4095``
 
 .. code-block:: console
-   :caption: Port with OVS tag ``4095``
 
    docker exec -it openvswitch_vswitchd ovs-vsctl show
    ...
@@ -82,21 +83,24 @@ Ports with tag 4095 - mard "dead"
                    type: internal
    ...
 
+* Port in ``OpenStack``
+
 .. code-block:: console
-   :caption: Port in ``OpenStack``
 
    # openstack --os-cloud admin port list | grep c0f9a508-89
    | ID             | Name | MAC Address | Fixed IP Addresses                                |
    | c0f9a508-89... |      | fa:16:...   | {"subnet_id": "subnetUUID", "ip_address": "IP"}   |
 
+* Sometimes there is no port in ``OpenStack``
+
 .. code-block:: console
-   :caption: Sometimes there is no port in ``OpenStack``
 
    # openstack --os-cloud admin port list | grep c0f9a508-89
    | ID             | Name | MAC Address | Fixed IP Addresses                                |
 
+* OpenStack ``port show``
+
 .. code-block:: console
-   :caption: OpenStack ``port show``
 
    # openstack --os-cloud admin port show c0f9a508-89...
    +-----------------------+-----------------+
@@ -107,25 +111,29 @@ Ports with tag 4095 - mard "dead"
    ...
    +-----------------------+-----------------+
 
+* Port on host ``DOWN``
+
 .. code-block:: console
-   :caption: Port on host ``DOWN``
 
    # ip address show tapc0f9a508-89
    356: tapc0f9a508-89: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
        link/ether 2a:fb:4b:a3:45:f2 brd ff:ff:ff:ff:ff:ff
 
+* Delete port in ``OpenStack`` if present
+
 .. code-block:: console
-   :caption: Delete port in ``OpenStack`` if necessary
 
    # openstack --os-cloud admin port delete c0f9a508-89...
 
+* Delete port in ``OVS``
+
 .. code-block:: console
-   :caption: Delete port in ``OVS``
 
    # docker exec -it openvswitch_vswitchd ovs-vsctl del-port br-int tapc0f9a508-89
 
+* The following command could be used for ``monitoring`` those ports
+
 .. code-block:: console
-   :caption: The following command could be used for ``monitoring`` those ports
 
    # docker exec -it openvswitch_vswitchd ovs-vsctl show | grep -c -B1 "tag: 4095"
    5
@@ -149,46 +157,53 @@ Orphaned ports - without tag
                    type: internal
    ...
 
+* Those ports drop many packages, this costs CPU time
+
 .. code-block:: console
-   :caption: Those ports drop many packages, this costs CPU time
 
    # docker exec -it openvswitch_vswitchd ovs-ofctl dump-ports br-int
    ...
      port "tap7f14056f-61": rx pkts=, bytes=, drop=123456789, errs=, frame=, over=, crc=
            tx pkts=, bytes=, drop=123456789, errs=, coll=
 
+* Port in ``OpenStack``
+
 .. code-block:: console
-   :caption: Port in ``OpenStack``
 
    # openstack --os-cloud admin port list | grep 7f14056f-61
    | ID             | Name | MAC Address | Fixed IP Addresses                                |
    | 7f14056f-61... |      | fa:16:...   | {"subnet_id": "subnetUUID", "ip_address": "IP"}   |
 
+* Sometimes there is no port in ``OpenStack``
+
 .. code-block:: console
-   :caption: Sometimes there is no port in ``OpenStack``
 
    # openstack --os-cloud admin port list | grep 7f14056f-61
    | ID             | Name | MAC Address | Fixed IP Addresses                                |
 
+* Port on host ``DOWN``
+
 .. code-block:: console
-   :caption: Port on host ``DOWN``
 
    # ip address show tap7f14056f-61
    356: tap7f14056f-61: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
        link/ether 2a:fb:4b:a3:45:f2 brd ff:ff:ff:ff:ff:ff
 
+* Delete port in ``OpenStack`` if present
+
 .. code-block:: console
-   :caption: Delete port in ``OpenStack`` if necessary
 
    # openstack --os-cloud admin port delete 7f14056f-61...
 
+* Delete port in ``OVS``
+
 .. code-block:: console
-   :caption: Delete port in ``OVS``
 
    # docker exec -it openvswitch_vswitchd ovs-vsctl del-port br-int tap7f14056f-61
 
+* The following command could be used for ``monitoring`` those ports
+
 .. code-block:: console
-   :caption: The following command could be used for ``monitoring`` those ports
 
    # docker exec -it openvswitch_vswitchd ovs-vsctl show | grep -A1 "Port " | grep -v tag | grep -i interface | grep -c tap
    5
