@@ -14,7 +14,7 @@ Mirror
      - ---
 
 .. contents::
-   :local:
+   :depth: 2
 
 It is recommended to deploy the mirror services on a dedicated system.
 

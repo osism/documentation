@@ -3,7 +3,7 @@ Ubuntu
 ======
 
 .. contents::
-   :local:
+   :depth: 2
 
 Xenial -> Bionic
 ================

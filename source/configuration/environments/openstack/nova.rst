@@ -3,7 +3,7 @@ Nova
 ====
 
 .. contents::
-   :local:
+   :depth: 2
 
 Local LVM2 storage
 ==================

@@ -3,7 +3,7 @@ Storage node
 ============
 
 .. contents::
-   :local:
+   :depth: 2
 
 .. note::
 

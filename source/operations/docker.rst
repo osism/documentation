@@ -3,7 +3,7 @@ Docker
 ======
 
 .. contents::
-   :local:
+   :depth: 2
 
 Start / Stop all containers
 ===========================

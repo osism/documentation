@@ -21,7 +21,7 @@ Clients
      $ osism-infrastructure phpmyadmin
 
 .. contents::
-   :local:
+   :depth: 2
 
 Deploying Openstack Services
 ============================

@@ -3,7 +3,7 @@ Infrastructure
 ==============
 
 .. contents::
-   :local:
+   :depth: 2
 
 Network
 =======

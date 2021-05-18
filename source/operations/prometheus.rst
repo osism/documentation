@@ -3,7 +3,7 @@ Prometheus
 ==========
 
 .. contents::
-   :local:
+   :depth: 2
 
 panic: runtime error: slice bounds out of range
 ===============================================

@@ -9,7 +9,7 @@ Before starting the upgrade, the configuration repository on the manager node
 need to be prepared and updated.
 
 .. contents::
-   :local:
+   :depth: 2
 
 The *OSISM* version need to be set to the new version:
 

@@ -12,7 +12,7 @@ VLAN networks. Only the external network defined by the host specific variable
 The following networks are used:
 
 .. contents::
-   :local:
+   :depth: 2
 
 Console
 =======

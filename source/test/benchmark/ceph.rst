@@ -3,7 +3,7 @@ Ceph
 ====
 
 .. contents::
-   :local:
+   :depth: 2
 
 * https://tracker.ceph.com/projects/ceph/wiki/Benchmark_Ceph_Cluster_Performance
 

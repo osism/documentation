@@ -3,7 +3,7 @@ Elasticsearch
 =============
 
 .. contents::
-   :local:
+   :depth: 2
 
 Cluster start and stop
 ======================

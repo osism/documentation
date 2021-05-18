@@ -3,7 +3,7 @@ Network
 =======
 
 .. contents::
-   :local:
+   :depth: 2
 
 External connectivity
 =====================

@@ -3,7 +3,7 @@ Node types
 ==========
 
 .. contents::
-   :local:
+   :depth: 2
 
 .. image:: /images/network-schema.png
 

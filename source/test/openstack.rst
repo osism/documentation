@@ -3,7 +3,7 @@ OpenStack
 =========
 
 .. contents::
-   :local:
+   :depth: 2
 
 OpenStack Client Preparations
 =============================

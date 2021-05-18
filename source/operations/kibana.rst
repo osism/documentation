@@ -3,7 +3,7 @@ Kibana
 ======
 
 .. contents::
-   :local:
+   :depth: 2
 
 Web Interface
 =============

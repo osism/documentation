@@ -3,7 +3,7 @@ Ceph
 ====
 
 .. contents::
-   :local:
+   :depth: 2
 
 Node reboot
 ===========

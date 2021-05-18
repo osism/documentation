@@ -3,7 +3,7 @@ Manager Node Deployment
 =======================
 
 .. contents::
-   :local:
+   :depth: 2
 
 .. note::
 

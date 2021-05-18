@@ -3,7 +3,7 @@ Provisioning of bare-metal servers
 ==================================
 
 .. contents::
-   :local:
+   :depth: 2
 
 The manual installation of a system is described below. The use of an installation server
 is recommended

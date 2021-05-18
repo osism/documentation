@@ -3,7 +3,7 @@ Rally
 =====
 
 .. contents::
-   :local:
+   :depth: 2
 
 Rally is a tool for performance analysis and benchmarking of individual OpenStack components.
 
