@@ -31,6 +31,8 @@ Successively start the ``rabbitmq`` container on all controller nodes (one by on
 Check
 -----
 
+* old RabbitMQ
+
 .. code-block:: console
 
    docker exec -it rabbitmq rabbitmqctl cluster_status
@@ -40,6 +42,73 @@ Check
     {cluster_name,<<"rabbit@testbed-node-0.osism.local">>},
     {partitions,[]},
     {alarms,[{'rabbit@testbed-node-0',[]},{'rabbit@testbed-node-1',[]}]}]
+
+* new RabbitMQ
+
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl cluster_status
+   Cluster status of node rabbit@node01 ...
+   Basics
+
+   Cluster name: rabbit@node03.osism.local
+
+   Disk Nodes
+
+   rabbit@node01
+   rabbit@node02
+   rabbit@node03
+
+   Running Nodes
+
+   rabbit@node01
+   rabbit@node02
+   rabbit@node03
+
+   Versions
+
+   rabbit@node01: RabbitMQ 3.8.16 on Erlang 23.3.3
+   rabbit@node02: RabbitMQ 3.8.16 on Erlang 23.3.3
+   rabbit@node03: RabbitMQ 3.8.16 on Erlang 23.3.3
+
+   Maintenance status
+
+   Node: rabbit@node01, status: not under maintenance
+   Node: rabbit@node02, status: not under maintenance
+   Node: rabbit@node03, status: not under maintenance
+
+   Alarms
+
+   (none)
+
+   Network Partitions
+
+   (none)
+
+   Listeners
+
+   Node: rabbit@node01, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node01, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node01, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node01, interface: 10.2.8.11, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+   Node: rabbit@node02, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node02, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node02, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node02, interface: 10.2.8.12, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+   Node: rabbit@node03, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node03, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node03, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node03, interface: 10.2.8.13, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+
+   Feature flags
+
+   Flag: drop_unroutable_metric, state: enabled
+   Flag: empty_basic_get_metric, state: enabled
+   Flag: implicit_default_bindings, state: enabled
+   Flag: maintenance_mode_status, state: enabled
+   Flag: quorum_queue, state: enabled
+   Flag: user_limits, state: enabled
+   Flag: virtual_host_metadata, state: enabled
 
 Emptying the notification queues
 ================================
@@ -78,6 +147,8 @@ consider using an HTTP API client library instead.
 Cluster status
 ==============
 
+* old RabbitMQ
+
 .. code-block:: console
 
    docker exec -it rabbitmq rabbitmqctl eval 'rabbit_clusterer:status().'
@@ -91,6 +162,73 @@ Cluster status
     {version,1}]
    Running nodes: ['rabbit@testbed-node-0','rabbit@testbed-node-1']
    ok
+
+* new RabbitMQ
+
+.. code-block:: console
+
+   docker exec -it rabbitmq rabbitmqctl cluster_status
+   Cluster status of node rabbit@node01 ...
+   Basics
+
+   Cluster name: rabbit@node03.osism.local
+
+   Disk Nodes
+
+   rabbit@node01
+   rabbit@node02
+   rabbit@node03
+
+   Running Nodes
+
+   rabbit@node01
+   rabbit@node02
+   rabbit@node03
+
+   Versions
+
+   rabbit@node01: RabbitMQ 3.8.16 on Erlang 23.3.3
+   rabbit@node02: RabbitMQ 3.8.16 on Erlang 23.3.3
+   rabbit@node03: RabbitMQ 3.8.16 on Erlang 23.3.3
+
+   Maintenance status
+
+   Node: rabbit@node01, status: not under maintenance
+   Node: rabbit@node02, status: not under maintenance
+   Node: rabbit@node03, status: not under maintenance
+
+   Alarms
+
+   (none)
+
+   Network Partitions
+
+   (none)
+
+   Listeners
+
+   Node: rabbit@node01, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node01, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node01, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node01, interface: 10.2.8.11, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+   Node: rabbit@node02, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node02, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node02, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node02, interface: 10.2.8.12, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+   Node: rabbit@node03, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+   Node: rabbit@node03, interface: [::], port: 15692, protocol: http/prometheus, purpose: Prometheus exporter API over HTTP
+   Node: rabbit@node03, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+   Node: rabbit@node03, interface: 10.2.8.13, port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+
+   Feature flags
+
+   Flag: drop_unroutable_metric, state: enabled
+   Flag: empty_basic_get_metric, state: enabled
+   Flag: implicit_default_bindings, state: enabled
+   Flag: maintenance_mode_status, state: enabled
+   Flag: quorum_queue, state: enabled
+   Flag: user_limits, state: enabled
+   Flag: virtual_host_metadata, state: enabled
 
 Broken queue
 ============
