@@ -24,6 +24,7 @@ Operations
    operations/nova
    operations/openvswitch
    operations/panko
+   operations/placement
    operations/prometheus
    operations/rabbitmq
    operations/ubuntu
