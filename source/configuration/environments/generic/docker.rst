@@ -1,6 +1,6 @@
-======
-Docker
-======
+====================
+Docker Configuration
+====================
 
 .. list-table::
    :widths: 10 90
@@ -42,6 +42,7 @@ Configuration file: ``environments/configuration.yml``
        docker-ce | 18.06.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
       [...]
 
+* :ref:`docker-pin-hold`
 
 Storage driver
 ==============

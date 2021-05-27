@@ -1,9 +1,42 @@
-======
-Docker
-======
+=================
+Docker Operations
+=================
 
 .. contents::
    :depth: 2
+
+.. _docker-pin-hold:
+
+Docker Selection Pin and/or Hold
+================================
+
+The docker version will be pined and/or set hold.
+
+* ``environments/configuration.yml``
+
+.. code-block:: console
+
+   docker_version: "5:20.10.0"
+
+* hold and/or pin
+
+.. code-block:: console
+
+   $ dpkg --get-selections | grep hold
+   containerd.io                  hold
+
+   $ apt-mark showhold
+   containerd.io
+
+   $ cat /etc/apt/preferences.d/docker
+   Package: docker-ce
+   Pin: version 5:20.10.0*
+   Pin-Priority: 1001
+
+   $ cat /etc/apt/preferences.d/docker-cli
+   Package: docker-ce-cli
+   Pin: version 5:20.10.0*
+   Pin-Priority: 1001
 
 Start / Stop all containers
 ===========================
