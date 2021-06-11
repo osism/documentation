@@ -106,6 +106,33 @@ order:
 If the order is not followed, an error occurs when starting HAProxy:
 ``inconsistencies between private key and certificate loaded from PEM file '/etc/haproxy/haproxy.pem'``.
 
+Existing certificates (> Train)
+--------------------------------
+
+Set ``kolla_enable_tls_external: "yes"`` in
+``environments/kolla/configuration.yml`` and add certificate
+to file ``environments/kolla/certificates/haproxy.pem``.
+
+.. code-block:: yaml
+
+   environments/kolla/certifcates/haproxy.pem
+     -----BEGIN CERTIFICATE-----
+     [...]
+     -----END CERTIFICATE-----
+     -----BEGIN RSA PRIVATE KEY-----
+     [...]
+     -----END RSA PRIVATE KEY-----
+
+Key and certificates in PEM format are stored consecutively in the following
+order:
+
+* server certificate
+* server private key (without any password)
+* intermediate certificates
+
+If the order is not followed, an error occurs when starting HAProxy:
+``inconsistencies between private key and certificate loaded from PEM file '/etc/haproxy/haproxy.pem'``.
+
 .. _generation-of-self-signed-certificate:
 
 Generate self-signed certificates (<= Train)
@@ -162,3 +189,13 @@ certifcates on every computer that uses the external API. The workflow is
 different for different Linux distributions. Many programs, such as
 ``OpenStackClient`` or ``cURL``,  also offer an ``--insecure`` parameter as a
 temporary solution.
+
+Generate self-signed certificates (> Train)
+--------------------------------------------
+
+If no certificate has been created yet, use ``osism-kolla _ certificates -e kolla_certificates_dir=/share``
+command to generate a self signed certifacte on the manager node.
+
+.. code-block:: console
+
+   docker exec -it manager_kolla-ansible_1
