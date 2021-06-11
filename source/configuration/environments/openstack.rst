@@ -198,4 +198,5 @@ command to generate a self signed certifacte on the manager node.
 
 .. code-block:: console
 
-   docker exec -it manager_kolla-ansible_1
+   docker exec -it manager_kolla-ansible_1 cat /share/haproxy.pem > \
+                   /opt/configuration/environments/kolla/certificates/haproxy.pem
