@@ -2,6 +2,13 @@
 Requirements
 ============
 
+Necessary basic knowledge
+=========================
+
+* Git
+* Ansible / Ansible Vault
+* Docker / Docker-Compose / Container
+
 Operating system
 ================
 
