@@ -43,6 +43,15 @@ Placement Resource Abfrage
 
 .. code-block:: console
 
+   $ openstack --os-cloud admin resource provider list
+   +--------------------------------------+---------------------------+------------+
+   | uuid                                 | name                      | generation |
+   +--------------------------------------+---------------------------+------------+
+   | 33c86ab1-b9ac-4908-be4a-968f1b6a830f | node-1.osism.io           |          2 |
+   +--------------------------------------+---------------------------+------------+
+
+.. code-block:: console
+
    $ openstack --os-cloud admin resource provider usage show 33c86ab1-b9ac-4908-be4a-968f1b6a830f
    +----------------+-------+
    | resource_class | usage |
