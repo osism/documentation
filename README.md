@@ -68,7 +68,7 @@ header and should not be modified by hand.
 
 ## License
 
-This documentation was created by [Betacloud Solutions GmbH](https://betacloud-solutions.de)
+This documentation was created by [OSISM GmbH](https://osism.tech)
 and is licensed under a [Creative Commons Attribution 4.0 International Licence (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
 
 [![Creative Commons Attribution-ShareAlike 4.0 International](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
