@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           security: strict
-          server-dir: /
+          server-dir: /osism/
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           exclude: testbed/**
