@@ -36,8 +36,8 @@ GPG details are set via the ``aptly_configuration`` parameter in ``environments/
 .. code-block:: yaml
 
    aptly_configuration:
-     full_name: Betacloud Solutions GmbH
-     email_address: info@betacloud-solutions.de
+     full_name: OSISM GmbH
+     email_address: info@osism.tech
      gpg_password: "{{ aptly_gpg_password }}"
 
 The used password ``aptly_gpg_password`` is set in ``environments/infrastructure/secrets.yml`` file.

@@ -7,7 +7,7 @@ Docker based deployment framework for managing OpenStack, Ceph, and necessary
 services.
 
 Further details about OSISM can be found on https://www.osism.de. Do not hesitate
-to write an e-mail to info@betacloud-solutions.de if you have questions or doubts.
+to write an e-mail to info@osism.tech if you have questions or doubts.
 
 A testbed of OSISM is available under https://github.com/osism/testbed.
 Documentation is available at https://docs.osism.de/testbed. This
