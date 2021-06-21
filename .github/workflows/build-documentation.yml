@@ -34,4 +34,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           exclude: testbed/**
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
