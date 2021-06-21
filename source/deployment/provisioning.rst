@@ -35,6 +35,8 @@ Preparations
 Manual Installation
 ===================
 
+See :ref:`ubuntu-manual-installation-screenshots` for Screenshots, below the steps **without** Screenshots.
+
 * Choose ``English`` as language
 * Choose ``Install Ubuntu Server``
 * Choose ``English`` as language (again)
