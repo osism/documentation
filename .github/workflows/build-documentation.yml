@@ -24,7 +24,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: sphinx-build -b html source build/html
       - run: sudo apt-get install -y lftp
-      - uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           local-dir: build/html/
           password: ${{ secrets.FTP_PASSWORD }}
