@@ -109,7 +109,7 @@ for the logical volume are noted.
 
   * ``/`` (10 GByte, logical volume ``root``)
   * ``/home`` (2 GByte, logical volume ``home``)
-  * ``/tmp`` (2 GByte, logical volume ``tmp``)
+  * ``/tmp`` (5 GByte, logical volume ``tmp``)
   * ``/var/lib/docker`` (30 GByte, logical volume ``docker``, do not set the ``nosuid`` flag on ``/var/lib/docker``)
   * ``/var/log/audit`` (1 GByte, logical volume ``audit``)
   * ``/var`` (10 GByte, logical volume ``var``)
@@ -492,7 +492,7 @@ Preseed file
        use_filesystem{ } filesystem{ ext4 }  \
        mountpoint{ /home }                   \
        .                                     \
-     2048 1000 2048 ext4                     \
+     5120 1000 5120 ext4                     \
        $lvmok{ }                             \
        lv_name{ tmp }                        \
        method{ lvm } format{ }               \
