@@ -37,6 +37,12 @@ Logging
    $ osism-kolla deploy elasticsearch
    $ osism-kolla deploy kibana
 
+It could be necessary to restart ``fluentd`` container, e.g. during training sessions.
+
+.. code-block:: console
+
+   $ docker restart fluentd
+
 It is possible that the error ``Your Kibana index is out of date, reset it or use the X-Pack upgrade assistant``
 occurs when calling the Kibana Application from the browser (https://github.com/elastic/kibana/issues/14934).
 
@@ -64,5 +70,5 @@ Openstack-Client
 
    $ osism-infrastructure openstackclient
 
-You can if needed deploy the Openstackclient. 
+You can if needed deploy the Openstackclient.
 For configuration of the client see :ref:`how to test Openstack-Client <test-openstack>`.
