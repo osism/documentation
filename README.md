@@ -1,6 +1,6 @@
 # OSISM documentation
 
-Published at http://docs.osism.de.
+Published at http://docs.osism.tech.
 
 ## Install dependencies for building documentation
 

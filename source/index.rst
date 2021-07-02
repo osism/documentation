@@ -10,7 +10,7 @@ Further details about OSISM can be found on https://www.osism.tech. Do not hesit
 to write an e-mail to info@osism.tech if you have questions or doubts.
 
 A testbed of OSISM is available under https://github.com/osism/testbed.
-Documentation is available at https://docs.osism.de/testbed. This
+Documentation is available at https://docs.osism.tech/testbed. This
 allows you to deploy a small environment with four nodes on a public cloud like our
 `Betacloud <https://www.betacloud.de>`_. Other providers like Citycloud are also
 supported.
