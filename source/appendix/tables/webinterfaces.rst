@@ -20,9 +20,13 @@ Kibana          5601     ``kolla_internal_vip`` network/controller kibana       
 Netbox          8121     ``console_interface``  manager            netbox       ``netbox_superuser_password``
 Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
-Rally           8090     ``console_interface``  manager            n/a          n/a
+Rally           8180     ``console_interface``  manager            n/a          n/a
 Rundeck         4440     ``console_interface``  manager            n/a          n/a
 phpMyAdmin      8110     ``console_interface``  manager            root         ``database_password``
+Keycloak        8170     ``console_interface``  manager
+UMC Web         8090     ``console_interface``  manager
+UMC Gateway     8191     ``console_interface``  manager
+Zabbix          8160     ``console_interface``  manager
 =============== ======== ====================== ================== ============ ===========================
 
 ``operator_password`` can be found in file ``environments/secrets.yml``. All other passwords can be found
