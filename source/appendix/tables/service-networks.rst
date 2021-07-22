@@ -24,6 +24,7 @@ Heimdall            osism.heimdall                 ``172.31.100.208/28``
 Jenkins             osism.jenkins                  ``172.31.100.224/28``
 OpenLDAP            osism.openldap                 ``172.31.100.240/28``
 Manager             osism.manager                  ``172.31.101.0/28``
+virtualbmc          osism.virtualbmc               ``172.31.101.16/28``
 =================== ============================== =====================
 
 Deprecated service networks
