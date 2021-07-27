@@ -24,8 +24,8 @@ Rally           8180     ``console_interface``  manager            n/a          
 Rundeck         4440     ``console_interface``  manager            n/a          n/a
 phpMyAdmin      8110     ``console_interface``  manager            root         ``database_password``
 Keycloak        8170     ``console_interface``  manager
-UMC Web         8090     ``console_interface``  manager
-UMC Gateway     8191     ``console_interface``  manager
+UMC             8191     ``console_interface``  manager
+UMC w/ TLS      8192     ``console_interface``  manager
 Zabbix          8160     ``console_interface``  manager
 =============== ======== ====================== ================== ============ ===========================
 
