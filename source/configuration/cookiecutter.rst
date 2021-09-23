@@ -49,18 +49,19 @@ It is recommended to use a virtual environment when installing packages from PyP
 .. code-block:: console
 
    pip3 install \
-     ansible \
-     cookiecutter \
-     cryptography \
-     oslo.utils \
-     paramiko \
-     passlib \
-     pwgen \
-     pycrypto \
-     pykeepass \
-     python-gilt \
-     pyyaml \
-     ruamel.yaml \
+     PyYAML
+     ansible
+     click<8.0.0
+     cookiecutter
+     cryptography
+     oslo.utils
+     paramiko
+     passlib
+     pwgen
+     pycrypto
+     pykeepass
+     python-gilt
+     ruamel.yaml
      yamllint
 
 Cookiecutter Initialisation
