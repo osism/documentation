@@ -9,7 +9,7 @@ configurable in the configuration repository.
 **Service**     **Port** **Interface/Address**  **Node**           **Username** **Password**
 --------------- -------- ---------------------- ------------------ ------------ ---------------------------
 ARA             8120     ``console_interface``  manager            n/a          n/a
-Ceph dashboard  7000     ``kolla_internal_vip`` network/controller n/a          n/a
+Ceph dashboard  8080     ``storage_interface``  network/controller n/a          n/a
 Cockpit         8130     ``console_interface``  manager            dragon       ``operator_password``
 Grafana         3000     ``kolla_internal_vip`` network/controller grafana      ``grafana_admin_password``
 Heimdall        8080     ``console_interface``  manager            n/a          n/a
