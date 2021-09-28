@@ -167,6 +167,10 @@ ceph-osd is the object storage daemon for the Ceph distributed file system.
 
    osism-ceph osds
 
+.. code-block:: console
+
+   osism-ceph crash
+
 Post-processing
 ===============
 
