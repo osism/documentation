@@ -275,7 +275,18 @@ Remove OSD
      dragon@testbed-manager:~$ ceph osd out osd.3
      marked out osd.3.
 
-* Stop the ceph-osd service with ``sudo systemctl stop ceph-osd@3``
+* Stop the ceph-osd service on the storage node where it is running
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ sudo systemctl stop ceph-osd@3
+
+* Make sure it is safe to remove the osd
+
+  .. code-block:: console
+
+     dragon@testbed-node-0:~$ ceph osd safe-to-destroy osd.3
+     OSD(s) 3 are safe to destroy without reducing data durability.
 
 * Purge the OSD
 
