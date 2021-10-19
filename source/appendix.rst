@@ -6,4 +6,5 @@ Appendix
    :maxdepth: 2
 
    appendix/tables
+   appendix/reconciler
    appendix/license
