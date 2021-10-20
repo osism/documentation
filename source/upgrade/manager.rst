@@ -2,6 +2,27 @@
 Manager
 =======
 
+.. warning::
+
+   It is not possible to update the manager with the ``osism-manager manager`` command.
+
+   The ``osism-update-manager`` command must be used for this.
+
+   .. code-block:: console
+
+      $ osism-manager manager
+      [WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+      ERROR! the role 'osism.manager' was not found in /ansible/roles:/ansible/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles:/ansible
+
+      The error appears to be in '/ansible/manager-manager.yml': line 6, column 5, but may
+      be elsewhere in the file depending on the exact syntax problem.
+
+      The offending line appears to be:
+
+        roles:
+        - role: osism.manager
+          ^ here
+
 Preparations
 ------------
 
