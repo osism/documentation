@@ -51,14 +51,6 @@ $ tox -e build
 
 You can find the root of the generated HTML documentation at `build/html`.
 
-## Pushing
-
-```
-$ export FTP_USERNAME=username
-$ export FTP_PASSWORD=password
-$ tox -e push
-```
-
 ## Generated files
 
 Some documentation files are generated using tools. These files include a `do not edit`
