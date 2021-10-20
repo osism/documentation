@@ -22,9 +22,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - run: pip install -r requirements.txt
+      - run: pip3 install -r requirements.txt
       - run: sphinx-build -b html source build/html
-      - run: sudo apt-get install -y lftp
       - uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           local-dir: build/html/
