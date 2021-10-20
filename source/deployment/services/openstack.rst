@@ -23,6 +23,28 @@ Clients
 .. contents::
    :depth: 2
 
+.. _nova-console-spice:
+
+NoVNC or Spicehtml
+==================
+
+There are two options:
+
+* novnc (default)
+* spice
+
+The configuration switch is in ``environments/kolla/configuration.yml``
+
+.. code-block:: console
+
+   nova_console: novnc/spice
+
+This change have to be done before running ``haproxy`` deployment. Otherwise ``reconfigure`` ``haproxy``.
+
+.. code-block:: console
+
+   osism-kolla reconfigure haproxy
+
 Deploying Openstack Services
 ============================
 
@@ -41,8 +63,8 @@ enforces these. To prevent logouts push SPACE sometimes or use a multiplexer lik
 
 .. _deploymentservicesopenstackinfrastructure:
 
-Infrastructure
-==============
+Infrastructure components
+=========================
 
 * memcached
 * mariadb

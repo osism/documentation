@@ -28,5 +28,6 @@ Nova            8774
 Novncproxy      6080
 Panko           8977
 Placement       8780
+Spicehtml       6082
 Watcher         9322
 =============== ========
