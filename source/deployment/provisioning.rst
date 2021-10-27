@@ -453,7 +453,7 @@ Preseed file
 
    ### Partitioning
 
-   d-i partman-auto/disk string /dev/sda
+   #d-i partman-auto/disk string /dev/sda
    # Choose LVM
    d-i partman-auto/method string lvm
    # Remove pre-existing LVM
@@ -520,10 +520,10 @@ Preseed file
        use_filesystem{ } filesystem{ ext4 }  \
        mountpoint{ /var }                    \
        .                                     \
-     8192 3000 8192 ext4                     \
+     8192 3000 8192 swap                     \
        $lvmok{ }                             \
        lv_name{ swap }                       \
-       method{ lvm } format{ }               \
+       method{ swap } format{ }              \
        use_filesystem{ } filesystem{ swap }  \
        .                                     \
      512 5000 8000000000000 ext4             \
@@ -544,7 +544,7 @@ Preseed file
 
    tasksel tasksel/first multiselect standard, lubuntu-desktop
    # Individual additional packages to install
-   d-i pkgsel/include string openssh-server python htop vim
+   d-i pkgsel/include string openssh-server python3 htop vim
    # No update during installation
    d-i pkgsel/upgrade select none
    # Language pack selection
