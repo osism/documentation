@@ -13,7 +13,7 @@ The manual node installation is completely possible without network connectivity
 Preparations
 ============
 
-* Download the latest ISO image for Ubuntu 20.04 from http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/
+* Download the latest ISO image for Ubuntu 20.04 from http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/
 
   * Use the ``ubuntu-20.04.1-legacy-server-amd64.iso`` image
   * Do not use the ``ubuntu-20.04-live-server-amd64.iso`` image
