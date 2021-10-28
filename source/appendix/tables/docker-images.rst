@@ -4,17 +4,20 @@ Docker images
 
 * https://github.com/osism?q=docker
 
-======================================== ============================================================ ===============================
-Name                                     Repository                                                   Image
-======================================== ============================================================ ===============================
-osism/docker-aptly                       https://github.com/osism/docker-aptly                        osism/aptly
-osism/docker-ara-server                  https://github.com/osism/docker-ara-server                   osism/ara-server
-osism/docker-ara-web                     https://github.com/osism/docker-ara-web                      osism/ara-web
-osism/docker-ceph-ansible                https://github.com/osism/docker-ceph-ansible                 osism/ceph-ansible
-osism/docker-ceph-container              https://github.com/osism/docker-ceph-container               osism/ceph-container
-osism/docker-cephclient                  https://github.com/osism/docker-cephclient                   osism/cephclient
-osism/docker-installer                   https://github.com/osism/docker-installer                    osism/installer
-osism/docker-kolla-ansible               https://github.com/osism/docker-kolla-ansible                osism/kolla-ansible
-osism/docker-openstackclient             https://github.com/osism/docker-openstackclient              osism/openstackclient
-osism/docker-osism-ansible               https://github.com/osism/docker-osism-ansible                osism/osism-ansible
-======================================== ============================================================ ===============================
+=========================== =============================================================
+Image                       Repository
+=========================== =============================================================
+osism/aptly                 https://github.com/osism/container-image-aptly
+osism/ara-server            https://github.com/osism/container-image-ara-server
+osism/ara-web               https://github.com/osism/container-image-ara-web
+osism/ceph-ansible          https://github.com/osism/container-image-ceph-ansible
+osism/ceph-container        https://github.com/osism/container-image-ceph-container
+osism/cephclient            https://github.com/osism/container-image-cephclient
+osism/horizon               https://github.com/osism/container-image-horizon
+osism/installer             https://github.com/osism/container-image-installer
+osism/inventory-reconciler  https://github.com/osism/container-image-inventory-reconciler
+osism/kolla-ansible         https://github.com/osism/container-image-kolla-ansible
+osism/openstackclient       https://github.com/osism/container-image-openstackclient
+osism/osism-ansible         https://github.com/osism/container-image-osism-ansible
+osism/kolla-ansible         https://github.com/osism/container-images-kolla
+=========================== =============================================================
