@@ -19,7 +19,7 @@ Preparations
   * Do not use the ``ubuntu-20.04-live-server-amd64.iso`` image
   * The version number may be different, always use the latest available version of 20.04 LTS
 
-* Or use the preseed ISO, (https://images.osism.io/minio/isos/ubuntu20-04/)
+* Or use the preseed ISO, downloadable at https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server via UEFI (recommended) from this USB stick/CD
