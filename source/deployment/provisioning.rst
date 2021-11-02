@@ -219,7 +219,7 @@ Prepare Ubuntu Server ISO
 
    Please use console, ALT+F4, for debugging
 
-* `Download <https://images.osism.io/minio/isos/ubuntu20-04/>`_ prepared
+* `Download <https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso>`_ prepared
   ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 .. note::
