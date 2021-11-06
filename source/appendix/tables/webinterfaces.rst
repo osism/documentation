@@ -18,7 +18,7 @@ Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        
 Jenkins         4441     ``console_interface``  manager            jenkins      ``jenkins_password``
 Kibana          5601     ``kolla_internal_vip`` network/controller kibana       ``kibana_password``
 Netbox          8121     ``console_interface``  manager            admin        ``netbox_superuser_password``
-Nexus           8190     ``console_interface``  manager            ??           ??
+Nexus           8190     ``console_interface``  manager            admin        n/a
 Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
 Rally           8180     ``console_interface``  manager            n/a          n/a
@@ -32,3 +32,10 @@ Zabbix          8160     ``console_interface``  manager
 
 ``operator_password`` can be found in file ``environments/secrets.yml``. All other passwords can be found
 in file ``environments/kolla/secrets.yml``.
+
+For Nexus, run the following on the manager node to read out the initial admin password:
+
+.. code-block:: console
+
+   $ docker exec -it nexus cat /nexus-data/admin.password
+   c79304f7-e9db-4b5d-a48a-0678cc0efcdf
