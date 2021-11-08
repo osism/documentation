@@ -5,7 +5,7 @@ Placement Operations
 .. contents::
    :depth: 2
 
-Placement Resource Abfrage
+Placement Resource Query
 ==========================
 
 .. code-block:: console
