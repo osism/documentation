@@ -89,7 +89,9 @@ OS/distribution type
 
 Set ``os_type`` (``linux`` or ``windows``) and ``os_distro``.
 
-Possible values for ``os_distro`` can be found under https://docs.openstack.org/python-glanceclient/latest/cli/property-keys.html.
+Possible values for ``os_distro`` can be found under
+
+https://docs.openstack.org/python-glanceclient/latest/cli/property-keys.html.
 
 Alternatively, the program ``osinfo-query`` contained in the package ``libosinfo-bin`` can be used.
 

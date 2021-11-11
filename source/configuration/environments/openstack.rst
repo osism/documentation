@@ -7,6 +7,7 @@ OpenStack
 Base directory: ``environments/kolla``
 
 The documentation for ``kolla-ansible`` can be found at
+
 https://docs.openstack.org/kolla-ansible/latest/.
 
 .. toctree::

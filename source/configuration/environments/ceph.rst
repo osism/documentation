@@ -8,7 +8,9 @@ Base directory: ``environments/ceph``
 
 .. note ::
 
-   The documentation for ``ceph-ansible`` can be found at http://docs.ceph.com/ceph-ansible/master/.
+   The documentation for ``ceph-ansible`` can be found at
+
+   http://docs.ceph.com/ceph-ansible/master/.
 
 Generic Ceph Configuration
 ==========================
@@ -47,6 +49,7 @@ Devices for Ceph OSDs
 
 Unlike other ``by-id`` links, WWNs (`World Wide Name <https://en.wikipedia.org/wiki/World_Wide_Name>`_) are
 fully persistent and will not change depending on the used subsystem. For more details see
+
 https://wiki.archlinux.org/index.php/Persistent_block_device_naming.
 
 * Configuration in ``inventory/host_vars/<storagenodes>.yml``
@@ -124,9 +127,9 @@ Pools & Keys
 
 .. note::
 
-   It is mandatory to choose the value of ``pg_num`` because it cannot be calculated automatically.
+   It is mandatory to choose the value of ``pg_num`` because it cannot be calculated automatically. More details in
 
-   More details in http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#a-preselection-of-pg-num.
+   http://docs.ceph.com/docs/mimic/rados/operations/placement-groups/#a-preselection-of-pg-num.
 
    http://ceph.com/pgcalc can be used to calculate the number of PGs.
 

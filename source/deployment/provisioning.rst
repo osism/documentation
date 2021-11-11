@@ -23,6 +23,7 @@ Preparations
 * Or use the preseed ISO, downloadable at
 
   * https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
+  * ubuntu / ubuntu
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
@@ -141,7 +142,7 @@ The following is a sample view from the Ubuntu installer. This view may vary dep
    When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
    without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
 
-   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+   https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 
 Preseed Installation
@@ -217,14 +218,14 @@ Prepare Ubuntu Server ISO
 
 .. code-block:: console
 
-   $ mkisofs -U -A "UbuntuOSISM" -V "UbuntuOSISM" -volset "UbuntuOSISM" -J -joliet-long -r -v -T -o /path/to/osism-ubuntu-seed.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot /dev/shm/ubuntu-seed/
+   $ mkisofs -U -A "UbuntuOSISM" -V "UbuntuOSISM" -volset "UbuntuOSISM" -J -joliet-long -r -v \
+   -T -o /path/to/osism-ubuntu-seed.iso -b isolinux/isolinux.bin -c isolinux/boot.cat \
+   -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img \
+   -no-emul-boot /dev/shm/ubuntu-seed/
 
 .. note::
 
    Please use console, ALT+F4, for debugging
-
-* `Download <https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso>`_ prepared
-  ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 .. note::
 
