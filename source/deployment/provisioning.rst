@@ -24,9 +24,10 @@ Preparations
 
   * https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
   * ubuntu / ubuntu
+  * Use clean, empty disks for this setup (e.g. use dd, shred or remove LVM/RAID configuration manually)
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
-* Perform a hardware RAID configuration if necessary
+* Perform a hardware RAID configuration if necessary, not for Ceph disks.
 * Boot bare-metal server via UEFI (recommended) from this USB stick/CD
 
   .. note::
