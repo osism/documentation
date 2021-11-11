@@ -13,14 +13,17 @@ The manual node installation is completely possible without network connectivity
 Preparations
 ============
 
-* Download the latest ISO image for Ubuntu 20.04 from http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/
+* Download the latest ISO image for Ubuntu 20.04 from
 
+  * http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/
   * Use the ``ubuntu-20.04.1-legacy-server-amd64.iso`` image
   * Do not use the ``ubuntu-20.04-live-server-amd64.iso`` image
   * The version number may be different, always use the latest available version of 20.04 LTS
 
-* Or use the preseed ISO, downloadable at https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
+* Or use the preseed ISO, downloadable at
 
+  * https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
+  * ubuntu / ubuntu
   * Use clean, empty disks for this setup (e.g. use dd, shred or remove LVM/RAID configuration manually)
 
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
@@ -140,7 +143,7 @@ The following is a sample view from the Ubuntu installer. This view may vary dep
    When using XFS as the file system for ``/var/lib/docker``, note the following: Running on XFS
    without d_type support now causes Docker to skip the attempt to use the overlay or overlay2 driver.
 
-   * https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+   https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 
 Preseed Installation
@@ -216,14 +219,14 @@ Prepare Ubuntu Server ISO
 
 .. code-block:: console
 
-   $ mkisofs -U -A "UbuntuOSISM" -V "UbuntuOSISM" -volset "UbuntuOSISM" -J -joliet-long -r -v -T -o /path/to/osism-ubuntu-seed.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot /dev/shm/ubuntu-seed/
+   $ mkisofs -U -A "UbuntuOSISM" -V "UbuntuOSISM" -volset "UbuntuOSISM" -J -joliet-long -r -v \
+   -T -o /path/to/osism-ubuntu-seed.iso -b isolinux/isolinux.bin -c isolinux/boot.cat \
+   -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img \
+   -no-emul-boot /dev/shm/ubuntu-seed/
 
 .. note::
 
    Please use console, ALT+F4, for debugging
-
-* `Download <https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso>`_ prepared
-  ISO images. The login user is ``ubuntu`` and the password is ``ubuntu`` as well.
 
 .. note::
 

@@ -15,7 +15,9 @@ Overview Inventory Reconciler
 Inventory in detail
 ===================
 
-The ``configuration/inventory`` directory looks like in testbed https://github.com/osism/testbed/tree/main/inventory
+The ``configuration/inventory`` directory looks like in testbed
+
+https://github.com/osism/testbed/tree/main/inventory
 
 .. code-block:: console
 

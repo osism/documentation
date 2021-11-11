@@ -60,7 +60,9 @@ PCI passthrough
 * https://docs.openstack.org/nova/latest/admin/pci-passthrough.html
 * https://docs.openstack.org/nova/latest/configuration/config.html#pci
 
-* check IOMMU support (further details at https://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM)
+* check IOMMU support
+
+   * https://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM
 
   .. code-block:: console
 

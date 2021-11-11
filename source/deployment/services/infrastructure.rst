@@ -46,7 +46,9 @@ It could be necessary to restart ``fluentd`` container, e.g. during training ses
    $ docker restart fluentd
 
 It is possible that the error ``Your Kibana index is out of date, reset it or use the X-Pack upgrade assistant``
-occurs when calling the Kibana Application from the browser (https://github.com/elastic/kibana/issues/14934).
+occurs when calling the Kibana Application from the browser
+
+https://github.com/elastic/kibana/issues/14934
 
 .. image:: /images/kibana-index-out-of-date.png
 

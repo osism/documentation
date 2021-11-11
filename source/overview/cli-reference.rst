@@ -277,9 +277,11 @@ configuration directory environments/custom , environments/proxmox
    proxmox
        manage proxmox role
    custom force-timesync
-       force NTP sync via chrony https://docs.osism.tech/operations/generic.html#run-commands
+       force NTP sync via chrony
    custom personalized-accounts
        runs playbook for configuring personalized accounts
+
+https://docs.osism.tech/operations/generic.html#run-commands
 
 osism-run-without-secrets
 =========================

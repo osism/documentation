@@ -129,7 +129,10 @@ Run ``rally deployment check`` to check the deployment.
 
 .. note::
 
-   The ``__unknown__`` services are not an error. More details on this on https://bugs.launchpad.net/rally/+bug/1618121,
+   The ``__unknown__`` services are not an error. More details on this on
+
+   https://bugs.launchpad.net/rally/+bug/1618121,
+
    in the output of the command ``rally plugin show api_versions``, as well as in the source code.
 
    .. code::
@@ -146,7 +149,9 @@ Run a custom test
 
 .. note::
 
-   Prefabricated tests can be found at the Rally repository: https://github.com/openstack/rally/tree/master/samples/tasks.
+   Prefabricated tests can be found at the Rally repository
+
+   https://github.com/openstack/rally/tree/master/samples/tasks.
 
 Create a test file (``/opt/rally/tests/create-user.yaml``) with the following content.
 
@@ -216,9 +221,14 @@ Run "OpenStack Certification Task"
 
 The "OpenStack Certification Task" is a collection of configurable tests for the main components
 (Cinder, Glance, Keystone, Neutron, Nova) of OpenStack. The necessary files are located in the
-Rally Repository (https://github.com/openstack/rally-openstack/tree/master/tasks/openstack).
+Rally Repository
 
-We offer a collection of tests based on it, Available in the repository https://github.com/osism/test/tree/master/openstack/rally.
+https://github.com/openstack/rally-openstack/tree/master/tasks/openstack
+
+We offer a collection of tests based on it, Available in the repository
+
+https://github.com/osism/test/tree/master/openstack/rally
+
 These tests are used below.
 
 .. note::

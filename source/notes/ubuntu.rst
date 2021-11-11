@@ -30,7 +30,9 @@ Packages on hold will not be updated anymore.
      linux-firmware linux-generic linux-headers-generic linux-image-generic
    [...]
 
-To check the changelog of packages on hold, the following call can be used (source: https://wiki.debianforum.de/Pakete_auf_hold_setzen).
+To check the changelog of packages on hold, the following call can be used
+
+https://wiki.debianforum.de/Pakete_auf_hold_setzen
 
 .. code-block:: console
 

@@ -33,7 +33,9 @@ and will reboot the system to change the network configuration.
 .. note::
 
    Of course it is also possible to add more than one new system at a time. Therefore work with pattern at
-   ``limit`` accordingly. See also https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html.
+   ``limit`` accordingly. See also
+
+   https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html.
 
 * Depending on the environment you may need to install Python first.
 

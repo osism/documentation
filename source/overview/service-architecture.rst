@@ -88,7 +88,9 @@ Compute
 
    It is possible to integrate other hypervisors. Support for other hypervisors on request (info@osism.tech).
 
-   A list of supported hypervisors can be found at https://docs.openstack.org/nova/queens/admin/configuration/hypervisors.html.
+   A list of supported hypervisors can be found at
+
+   https://docs.openstack.org/nova/queens/admin/configuration/hypervisors.html.
 
 Network
 -------
@@ -101,7 +103,9 @@ Network
 
    It is possible to integrate other network backends. Support for other network backends on request (info@osism.tech).
 
-   A list of supported network drivers can be found at https://github.com/openstack?q=networking.
+   A list of supported network drivers can be found at
+
+   https://github.com/openstack?q=networking.
 
 Storage
 -------
@@ -113,4 +117,6 @@ Storage
 
    It is possible to integrate other storage backends. Support for other storage backends on request (info@osism.tech).
 
-   A list of possible storage drivers can be found at https://docs.openstack.org/cinder/queens/configuration/block-storage/volume-drivers.html.
+   A list of possible storage drivers can be found at
+
+   https://docs.openstack.org/cinder/queens/configuration/block-storage/volume-drivers.html.

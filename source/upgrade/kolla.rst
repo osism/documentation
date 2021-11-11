@@ -14,11 +14,14 @@ HAProxy Preparations
 --------------------
 
 * When updating to *Rocky* - Synchronize `haproxy.cfg`_ to
+
   ``environments/kolla/files/overlays/haproxy/haproxy.cfg``.
 
 * When updating to *Stein* - Synchronize `haproxy_main.cfg`_ to
-  ``environments/kolla/files/overlays/haproxy/haproxy_main.cfg``. The old
-  ``environments/kolla/files/overlays/haproxy/haproxy.cfg`` need to be deleted.
+
+  ``environments/kolla/files/overlays/haproxy/haproxy_main.cfg``
+
+  The old ``environments/kolla/files/overlays/haproxy/haproxy.cfg`` need to be deleted.
 
 .. _haproxy.cfg: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy.cfg.rocky
 .. _haproxy_main.cfg: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/haproxy/haproxy_main.cfg.stein
@@ -30,6 +33,7 @@ Horizon Preparations
   to be removed.
 
 * Copy `custom_local_settings`_ to
+
   ``environments/kolla/files/overlays/horizon/custom_local_settings``.
 
 .. _custom_local_settings: https://raw.githubusercontent.com/osism/cfg-cookiecutter/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/kolla/files/overlays/horizon/custom_local_settings

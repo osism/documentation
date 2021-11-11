@@ -195,7 +195,9 @@ The new number of PGs should also be updated in ``environments/ceph/configuratio
 
      $ ceph tell mon.* injectargs '--mon_pg_warn_max_object_skew 0'
 
-* Restart the active manager service (http://lists.ceph.com/pipermail/ceph-users-ceph.com/2018-July/027856.html)
+* Restart the active manager service
+
+   * http://lists.ceph.com/pipermail/ceph-users-ceph.com/2018-July/027856.html
 
   .. code-block:: console
 
