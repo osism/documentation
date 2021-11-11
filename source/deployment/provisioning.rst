@@ -13,13 +13,17 @@ The manual node installation is completely possible without network connectivity
 Preparations
 ============
 
-* Download the latest ISO image for Ubuntu 20.04 from http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/
+* Download the latest ISO image for Ubuntu 20.04 from
 
+  * http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/
   * Use the ``ubuntu-20.04.1-legacy-server-amd64.iso`` image
   * Do not use the ``ubuntu-20.04-live-server-amd64.iso`` image
   * The version number may be different, always use the latest available version of 20.04 LTS
 
-* Or use the preseed ISO, downloadable at https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
+* Or use the preseed ISO, downloadable at
+
+  * https://minio.services.osism.tech/manager-installer/osism-manager-installer.iso
+
 * Create a bootable USB stick from this ISO image. Alternatively you can also work with a CD
 * Perform a hardware RAID configuration if necessary
 * Boot bare-metal server via UEFI (recommended) from this USB stick/CD
