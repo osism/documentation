@@ -91,6 +91,7 @@ Deploy OpenStack Services
 * cinder
 * placement (``>= Stein``)
 * nova
+* ovn (only required when using Neutron with OVN)
 * neutron
 * heat
 
