@@ -258,3 +258,109 @@ for monitoring services related traffic can be configured at
    # exporter
 
    prometheus_exporter_ceph_public_network: 10.0.5.0/24
+
+.. _host-vars-network-config-examples:
+
+Host Network configuration examples
+===================================
+
+* simple example
+
+.. code-block:: yaml
+
+   - device: eno2
+     auto: true
+     family: inet
+     method: static
+     address: 192.168.1.10
+     netmask: 255.255.255.0
+     gateway: 192.168.1.254
+     mtu: 1500
+
+   - device: eno3
+     auto: true
+     family: inet
+     method: manual
+     mtu: 1500
+
+* simple example with second IP on NIC
+
+.. code-block:: yaml
+
+   - device: eno2
+     auto: true
+     family: inet
+     method: static
+     address: 192.168.1.10
+     netmask: 255.255.255.0
+     gateway: 192.168.1.254
+     mtu: 1500
+
+   - device: eno2:1
+     auto: true
+     family: inet
+     method: static
+     address: 192.168.11.10
+     netmask: 255.255.255.0
+
+* bond example
+
+.. code-block:: yaml
+
+   network_interfaces:
+   - device: ens1f0
+     auto: true
+     family: inet
+     method: manual
+     bond:
+       master: bond0
+     mtu: 1500
+
+   - device: ens1f1
+     auto: true
+     family: inet
+     method: manual
+     bond:
+       master: bond0
+     mtu: 1500
+
+   - device: bond0
+     auto: true
+     family: inet
+     method: manual
+     address: 192.168.1.10
+     netmask: 255.255.255.0
+     gateway: 192.168.1.254
+     bond:
+       mode: 802.3ad
+       xmit-hash-policy: layer2+3
+       miimon: 100
+       slaves: ens1f0 ens1f1
+       lacp-rate: 0
+     mtu: 1500
+
+* vlan example
+
+.. code-block:: yaml
+
+   - device: bond0
+     auto: true
+     family: inet
+     method: manual
+     bond:
+       mode: 802.3ad
+       xmit-hash-policy: layer2+3
+       miimon: 100
+       slaves: ens1f0 ens1f1
+       lacp-rate: 0
+     mtu: 1500
+
+   - device: vlan10
+     method: static
+     address: 192.168.1.10
+     netmask: 255.255.255.0
+     vlan:
+       raw-device: bond0
+     up:
+       - route add default gw 192.168.1.254
+     mtu: 1500
