@@ -280,7 +280,7 @@ Host Network configuration examples
    - device: eno3
      auto: true
      family: inet
-     method: static
+     method: manual
      mtu: 1500
 
 * simple example with second IP on NIC
