@@ -230,6 +230,21 @@ After the initial deployment of the Ceph cluster, the ``openstack_config``
 parameter in the ``environments/ceph/configuration.yml`` can be set to
 ``false``. It must only be set to ``true`` when new pools or keys are added.
 
+Ceph Dashboard
+==============
+
+If you want to enable the Ceph dashboard via ``http``, disable ``ssl`` and
+create the ``admin`` user. For setting up the dashboard with ``ssl`` support,
+refer to the
+`Ceph documentation <https://docs.ceph.com/en/latest/mgr/dashboard/>`_.
+
+.. code-block:: console
+
+   ceph config set mgr mgr/dashboard/ssl false
+   echo SET_PASSWORD_FOR_ADMIN_USER > /opt/cephclient/data/admin_password.txt
+   ceph dashboard ac-user-create --force-password -i /data/admin_password.txt admin administrator
+   rm /opt/cephclient/data/admin_password.txt
+
 Testing Ceph
 ============
 
