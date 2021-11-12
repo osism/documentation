@@ -149,26 +149,18 @@ Creation of the operator user
 Configuration of the network
 ----------------------------
 
-.. code-block:: console
-
-  ./run.sh network
-
 * The network configuration, already present on a system should be saved before
   this step.
 
-* Currently we are still using ``/etc/network/interfaces``. Hence rename all
-  files below ``/etc/netplan`` to ``X.unused``.
+* Currently we are still using ``/etc/network/interfaces``. Files below
+  ``/etc/netplan`` will be moved to ``X.unused``.
 
-  The default file ``01-netcfg.yaml`` with the following content can remain as
-  is.
+* Some configuration examples for ``inventory/host_vars/<nodeX>`` can be found in
+  :ref:`host-vars-network-config-examples`
 
-  .. code-block:: yaml
+.. code-block:: console
 
-    # This file describes the network interfaces available on your system
-    # For more information, see netplan(5).
-    network:
-      version: 2
-      renderer: networkd
+  ./run.sh network
 
 * Upon completion of the network configurtion, a system reboot should be
   performed to ensure the configuration is functional and reboot safe. Since
