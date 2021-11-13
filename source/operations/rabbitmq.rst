@@ -310,3 +310,56 @@ Pattern         .*
 Priority        1
 ha-mode         all
 =============   ==========
+
+Erlang Cookie
+=============
+
+If you get the following error during ``osism-kolla deploy nova``
+
+.. code-block:: console
+
+   TASK [service-rabbitmq : nova | Ensure RabbitMQ users exist] *****************************************************************************************************************************************
+   FAILED - RETRYING: nova | Ensure RabbitMQ users exist (5 retries left)   .
+   FAILED - RETRYING: nova | Ensure RabbitMQ users exist (4 retries left)   .
+   FAILED - RETRYING: nova | Ensure RabbitMQ users exist (3 retries left)   .
+   FAILED - RETRYING: nova | Ensure RabbitMQ users exist (2 retries left)   .
+   FAILED - RETRYING: nova | Ensure RabbitMQ users exist (1 retries left)   .
+   failed: [node01 -> node01] (item=None) => {"attempts": 5, "censored": "the output has been hidden due to the fact that    'no_log: true' was specified for this result", "changed": false}
+   fatal: [node01 -> {{ service_rabbitmq_delegate_host }}]: FAILED! => {"censored": "the output has been hidden due to the fact    that 'no_log: true' was specified for this result", "changed": false}
+
+With ``no_log: false``
+
+.. code-block:: console
+
+   DIAGNOSTICS
+   ===========
+
+   attempted to contact: [rabbit@node01]
+
+   rabbit@node01:
+   * connected to epmd (port 4369) on node01
+   * epmd reports node 'rabbit' uses port 25672 for inter-node and CLI tool traffic
+   * TCP connection succeeded but Erlang distribution failed
+   * suggestion: check if the Erlang cookie is identical for all server nodes and CLI tools
+   * suggestion: check if all server nodes and CLI tools use consistent hostnames when addressing each other
+   * suggestion: check if inter-node connections may be configured to use TLS. If so, all nodes and CLI tools must do that
+   * suggestion: see the CLI, clustering and networking guides on https://rabbitmq.com/documentation.html to learn more
+
+There is a problem with Erlang cookie. Find all ``.erlang.cookie`` files.
+
+.. code-block:: console
+
+   sudo find / -name "*.erlang.cookie"
+   /var/lib/docker/overlay2/<volumeid>/merged/var/lib/rabbitmq/.erlang.cookie
+   /var/lib/docker/overlay2/<volumeid>/diff/var/lib/rabbitmq/.erlang.cookie
+   /var/lib/docker/volumes/rabbitmq/_data/.erlang.cookie
+
+   sudo cat /var/lib/docker/overlay2/<volumeid>/merged/var/lib/rabbitmq/.erlang.cookie
+   6FOa42kyKsOd42RRLr5EEBEsb1rELSbe0QUgilSk
+   sudo cat /var/lib/docker/volumes/rabbitmq/_data/.erlang.cookie
+   NCACNTBEGSXNELNSBWRK
+
+   docker stop rabbitmq
+   sudo cat /var/lib/docker/overlay2/<volumeid>/merged/var/lib/rabbitmq/.erlang.cookie \
+          > /var/lib/docker/volumes/rabbitmq/_data/.erlang.cookie
+   docker start rabbitmq
