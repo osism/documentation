@@ -46,23 +46,11 @@ It is recommended to use a virtual environment when installing packages from PyP
    virtualenv -p python3 .venv
    source .venv/bin/activate
 
+Install the requirements for *cookiecutter*.
+
 .. code-block:: console
 
-   pip3 install \
-     PyYAML
-     ansible
-     click<8.0.0
-     cookiecutter
-     cryptography
-     oslo.utils
-     paramiko
-     passlib
-     pwgen
-     pycrypto
-     pykeepass
-     python-gilt
-     ruamel.yaml
-     yamllint
+   pip3 install -r https://raw.githubusercontent.com/osism/cfg-cookiecutter/main/requirements.txt
 
 Cookiecutter Initialisation
 ===========================
