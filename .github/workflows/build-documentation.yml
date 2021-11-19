@@ -33,9 +33,10 @@ jobs:
           server-dir: /osism/
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
-          exclude:
+          exclude: '
             - testbed/**
             - reference/**
+            '
         if: |
           github.repository == 'osism/documentation' &&
           github.ref == 'refs/heads/main'
