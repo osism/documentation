@@ -24,7 +24,7 @@ jobs:
           python-version: '3.x'
       - run: pip3 install -r requirements.txt
       - run: sphinx-build -b html source build/html
-      - uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      - uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
           local-dir: build/html/
           password: ${{ secrets.FTP_PASSWORD }}
