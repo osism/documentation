@@ -109,12 +109,12 @@ It is executed with ``osism-run custom service-netbox``.
          mode: 0640
 
      - name: Pull images
-       command: "docker-compose -f {{ custom_netbox_docker_compose_directory }}/docker-compose.yml pull"
+       command: "docker compose -f {{ custom_netbox_docker_compose_directory }}/docker-compose.yml pull"
        register: result
        changed_when: ('Downloaded' in result.stdout)
 
      - name: Run service
-       command: "docker-compose -f {{ custom_netbox_docker_compose_directory }}/docker-compose.yml up -d --remove-orphans --no-build"
+       command: "docker compose -f {{ custom_netbox_docker_compose_directory }}/docker-compose.yml up -d --remove-orphans --no-build"
        register: result
        changed_when: ('Creating' in result.stdout or 'Recreating' in result.stdout)
 
@@ -297,12 +297,12 @@ It is executed with ``osism-run custom service-grafana``.
          mode: 0640
 
      - name: Pull images
-       command: "docker-compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml pull"
+       command: "docker compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml pull"
        register: result
        changed_when: ('Downloaded' in result.stdout)
 
      - name: Run service
-       command: "docker-compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml up -d --remove-orphans --no-build"
+       command: "docker compose -f {{ custom_grafana_docker_compose_directory }}/docker-compose.yml up -d --remove-orphans --no-build"
        register: result
        changed_when: ('Creating' in result.stdout or 'Recreating' in result.stdout)
 
