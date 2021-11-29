@@ -196,7 +196,7 @@ Adjust and apply configuration
 
   .. code-block:: console
 
-     $ osism-generic configuration
+     $ osism-manager configuration
      $ osism-ceph osds --limit ceph01
 
 Replace old OSDs by new ones

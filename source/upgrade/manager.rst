@@ -172,7 +172,7 @@ Running the upgrade
 
 .. code-block:: console
 
-   osism-generic configuration
+   osism-manager configuration
    osism-manager
 
 .. note::
