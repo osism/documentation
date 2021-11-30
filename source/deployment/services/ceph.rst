@@ -124,7 +124,7 @@ configuration repository on the manager node.
 
 .. code-block:: console
 
-   osism-generic configuration
+   osism-manager configuration
 
 Ensure ``cephclient_mons`` in
 ``environments/infrastructure/configuration.yml`` is set to the list of IP
@@ -224,7 +224,7 @@ the Ceph monitor nodes.
      environments/kolla/files/overlays/nova/ceph.client.nova.keyring
 
 Update the configuration repository on the manager after committing the changes
-by using command ``osism-generic configuration`` on the manager node.
+by using command ``osism-manager configuration`` on the manager node.
 
 After the initial deployment of the Ceph cluster, the ``openstack_config``
 parameter in the ``environments/ceph/configuration.yml`` can be set to
