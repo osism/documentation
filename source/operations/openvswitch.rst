@@ -67,7 +67,7 @@ OVS ports
                    type: internal
    ...
 
-Ports with tag 4095 - mard "dead"
+Ports with tag 4095 - mark "dead"
 =================================
 
 * https://www.suse.com/support/kb/doc/?id=000018712
