@@ -22,6 +22,7 @@ Operations
    operations/mariadb
    operations/neutron
    operations/nova
+   operations/openstack
    operations/openvswitch
    operations/panko
    operations/placement
