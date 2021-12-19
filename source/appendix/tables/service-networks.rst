@@ -24,6 +24,7 @@ OpenLDAP            osism.services.openldap                 ``172.31.100.240/28`
 Manager             osism.services.manager                  ``172.31.101.0/28``
 virtualbmc          osism.services.virtualbmc               ``172.31.101.16/28``
 Nexus               osism.services.nexus                    ``172.31.101.32/28``
+Traefik             osism.services.traefik                  ``172.31.101.48/28``
 =================== ======================================= =====================
 
 Deprecated service networks
