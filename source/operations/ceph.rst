@@ -544,3 +544,14 @@ Normal during upgrade from Luminous to Nautilus.
      id:     11111111-1111-1111-1111-111111111111
      health: HEALTH_WARN
              3 monitors have not enabled msgr2
+
+HEALTH_WARN mons are allowing insecure global_id reclaim
+========================================================
+
+.. code-block:: console
+
+   $ ceph health
+   HEALTH_WARN mons are allowing insecure global_id reclaim
+   $ ceph config set mon auth_allow_insecure_global_id_reclaim false
+   $ ceph health
+   HEALTH_OK
