@@ -12,6 +12,7 @@ Operations
    operations/cockpit
    operations/docker
    operations/elasticsearch
+   operations/fluentd
    operations/generic
    operations/grafana
    operations/haproxy
