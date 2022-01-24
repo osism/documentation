@@ -27,6 +27,7 @@ Nexus               osism.services.nexus                    ``172.31.101.32/28``
 Traefik             osism.services.traefik                  ``172.31.101.48/28``
 Atlantis            osism.services.atlantis                 ``172.31.101.64/28``
 Dnsdist             osism.services.dnsdist                  ``172.31.101.80/28``
+Zuul                osism.services.zuul                     ``172.31.101.96/28``
 =================== ======================================= =====================
 
 Deprecated service networks
