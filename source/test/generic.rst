@@ -96,7 +96,7 @@ Chrony / NTP
 
 .. note::
 
-   The availability of an NTP server can be tested with ``ntpdate``.
+   The availability of an NTP server can be tested with ``ntpdate``
 
    .. code-block:: console
 
@@ -106,6 +106,17 @@ Chrony / NTP
       server 217.144.138.234, stratum 2, offset -0.002570, delay 0.04294
       server 185.242.112.3, stratum 2, offset 0.000577, delay 0.04129
       30 Jan 10:54:07 ntpdate[27123]: adjust time server 185.242.112.3 offset 0.000577 sec
+
+   or with ``chronyd``.
+
+   .. code-block:: console
+
+      $ chronyd -q 'server 0.us.pool.ntp.org iburst'
+      2022-01-25T15:35:34Z chronyd version 4.1 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +NTS +SECHASH +IPV6 +DEBUG)
+      2022-01-25T15:35:34Z Initial frequency -11.376 ppm
+      2022-01-25T15:35:38Z System clock wrong by -0.011645 seconds (step)
+      2022-01-25T15:35:38Z chronyd exiting
+
 
 Working
 -------
