@@ -96,9 +96,12 @@ Login to one of the Ceph *monitor* nodes and execute the following commands:
 
   .. code-block:: console
 
-     $ ceph status
+     $ ceph status / ceph -s
      $ ceph health
      HEALTH_OK
      $ ceph df
-     $ ceph mon_status | python -m json.tool
+     $ ceph osd tree
+     $ ceph osd df tree
+     $ ceph mon_status | python -m json.tool <= old ceph version
+     $ ceph mon stat <= new ceph version
      $ ceph quorum_status | python -m json.tool
