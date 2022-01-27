@@ -28,6 +28,7 @@ Keycloak        8170     ``console_interface``  manager
 UMC             8191     ``console_interface``  manager
 UMC w/ TLS      8192     ``console_interface``  manager
 Zabbix          8160     ``console_interface``  manager
+Cgit            8200     ``console_interface``  manager
 =============== ======== ====================== ================== ============ ===========================
 
 ``operator_password`` can be found in file ``environments/secrets.yml``. All other passwords can be found
