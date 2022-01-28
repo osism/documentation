@@ -7,4 +7,5 @@ Development
 
    development/ansible
    development/docker
+   development/new_service
    development/tools
