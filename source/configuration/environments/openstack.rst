@@ -112,7 +112,7 @@ Existing certificates (> Train)
 
 Set ``kolla_enable_tls_external: "yes"`` in
 ``environments/kolla/configuration.yml`` and add certificate
-to file ``environments/kolla/certificates/haproxy.pem``.
+to file ``environments/kolla/certificates/haproxy.pem``. You can encrypt the ``haproxy.pem`` with ansible vault password.
 
 .. code-block:: yaml
 
@@ -201,3 +201,21 @@ command to generate a self signed certifacte on the manager node.
 
    docker exec -it manager_kolla-ansible_1 cat /share/haproxy.pem > \
                    /opt/configuration/environments/kolla/certificates/haproxy.pem
+
+Add certificate into container
+------------------------------
+
+Using a self-signed or an customer certificate will result in adding this to containers.
+
+.. code-block:: yaml
+   :caption: environments/configuration.yml
+
+   ##########################
+   # other stuff
+
+   kolla_copy_ca_into_containers: "yes"
+   openstack_cacert: /etc/ssl/certs/ca-certificates.crt
+
+Insert the certificate part in ``environments/kolla/certificates/ca/customer.crt``. You can encrypt this file with ansible vault password.
+
+If you want to add more than one certificate, you can add more files. Please notice to use ``crt`` as filename, otherwise ``update-ca-certificates`` will not import the files.
