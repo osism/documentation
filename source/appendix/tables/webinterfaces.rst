@@ -21,6 +21,7 @@ Netbox          8121     ``console_interface``  manager            admin        
 Nexus           8190     ``console_interface``  manager            admin        n/a
 Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
 Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
+RabbitMQ        15672    ``kolla_internal_vip`` network/controller openstack    ``rabbitmq_password``
 Rally           8180     ``console_interface``  manager            n/a          n/a
 Rundeck         4440     ``console_interface``  manager            n/a          n/a
 phpMyAdmin      8110     ``console_interface``  manager            root         ``database_password``
