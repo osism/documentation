@@ -9,7 +9,6 @@ Configuration
    configuration/synchronisation
    configuration/update
    configuration/networks
-   configuration/proxy
    configuration/environments
 
 The basis of an OSISM installation is a configuration repository, which is
