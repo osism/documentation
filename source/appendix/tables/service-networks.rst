@@ -21,14 +21,14 @@ Rundeck             osism.services.rundeck                  ``172.31.100.192/28`
 Heimdall            osism.services.homer                    ``172.31.100.208/28``
 Jenkins             osism.services.jenkins                  ``172.31.100.224/28``
 OpenLDAP            osism.services.openldap                 ``172.31.100.240/28``
-Manager             osism.services.manager                  ``172.31.101.0/28``
-virtualbmc          osism.services.virtualbmc               ``172.31.101.16/28``
+Manager             osism.services.manager                  ``172.31.101.0/27``
 Nexus               osism.services.nexus                    ``172.31.101.32/28``
 Traefik             osism.services.traefik                  ``172.31.101.48/28``
 Atlantis            osism.services.atlantis                 ``172.31.101.64/28``
 Dnsdist             osism.services.dnsdist                  ``172.31.101.80/28``
 Zuul                osism.services.zuul                     ``172.31.101.96/28``
 Cgit                osism.services.cgit                     ``172.31.101.112/28``
+virtualbmc          osism.services.virtualbmc               ``172.31.101.128/28``
 =================== ======================================= =====================
 
 Deprecated service networks
