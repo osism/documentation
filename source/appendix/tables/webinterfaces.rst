@@ -8,10 +8,11 @@ configurable in the configuration repository.
 =============== ======== ====================== ================== ============ ===========================
 **Service**     **Port** **Interface/Address**  **Node**           **Username** **Password**
 --------------- -------- ---------------------- ------------------ ------------ ---------------------------
+Alert Manager   9093     ``kolla_internal_vip`` network/controller admin        ``prometheus_alertmanager_password``
 ARA             8120     ``console_interface``  manager            n/a          n/a
-Ceph dashboard  8140     ``kolla_internal_vip`` network/controller admin        n/a
+Ceph dashboard  8140     ``kolla_internal_vip`` network/controller admin        ``dashboard_admin_password``
 Cockpit         8130     ``console_interface``  manager            dragon       ``operator_password``
-Grafana         3000     ``kolla_internal_vip`` network/controller grafana      ``grafana_admin_password``
+Grafana         3000     ``kolla_internal_vip`` network/controller admin        ``grafana_admin_password``
 Heimdall        8080     ``console_interface``  manager            n/a          n/a
 Horizon           80     ``kolla_internal_vip`` network/controller admin        ``keystone_admin_password``
 Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        ``keystone_admin_password``
@@ -20,7 +21,7 @@ Kibana          5601     ``kolla_internal_vip`` network/controller kibana       
 Netbox          8121     ``console_interface``  manager            admin        ``netbox_superuser_password``
 Nexus           8190     ``console_interface``  manager            admin        n/a
 Patchman        8150     ``console_interface``  manager            patchman     ``patchman_password``
-Prometheus      9090     ``kolla_internal_vip`` network/controller n/a          n/a
+Prometheus      9091     ``kolla_internal_vip`` network/controller n/a          n/a
 RabbitMQ        15672    ``kolla_internal_vip`` network/controller openstack    ``rabbitmq_password``
 Rally           8180     ``console_interface``  manager            n/a          n/a
 Rundeck         4440     ``console_interface``  manager            n/a          n/a

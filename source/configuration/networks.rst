@@ -234,31 +234,6 @@ It is recommended to use an MTU of 9000 in this network.
 
    cluster_network: 10.0.6.0/24
 
-Monitoring
-==========
-
-The monitoring network normally shares the internal network. A separate network
-for monitoring services related traffic can be configured at
-``environments/monitorning/configuration.yml``.
-
-* ``inventory/host_vars/<hostname>.yml``
-
-.. code-block:: yaml
-
-   ##########################################################
-   # monitoring
-
-   prometheus_scraper_interface: eth1
-
-* ``environments/monitoring/configuration.yml``
-
-.. code-block:: yaml
-
-   ##########################################################
-   # exporter
-
-   prometheus_exporter_ceph_public_network: 10.0.5.0/24
-
 .. _host-vars-network-config-examples:
 
 Host Network configuration examples
