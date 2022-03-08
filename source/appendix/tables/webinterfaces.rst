@@ -9,10 +9,11 @@ configurable in the configuration repository.
 **Service**     **Port** **Interface/Address**  **Node**           **Username** **Password**
 --------------- -------- ---------------------- ------------------ ------------ ---------------------------
 Alert Manager   9093     ``kolla_internal_vip`` network/controller admin        ``prometheus_alertmanager_password``
-ARA             8120     ``console_interface``  manager            n/a          n/a
+ARA             8120     ``console_interface``  manager            ara          ``ara_password``
 Ceph dashboard  8140     ``kolla_internal_vip`` network/controller admin        ``dashboard_admin_password``
 Cockpit         8130     ``console_interface``  manager            dragon       ``operator_password``
 Grafana         3000     ``kolla_internal_vip`` network/controller admin        ``grafana_admin_password``
+HAProxy         1984     ``internal_interface`` controller         openstack    ``haproxy_password``
 Heimdall        8080     ``console_interface``  manager            n/a          n/a
 Horizon           80     ``kolla_internal_vip`` network/controller admin        ``keystone_admin_password``
 Horizon w/ TLS   443     ``kolla_external_vip`` network/controller admin        ``keystone_admin_password``
