@@ -1,4 +1,4 @@
-==================
+===================
 OSISM CLI Reference
 ===================
 
@@ -60,19 +60,31 @@ configuration directory environments/
    osism-generic
        [backup-mariadb]
        [bootstrap]
+       [certificates]
        [check-reboot]
+       [chrony-force-sync]
+       [chrony]
        [cleanup-backup-mariadb]
-       [configuration]
+       [cockpit]
        [docker]
        [facts]
+       [frr]
+       [grub]
        [hardening]
+       [hostname]
        [hosts]
+       [kernel-modules]
+       [lldpd]
        [network]
        [operator]
+       [packages]
        [ping]
+       [proxy]
        [reboot]
        [repository]
        [resolvconf]
+       [sysctl]
+       [timezone]
        [upgrade-packages]
        [--user USER | -u USER]
        [--key-file /path/to/id_rsa]
@@ -85,34 +97,58 @@ configuration directory environments/
        mariadb backup and cleanup backups
    bootstrap
        bootstrap
+   certificates
+       update certificate store
    check-reboot
        check if reboot is necessary
+   chrony-force-sync
+       force sync chrony
+   chrony
+       setup chrony
    cleanup-backup-mariadb
        cleanup mariadb backups
-   configuration
-       get the latest git data for osism
+   cockpit
+       setup cockpit
    docker
        install/update/configure docker daemon
    facts
        update the facts
+   frr
+       setup frrouting
+   grub
+       modify grub configuration
    hardening
        hardening role
+   hostname
+       setup hostname of nodes
    hosts
        update /etc/hosts
+   kernel-modules
+       configure kernel modules
+   lldpd
+       install lldpd
    network
        configure network
    operator
        login via key and configure dragon user
        in combination with --user, --key-file and --limit or
        --ask-pass, --ask-become-pass and --become
+   packages
+       upgrade packages and install ``required_packages``
    ping
        connection test via ansible
+   proxy
+       configure proxy configuration
    reboot
        reboot, the playbook asks are you sure
    repository
        add repositories
    resolvconf
        update DNS
+   sysctl
+       setup sysctl settings
+   timezone
+       configure timezone
    upgrade-packages
        upgrade the repository packages, the playbook asks are you sure
    --user USER
@@ -138,23 +174,28 @@ configuration directory environments/infrastructure
 .. code-block:: console
 
    osism-infrastructure
-       [cobbler]
-       [helper]
-       [mirror]
-       [mirror-images]
-       [mirror-packages]
-       [--tags HELPER_TAG]
+       [cephclient]
+       [dnsdist]
+       [homer]
+       [nexus]
+       [openstackclient]
+       [phpmyadmin]
+       [virtualbmc]
 
-   cobbler
-       deploy/configure/update cobbler
-   helper
-       deploy helper like cephclient, openstackclient, phpmyadmin, rally, sshconfig, adminer
-   mirror
-       deploy aptly, nexus, registry
-   mirror-images
-       mirror images
-   mirror-packages
-       create aptly mirror
+   cephclient
+       deploy cephclient
+   dnsdist
+       deploy dnsdist as dns forwarder
+   homer
+       deploy homer, overview of webinterfaces
+   nexus
+       deploy nexus, packages and container images repository
+   openstackclient
+       deploy openstackclient
+   phpmyadmin
+       deploy phpmyadmin
+   virtualbmc
+       deploy virtualbmc, bmc to libvirt
 
 osism-kolla
 ===========
@@ -169,6 +210,8 @@ configuration directory environments/kolla
        [deploy SERVICE]
        [pull SERVICE]
        [reconfigure SERVICE]
+       [refresh-containers SERVICE]
+       [stop SERVICE]
        [upgrade SERVICE]
 
    deploy
@@ -177,8 +220,12 @@ configuration directory environments/kolla
        pull container image for SERVICE
    reconfigure
        reconfigure SERVICE, e.g. configuration change
+   refresh-containers
+       update container images of SERVICE
+   stop
+       stop SERVICE
    upgrade
-       upgrade SERVICE, e.g. Rocky -> Stein
+       upgrade SERVICE, e.g. Wallaby -> Xena
 
 osism-manager
 =============
@@ -190,17 +237,35 @@ configuration directory environments/manager/
 .. code-block:: console
 
    osism-manager
+       [bifrost-command]
+       [bifrost-deploy]
+       [configuration]
+       [netbox]
        [manager]
 
+   bifrost-command
+       wrap the commands in openstackclient commands
+   bifrost-deploy
+       deploy bifrost
+   configuration
+       get the latest git data for osism
+   netbox
+       deploy netbox
    manager
        deploy/update manager, twice vault pw
    prefix
        please use environment variables for Ansible configuration like
        ANSIBLE_ASK_VAULT_PASS=True, e.g.
        ANSIBLE_ASK_VAULT_PASS=True osism-manager manager
+   ansible options
+       or use the ansible options, like -k, -K or -b
 
 osism-mirror
 ============
+
+.. note::
+
+    Only in old versions of OSISM
 
 container manager_osism-ansible_1
 
@@ -227,19 +292,35 @@ configuration directory environments/monitoring
 .. code-block:: console
 
    osism-monitoring
-       [monitoring]
-       [prometheus]
-       [prometheus-exporter]
+       [monitoring] - old OSISM version
+       [netdata]
+       [openstack-health-monitor]
+       [prometheus] - old OSISM version
+       [prometheus-exporter] - old OSISM version
+       [remove-netdata]
+       [remove-zabbix-agent]
 
    monitoring
        deploy monitoring, e.g. netdata, zabbix
+   netdata
+       deploy netdata
+   openstack-health-monitor
+       deploy openstack-health-monitor
    prometheus
        deploy prometheus, only in older version of OSISM
    prometheus-exporter
        deploy prometheus-exporter, only in older version of OSISM
+   remove-netdata
+       removes netdata
+   remove-zabbix-agent
+       removes zabbix agent
 
 osism-openstack
 ===============
+
+.. note::
+
+    Only in old versions of OSISM
 
 container manager_osism-ansible_1
 
