@@ -36,7 +36,7 @@ HAProxy
 
 .. code-block:: console
 
-   osism-kolla deploy haproxy -e kolla_serial=1
+   osism-kolla deploy loadbalancer -e kolla_serial=1
 
 Kibana
 ~~~~~~

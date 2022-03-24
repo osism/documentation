@@ -332,7 +332,7 @@ Run haproxy deployment for endpoint creation
 
 .. code-block:: console
 
-   osism-kolla deploy haproxy
+   osism-kolla deploy loadbalancer
 
 Enable loadbalancer menu in Horizon dashboard
 =============================================

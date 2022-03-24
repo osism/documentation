@@ -366,7 +366,7 @@ Upgrade HAProxy
 
 .. code-block:: console
 
-   osism-kolla upgrade haproxy
+   osism-kolla upgrade loadbalancer
 
 Upgrade Logging
 ---------------
