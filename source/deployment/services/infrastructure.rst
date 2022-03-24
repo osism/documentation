@@ -27,7 +27,7 @@ For using ``spice`` as ``nova_console`` please read :ref:`nova-console-spice`
 
 .. code-block:: console
 
-   $ osism-kolla deploy haproxy
+   $ osism-kolla deploy loadbalancer
 
 .. _kibana_index_delete:
 

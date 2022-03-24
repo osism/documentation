@@ -39,11 +39,11 @@ The configuration switch is in ``environments/kolla/configuration.yml``
 
    nova_console: novnc/spice
 
-This change have to be done before running ``haproxy`` deployment. Otherwise ``reconfigure`` ``haproxy``.
+This change have to be done before running ``loadbalancer`` deployment. Otherwise ``reconfigure`` ``loadbalancer``.
 
 .. code-block:: console
 
-   osism-kolla reconfigure haproxy
+   osism-kolla reconfigure loadbalancer
 
 Deploying Openstack Services
 ============================

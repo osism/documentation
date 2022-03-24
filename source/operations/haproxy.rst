@@ -32,14 +32,14 @@ Change certificate
   - Add intermediate CA certificates (if any)
   - Add CA root certificate
 
-* Reconfigure HAProxy with ``osism-kolla reconfigure haproxy``
+* Reconfigure HAProxy with ``osism-kolla reconfigure loadbalancer``
 
 Validate configuration
 ----------------------
 
 .. code-block:: console
 
-   $ osism-kolla config haproxy
+   $ osism-kolla config loadbalancer
 
 .. code-block:: console
 
