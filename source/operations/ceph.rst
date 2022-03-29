@@ -555,3 +555,35 @@ HEALTH_WARN mons are allowing insecure global_id reclaim
    $ ceph config set mon auth_allow_insecure_global_id_reclaim false
    $ ceph health
    HEALTH_OK
+
+Migrate Ceph network
+====================
+
+.. code-block:: yaml
+   :caption: environments/kolla/configuration.yml
+
+   -ceph_public_network: 10.0.5.0/24
+   +ceph_public_network: 10.0.6.0/24
+
+.. code-block:: yaml
+   :caption: environments/ceph/configuration.yml
+
+   -public_network: 10.0.5.0/24
+   -cluster_network: 10.0.5.0/24
+   +public_network: 10.0.6.0/24
+   +cluster_network: 10.0.6.0/24
+
+.. code-block:: console
+   :caption: run ceph commands
+
+   osism-ceph mons
+   osism-ceph mgrs
+   osism-ceph osds
+
+Monitor Ceph OSD restart
+========================
+
+.. code-block:: console
+   :caption: monitor ceph osd restart
+
+   watch ceph osd df tree
