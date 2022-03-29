@@ -166,7 +166,7 @@ Deep scrub distribution
 
   .. code-block:: console
 
-     $ for date in $(ceph pg dump | grep active | awk '{ print $5 }'); do date +%H -d $date; done | sort | uniq -c
+     $ for date in $(ceph pg dump | grep active | awk '{ print $21 }'); do date +%H -d $date; done | sort | uniq -c
 
 Set the number of placement groups
 ==================================
@@ -248,11 +248,11 @@ Remove OSD
      ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
      -1       0.03918 root default
      -3       0.01959     host testbed-node-0
-      1   hdd 0.0096         osd.1               up  1.00000 1.00000
-      3   hdd 0.0096         osd.3               up  1.00000 1.00000
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
+      3   hdd 0.00980         osd.3               up  1.00000 1.00000
      -5       0.01959     host testbed-node-1
-      0   hdd 0.0096         osd.0               up  1.00000 1.00000
-      2   hdd 0.0096         osd.2               up  1.00000 1.00000
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
 
 * Determine the block device serverd by the OSD
 
@@ -265,7 +265,7 @@ Remove OSD
 
      dragon@testbed-node-0:~$ sudo lvs -o +devices
        LV                                            VG                                        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
-       osd-data-c5c106dd-061-40ad-b5cc-28137fb639fc ceph-01de26c3-61fb-4f6c-9fb9-1f3cdfcba444 -wi-ao---- <10.00g                                                     /dev/sdb(0)
+       osd-data-c5c106dd-7461-40ad-b5cc-28137fb639fc ceph-01de26c3-61fb-4f6c-9fb9-1f3cdfcba444 -wi-ao---- <10.00g                                                     /dev/sdb(0)
        osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec -wi-ao---- <10.00g                                                     /dev/sdc(0)
 
 * Remove the device from the ``devices`` list in the inventory of the corresponding host
@@ -304,11 +304,11 @@ Remove OSD
      dragon@testbed-node-0:~$ ceph osd tree
      ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
      -1       0.02939 root default
-     -3       0.0096     host testbed-node-0
-      1   hdd 0.0096         osd.1               up  1.00000 1.00000
+     -3       0.00980     host testbed-node-0
+      1   hdd 0.00980         osd.1               up  1.00000 1.00000
      -5       0.01959     host testbed-node-1
-      0   hdd 0.0096         osd.0               up  1.00000 1.00000
-      2   hdd 0.0096         osd.2               up  1.00000 1.00000
+      0   hdd 0.00980         osd.0               up  1.00000 1.00000
+      2   hdd 0.00980         osd.2               up  1.00000 1.00000
 
 * Zap the block device
 
@@ -334,9 +334,9 @@ Replace defect OSD
      $ dmesg -T | grep sdk | grep -i error
        ...
        blk_update_request: I/O error, dev sdk, sector 7501476358
-       Buffer I/O error on dev sdk1, logical block 070017030, async page read
+       Buffer I/O error on dev sdk1, logical block 7470017030, async page read
        blk_update_request: I/O error, dev sdk, sector 7501476359
-       Buffer I/O error on dev sdk1, logical block 070017031, async page read
+       Buffer I/O error on dev sdk1, logical block 7470017031, async page read
 
 * Find and replace actual hardware
 
@@ -479,10 +479,10 @@ Rebalance the cluster
     $ sudo ceph osd test-reweight-by-utilization
     no change
     moved 6 / 4352 (0.137868%)
-    avg 51.695
-    stddev 12.3727 -> 12.365 (expected baseline 7.15491)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
     min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
-    max osd.68 with 92 -> 92 pgs (1.7750 -> 1.7750 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
 
     oload 120
     max_change 0.05
@@ -501,10 +501,10 @@ Rebalance the cluster
     $ sudo ceph osd reweight-by-utilization
     no change
     moved 6 / 4352 (0.137868%)
-    avg 51.695
-    stddev 12.3727 -> 12.365 (expected baseline 7.15491)
+    avg 51.8095
+    stddev 12.3727 -> 12.3621 (expected baseline 7.15491)
     min osd.10 with 30 -> 30 pgs (0.579044 -> 0.579044 * mean)
-    max osd.68 with 92 -> 92 pgs (1.7750 -> 1.7750 * mean)
+    max osd.68 with 92 -> 92 pgs (1.77574 -> 1.77574 * mean)
 
     oload 120
     max_change 0.05
