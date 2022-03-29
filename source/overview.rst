@@ -5,6 +5,7 @@ Overview
 .. toctree::
    :maxdepth: 2
 
+   overview/gaia-x
    overview/service-architecture
    overview/deployment-models
    overview/node-types
