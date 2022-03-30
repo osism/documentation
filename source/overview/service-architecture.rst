@@ -8,12 +8,12 @@ Infrastructure
 ==============
 
 * ARA -- records Ansible playbook runs
-* Aptly -- repository management tool
-* Dokuwiki -- simple to use Wiki software
+* Homer -- operations dashboard
 * Netbox -- IP address management (IPAM) and data center infrastructure management (DCIM) tool
 * OSISM -- Open Source Infrastructure & Service Manager
-* Registry - Docker registry server
+* Patchman -- Linux Patch Status Monitoring System
 * phpMyAdmin -- administration tool for MySQL and MariaDB
+* Nexus
 
 .. note::
 
@@ -25,8 +25,8 @@ Logging & Monitoring
 * Elasticsearch
 * Fluentd
 * Grafana
-* Icinga2
 * Kibana
+* Netdata
 * Prometheus
 * Rsyslog
 
@@ -46,6 +46,7 @@ Shared services
 * Memcached
 * RabbitMQ Cluster
 * Redis
+* Keycloak
 
 .. note::
 
@@ -54,22 +55,24 @@ Shared services
 Controller
 ==========
 
-* Aodh, Ceilometer, Gnocchi, Panko -- telemetry framework
+* Aodh, Ceilometer, Gnocchi -- telemetry framework
 * Barbican -- key management service
 * Cinder -- block storage service
 * Cloudkitty -- billing service
+* Designate -- DNS service
 * Glance -- image service
 * Heat -- orchestration service
 * Horizon -- dashboard
+* Ironic -- baremetal service
 * Keystone -- identity service
 * Magnum -- container infrastructure management service
 * Manila -- shared filesystems service
 * Mistral -- workflow service
 * Nova -- compute service
 * Octavia -- loadbalancer service
+* Placement -- resource provider inventory allocation service
 * Rally -- benchmark service
-* Searchlight -- indexing and search service
-* Watcher -- optimization service
+* Senlin -- clustering service for managing homogeneous objects
 
 .. note::
 
@@ -96,8 +99,8 @@ Network
 -------
 
 * Linux Bridge
-* Open Virtual Network
-* Open vSwitch
+* Open Virtual Network (OVN)
+* Open vSwitch (OVS)
 
 .. note::
 
@@ -110,7 +113,7 @@ Network
 Storage
 -------
 
-* Ceph
+* Ceph (including RGW/S3 and CephFS)
 * GlusterFS
 
 .. note::
