@@ -33,6 +33,9 @@ Prepare configuration repository
 
 .. code-block:: yaml
 
+   [server]
+   http_addr = {{ internal_address }}
+
    [alerting]
    enabled = false
 
