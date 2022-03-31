@@ -68,23 +68,3 @@ Monitoring Secrets
 
 ``environments/monitoring/secrets.yml`` contains monitoring specific secrets.
 
-Search Secret Files for Password
-================================
-
-Use the `script`_ ``environments/.vault_pass`` for searching passwords.
-
-.. note::
-
-   This works only on local git clone, **not** on manager.
-
-.. code-block:: console
-
-   $ cd environments/
-   $ ./.vault_pass kibana
-   Please enter the ansible vault password:
-
-   kibana_password: lesssecret
-
-Since this script is added in year 2021, you have to download and deploy the script in older environments.
-
-.. _script: https://github.com/osism/cfg-cookiecutter/blob/master/cfg-%7B%7Bcookiecutter.project_name%7D%7D/environments/.vault_pass
