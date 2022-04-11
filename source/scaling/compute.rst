@@ -23,7 +23,7 @@ well:
 
 .. code-block:: console
 
-   osism-kolla deploy multipath -l testbed-node-2.osism.local
+   osism-kolla deploy multipathd -l testbed-node-2.osism.local
 
 If Cinder is configured to deliver volumes via LVM2/iSCSI in the configuration
 repository in file ``environements/kolla/configuration.yml`` at
