@@ -15,8 +15,6 @@ Local LVM2 storage
    [libvirt]
    images_type = lvm
    images_volume_group = nova
-   volume_clear = none
-   volume_clear_size = 0
    sparse_logical_volumes = False
    disk_cachemodes = "file=directsync,block=directsync,network=directsync"
 
