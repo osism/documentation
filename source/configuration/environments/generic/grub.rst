@@ -9,9 +9,9 @@ Grub
    * - **Name**
      - ``debops.grub``
    * - **Repository**
-     - https://github.com/debops/ansible-grub
+     - https://github.com/debops/debops
    * - **Documentation**
-     - https://docs.debops.org/en/master/ansible/roles/debops.grub/index.html
+     - https://docs.debops.org/en/master/ansible/roles/grub/defaults/main.html#grub-configuration-options
 
 Blacklist a module
 ==================
@@ -21,8 +21,10 @@ Blacklist a module
    ##########################
    # grub
 
-   grub_kernel_options:
-     - modprobe.blacklist=qla2xxx
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - modprobe.blacklist=qla2xxx
 
 Disable predictable network interface names
 ===========================================
@@ -32,9 +34,13 @@ Disable predictable network interface names
    ##########################
    # grub
 
-   grub_kernel_options:
-     - net.ifnames=0
-     - biosdevname=0
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - net.ifnames=0
+           - biosdevname=0
+
+.. _enable-iommu:
 
 Enable IOMMU
 ============
@@ -47,8 +53,10 @@ Intel
    ##########################
    # grub
 
-   grub_kernel_options:
-     - intel_iommu=on
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - intel_iommu=on
 
 AMD
 ---
@@ -58,9 +66,11 @@ AMD
    ##########################
    # grub
 
-   grub_kernel_options:
-     - iommu=pt
-     - iommu=1
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - iommu=pt
+           - iommu=1
 
 Support of Docker capabilities
 ==============================
@@ -76,11 +86,15 @@ Support of Docker capabilities
    [...]
    WARNING: No swap limit support
 
+This is actual the default in ``debops grub`` https://github.com/debops/debops/blob/master/ansible/roles/grub/defaults/main.yml#L138
+
 .. code-block:: yaml
 
    ##########################
    # grub
 
-   grub_kernel_options:
-     - cgroup_enable=memory
-     - swapaccount=1
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - cgroup_enable=memory
+           - swapaccount=1
