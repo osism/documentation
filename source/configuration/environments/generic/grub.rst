@@ -57,6 +57,7 @@ Intel
      - name: 'cmdline_linux_default'
          value:
            - intel_iommu=on
+           - iommu=pt
 
 AMD
 ---
@@ -70,7 +71,6 @@ AMD
      - name: 'cmdline_linux_default'
          value:
            - iommu=pt
-           - iommu=1
 
 Support of Docker capabilities
 ==============================
