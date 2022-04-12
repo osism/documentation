@@ -45,7 +45,7 @@ Disable predictable network interface names
 Enable IOMMU
 ============
 
-Intel 
+Intel
 -----
 
 .. code-block:: yaml
@@ -55,24 +55,22 @@ Intel
 
     grub__default_configuration:
       - name: 'cmdline_linux_default'
-        value:
-          - intel_iommu=on
-          - iommu=pt
-
+          value:
+            - intel_iommu=on
+            - iommu=pt
 
 AMD
 ---
 
 .. code-block:: yaml
 
+   ##########################
    # grub
 
-     grub__default_configuration:
-       - name: 'cmdline_linux_default'
-         value:
-           - iommu=pt
-
-
+    grub__default_configuration:
+      - name: 'cmdline_linux_default'
+          value:
+            - iommu=pt
 
 Support of Docker capabilities
 ==============================
