@@ -111,3 +111,38 @@ are available, we recommend using the DNS servers from `Quad9 <https://www.quad9
      - 9.9.9.9
      - 149.112.112.112
    resolvconf_search: osism.io
+
+
+Network Interface Card Offloading
+=================================
+
+This section only applies if vxlan or geneve tunnels are enabled for overlay networks. 
+To avoid performance issues, you can enable hardware offloading.
+
+
+This can verify with ethtool and the following paramameter:
+
+.. code-block:: console
+   
+   ethtool -k enoX 
+
+This can set with ethtool and following parameters:
+
+.. code-block:: console
+    
+    ethtool -K enoX rx on tx on sg on tso on lro on
+
+If jumboframes are enabled it make sense to increase the tx and rx buffer to 
+the hardware possible maximum size. 
+
+This can verify with ethtool and the following paramameter:
+
+.. code-block:: console
+    
+    ethtool -g enoX 
+
+This can set with ethtool and following parameters:
+
+.. code-block:: console
+   
+   ethtool -G enoX rx <Size> tx <Size> 
