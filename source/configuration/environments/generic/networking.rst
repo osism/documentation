@@ -117,14 +117,15 @@ Network Interface Card Offloading
 =================================
 
 If vxlan or geneve tunnel's for overlay networks enabled. For performance issues
-it will be need to enable hardware offloading, 
-this can verify as read as follow:
+it will be need to enable hardware offloading.
+
+This can verify with ethtool and the following paramameter:
 
 .. code-block:: console
    
    ethtool -k enoX 
 
-this can set as read as follow:
+This can set with ethtool and following parameters:
 
 .. code-block:: console
     
@@ -133,13 +134,13 @@ this can set as read as follow:
 If jumboframes are enabled it make sense to increase the tx and rx buffer to 
 the hardware possible maximum size. 
 
-this can verify as read as follow:
+This can verify with ethtool and the following paramameter:
 
 .. code-block:: console
     
     ethtool -g enoX 
 
-and can set as read as follow:
+This can set with ethtool and following parameters:
 
 .. code-block:: console
    
