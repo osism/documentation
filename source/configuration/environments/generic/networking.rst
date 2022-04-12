@@ -116,8 +116,9 @@ are available, we recommend using the DNS servers from `Quad9 <https://www.quad9
 Network Interface Card Offloading
 =================================
 
-If vxlan or geneve tunnel's for overlay networks enabled. For performance issues
-it will be need to enable hardware offloading.
+This section only applies if vxlan or geneve tunnels are enabled for overlay networks. 
+To avoid performance issues, you can enable hardware offloading.
+
 
 This can verify with ethtool and the following paramameter:
 
