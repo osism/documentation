@@ -53,11 +53,11 @@ Intel
    ##########################
    # grub
 
-    grub__default_configuration:
-      - name: 'cmdline_linux_default'
-          value:
-            - intel_iommu=on
-            - iommu=pt
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - intel_iommu=on
+           - iommu=pt
 
 AMD
 ---
@@ -67,10 +67,10 @@ AMD
    ##########################
    # grub
 
-    grub__default_configuration:
-      - name: 'cmdline_linux_default'
-          value:
-            - iommu=pt
+   grub__default_configuration:
+     - name: 'cmdline_linux_default'
+         value:
+           - iommu=pt
 
 Support of Docker capabilities
 ==============================
