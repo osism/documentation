@@ -81,7 +81,7 @@ Storage
 =======
 
 * iscsi (optional)
-* multipath (optional)
+* multipathd (optional)
 
 Deploy OpenStack Services
 =========================

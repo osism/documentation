@@ -393,7 +393,7 @@ Upgrade Storage (optional)
 .. code-block:: console
 
    osism-kolla upgrade iscsi
-   osism-kolla upgrade multipath
+   osism-kolla upgrade multipathd
 
 Upgrade OpenStack Services
 --------------------------
