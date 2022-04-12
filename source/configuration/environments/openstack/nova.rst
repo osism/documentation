@@ -96,22 +96,7 @@ PCI passthrough
      QEMU: Checking if IOMMU is enabled by kernel                               : WARN (IOMMU appears to be disabled in kernel. Add intel_iommu=on to kernel cmdline arguments)
      [...]
 
-* enable IOMMU support (AMD)
-
-  .. code-block:: yaml
-
-     grub_kernel_options:
-       - iommu=pt
-       - iommu=1
-       [...]
-
-* enable IOMMU support (Intel)
-
-  .. code-block:: yaml
-
-     grub_kernel_options:
-       - intel_iommu=on
-       [...]
+* :ref:`enable-iommu`
 
 * check if the nouveau kernel module is loaded
 
