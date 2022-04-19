@@ -1,6 +1,6 @@
-=============
-Configuration
-=============
+=======================
+Configuration reference
+=======================
 
 .. toctree::
    :maxdepth: 2

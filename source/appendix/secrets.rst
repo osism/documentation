@@ -1,6 +1,6 @@
-===========================
-OSISM Ansible Vault Secrets
-===========================
+=====================
+Ansible Vault Secrets
+=====================
 
 OSISM uses Ansible Vault for handling secret information like passwords, ssh-keys, etc. There are several ``secret.yml`` files in the repository. See the following points for details on ansible-vault
 

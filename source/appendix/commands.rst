@@ -1,6 +1,6 @@
-===================
-OSISM CLI Reference
-===================
+=============
+CLI Reference
+=============
 
 The following section lists osism commands and describe these.
 
