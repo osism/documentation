@@ -23,7 +23,7 @@ supported.
 This documentation is composed of various chapters. The focus of each major chapter is described hereafter.
 
 * **Overview** This chapter provides an overview of OSISM.
-* **Notes** All the clues that could save someone else's day and don't fit anywhere else are here.
+* **Notes** All the hints that could save someone else's day and don't fit anywhere else are here.
 
 .. toctree::
    :maxdepth: 2
