@@ -1,3 +1,5 @@
+.. _configuration-environment-openstack-cinder:
+
 ======
 Cinder
 ======
@@ -43,3 +45,16 @@ iSCSI support
 
    [tgtd:children]
    storage
+
+
+Luks Encryption
+===============
+
+For a volume type witch use Luks Encryption by libvirt it is required
+to enable it in cinder config in section
+``environments/kolla/files/overlays/cinder.conf``.
+
+.. code-block:: ini
+
+   [[key_manager]
+   backend = barbican
