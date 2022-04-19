@@ -1,6 +1,6 @@
-==========
-Deployment
-==========
+=========================
+Installation & Deployment
+=========================
 
 The deployment of OSISM is carried out in several successive phases.
 The phases are documented in this chapter.

@@ -1,10 +1,13 @@
-==========
-Operations
-==========
+=========================
+Management and Operations
+=========================
 
 .. toctree::
    :maxdepth: 2
 
+   scaling
+   upgrade
+   test
    operations/aptly
    operations/ara
    operations/ceph

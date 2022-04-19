@@ -20,6 +20,25 @@ allows you to deploy a small environment with four nodes on a public cloud like 
 `Betacloud <https://www.betacloud.de>`_. Other providers like Citycloud are also
 supported.
 
+This documentation is composed of various chapters. The focus of each major chapter is described hereafter.
+
+* **Overview** This chapter provides an overview of OSISM.
+
+.. toctree::
+   :maxdepth: 2
+
+   overview
+   quickstart
+   deployment
+   operations
+   configuration
+   development
+   notes
+   appendix
+
+The documentation is maintained on Github: https://github.com/osism/documentation.
+There you can open issues for found errors and so on.
+
 * **OpenStack** is a cloud operating system that controls large pools of
   compute, storage, and networking resources throughout a datacenter, all managed
   through a dashboard that gives administrators control while empowering their users
@@ -31,23 +50,6 @@ supported.
 
 * **Docker** provides a way to run applications securely isolated in a container,
   packaged with all its dependencies and libraries. [#]_
-
-.. toctree::
-   :maxdepth: 2
-
-   overview
-   configuration
-   deployment
-   scaling
-   upgrade
-   test
-   operations
-   notes
-   development
-   appendix
-
-The documentation is maintained on Github: https://github.com/osism/documentation.
-There you can open issues for found errors and so on.
 
 .. warning::
 
