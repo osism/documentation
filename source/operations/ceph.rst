@@ -245,6 +245,7 @@ Remove OSD
 
   .. code-block:: console
 
+     dragon@testbed-manager:~$ ceph osd tree
      ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
      -1       0.03918 root default
      -3       0.01959     host testbed-node-0
@@ -258,12 +259,12 @@ Remove OSD
 
   .. code-block:: console
 
-     $ docker exec -it ceph-osd-3 ls -la /var/lib/ceph/osd/ceph-3/block
+     dragon@testbed-node-0:~$ docker exec -it ceph-osd-3 ls -la /var/lib/ceph/osd/ceph-3/block
      lrwxrwxrwx 1 ceph ceph 92 Apr  2 15:10 /var/lib/ceph/osd/ceph-3/block -> /dev/ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec/osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e
 
   .. code-block:: console
 
-     dragon@testbed-node-0:~$ sudo lvs -o +devices
+     dragon@testbed-node-0:~$ docker exec -it ceph-osd-3 lvs -o +devices
        LV                                            VG                                        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
        osd-data-c5c106dd-7461-40ad-b5cc-28137fb639fc ceph-01de26c3-61fb-4f6c-9fb9-1f3cdfcba444 -wi-ao---- <10.00g                                                     /dev/sdb(0)
        osd-data-e5d0fe7f-c7dd-443d-9630-bf54ffba443e ceph-f27fa071-baa4-4ee5-ba26-3b8a5d7231ec -wi-ao---- <10.00g                                                     /dev/sdc(0)
@@ -281,27 +282,27 @@ Remove OSD
 
   .. code-block:: console
 
-     dragon@testbed-node-0:~$ sudo systemctl stop ceph-osd@3
+     dragon@testbed-node-0:~$ sudo systemctl disable --now ceph-osd@3
 
 * Make sure it is safe to remove the osd
 
   .. code-block:: console
 
-     dragon@testbed-node-0:~$ ceph osd safe-to-destroy osd.3
+     dragon@testbed-manager:~$ ceph osd safe-to-destroy osd.3
      OSD(s) 3 are safe to destroy without reducing data durability.
 
 * Purge the OSD
 
   .. code-block:: console
 
-     dragon@testbed-node-0:~$ ceph osd purge osd.3 --yes-i-really-mean-it
+     dragon@testbed-manager:~$ ceph osd purge osd.3 --yes-i-really-mean-it
      purged osd.3
 
 * Verify the OSD is removed from the node in the CRUSH map
 
   .. code-block:: console
 
-     dragon@testbed-node-0:~$ ceph osd tree
+     dragon@testbed-manager:~$ ceph osd tree
      ID CLASS WEIGHT  TYPE NAME               STATUS REWEIGHT PRI-AFF
      -1       0.02939 root default
      -3       0.00980     host testbed-node-0
