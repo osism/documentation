@@ -1,3 +1,5 @@
+.. _configuration-environment-openstack-nova:
+
 ====
 Nova
 ====
@@ -8,7 +10,7 @@ Nova
 Local LVM2 storage
 ==================
 
-* A volume group with the name ``nova`` is created first with file ``environments/kolla/files/overlays/nova-compute.conf``.
+* A volume group with the name ``nova`` is created first with file ``environments/kolla/files/overlays/nova/nova-compute.conf``.
 
 .. code-block:: ini
 
@@ -251,3 +253,15 @@ Compare "guest vCPUs allowed" to "guests allowed based on memory" for actual gue
    reserved_host_cpus = 4
    reserved_host_memory_mb = 32768
    cpu_allocation_ratio = 9
+
+Luks Encryption
+===============
+
+For a volume type witch uses Luks Encryption by keymanager it is required
+to enable it in nova-compute config in the following section
+``environments/kolla/files/overlays/nova/nova-compute.conf``.
+
+.. code-block:: ini
+
+   [[key_manager]
+   backend = barbican
