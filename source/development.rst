@@ -7,5 +7,5 @@ Development guide
 
    development/ansible
    development/docker
-   development/new_service
+   development/how-to-add-a-new-service
    development/tools

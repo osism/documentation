@@ -1,8 +1,9 @@
-=============================
-Adding a new service to OSISM
-=============================
+========================
+How to add a new service
+========================
 
-If you want to add a service to osism, this is done via an Ansible role.
+If you want to add a service to OSISM, this is done via an Ansible role.
+
 An example workflow how to do so might look like this:
 
 - Add the Ansible Playbook Code: https://github.com/osism/ansible-playbooks/pull/215
