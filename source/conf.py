@@ -1,7 +1,8 @@
 extensions = [
   'sphinx.ext.autosectionlabel', 'sphinxcontrib.blockdiag',
-  'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome'
-  ]
+  'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome',
+  'zuul_sphinx'
+]
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'OSISM'
@@ -37,3 +38,4 @@ html_static_path = [
     '_static'
 ]
 latex_elements = {}
+zuul_role_paths = []
