@@ -10,7 +10,6 @@ Base directory: ``environments/generic``
    :maxdepth: 2
 
    generic/chrony
-   generic/cockpit
    generic/common
    generic/configuration
    generic/docker

@@ -43,7 +43,7 @@ OpenStack services located on different hosts. It is also used for traffic
 without a dedicated network. Ansible playbooks also use this network to access
 target hosts. The interface is defined by ``management_interface``.
 Additionally the interface need to be defined for *kolla-ansible* by
-``network_interface`` and for *Cockpit* by ``cockpit_ssh_interface`` variables in ``inventory/host_vars/<hostname>.yml``.
+``network_interface`` variable in ``inventory/host_vars/<hostname>.yml``.
 
 .. code-block:: yaml
 
@@ -56,11 +56,6 @@ Additionally the interface need to be defined for *kolla-ansible* by
    # kolla
 
    network_interface: eth1
-
-   ##########################################################
-   # cockpit
-
-   cockpit_ssh_interface: eth1
 
 The DNS name for the internal OpenStack API enpoints is defined by
 ``kolla_internal_fqdn``. The corresponding ip address for

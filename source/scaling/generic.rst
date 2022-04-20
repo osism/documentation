@@ -122,15 +122,6 @@ After adding a new node, the ``/etc/hosts`` file on all nodes must be updated.
 
    $ osism-generic hosts
 
-Update cockpit machine files
-============================
-
-Only required if cockpit is used.
-
-.. code-block:: console
-
-   $ osism-generic cockpit --limit manager
-
 Deploy common services
 ======================
 

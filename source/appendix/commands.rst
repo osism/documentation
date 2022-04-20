@@ -65,7 +65,6 @@ configuration directory environments/
        [chrony-force-sync]
        [chrony]
        [cleanup-backup-mariadb]
-       [cockpit]
        [docker]
        [facts]
        [frr]
@@ -107,8 +106,6 @@ configuration directory environments/
        setup chrony
    cleanup-backup-mariadb
        cleanup mariadb backups
-   cockpit
-       setup cockpit
    docker
        install/update/configure docker daemon
    facts

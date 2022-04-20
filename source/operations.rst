@@ -12,7 +12,6 @@ Management and Operations
    operations/ara
    operations/ceph
    operations/cinder
-   operations/cockpit
    operations/docker
    operations/elasticsearch
    operations/fluentd
