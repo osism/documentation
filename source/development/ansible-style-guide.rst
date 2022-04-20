@@ -5,6 +5,13 @@ Ansible Style Guide
 We implement all the default rules of Ansible Lint. A listing of all these rules
 can be found in the Ansible Lint documentation: https://ansible-lint.readthedocs.io/en/latest/default_rules/
 
+Task naming
+===========
+
+* A name never starts with a small letter
+* Names are written in present tense
+* No punctuation is used in names
+
 Positioning and use of the become directive
 ===========================================
 
