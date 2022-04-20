@@ -5,7 +5,7 @@ Issue labels
 Labels management
 =================
 
-The labels are managed via the github-manager (https://github.com/osism/github-manager).
+The labels are managed via the ``github-manager`` (https://github.com/osism/github-manager).
 
 The config.yaml file lists all available labels. There they can be added accordingly and so on.
 

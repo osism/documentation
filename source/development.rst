@@ -8,4 +8,5 @@ Development guide
    development/ansible-style-guide
    development/commit-messages
    development/issue-labels
+   development/repositories
    development/how-to/add-a-new-service
