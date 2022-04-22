@@ -35,3 +35,23 @@ or become_flags. This is for better visibility if a task is privileged or not.
        group: root
        mode: 0644
      notify: Restart hddtemp service
+
+Parameters that offer lists
+===========================
+
+Parameters that provide a list are always defined as in the following example.
+
+``docker_hosts_defaults`` sets the defaults in the role. Overriding is only possible
+with the ``ansible-defaults`` repository.
+
+In the configuration repository, docker_hosts_extra is then used to add additional
+items to the list.
+
+``docker_hosts`` itself is never modified from the outside.
+
+.. code-block:: yaml
+
+   docker_hosts_defaults:
+     - "unix:///var/run/docker.sock"
+   docker_hosts_extra: []
+   docker_hosts: "{{ docker_hosts_defaults + docker_hosts_extra }}"
