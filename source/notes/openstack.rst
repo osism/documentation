@@ -312,3 +312,12 @@ curl
         -H "X-Auth-Token: $OS_TOKEN" \
         "$PLACEMENT_ENDPOINT/allocations/44c356ef-edd0-43a3-bd46-17aed65ea1a6" \
         -X DELETE
+
+Ironic
+======
+
+* capture all dhcpv4 pakets
+
+.. code-block:: console
+
+   tcpdump -i eno1 -pvn port 67 and port 68
