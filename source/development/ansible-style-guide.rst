@@ -8,6 +8,7 @@ can be found in the Ansible Lint documentation: https://ansible-lint.readthedocs
 Task naming
 ===========
 
+* Tasks must always have names. The only exception allowed is for forked playbooks.
 * A name never starts with a small letter
 * Names are written in present tense
 * No punctuation is used in names
