@@ -102,3 +102,23 @@ VLAN interfaces as flat provider networks
 
       $ docker exec -it openvswitch_vswitchd ovs-vsctl get Bridge br-vlan200 datapath-id
       "0000a046f5209e3f"
+
+Neutron Availability Zones
+==========================
+
+* configure availability zone in  ``dhcp_agent.ini`` and ``l3_agent.ini``.
+
+.. code-block:: yaml
+
+   [agent]
+   availability_zone = zone-1
+
+* configure ``neutron.conf``
+
+.. code-block:: yaml
+
+   [DEFAULT]
+   default_availability_zones = zone-1(,zone-2)
+   network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.AZAwareWeightScheduler
+   dhcp_load_type = networks
+   router_scheduler_driver = neutron.scheduler.l3_agent_scheduler.AZLeastRoutersScheduler
