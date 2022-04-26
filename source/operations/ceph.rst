@@ -581,10 +581,20 @@ Migrate Ceph network
    osism-ceph mgrs
    osism-ceph osds
 
+To publish this Ceph network change, you have to reconfigure OpenStack services. Also the ``cephclient`` have to have access to the new network, because of the ``rbd`` and partly ``ceph`` commands.
+
+.. code-block:: console
+   :caption: run OpenStack reconfigure tasks
+
+   osism-kolla reconfigure
+     glance
+     cinder
+     nova
+
 Monitor Ceph OSD restart
 ========================
 
 .. code-block:: console
    :caption: monitor ceph osd restart
 
-   watch ceph osd df tree
+   watch ceph osd (df) tree
