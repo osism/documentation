@@ -51,6 +51,20 @@ Manager Node Initialization
   It is possible to manage more than one manager. In this case it may be useful
   to work with --limit.
 
+.. note::
+
+   If you get the following error message (or similar) with the following commands,
+   the installed Ansible version is too old. In this case the local ``.venv`` directory
+   is deleted and then the script is executed again.
+
+   If another Ansible installation is used on the seed system instead of the local
+   ``.venv`` directory, this installation must be updated accordingly.
+
+   .. code-block:: none
+
+      ERROR! the playbook: osism.manager.keypair could not be found
+      ERROR! the playbook: osism.manager.manager could not be found
+
 Creation of the operator user
 -----------------------------
 
