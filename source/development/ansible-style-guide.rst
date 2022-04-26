@@ -37,6 +37,46 @@ or become_flags. This is for better visibility if a task is privileged or not.
        mode: 0644
      notify: Restart hddtemp service
 
+Usage of collections
+====================
+Collections are always defined as in the following example.
+
+``netbox.netbox`` is here the collection that is used. 
+
+.. code-block:: yaml
+
+   - name: Configure netbox manufacturers
+     netbox.netbox.netbox_manufacturer:
+       netbox_url: "{{ netbox_url }}"
+       netbox_token: "{{ netbox_token }}"
+       data:
+         name: "{{ item.value.name }}"
+         slug: "{{ item.value.slug }}"
+         description: "{{ item.value.description | default('') }}"
+       state: present
+     with_dict: "{{ netbox_data_manufacturers }}"
+
+Please don´t declare it in this way!:
+
+.. code-block:: yaml
+
+   collections:
+       - netbox.netbox
+
+     tasks:
+       - name: Manage Discworld site
+         netbox_site:
+           netbox_url: "{{ netbox_url }}"
+           netbox_token: "{{ netbox_token }}"
+           validate_certs: false
+           data:
+             name: Discworld
+             slug: discworld
+           state: present
+
+The reason for that is, that the code is than more readable and easier to understand.
+
+
 Parameters that offer lists
 ===========================
 
