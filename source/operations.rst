@@ -20,6 +20,7 @@ Management and Operations
    operations/haproxy
    operations/heat
    operations/horizon
+   operations/ironic
    operations/keystone
    operations/kibana
    operations/mariadb
