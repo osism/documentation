@@ -10,3 +10,4 @@ Development guide
    development/issue-labels
    development/repositories
    development/how-to/add-a-new-service
+   development/opendev
