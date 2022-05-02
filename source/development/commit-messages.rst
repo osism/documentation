@@ -45,3 +45,18 @@ Multiple lines with a signed-off-by from the same author don't make sense either
    Reposistory for  meeting minutes
 
    Signed-off-by: Mathias Fechner <fechner@osism.tech>
+
+References to issues
+====================
+
+We work with the issues from GitHub. The issues can be referenced in commit messages.
+See https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue.
+
+To close an issue via a commit, ``Closes #NUMBER_OF_THE_ISSUE`` is used as the last
+line above the ``Signed-off-by`` line. If issue is referenced in another repository
+``Closes osism/NAME_OF_THE_REPOSITORY#NUMBER_OF_THE_ISSUE`` accordingly .
+
+If a commit belongs to an issue, but does not close it directly, ``Related to #NUMBER_OF_THE_ISSUE``
+or ``Part of #NUMBER_OF_THE_ISSUE`` is used.
+
+The reference to an issue is never placed directly in the title of the commit message.
