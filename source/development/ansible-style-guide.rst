@@ -37,6 +37,23 @@ or become_flags. This is for better visibility if a task is privileged or not.
        mode: 0644
      notify: Restart hddtemp service
 
+Position of the when condition
+==============================
+
+If you need to use the when condition please add this at the end-section from the
+task where it is needed. This makes the code easier to understand for others. For example:
+
+.. code-block:: yaml
+
+   - name: "Archive existing {{ resolvconf_file }} file"
+     become: true
+     ansible.posix.synchronize:
+       src: "/etc/resolv.conf"
+       dest: "/etc/resolv.conf.{{ ansible_date_time.date }}"
+       archive: true
+     delegate_to: "{{ inventory_hostname }}"
+     when: stat_resolvconf_file.stat.islnk is defined and not stat_resolvconf_file.stat.islnk
+
 Usage of collections
 ====================
 Collections are always defined as in the following example.
