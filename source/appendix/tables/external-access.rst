@@ -28,3 +28,12 @@ Ansible collections          443 https://github.com
 Ansible collections          443 https://galaxy.ansible.com
 Python packages              443 https://pypi.org
 ======================== ======= ====================================
+
+The following accesses are additionally required for the manager.
+Only required when using Bifrost.
+
+======================== ======= ====================================
+Description              Port    URL
+======================== ======= ====================================
+OpenDev services         443     https://*.opendev.org
+======================== ======= ====================================
