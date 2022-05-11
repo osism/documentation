@@ -11,8 +11,8 @@ Some examples are from firm of production environments.
 Fluentd Authentication
 ============
 
-If fluentd is needed to commuincate with elasticsearch authenticated or it shall
-to interact with a company independ elasticsearch, you are able to configure it
+If fluentd is needed to communicate with elasticsearch authenticated or it shall
+to interact with a company independent elasticsearch, you are able to configure it
 with following configuration parameters:
 
 .. code-block:: console
