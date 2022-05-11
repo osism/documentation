@@ -10,3 +10,4 @@ Appendix
    appendix/tables
    appendix/reconciler
    appendix/license
+   appendix/configuration
