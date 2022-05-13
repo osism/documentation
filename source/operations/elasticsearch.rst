@@ -187,13 +187,13 @@ Removing a node
 
 * Set the exclusion rule to the IP address of the node
 
-  .. code-block:: console
+  .. code-block:: text
 
      $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
      '{
        "transient" :{
-	   "cluster.routing.allocation.exclude._ip" : "192.168.50.12"
-	}
+           "cluster.routing.allocation.exclude._ip" : "192.168.50.12"
+       }
      }'
 
 * Check the number of ``relocating_shards```, it has to be ``0``
@@ -219,13 +219,13 @@ Removing a node
 
 * Set the exclusion rule to empty
 
-  .. code-block:: console
+  .. code-block:: text
 
      $ curl -XPUT http://api-int.osism.local:9200/_cluster/settings -H 'Content-Type: application/json' -d \
      '{
        "transient" :{
-	   "cluster.routing.allocation.exclude._ip" : ""
-	}
+           "cluster.routing.allocation.exclude._ip" : ""
+        }
      }'
 
 * Refresh the cluster configuration

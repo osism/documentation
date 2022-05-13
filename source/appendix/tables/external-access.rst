@@ -35,5 +35,5 @@ Only required when using Bifrost.
 ======================== ======= ====================================
 Description              Port    URL
 ======================== ======= ====================================
-OpenDev services         443     https://*.opendev.org
+OpenDev services         443     https://\*.opendev.org
 ======================== ======= ====================================
