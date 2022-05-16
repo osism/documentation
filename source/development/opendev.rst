@@ -13,7 +13,7 @@ First you need to install git-review, an extension to git
 that allows interaction with Gerrit.
 Pick the suiteable installation command from below.
 
-.. code-block: shell
+.. code-block:: shell
 
   brew install git-review
   sudo apt install git-review
@@ -25,7 +25,7 @@ Once done, git-review needs to be configured to use the
 username you have configured already in OpenDevs Gerrit web-page.
 This might look like this:
 
-.. code-block: shell
+.. code-block:: shell
 
   git config --global gitreview.username tibeer
 
@@ -35,13 +35,13 @@ Working on a repository
 Every time you checkout a new repository and want to work on it,
 you should initialize `git-review` first:
 
-.. code-block: shell
+.. code-block:: shell
 
   git review -s
 
 To check if this worked properly, you may use:
 
-.. code-block: shell
+.. code-block:: shell
 
   git remote -v
   gerrit	ssh://tibeer@review.opendev.org:29418/openstack/kolla-ansible.git (fetch)
@@ -60,7 +60,7 @@ First, check if there is a folder `releasenotes`. If so, you may want to
 create a releasenote which reflects reasons for your changes. To create
 a releasenote you should use the tool `reno`. It can be installed via pip:
 
-.. code-block: shell
+.. code-block:: shell
 
   pip3 install reno
 
@@ -68,7 +68,7 @@ a releasenote you should use the tool `reno`. It can be installed via pip:
 additional functions that are helpful. An example call of `reno` might
 look like this:
 
-.. code-block: shell
+.. code-block:: shell
 
   reno new deprecate-sanity-checks --from-template releasenotes/templates/features.yml
 
