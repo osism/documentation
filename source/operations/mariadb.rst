@@ -296,6 +296,8 @@ Without restart of Galera cluster
    +------------------+------------+
    18 rows in set (0.00 sec)
 
+.. _mariadb_backup:
+
 MariaDB backup
 ==============
 

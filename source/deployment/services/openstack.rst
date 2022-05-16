@@ -45,6 +45,8 @@ This change have to be done before running ``loadbalancer`` deployment. Otherwis
 
    osism-kolla reconfigure loadbalancer
 
+.. _deploying openstack services:
+
 Deploying Openstack Services
 ============================
 

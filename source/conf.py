@@ -1,5 +1,5 @@
 extensions = [
-  'sphinx.ext.autosectionlabel', 'sphinxcontrib.blockdiag',
+  'sphinxcontrib.blockdiag',
   'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome',
   'zuul_sphinx'
 ]
@@ -34,8 +34,8 @@ html_context = {
     'conf_py_path': '/source/'
 }
 html_logo = 'images/logo.png'
-html_static_path = [
-    '_static'
-]
+#html_static_path = [
+#    '_static'
+#]
 latex_elements = {}
 zuul_role_paths = []

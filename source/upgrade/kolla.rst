@@ -51,7 +51,7 @@ The password for MariaDB can be found in the file ``environments/kolla/secrets.y
    docker exec -t mariadb innobackupex -u root -p DATABASE_PASSWORD /tmp/mariadb
    docker cp mariadb:/tmp/mariadb $PWD/mariadb
 
-See :ref:`MariaDB Backup` for further details.
+See :ref:`mariadb_backup` for further details.
 
 Upgrading from Ocata to Pike
 ============================
@@ -235,13 +235,13 @@ MariaDB (Upgrade R2S)
 ---------------------
 
 * Backups are possible beginning with *Stein* release
-* configure MariaDB Backup in ``enviornments/kolla/configuration.yml``
+* configure MariaDB Backup in ``environments/kolla/configuration.yml``
 
 .. code-block:: yaml
 
    enable_mariabackup: "yes"
 
-* set MariaDB Backup Password in ``enviornments/kolla/secrets.yml``
+* set MariaDB Backup Password in ``environments/kolla/secrets.yml``
 
 .. code-block:: yaml
 

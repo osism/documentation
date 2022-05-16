@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: '3.x'
-      - run: pip3 install -r requirements.txt
+      - run: pip3 install -r test-requirements.txt
       - run: sphinx-build -b html source build/html
       - uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:

@@ -6,9 +6,9 @@ The repositories are managed via the ``github-manager`` (https://github.com/osis
 
 For each repository there is a file in ``orgs/osism/repositories`` with the name of the repository.
 
-This file contains a dictionary, again with the name of the repository.
+This file contains a dictionary, again with the name of the repository as key.
 
-This allows new repositories to be added or modified within the ``osism``x organization.
+This allows new repositories to be added or modified within the ``osism`` organization.
 
 To remove a repository the corresponding file is removed. Afterwards, the repository is removed manually.
 
