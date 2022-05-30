@@ -95,3 +95,15 @@ Sometimes this is caused by too many files in ``~/.ssh/``. You can use the ``Ide
 .. code-block:: console
 
    $ ssh -o IdentitiesOnly=yes -i id_rsa.operator dragon@10.11.12.13
+
+docker-compose: error getting credentials
+=========================================
+
+* https://github.com/docker/docker-credential-helpers/issues/60
+
+.. code-block:: none
+
+   error getting credentials - err: exit status 1, out: Cannot autolaunch D-Bus without X11 $DISPLAY
+
+The problem may occur when using the Docker Compose CLI plugin on older Ubuntu version (before Focal).
+It can be fixed by reinstalling the package ``pass``.
