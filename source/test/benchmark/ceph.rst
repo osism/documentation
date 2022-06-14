@@ -80,3 +80,17 @@ Cleanup
 
    $ ceph osd pool delete testing testing --yes-i-really-really-mean-it
    pool 'testing' removed
+
+INSTANCE
+========
+
+fio-plot
+--------
+
+When using bench-fio from https://github.com/louwrentius/fio-plot from within an openstack instance
+
+.. code-block:: console
+
+   $ ./bench_fio --target /testfile --type file --mode randread randwrite --output FIO_OUT --size 6g --block-size 1k 2k 4k 8k 16k 32k 64k 128k
+
+be aware that this scenario takes several hours (aprox. 12) to complete
