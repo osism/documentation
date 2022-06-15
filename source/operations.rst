@@ -32,4 +32,5 @@ Management and Operations
    operations/placement
    operations/prometheus
    operations/rabbitmq
+   operations/redis
    operations/ubuntu
