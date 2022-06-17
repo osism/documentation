@@ -9,5 +9,6 @@ Development guide
    development/commit-messages
    development/issue-labels
    development/repositories
+   development/github
    development/how-to/add-a-new-service
    development/opendev
