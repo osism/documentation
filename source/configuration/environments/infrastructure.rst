@@ -11,3 +11,4 @@ Base directory: ``environments/infrastructure``
 
    infrastructure/helper
    infrastructure/mirror
+   infrastructure/nbde
