@@ -4,6 +4,13 @@ GitHub
 
 Hints when working with GitHub in the company scope.
 
+Issues
+======
+
+Using the Github search, it is possible to view the issues for a specific organization.
+
+https://github.com/search?q=user%3Aosism+state%3Aopen&type=Issues&ref=advsearch&l=&l=
+
 Zuul
 ====
 
