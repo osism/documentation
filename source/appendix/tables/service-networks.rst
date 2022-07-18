@@ -29,6 +29,7 @@ Dnsdist             osism.services.dnsdist                  ``172.31.101.80/28``
 Zuul                osism.services.zuul                     ``172.31.101.96/28``
 Cgit                osism.services.cgit                     ``172.31.101.112/28``
 virtualbmc          osism.services.virtualbmc               ``172.31.101.128/28``
+Squid               osism.services.squid                    ``172.31.101.144/28``
 =================== ======================================= =====================
 
 Deprecated service networks
