@@ -116,6 +116,7 @@ for the logical volume are noted.
   * ``/`` (10 GByte, logical volume ``root``)
   * ``/home`` (2 GByte, logical volume ``home``)
   * ``/tmp`` (5 GByte, logical volume ``tmp``)
+  * ``/var/lib/ceph`` (50 GByte, logical volume ``ceph``) (optional for storage nodes)
   * ``/var/lib/docker`` (30 GByte, logical volume ``docker``, do not set the ``nosuid`` flag on ``/var/lib/docker``)
   * ``/var/log/audit`` (1 GByte, logical volume ``audit``)
   * ``/var`` (10 GByte, logical volume ``var``)
