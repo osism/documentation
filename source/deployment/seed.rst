@@ -17,9 +17,21 @@ without problems.
 Required Packages
 =================
 
+Ubuntu/Debian:
+
 .. code-block:: console
 
    $ sudo apt install git python3-pip python3-virtualenv sshpass
+
+MacOS:
+
+``sshpass`` cannot be installed directly as a package via homebrew (``We won't add sshpass because
+it makes it too easy for novice SSH users to ruin SSH's security.``).
+
+.. code-block:: console
+
+   $ brew tap esolitos/ipa
+   $ brew install esolitos/ipa/sshpass
 
 Configuration repository
 ========================
