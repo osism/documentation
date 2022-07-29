@@ -66,3 +66,64 @@ clevis
 
 
 * ``environments/configuration.yml``
+
+
+
+Build an encrypted image
+========================
+
+.. warning::
+
+   As a requirement it is needed a KVM/qemu setup to build this.
+   
+   https://github.com/osism/openstack-ironic-images/pull/39/files
+
+   The prepared preseed file can find here: encrypt_preseed.cfg.template
+
+   Please don't use documented cryptphase password !
+   And please replace https://github.com/<some-operator-rsa>.keys
+   with a valid rsa key.
+
+   
+
+   Create qcow2 a image:
+
+.. code-block:: console
+
+   $ virt-install --virt-type kvm  \
+      --name focal-build \ 
+      --ram 1024 \
+      --location=http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64 \
+      --initrd-inject http/encrypt_preseed.cfg   \
+      --disk /var/lib/libvirt/images/focale.qcow2,bus=virtio,size=10,format=qcow2 \
+      --network network=default   \
+      --graphics vnc,listen=0.0.0.0 \
+      --noautoconsole   \
+      --os-type=linux \
+      --os-variant=ubuntu20.04
+
+   Remove crendentials from qcow2 a image:
+
+.. code-block:: console
+    
+    $ virt-sysprep -d focale.qcow2    --keys-from-stdin
+
+    
+    Upload encrypted OpenStack image:
+
+
+.. code-block:: console
+
+   $ openstack --os-cloud betacloud image create \
+     --container-format bare  \  
+     --disk-format qcow2 \
+     --property architecture='x86_64' \
+     --property hw_disk_bus='scsi' \
+     --property hw_rng_model='virtio' \
+     --property hw_scsi_model='virtio-scsi' \
+     --property hypervisor_type='kvm' \
+     --shared  \
+     --file focale.qcow2 \
+     ubuntu-encrypt-base-image-20.04
+
+
