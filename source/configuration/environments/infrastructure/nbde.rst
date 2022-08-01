@@ -106,7 +106,7 @@ Build an encrypted image
 
   .. code-block:: console
     
-     $ virt-sysprep -d focale.qcow2    --keys-from-stdin
+     $ virt-sysprep -a focale.qcow2 --keys-from-stdin
 
     
 
