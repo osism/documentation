@@ -1,6 +1,6 @@
-=================
-Docker Operations
-=================
+======
+Docker
+======
 
 .. contents::
    :depth: 2
