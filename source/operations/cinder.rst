@@ -75,8 +75,8 @@ Set the ``volume_type_id`` where the ``volume_type_id`` is not set:
    UPDATE cinder.snapshots SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
    UPDATE cinder.volumes SET volume_type_id='<UUID>' WHERE volume_type_id IS NULL;
 
-Cinder and Redis
-================
+Redis
+=====
 
 .. code:: console
 
