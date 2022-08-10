@@ -43,7 +43,6 @@ The phases are documented in this chapter.
 
    deployment/seed
    deployment/provisioning
-   deployment/manual-installation-screenshots
    deployment/manager
    deployment/bootstrap
    deployment/services
