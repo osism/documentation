@@ -1,6 +1,6 @@
-====================
-Placement Operations
-====================
+=========
+Placement
+=========
 
 .. contents::
    :depth: 2

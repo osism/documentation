@@ -1,6 +1,6 @@
-=================
-Cinder Operations
-=================
+======
+Cinder
+======
 
 * https://docs.openstack.org/cinder/latest/man/cinder-manage.html
 

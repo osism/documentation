@@ -1,6 +1,6 @@
-==================
-MariaDB Operations
-==================
+=======
+MariaDB
+=======
 
 .. contents::
    :depth: 2
