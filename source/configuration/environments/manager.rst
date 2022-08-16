@@ -1,8 +1,8 @@
 .. _configuration-environment-manager:
 
-=======
-Manager
-=======
+====================
+Environment: Manager
+====================
 
 Base directory: ``environments/manager``
 

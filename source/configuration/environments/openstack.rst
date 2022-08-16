@@ -1,8 +1,8 @@
 .. _configuration-environment-openstack:
 
-=========
-OpenStack
-=========
+==================
+Environment: Kolla
+==================
 
 Base directory: ``environments/kolla``
 

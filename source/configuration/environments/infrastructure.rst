@@ -1,8 +1,8 @@
 .. _configuration-environment-infrastructure:
 
-============================
-Configuration Infrastructure
-============================
+===========================
+Environment: Infrastructure
+===========================
 
 Base directory: ``environments/infrastructure``
 

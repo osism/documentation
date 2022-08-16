@@ -1,8 +1,8 @@
 .. _configuration-environment-custom:
 
-================
-Configure Custom
-================
+===================
+Environment: Custom
+===================
 
 Base directory: ``environments/custom``
 

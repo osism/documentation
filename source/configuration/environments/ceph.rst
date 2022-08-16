@@ -1,8 +1,8 @@
 .. _configuration-environment-ceph:
 
-==================
-Ceph Configuration
-==================
+=================
+Environment: Ceph
+=================
 
 Base directory: ``environments/ceph``
 
