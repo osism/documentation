@@ -1,8 +1,8 @@
 .. _configuration-environment-generic:
 
-=================================
-Configuration Environment Generic
-=================================
+====================
+Environment: Generic
+====================
 
 Base directory: ``environments/generic``
 
