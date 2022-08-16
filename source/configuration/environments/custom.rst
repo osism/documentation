@@ -13,6 +13,11 @@ The custom environment is used to store any additional playbooks and services.
    Where possible, playbooks are integrated into ``osism-ansible``.
    Additional services are implemented in a separate role as needed.
 
+.. note::
+
+   It is possible to define any own environments. These are created as ``custom.NAME``.
+   The environment can then be used via ``osism-run``.
+
 Custom Playbooks
 ================
 
