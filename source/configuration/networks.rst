@@ -14,8 +14,9 @@ The following networks are used:
 .. contents::
    :depth: 2
 
-Console
-=======
+
+Network: Console
+================
 
 The ``console`` network is used to access all nodes via SSH for operations
 purposes. It is also used by some infrastructure and helper services like
@@ -35,10 +36,11 @@ file. The ip address belonging to this interface is defined by
    internal_address: 10.0.1.2
    fluentd_host: 10.0.1.2
 
-Management (Internal)
-=====================
 
-The ``management`` or *internal* network is used for communication between
+Network: Management / Internal
+==============================
+
+The ``management`` or ``internal`` network is used for communication between
 OpenStack services located on different hosts. It is also used for traffic
 without a dedicated network. Ansible playbooks also use this network to access
 target hosts. The interface is defined by ``management_interface``.
@@ -64,7 +66,7 @@ this DNS name is defined by ``kolla_internal_vip_address`` in ``environments/kol
 .. code-block:: yaml
 
    ##########################################################
-   # haproxy
+   # loadbalancer
 
    kolla_internal_fqdn: internal-api.betacloud.xyz
 
@@ -79,8 +81,8 @@ this DNS name is defined by ``kolla_internal_vip_address`` in ``environments/kol
 
    kolla_internal_vip_address: 10.0.1.10
 
-Tunnel
-======
+Network: Tunnel
+===============
 
 Traffic between guest virtual machines on different compute nodes or between
 layer 3 networking components such as virtual routers are usually routed through
@@ -93,8 +95,8 @@ VXLAN or GRE tunnels on the tunnel network in ``inventory/host_vars/<hostname>.y
 
    tunnel_interface: eth2
 
-Migration
-=========
+Network: Migration
+==================
 
 Live migration of instances is performed over this network, configured in ``inventory/host_vars/<hostname>.yml``.
 
@@ -105,8 +107,9 @@ Live migration of instances is performed over this network, configured in ``inve
 
    migration_interface: eth2
 
-External API
-============
+
+Network: External API
+=====================
 
 External API endpoints are accessible on the external API network, exposing the
 OpenStack API endpoints. This network is reachable by consumers of the cloud
@@ -126,7 +129,7 @@ services.
 .. code-block:: yaml
 
    ##########################################################
-   # haproxy
+   # loadbalancer
 
    kolla_external_fqdn: external-api.betacloud.xyz
 
@@ -145,8 +148,9 @@ services.
 
    kolla_external_vip_address: 10.0.3.10
 
-External
-========
+
+Network: External
+=================
 
 The external network connects virtual machines to the outside world.
 
@@ -159,8 +163,9 @@ The external network connects virtual machines to the outside world.
 
    neutron_external_interface: eth4
 
-Loadbalancer
-============
+
+Network: Loadbalancer
+=====================
 
 This network is used for accessing Loadbalancer as a Service public endpoints.
 
@@ -173,8 +178,9 @@ This network is used for accessing Loadbalancer as a Service public endpoints.
 
    octavia_network_interface: eth5
 
-Storage Frontend
-================
+
+Network: Storage Frontend
+=========================
 
 The storage frontend network is the connection between ceph nodes and all other
 hosts which need access to storage services.
@@ -213,8 +219,9 @@ It is recommended to use an MTU of 9000 in this network.
 
    public_network: 10.0.5.0/24
 
-Storage Backend
-===============
+
+Network: Storage Backend
+========================
 
 The storage backend network is the internal connection between ceph nodes.
 
@@ -231,8 +238,11 @@ It is recommended to use an MTU of 9000 in this network.
 
 .. _host-vars-network-config-examples:
 
-Host Network configuration examples
-===================================
+
+Netplan configuration examples
+==============================
+
+More examples: https://netplan.io/examples
 
 * simple example
 
@@ -309,7 +319,7 @@ Host Network configuration examples
        lacp-rate: 0
      mtu: 1500
 
-* vlan example
+* VLAN example
 
 .. code-block:: yaml
 
