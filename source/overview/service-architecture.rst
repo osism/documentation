@@ -98,7 +98,6 @@ Compute
 Network
 -------
 
-* Linux Bridge
 * Open Virtual Network (OVN)
 * Open vSwitch (OVS)
 
@@ -109,6 +108,13 @@ Network
    A list of supported network drivers can be found at
 
    https://github.com/openstack?q=networking.
+
+.. warning::
+
+    Not supported feature
+ 
+    * Distributed Virtual Routing (DVR), Octavia won't work 
+    * Linux Bridge (Kolla discontinued support)
 
 Storage
 -------
