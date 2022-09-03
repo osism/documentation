@@ -2,8 +2,8 @@
 Cookiecutter
 ============
 
-Cookiecutter Preparations
-=========================
+Preparations
+============
 
 A Git repository is required to store the configuration for your specific
 infrastructure. The manager node needs to have access to this repository.
@@ -29,8 +29,8 @@ Usually the configuration repository is prepared on your workstation. After
 the repository creation, it needs to be pushed to a central Git server, to make
 it available to the manager node.
 
-Dependency Installation
-=======================
+Installation
+============
 
 Installation of *gcc*, *python-development* and *git* packages is a
 prerequisite to install required Python packages.
@@ -52,8 +52,8 @@ Install the requirements for *cookiecutter*.
 
    pip3 install -r https://raw.githubusercontent.com/osism/cfg-cookiecutter/main/requirements.txt
 
-Cookiecutter Initialisation
-===========================
+Usage
+=====
 
 When running *cookiecutter*, infrastructure specific information needs to be
 provided.
