@@ -2,6 +2,13 @@
 Neutron
 =======
 
+Distributed Virtual Routing (DVR)
+=================================
+
+It is technically possible to use Distributed Virtual Routing (DVR) with OSISM.
+
+However, this is not officially supported by us, not tested and not recommended.
+
 Multiple provider networks
 ==========================
 
