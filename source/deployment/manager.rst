@@ -221,15 +221,6 @@ contains no secrets in plain text.
 
 If you want to import the inventory into Netbox, first deploy Netbox.
 
-Netbox need to be enabled first in the file
-``environments/manager/configuration.yml``:
-
-  .. code-block:: yaml
-
-    netbox_enable: true
-
-Then deploy Netbox:
-
   .. code-block:: console
 
     ./run.sh netbox
