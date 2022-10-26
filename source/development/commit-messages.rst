@@ -24,15 +24,15 @@ The following commit message from a squash merge of a PR with 3 commits makes no
 
    * Reposistory for  meeting mintues
 
-   Signed-off-by: Mathias Fechner <fechner@osism.tech>
+   Signed-off-by: Max Mustermann <mustermann@osism.tech>
 
    * insert new line at the end
 
-   Signed-off-by: Mathias Fechner <fechner@osism.tech>
+   Signed-off-by: Max Mustermann <mustermann@osism.tech>
 
    * yaml-linting
 
-   Signed-off-by: Mathias Fechner <fechner@osism.tech>
+   Signed-off-by: Max Mustermann <mustermann@osism.tech>
 
 This commit message should look like the following after the squash merge.
 Commits that were added in a PR just to make the CI happy do not need to be
@@ -44,19 +44,19 @@ Multiple lines with a signed-off-by from the same author don't make sense either
 
    Reposistory for  meeting minutes
 
-   Signed-off-by: Mathias Fechner <fechner@osism.tech>
+   Signed-off-by: Max Mustermann <mustermann@osism.tech>
 
 References to issues
 ====================
 
 We work with the issues from GitHub. The issues can be referenced in commit messages.
+For this we always use the full path to the issue.
 See https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue.
 
-To close an issue via a commit, ``Closes #NUMBER_OF_THE_ISSUE`` is used as the last
-line above the ``Signed-off-by`` line. If issue is referenced in another repository
-``Closes osism/NAME_OF_THE_REPOSITORY#NUMBER_OF_THE_ISSUE`` accordingly .
+To close an issue via a commit, ``Closes osism/NAME_OF_THE_REPOSITORY#NUMBER_OF_THE_ISSUE`` is used as the last
+line above the ``Signed-off-by`` line.
 
-If a commit belongs to an issue, but does not close it directly, ``Related to #NUMBER_OF_THE_ISSUE``
-or ``Part of #NUMBER_OF_THE_ISSUE`` is used.
+If a commit belongs to an issue, but does not close it directly, ``Related to osism/NAME_OF_THE_REPOSITORY#NUMBER_OF_THE_ISSUE``
+or ``Part of osism/NAME_OF_THE_REPOSITORY#NUMBER_OF_THE_ISSUE`` is used.
 
 The reference to an issue is never placed directly in the title of the commit message.
