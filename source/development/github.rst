@@ -11,6 +11,18 @@ Using the Github search, it is possible to view the issues for a specific organi
 
 https://github.com/search?q=user%3Aosism+state%3Aopen&type=Issues&ref=advsearch&l=&l=
 
+Pull requests
+=============
+
+All code changes are introduced via pull requests, this allows code to be reviewed
+and tested before it gets merged.
+
+When changes to a pull request are to be made, the preferred option is to amend the
+existing commit(s) as needed instead of adding additional commits that modify the
+previous commits in your PR. This requires you to use the ``--force`` option on
+your next ``git push``, but it helps to keep the git history clean and it also
+mirrors the workflow for upstream projects using Gerrit instead of GitHub.
+
 Zuul
 ====
 
