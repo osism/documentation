@@ -2,6 +2,12 @@
 Commit messages
 ===============
 
+* Use present tense in the commit message header
+
+  * The commit message header should be suited to be read in a sentence like: The effect of this
+    commit when merged is to ...
+  * ``Remove all easter eggs`` is good, ``Removed all easter eggs`` is bad.
+
 * Avoid duplications and redundancies
 
   * When you commit to the ``testbed`` repository it is not necessary to use a prefix ``testbed:`` (e.g.
@@ -10,6 +16,10 @@ Commit messages
   * When you commit to the ``testbed`` repository, it is not necessary to say that you are committing
     to the testbed repository (e.g. ``Remove all easter eggs`` instead of ``Remove all easter eggs in
     the testbed repository``)
+
+* Add a ``Signed-off-by:`` footer to the commit message.
+
+  * You can do this by adding the ``-s`` option to the ``git commit`` command.
 
 Squash merge
 ============
