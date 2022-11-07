@@ -181,10 +181,10 @@ Verify none of the old images is running anymore.
 
 .. code-block:: console
 
-   docker ps --filter=label=io.osism.openstack=queens
+   docker ps --filter=label=de.osism.release.openstack=victoria
 
 Remove old version images.
 
 .. code-block:: console
 
-   docker rmi $(docker image ls --quiet --filter=label=io.osism.openstack=queens)
+   docker rmi $(docker image ls --quiet --filter=label=de.osism.release.openstack=victoria)
