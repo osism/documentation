@@ -20,6 +20,22 @@ Local LVM2 storage
    sparse_logical_volumes = False
    disk_cachemodes = "file=directsync,block=directsync,network=directsync"
 
+Local file storage
+==================
+
+* For using flat file enable in read as follow ``environments/kolla/files/overlays/nova/nova-compute.conf``.
+
+.. code-block:: ini
+
+   [libvirt]
+   images_type = default
+
+.. note::
+
+   if the setup demands different backend types for ephemeral storage,
+   it is recommend to seperate this compute hosts in an own host aggreate 
+   and bind this aggereate to an own flavor.
+
 Virtual GPUs
 ============
 
