@@ -321,3 +321,10 @@ Ironic
 .. code-block:: console
 
    tcpdump -i eno1 -pvn port 67 and port 68
+
+Octavia
+=======
+
+Octavia feature matrix:
+
+https://docs.openstack.org/octavia/latest/user/feature-classification/index.html
