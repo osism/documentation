@@ -10,14 +10,14 @@ The following steps are performed to initialize all nodes. :ref:`scaling` descri
 
   .. code-block:: console
 
-     $ osism-generic operator -l 'all:!manager' -u ubuntu
+     osism apply operator -l 'all:!manager' -u ubuntu
 
   * The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
     specified with ``-u``.
   * Alternatively, you can work with the parameters ``--ask-pass`` and ``--ask-become-pass``.
   * For using ``sudo`` please use ``--become``.
   * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed on
-    the manager node with ``osism-generic python3 -l 'all:!manager' -u ubuntu``.
+    the manager node with ``osism apply python3 -l 'all:!manager' -u ubuntu``.
 
   .. warning::
 
@@ -41,7 +41,7 @@ The following steps are performed to initialize all nodes. :ref:`scaling` descri
 
   .. code-block:: console
 
-     $ osism-generic network -l 'all:!manager'
+     $ osism apply network -l 'all:!manager'
 
   * The network configuration already present on a system should be saved before this step.
   * We are currently still using ``/etc/network/interfaces``. Therefore rename all files below ``/etc/netplan`` to ``X.unused``.
@@ -60,25 +60,25 @@ The following steps are performed to initialize all nodes. :ref:`scaling` descri
 
   .. code-block:: console
 
-     $ osism-generic reboot -l 'all:!manager'
+     $ osism apply reboot -l 'all:!manager'
 
 * Check if all systems are reachable
 
   .. code-block:: console
 
-     $ osism-generic ping
+     $ osism apply ping
 
 * Refresh facts
 
   .. code-block:: console
 
-     $ osism-generic facts
+     $ osism apply facts
 
 * Bootstrap of the nodes
 
   .. code-block:: console
 
-     $ osism-generic bootstrap
+     $ osism apply bootstrap
 
   .. note::
 
@@ -88,5 +88,5 @@ The following steps are performed to initialize all nodes. :ref:`scaling` descri
 
   .. code-block:: console
 
-     $ osism-generic reboot -l 'all:!manager'
-     $ osism-generic reboot -l manager
+     $ osism apply reboot -l 'all:!manager'
+     $ osism apply reboot -l manager

@@ -2,7 +2,9 @@
 Seed node
 =========
 
-.. note:: Execute the following commands on the seed node.
+.. note::
+
+   Execute the following commands on the seed node.
 
 The seed node is used once for the first bootstrap of the manager node. It is sufficient to use
 the local workstation. It doesn't have to be a dedicated system. The seed node must be able to
@@ -18,7 +20,7 @@ Ubuntu/Debian:
 
 .. code-block:: console
 
-   $ sudo apt install git python3-pip python3-virtualenv sshpass
+   sudo apt install git python3-pip python3-virtualenv sshpass
 
 MacOS:
 
@@ -27,8 +29,8 @@ it makes it too easy for novice SSH users to ruin SSH's security.``).
 
 .. code-block:: console
 
-   $ brew tap esolitos/ipa
-   $ brew install esolitos/ipa/sshpass
+   brew tap esolitos/ipa
+   brew install esolitos/ipa/sshpass
 
 Get a copy of the configuration repository
 ==========================================
@@ -38,7 +40,7 @@ example, replace ``ORGANIZATION`` and ``cfg-ENVIRONMENT`` accordingly.
 
 .. code-block:: console
 
-   $ git clone ssh://git@github.com:ORGANIZATION/cfg-ENVIRONMENT.git
+   git clone ssh://git@github.com:ORGANIZATION/cfg-ENVIRONMENT.git
 
 If necessary, the configuration SSH key can be used for the initial transfer of the
 repository.
