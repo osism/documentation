@@ -1,6 +1,6 @@
-==================================
-Provisioning of bare-metal servers
-==================================
+==========================
+Preparation of the servers
+==========================
 
 .. contents::
    :depth: 2

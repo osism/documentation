@@ -1,9 +1,6 @@
-=======================
-Manager Node Deployment
-=======================
-
-.. contents::
-   :depth: 2
+============
+Manager node
+============
 
 .. note::
 
@@ -21,52 +18,46 @@ example if your current folder path contains blank characters.
 
 Various Ansible configurations can be adjusted via environment variables.
 
-* to query the password for using ``sudo``:
+* To query the password for using ``sudo``:
 
   .. code-block:: shell
 
-    ANSIBLE_BECOME_ASK_PASS=True
+     ANSIBLE_BECOME_ASK_PASS=True
 
-* if ``secrets.yml`` files are encrypted with Ansible Vault, let Ansible prompt
+* If ``secrets.yml`` files are encrypted with Ansible Vault, let Ansible prompt
   for the password by using:
 
   .. code-block:: shell
 
-    ANSIBLE_ASK_VAULT_PASS=True
+     ANSIBLE_ASK_VAULT_PASS=True
 
-* set the password file location (password will be in cleartext!)
+* Set the password file location (password will be in cleartext!)
 
   .. code-block:: shell
 
-    ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
+     ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
 
 An overview with all parameters can be found at
 http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
 
-Manager Node Initialization
-===========================
 
-.. note::
+It is possible to manage more than one manager. In this case it may be useful
+to work with --limit.
 
-  It is possible to manage more than one manager. In this case it may be useful
-  to work with --limit.
+If you get the following error message (or similar) with the following commands,
+the installed Ansible version is too old. In this case the local ``.venv`` directory
+is deleted and then the script is executed again.
 
-.. note::
+If another Ansible installation is used on the seed system instead of the local
+``.venv`` directory, this installation must be updated accordingly.
 
-   If you get the following error message (or similar) with the following commands,
-   the installed Ansible version is too old. In this case the local ``.venv`` directory
-   is deleted and then the script is executed again.
+.. code-block:: none
 
-   If another Ansible installation is used on the seed system instead of the local
-   ``.venv`` directory, this installation must be updated accordingly.
-
-   .. code-block:: none
-
-      ERROR! the playbook: osism.manager.keypair could not be found
-      ERROR! the playbook: osism.manager.manager could not be found
+   ERROR! the playbook: osism.manager.keypair could not be found
+   ERROR! the playbook: osism.manager.manager could not be found
 
 Creation of the operator user
------------------------------
+=============================
 
 .. code-block:: console
 
@@ -161,7 +152,7 @@ Creation of the operator user
     export ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
 
 Configuration of the network
-----------------------------
+============================
 
 * The network configuration, already present on a system should be saved before
   this step.
@@ -189,43 +180,46 @@ Configuration of the network
 
      ./run.sh reboot
 
-Bootstrap of the manager node
------------------------------
+Bootstrap
+=========
+
+* Bootstrap the manager node:
 
   .. code-block:: console
 
     ./run.sh bootstrap
 
-Reboot the manager node afterwards to ensure changes are boot safe:
+* Reboot the manager node afterwards to ensure changes are boot safe:
 
   .. code-block:: console
 
     ./run.sh reboot
 
-Deploy the configuration repository on the manager node:
+* Deploy the configuration repository on the manager node:
 
   .. code-block:: console
 
      ./run.sh configuration
 
-If the manager node does not have access to the server hosting the configuration
-repository, it can be copied manually with rsync from the seed node to the
-manager node. First clone the configuration repository, to ensure the repository
-contains no secrets in plain text.
+  .. note::
 
-  .. code-block:: console
+     If the manager node does not have access to the Git server providing the configuration
+     repository, it can be copied manually with ``rsync`` from the seed node to the
+     manager node. First clone the configuration repository, to ensure the repository
+     contains no secrets in plain text.
 
-     git clone cfg-customer cfg-customer.rsync
-     rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@testbed-manager:/opt/configuration/
+     .. code-block:: console
 
+        git clone cfg-customer cfg-customer.rsync
+        rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@testbed-manager:/opt/configuration/
 
-If you want to import the inventory into Netbox, first deploy Netbox.
+* Deploy the netbox service:
 
   .. code-block:: console
 
     ./run.sh netbox
 
-Deploy the manager services:
+* Deploy the manager service:
 
   .. code-block:: console
 

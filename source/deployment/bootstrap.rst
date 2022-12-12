@@ -4,9 +4,6 @@
 Bootstrap
 =========
 
-.. contents::
-   :depth: 2
-
 The following steps are performed to initialize all nodes. :ref:`scaling` describes how to add a new node to an existing environment.
 
 * Creation of the necessary operator user
