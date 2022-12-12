@@ -31,44 +31,30 @@ Various Ansible configurations can be adjusted via environment variables.
 
      ANSIBLE_ASK_VAULT_PASS=True
 
-* Set the password file location (password will be in cleartext!)
-
-  .. code-block:: shell
-
-     ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
-
 An overview with all parameters can be found at
 http://docs.ansible.com/ansible/devel/reference_appendices/config.html#environment-variables.
-
 
 It is possible to manage more than one manager. In this case it may be useful
 to work with --limit.
 
-If you get the following error message (or similar) with the following commands,
-the installed Ansible version is too old. In this case the local ``.venv`` directory
-is deleted and then the script is executed again.
+If you get the error message ``ERROR! the playbook: osism.manager.keypair could not be found``
+(or similar) with one of the following commands, the installed Ansible version is too old.
+In this case the local ``.venv`` directory is deleted and then the script is executed again.
 
 If another Ansible installation is used on the seed system instead of the local
 ``.venv`` directory, this installation must be updated accordingly.
 
-.. code-block:: none
-
-   ERROR! the playbook: osism.manager.keypair could not be found
-   ERROR! the playbook: osism.manager.manager could not be found
-
 Creation of the operator user
 =============================
 
+The *operator user* is created on each system. It is used as a service account
+for OSISM. All Docker containers run with this user. Ansible also uses this
+user to access the systems. Commands on the manager node need to be run as
+this user.
+
 .. code-block:: console
 
-  ANSIBLE_USER=ubuntu ./run.sh operator
-
-.. note::
-
-  The *operator user* is created on each system. It is used as a service account
-  for OSISM. All Docker containers run with this user. Ansible also uses this
-  user to access the systems. Commands on the manager node need to be run as
-  this user!
+   ANSIBLE_USER=ubuntu ./run.sh operator
 
 * If a password is required to login to the manager node,
   ``ANSIBLE_ASK_PASS=True`` must be set.
@@ -77,91 +63,58 @@ Creation of the operator user
   added on the manager node to ``~/.ssh/authorized_keys`` in the home directory
   of the user specified as ``ANSIBLE_USER``.
 
+* If the error ``ERROR! Attempting to decrypt but no vault secrets found`` occurs,
+  ``ANSIBLE_ASK_VAULT_PASS=True`` has to be set.
+
 * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python has to
   be installed on the manager node by executing:
 
-  .. code-block::
+  .. code-block:: console
 
-    ANSIBLE_USER=ubuntu ./run.sh python3
+     ANSIBLE_USER=ubuntu ./run.sh python3
 
 * To verify the creation of the operator user, use the private key file
   ``id_rsa.operator``. Make sure you purge all keys from ssh-agent identity
   cache using ``ssh-add -D``. You can print the list using ``ssh-add -l``. The
   list should be empty.
 
-  .. code-block::
-
-    ssh-add -D
-    ssh -o IdentitiesOnly=yes -i environments/manager/id_rsa.operator dragon@testbed-manager
-
-* If you receive the following error message:
-
   .. code-block:: console
 
-    ssh: Too many authentication failures
+     ssh-add -D
+     ssh -o IdentitiesOnly=yes -i environments/manager/id_rsa.operator dragon@testbed-manager
 
+* If you receive the following error message ``ssh: Too many authentication failures``
   set ``ANSIBLE_SSH_ARGS`` environment variable to use only the operator ssh key
   for authentication.
 
   .. code-block:: console
 
-    export ANSIBLE_SSH_ARGS="-o IdentitiesOnly=yes"
+     export ANSIBLE_SSH_ARGS="-o IdentitiesOnly=yes"
+
+* The warning message ``[WARNING]: running playbook inside collection osism.manager``
+  can be ignored
+
+* If Ansible Vault is used, let Ansible ask for the Vault password:
+
+  .. code-block:: shell
+
+     export ANSIBLE_ASK_VAULT_PASS=True
 
 * A typical call to create the *operator user* looks like this:
 
   .. code-block:: console
 
-    ANSIBLE_BECOME_ASK_PASS=True \
-    ANSIBLE_ASK_VAULT_PASS=True \
-    ANSIBLE_ASK_PASS=True \
-    ANSIBLE_USER=ubuntu \
-    ./run.sh operator
-
-.. warning::
-
-  If the *operator user* was already created when the operating system was
-  provisioned, ``./run.sh operator`` must still be executed. ``ANSIBLE_USER``
-  should be set to a user with sudo rights and different from the
-  *operator user*.
-
-  The UID and GID of the *operator user* need to be ``45000``. Execute the
-  following commands as *root* user on the manger node:
-
-  .. code-block:: console
-
-    usermod -u 45000 dragon
-    groupmod -g 45000 dragon
-
-    chgrp dragon /home/dragon/
-    chown dragon /home/dragon/
-
-    find /home/dragon -group 1000 -exec chgrp -h dragon {} \;
-    find /home/dragon -user 1000 -exec chown -h dragon {} \;
-
-* If Ansible Vault is used, direct Ansible to prompt for the Vault password:
-
-  .. code-block:: shell
-
-    export ANSIBLE_ASK_VAULT_PASS=True
-
-  or the password file location can be exported
-  (password will be in cleartext!):
-
-  .. code-block:: shell
-
-    export ANSIBLE_VAULT_PASSWORD_FILE=../../secrets/vaultpass
+     ANSIBLE_BECOME_ASK_PASS=True \
+     ANSIBLE_ASK_VAULT_PASS=True \
+     ANSIBLE_ASK_PASS=True \
+     ANSIBLE_USER=ubuntu \
+     ./run.sh operator
 
 Configuration of the network
 ============================
 
-* The network configuration, already present on a system should be saved before
+* The network configuration, already present on a system should be backuped before
   this step.
-
-* Currently we are still using ``/etc/network/interfaces``. Files below
-  ``/etc/netplan`` will be moved to ``X.unused``.
-
-* Some configuration examples for ``inventory/host_vars/<nodeX>`` can be found in
-  :ref:`host-vars-network-config-examples`
 
 .. code-block:: console
 
@@ -170,11 +123,8 @@ Configuration of the network
 * Upon completion of the network configurtion, a system reboot should be
   performed to ensure the configuration is functional and reboot safe. Since
   network services are not restarted automatically, later changes to the network
-  configuration are not effective without a manual restart of the network
-  service or reboot of the nodes.
-
-* A reboot is performed to activate and test the network configuration. The
-  reboot must be performed before the bootstrap is performed.
+  configuration are not effective without a manual apply of the network
+  configuration or reboot of the nodes.
 
   .. code-block:: console
 
@@ -187,13 +137,13 @@ Bootstrap
 
   .. code-block:: console
 
-    ./run.sh bootstrap
+     ./run.sh bootstrap
 
 * Reboot the manager node afterwards to ensure changes are boot safe:
 
   .. code-block:: console
 
-    ./run.sh reboot
+     ./run.sh reboot
 
 * Deploy the configuration repository on the manager node:
 
@@ -201,26 +151,20 @@ Bootstrap
 
      ./run.sh configuration
 
-  .. note::
+* Deploy the traefik service:
 
-     If the manager node does not have access to the Git server providing the configuration
-     repository, it can be copied manually with ``rsync`` from the seed node to the
-     manager node. First clone the configuration repository, to ensure the repository
-     contains no secrets in plain text.
+  .. code-block:: console
 
-     .. code-block:: console
-
-        git clone cfg-customer cfg-customer.rsync
-        rsync -Paz -e "ssh -o IdentitiesOnly=yes -i cfg-customer/secrets/id_rsa.operator" cfg-customer.rsync/ dragon@testbed-manager:/opt/configuration/
+     ./run.sh traefik
 
 * Deploy the netbox service:
 
   .. code-block:: console
 
-    ./run.sh netbox
+     ./run.sh netbox
 
 * Deploy the manager service:
 
   .. code-block:: console
 
-    ./run.sh manager
+     ./run.sh manager
