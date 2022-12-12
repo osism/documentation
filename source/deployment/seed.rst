@@ -2,9 +2,6 @@
 Seed node
 =========
 
-.. contents::
-   :depth: 2
-
 .. note:: Execute the following commands on the seed node.
 
 The seed node is used once for the first bootstrap of the manager node. It is sufficient to use
@@ -14,8 +11,8 @@ reach the manager node via SSH.
 The use of Linux on the seed node is recommended. Other operating systems should also work
 without problems.
 
-Required Packages
-=================
+Install required packages
+=========================
 
 Ubuntu/Debian:
 
@@ -33,8 +30,11 @@ it makes it too easy for novice SSH users to ruin SSH's security.``).
    $ brew tap esolitos/ipa
    $ brew install esolitos/ipa/sshpass
 
-Configuration repository
-========================
+Get a copy of the configuration repository
+==========================================
+
+The configuration repository to be used must be available on the seed node. In the following
+example, replace ``ORGANIZATION`` and ``cfg-ENVIRONMENT`` accordingly.
 
 .. code-block:: console
 
