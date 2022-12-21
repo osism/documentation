@@ -24,13 +24,37 @@ Manual failover
 Change certificate
 ==================
 
+After Tran:
+-----------
+
+* Replace the file ``environments/kolla/certificates/haproxy.pem``. You can encrypt the ``haproxy.pem`` with ansible vault password.
+
+.. code-block:: yaml
+
+   environments/kolla/certifcates/haproxy.pem
+     -----BEGIN CERTIFICATE-----
+     [...]
+     -----END CERTIFICATE-----
+     -----BEGIN RSA PRIVATE KEY-----
+     [...]
+     -----END RSA PRIVATE KEY-----
+
+* Key and certificates in PEM format are stored consecutively in the following order:
+
+  - server public key
+  - server private key (without any password)
+  - intermediate CA certificates
+
+Bevor Train:
+-----------
+
 * Update the certificate in the file ``environments/kolla/secrets.yml`` (``kolla_external_fqdn_cert``)
   The order of certificates is important:
 
-  - Add server private key
-  - Add server public key
-  - Add intermediate CA certificates (if any)
-  - Add CA root certificate
+  - server private key
+  - server public key
+  - intermediate CA certificates (if any)
+  - CA root certificate
 
 * Reconfigure HAProxy with ``osism-kolla reconfigure loadbalancer``
 
