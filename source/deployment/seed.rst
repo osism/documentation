@@ -35,12 +35,27 @@ it makes it too easy for novice SSH users to ruin SSH's security.``).
 Get a copy of the configuration repository
 ==========================================
 
+Each environment managed with OSISM is based on a configuration repository. This was previously
+created with `Cookiecutter <https://cookiecutter.readthedocs.io/en/latest/>`_ and the
+`cfg-cookiecutter <https://github.com/osism/cfg-cookiecutter>`_ repository. A configuration repository
+is stored on a Git server (e.g. GitHub, Gitlab, ...). The configuration repository is individual
+for each environment and is therefore not provided by us.
+
 The configuration repository to be used must be available on the seed node. In the following
 example, replace ``ORGANIZATION`` and ``cfg-ENVIRONMENT`` accordingly.
 
 .. code-block:: console
 
    git clone ssh://git@github.com:ORGANIZATION/cfg-ENVIRONMENT.git
+
+Examples:
+
+* The repository is located in the ``betacloud`` organisation on GitHub, has the name
+  ``configuration`` and can be accessed via SSH: ``ssh://git@github.com:betacloud/configuration.git``
+* The repository is located in the ``betacloud`` organisation on Gitlab, has the name
+  ``configuration`` and can be accessed via SSH: ``ssh://git@gitlab.com:betacloud/configuration.git``
+* The repository is located in the ``betacloud`` organisation on an internan Gitlab, has the
+  name ``configuration`` and can be accessed via SSH: ``ssh://git@git.services.osism.tech:betacloud/configuration.git``
 
 If necessary, the configuration SSH key can be used for the initial transfer of the
 repository.
