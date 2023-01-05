@@ -12,7 +12,8 @@ Necessary basic knowledge
 Operating system
 ================
 
-Deployment is supported on Ubuntu 20.04. Other distributions are currently not supported.
+Deployment is supported on Ubuntu 20.04 and 22.04. Other distributions are currently not
+supported.
 
 Deployment
 ==========
