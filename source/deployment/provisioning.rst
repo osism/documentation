@@ -1,31 +1,38 @@
-==========================
-Preparation of the servers
-==========================
+============
+Provisioning
+============
 
 .. contents::
    :depth: 2
 
-The manual installation of a system is described below. The use of an installation server
-is recommended
+For the initial deployment of the management plane and the control plane of OSISM,
+the systems must be pre-provisioned with Ubuntu 22.04.
 
-The manual node installation is possible without network connectivity.
+Data plane nodes can be automatically provisioned after the initial deployment and
+do not need to be pre-provisioned.
 
-Preparations
-============
+It is recommended not to install the initial nodes of the management plane and the
+control plane manually. An ISO image is provided for this purpose which automatically
+provisions a node. The ISO image is available for download at https://github.com/osism/node-image.
 
-* Download the latest ISO image for Ubuntu 22.04 from
+There are different variants of the ISO image. The variants differ in the disc layout.
+The available variants are described in the README file of https://github.com/osism/node-image
+repository.
 
-  * https://www.releases.ubuntu.com/22.04/
+If none of the provided variants is suitable, this chapter also describes the manual installation
+with the help of the Ubuntu 22.04 live ISO image.
+
+
+Manual installation
+===================
+
+The manual installation of a system is described in this section. The manual
+installation is possible without network connectivity.
+
+* Download the latest ISO image for Ubuntu 22.04 from https://www.releases.ubuntu.com/22.04/
+
   * Use the ``ubuntu-22.04.1-live-server-amd64.iso`` image
   * The version number may be different, always use the latest available version of 22.04 LTS
-
-* Or use the prepared ISO, provided at https://github.com/osism/node-image
-
-  * Details on the use can be found there
-  * Only works with specific disc layouts (listed in the README)
-
-Manual Installation
-===================
 
 .. note::
 

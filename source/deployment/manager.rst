@@ -113,12 +113,21 @@ this user.
 Configuration of the network
 ============================
 
+.. note::
+
+   Most of the parameters required for Ansible (``ANSIBLE_BECOME_ASK_PASS``, ``ANSIBLE_ASK_PASS``,
+   ``ANSIBLE_USER``, ..) in the previous step are no longer necessary. If Ansible Vault is used,
+   however, ``ANSIBLE_ASK_VAULT_PASS`` must still be set.
+
+   To prevent recurring installation of Ansible Collections, ``export INSTALL_ANSIBLE_ROLES=False``
+   can be used.
+
 * The network configuration, already present on a system should be backuped before
   this step.
 
-.. code-block:: console
+  .. code-block:: console
 
-  ./run.sh network
+    ./run.sh network
 
 * Upon completion of the network configurtion, a system reboot should be
   performed to ensure the configuration is functional and reboot safe. Since
@@ -132,6 +141,15 @@ Configuration of the network
 
 Bootstrap
 =========
+
+.. note::
+
+   Most of the parameters required for Ansible (``ANSIBLE_BECOME_ASK_PASS``, ``ANSIBLE_ASK_PASS``,
+   ``ANSIBLE_USER``, ..) in the previous step are no longer necessary. If Ansible Vault is used,
+   however, ``ANSIBLE_ASK_VAULT_PASS`` must still be set.
+
+   To prevent recurring installation of Ansible Collections, ``export INSTALL_ANSIBLE_ROLES=False``
+   can be used.
 
 * Bootstrap the manager node:
 
@@ -168,3 +186,5 @@ Bootstrap
   .. code-block:: console
 
      ./run.sh manager
+
+**Ready. The manager is now prepared and you can continue with the bootstrap of the other nodes.**

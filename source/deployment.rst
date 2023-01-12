@@ -6,8 +6,8 @@ The deployment of OSISM is carried out in several successive phases.
 The phases are documented in this chapter.
 
 1. Preparation of a seed node
-2. Bootstrap and deployment of a manager node
-3. Provisioning of the bare-metal systems
+2. Preparation of a manager node
+3. Provisioning of the bare-metal nodes
 
 .. blockdiag::
 
