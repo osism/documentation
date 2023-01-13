@@ -46,7 +46,7 @@ After Tran:
   - intermediate CA certificates
 
 Bevor Train:
------------
+------------
 
 * Update the certificate in the file ``environments/kolla/secrets.yml`` (``kolla_external_fqdn_cert``)
   The order of certificates is important:
