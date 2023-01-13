@@ -6,12 +6,14 @@ Seed node
 
    Execute the following commands on the seed node.
 
-The seed node is used once for the first bootstrap of the manager node. It is sufficient to use
-the local workstation. It doesn't have to be a dedicated system. The seed node must be able to
-reach the manager node via SSH.
+The seed node is used once for the initial bootstrap of the manager node. It is sufficient
+to use the local workstation. It doesn't have to be a dedicated system. The seed node is no
+longer needed in the further process. The seed node must be able to reach the manager node
+via SSH.
 
 The use of Linux on the seed node is recommended. Other operating systems should also work
 without problems.
+
 
 Install required packages
 =========================
@@ -31,6 +33,7 @@ it makes it too easy for novice SSH users to ruin SSH's security.``).
 
    brew tap esolitos/ipa
    brew install esolitos/ipa/sshpass
+
 
 Get a copy of the configuration repository
 ==========================================
@@ -54,7 +57,7 @@ Examples:
   ``configuration`` and can be accessed via SSH: ``ssh://git@github.com:betacloud/configuration.git``
 * The repository is located in the ``betacloud`` organisation on Gitlab, has the name
   ``configuration`` and can be accessed via SSH: ``ssh://git@gitlab.com:betacloud/configuration.git``
-* The repository is located in the ``betacloud`` organisation on an internan Gitlab, has the
+* The repository is located in the ``betacloud`` organisation on an internal Gitlab, has the
   name ``configuration`` and can be accessed via SSH: ``ssh://git@git.services.osism.tech:betacloud/configuration.git``
 
 If necessary, the configuration SSH key can be used for the initial transfer of the
@@ -70,3 +73,5 @@ stored in ``~/.ssh/id_rsa.configuration``.
      User git
      Port 22
      IdentityFile ~/.ssh/id_rsa.configuration
+
+**Ready. The seed is now ready to prepare the manager node.**
