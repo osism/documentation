@@ -67,7 +67,7 @@ Gathering Ansible facts
 
 .. code-block:: console
 
-   osism-generic facts
+   osism apply facts
 
 Upgrade Common
 --------------

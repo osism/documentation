@@ -99,7 +99,7 @@ and will reboot the system to change the network configuration.
 
   .. code-block:: console
 
-     $ osism-generic facts
+     $ osism apply facts
 
 * Bootstrap the node.
 

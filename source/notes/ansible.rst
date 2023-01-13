@@ -36,7 +36,7 @@ To update the facts, re-collect them on the manager node.
 
 .. code-block:: console
 
-   $ osism-generic facts
+   $ osism apply facts
 
 Update facts manually
 ---------------------
@@ -45,7 +45,7 @@ Update facts manually
 
 .. code-block:: console
 
-   $ osism-generic facts
+   $ osism apply facts
 
    PLAY [Gather facts for all hosts] **********************************************
 
