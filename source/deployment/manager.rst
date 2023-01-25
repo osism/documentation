@@ -54,7 +54,7 @@ this user.
 
 .. code-block:: console
 
-   ANSIBLE_USER=ubuntu ./run.sh operator
+   ANSIBLE_USER=osism ./run.sh operator
 
 * If a password is required to login to the manager node,
   ``ANSIBLE_ASK_PASS=True`` must be set.
@@ -71,7 +71,7 @@ this user.
 
   .. code-block:: console
 
-     ANSIBLE_USER=ubuntu ./run.sh python3
+     ANSIBLE_USER=osism ./run.sh python3
 
 * To verify the creation of the operator user, use the private key file
   ``id_rsa.operator``. Make sure you purge all keys from ssh-agent identity
@@ -107,7 +107,7 @@ this user.
      ANSIBLE_BECOME_ASK_PASS=True \
      ANSIBLE_ASK_VAULT_PASS=True \
      ANSIBLE_ASK_PASS=True \
-     ANSIBLE_USER=ubuntu \
+     ANSIBLE_USER=osism \
      ./run.sh operator
 
 Configuration of the network

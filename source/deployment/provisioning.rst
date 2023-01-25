@@ -56,8 +56,8 @@ installation is possible without network connectivity.
   * Adapt the host name accordingly as you need it yourself. ``node`` is only an
     example.
 
-* Set ``ubuntu`` as full name for the new user
-* Set ``ubuntu`` as the username for the account
+* Set ``osism`` as full name for the new user
+* Set ``osism`` as the username for the account
 
   * The later used operator user ``dragon`` is created during the bootstrap
     and should not be created during the installation.
@@ -185,11 +185,11 @@ Step by step of manual installation with screenshots.
 
   .. image:: /images/manual-installation/10-hostname.png
 
-* Full name of User, ``ubuntu``
+* Full name of User, ``osism``
 
   .. image:: /images/manual-installation/11-username-full.png
 
-* username ``ubuntu``
+* username ``osism``
 
   .. image:: /images/manual-installation/12-username.png
 

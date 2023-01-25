@@ -11,21 +11,21 @@ add a new node to an existing environment.
 
   .. code-block:: console
 
-     osism apply operator -u ubuntu
+     osism apply operator -u osism
 
   * The operator key has to be added in advance on all nodes to ``authorized_keys`` of the user
     specified with ``-u``.
   * Alternatively (not recommended), the password can be stored in plain text in a file
-    ``/opt/configuration/secrets/ubuntu_password``. The parameter
-    ``--conn-pass-file /opt/configuration/secrets/ubuntu_password`` must then
+    ``/opt/configuration/secrets/osism_password``. The parameter
+    ``--conn-pass-file /opt/configuration/secrets/osism_password`` must then
     also be specified:
 
     .. code-block:: console
 
-       osism apply operator -u ubuntu --conn-pass-file /opt/configuration/secrets/ubuntu_password
+       osism apply operator -u osism --conn-pass-file /opt/configuration/secrets/osism_password
 
   * If the error ``/bin/sh: 1: /usr/bin/python: not found`` occurs, Python must first be installed
-    with ``osism apply python3 -u ubuntu``.
+    with ``osism apply python3 -u osism``.
 
 * Configuration of the network
 
