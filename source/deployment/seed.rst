@@ -40,9 +40,14 @@ Get a copy of the configuration repository
 
 Each environment managed with OSISM is based on a configuration repository. This was previously
 created with `Cookiecutter <https://cookiecutter.readthedocs.io/en/latest/>`_ and the
-`cfg-cookiecutter <https://github.com/osism/cfg-cookiecutter>`_ repository. A configuration repository
-is stored on a Git server (e.g. GitHub, Gitlab, ...). The configuration repository is individual
-for each environment and is therefore not provided by us.
+`cfg-cookiecutter <https://github.com/osism/cfg-cookiecutter>`_ repository.
+
+The instructions for the initial creation of a new configuration with the help of the Cookiecutter
+can be found in the
+`README file of the Cookiecutter repository <https://github.com/osism/cfg-cookiecutter>`_.
+
+A configuration repository is stored on a Git server (e.g. GitHub, Gitlab, ...). The
+configuration repository is individual for each environment and is therefore not provided by us.
 
 The configuration repository to be used must be available on the seed node. In the following
 example, replace ``ORGANIZATION`` and ``cfg-ENVIRONMENT`` accordingly.
