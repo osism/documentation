@@ -8,6 +8,9 @@ Infrastructure
 Common
 ======
 
+The common role is always deployed on all systems.
+Other roles partly use services provided by this role.
+
 .. code-block:: console
 
    $ osism-kolla deploy common
