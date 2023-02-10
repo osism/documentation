@@ -58,8 +58,3 @@ Networks
      - 9000
      - |times|
      - |times|
-   * - Monitoring
-     - all nodes
-     - 1500
-     - |check|
-     - |times|
