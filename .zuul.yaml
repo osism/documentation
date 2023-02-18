@@ -1,5 +1,6 @@
 ---
 - project:
+    merge-mode: squash-merge
     vars:
       sphinx_source_dir: source
       sphinx_build_dir: build
