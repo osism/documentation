@@ -162,7 +162,7 @@ To mirror the images, execute ``osism-mirror images`` after deployment, configur
    ##########################
    # mirror-images
 
-   docker_registry_external: index.docker.io
+   docker_registry_external: registry.airgap.services.osism.tech
    docker_registry_internal: registry.local
    docker_namespace: osism
 

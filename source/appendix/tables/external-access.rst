@@ -8,9 +8,7 @@ Access via HTTP proxy is also possible.
 ======================== ======= ====================================
 Description              Port    URL
 ======================== ======= ====================================
-Container images             443 https://harbor.services.osism.tech
-Container images             443 https://index.docker.io
-Container images             443 https://quay.io
+Container images             443 https://registry.airgap.services.osism.tech
 OpenStack machine images     443 https://minio.services.osism.tech
 Ubuntu packages               80 http://archive.ubuntu.com
 Ubuntu packages              443 https://download.docker.com

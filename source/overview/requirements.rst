@@ -33,13 +33,13 @@ All nodes
 ---------
 
 * DNS and NTP servers
-* Docker Hub / Quay.io
+* OSISM container mirrors
 * Official Ubuntu mirrors
 
 .. note::
 
-   * Mirrors for Docker and Ubuntu can be provided within the environment. Then access to
-     Docker Hub / Quay.io and Ubuntu mirrors is only required from the manager.
+   * Mirrors for Containers and Ubuntu can be provided within the environment. Then access to
+     OSISM container mirrors and Ubuntu mirrors is only required from the manager.
 
    * If no direct access to external services is possible, the use of an HTTP proxy is
      possible.

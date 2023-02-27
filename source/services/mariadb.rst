@@ -483,7 +483,7 @@ a few intermediate steps.
 
 .. code-block:: console
 
-   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --name mariadb-restore --rm -it quay.io/osism/mariadb:train-latest
+   $ docker run --entrypoint=/bin/bash -v mariadb:/var/lib/mysql --name mariadb-restore --rm -it registry.airgap.services.osism.tech/osism/mariadb:train-latest
    ()[mysql@9d16427f7d67 /]$
 
 .. code-block:: console

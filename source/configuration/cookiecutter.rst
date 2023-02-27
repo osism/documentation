@@ -73,7 +73,7 @@ individual parameters can be found in the README file of the repository.
    ceph_network_backend [193.168.80.0/24]:
    ceph_network_frontend [192.168.70.0/24]:
    ceph_version [nautilus]:
-   docker_registry [index.docker.io]:
+   docker_registry [registry.airgap.services.osism.tech]:
    docker_version [5:19.03.5]:
    domain [osism.local]:
    fqdn_external [api.osism.local]:
