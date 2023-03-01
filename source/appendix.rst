@@ -9,5 +9,6 @@ Appendix
    appendix/secrets
    appendix/tables
    appendix/reconciler
-   appendix/license
    appendix/configuration
+   appendix/references
+   appendix/license
