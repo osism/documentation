@@ -245,6 +245,13 @@ refer to the
    ceph dashboard ac-user-create --force-password -i /data/admin_password.txt admin administrator
    rm /opt/cephclient/data/admin_password.txt
 
+Validation
+==========
+
+For Ceph, special playbooks were added to validate the deployment status of
+the OSD, MON and MGR services. The commands for use are ``osism validate ceph-osds``,
+``osism validate ceph-mons``, and ``osism validate ceph-mgrs``.
+
 Testing Ceph
 ============
 
