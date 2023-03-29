@@ -363,3 +363,18 @@ There is a problem with Erlang cookie. Find all ``.erlang.cookie`` files.
    sudo cat /var/lib/docker/overlay2/<volumeid>/merged/var/lib/rabbitmq/.erlang.cookie \
           > /var/lib/docker/volumes/rabbitmq/_data/.erlang.cookie
    docker start rabbitmq
+
+Set rabbitmq extra config (>=Yoga)
+==================================
+
+To set other option in RabbitMQ, you can use the rabbitmq_extra_config variable. It's only for same or higher release than yoga. 
+For example, to set heartbed option:
+
+* ``environments/kolla/configuration.yml``
+
+.. code-block:: yaml
+
+   rabbitmq_extra_config:
+     heartbeat: 640
+     ssl_handshake_timeout: 20000
+     handshake_timeout: 40000
