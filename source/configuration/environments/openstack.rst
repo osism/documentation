@@ -13,6 +13,7 @@ https://docs.openstack.org/kolla-ansible/latest/.
 .. toctree::
    :maxdepth: 2
 
+   openstack/ceilometer
    openstack/cinder
    openstack/freezer
    openstack/gnocchi
