@@ -92,3 +92,79 @@ Large Horizon table for django_session
      -rw-rw----  1 42434 42434 1.6K Dec  5 15:02 django_session.frm
      -rw-rw----  1 42434 42434 9.0M Dec  5 15:04 django_session.ibd
      ...
+
+Customize horizon theme
+=======================
+
+From the Upstream Documentation: https://docs.openstack.org/kolla-ansible/latest/reference/shared-services/horizon-guide.html#extending-the-default-local-settings-options
+
+* Prepare overlay files
+  
+  as an example where theme files should placed. 
+
+  .. code-block:: console
+
+     $ tree -L 2  /opt/configuration/environments/kolla/files/overlays/horizon/
+
+       ├── custom_local_settings
+       └── themes
+            └── osism
+ 
+* to enable it in the kolla/configuration.yml
+  
+  .. code-block:: console
+
+      # horizon
+
+      horizon_custom_themes:
+          - name: osism
+            label: CustomTheme
+
+* choose theme as default in kolla/files/overlays/horizon/custom_local_settings
+
+     .. code-block:: console
+
+        AVAILABLE_THEMES = [
+               ('OSISM', 'osism,', '/etc/openstack-dashboard/themes/osism'),
+        ]
+
+        DEFAULT_THEME = 'osism'
+
+* Changing the Brand Link 
+  https://docs.openstack.org/horizon/zed/configuration/customizing.html#changing-the-brand-link
+
+* Customize Footer:
+  https://docs.openstack.org/horizon/latest/configuration/customizing.html#customizing-the-footer
+  
+  .. code-block:: console
+
+     {% extends "base.html" %}
+
+     {% block footer %}
+        <p>My custom footer</p>
+     {% endblock %} 
+     
+      
+   auth/login.html:
+
+  .. code-block:: console
+    
+     {% extends "auth/login.html" %}
+
+     {% block footer %}
+          <p>customize login footer</p>
+     {% endblock %}
+
+  auth/_login_form.html:
+
+ .. code-block:: console
+
+    {% extends "auth/_login_form.html" %}
+
+    {% block login_footer %}
+    {% comment %}
+       Message of to day login button.
+    {% endcomment %}
+    {{ block.super }}
+            <p>customize login form footer</p>
+    {% endblock %}
