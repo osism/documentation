@@ -14,5 +14,6 @@ of the individual services.
    services/ceph
    services/openstack
    services/loadbalancer
+   services/ceph-rgw
    services/monitoring
    services/custom

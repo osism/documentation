@@ -1,6 +1,6 @@
-====================
+============================================
 Ceph RGW integrating with OpenStack Keystone
-====================
+============================================
 
 Prepare configuration repository
 ================================
@@ -61,7 +61,7 @@ Add following configuration in ``environments/kolla/configuration.yml``
 
 
 Run Ceph rgws and kolla ceph-rgw deployment 
-======================
+===========================================
 
 Run deployment to create the ceph rgws and the config Openstack config.
 
