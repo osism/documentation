@@ -1,5 +1,4 @@
 extensions = [
-  'sphinxcontrib.blockdiag',
   'sphinxcontrib.nwdiag', 'sphinx.ext.todo', 'sphinx_fontawesome',
   'zuul_sphinx'
 ]
