@@ -2,6 +2,9 @@
 Open Source Infrastructure & Service Manager
 ============================================
 
+This documentation is archived. Please use the new documentation
+at https://osism.github.io/docs/intro/.
+
 .. note::
 
    In case of security problems of any kind, please send an email to
